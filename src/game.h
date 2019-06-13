@@ -16,21 +16,21 @@ class Game{
 
 public:
 
-    Game(std::string title):
-        _title(title),
-        _media_layer(nullptr)
-    {};
+    Game(std::string game_title, 
+         MediaLayer* media_layer,
+         int window_width,
+         int window_height):
+        _game_title(game_title),
+        _media_layer(media_layer),
+        _window_width(window_width),
+        _window_height(window_height)
+    {
+    };
 
     ~Game(){};
 
     // Initializes Game
     bool initialize();
-
-    // Initializes Game with media layer
-    bool initialize(MediaLayer* media_layer);
-
-    // Initializes Game with media layer and window dimension
-    bool initialize(MediaLayer* media_layer, int window_width, int window_height);
 
     // Runs game loop
     void run_loop();
@@ -38,18 +38,27 @@ public:
     // Shuts down game
     void shutdown();
 
+    // Get Random integer
     int rand(int min, int max);
+
+    // Window Width
+    int window_width();
+
+    // Window Height
+    int window_height();
 
 private:
 
-    std::string _title;
+    MediaLayer* _media_layer;
+
+    std::string _game_title;
 
     RandomNumber _rand;
 
-    bool _is_running;
+    bool _is_running; // for checking game loop
+
     int _window_width{720};
     int _window_height{480};
-    MediaLayer* _media_layer;
 
     // Retrieves and handles keyboard input from media layer
     void process_input();

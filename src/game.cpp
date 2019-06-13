@@ -16,6 +16,7 @@
  */
 bool Game::initialize(){
 
+    // Check if Media Layer exists
     if(_media_layer == nullptr){
         // throw exception: media layer is not initialized
         return false;
@@ -27,32 +28,11 @@ bool Game::initialize(){
     bool initialized = true;
 
     // Initialize Media Layer
-    initialized = MediaLayer::MediaLayer_Initialize(_title, _media_layer, _window_width, _window_height);
+    initialized = MediaLayer::MediaLayer_Initialize(_game_title, _media_layer, _window_width, _window_height);
 
     // Initialize Game Objects
 
     return initialized;
-}
-
-/** function: initialize()
- * 
- */
-bool Game::initialize(MediaLayer* media_layer){
-
-    _media_layer = media_layer;
-
-    return initialize();
-}
-
-/** function: initialize()
- * 
- */
-bool Game::initialize(MediaLayer* media_layer, int window_width, int window_height){
-
-    _window_width = window_width;
-    _window_height = window_height; 
-
-    return initialize(media_layer);
 }
 
 /** function: run_loop()
@@ -75,7 +55,31 @@ void Game::run_loop(){
 void Game::shutdown(){
     if(_media_layer != nullptr){
         MediaLayer::MediaLayer_Shutdown(_media_layer);
+        _media_layer = nullptr;
     }
+}
+
+/** function: window_width
+ * Might refer to Media Layer if window is adjustable
+ */
+int Game::window_width()
+{
+    return _window_width;
+}
+
+/** function: window_height
+ * Might refer to Media Layer if window is adjustable 
+ */
+int Game::window_height()
+{
+    return _window_height;
+}
+
+/** function: rand()
+ * 
+ */
+int Game::rand(int min, int max){
+    return _rand.rand(min, max);
 }
 
 /* --------------------------------------------------
@@ -127,10 +131,3 @@ void Game::generate_output(){
 
     MediaLayer::MediaLayer_GenerateOutput(_media_layer);
  }
-
-/** function: rand()
- * 
- */
-int Game::rand(int min, int max){
-    return _rand.rand(min, max);
-}

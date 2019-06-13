@@ -13,8 +13,10 @@
 /** function: clear_shapes()
  * 
  */
-void MediaLayer::clear_shapes(){
-    if(!_shapes.empty()){
+void MediaLayer::clear_shapes()
+{
+    if(!_shapes.empty())
+    {
         _shapes.clear();
     }
 }
@@ -22,15 +24,18 @@ void MediaLayer::clear_shapes(){
 /** function: add_shape()
  * 
  */
-void MediaLayer::add_shape(std::vector<Vector2d> shape){
+void MediaLayer::add_shape(std::vector<Vector2d> shape)
+{
     _shapes.push_back(shape);
 }
 
 /** function: clear_drawings()
  * 
  */
-void MediaLayer::clear_drawings(){
-    if(!_drawings.empty()){
+void MediaLayer::clear_drawings()
+{
+    if(!_drawings.empty())
+    {
         _drawings.clear();
     }
 }
@@ -38,7 +43,8 @@ void MediaLayer::clear_drawings(){
 /** function: add_drawing()
  * 
  */
-void MediaLayer::add_drawing(Drawing drawing){
+void MediaLayer::add_drawing(Drawing drawing)
+{
     _drawings.push_back(drawing);
 }
 
@@ -47,34 +53,39 @@ void MediaLayer::add_drawing(Drawing drawing){
 /** function: MediaLayer_Initialize()
  * 
  */
-bool MediaLayer::MediaLayer_Initialize(std::string title, MediaLayer* layer, int window_width, int window_height){
+bool MediaLayer::MediaLayer_Initialize(std::string title, MediaLayer* layer, int window_width, int window_height)
+{
     return layer->initialize(title, window_width, window_height);
 }
 
 /** function: MediaLayer_Shutdown()
  *
  */
-void MediaLayer::MediaLayer_Shutdown(MediaLayer* layer){
+void MediaLayer::MediaLayer_Shutdown(MediaLayer* layer)
+{
     layer->shutdown();
 }
 
 /** function: MediaLayer_GetInput()
  * 
  */
-std::vector<Medialayer_Key_Code> MediaLayer::MediaLayer_GetInput(MediaLayer* layer){
+std::vector<Medialayer_Key_Code> MediaLayer::MediaLayer_GetInput(MediaLayer* layer)
+{
     return layer->get_input();
 }
 
 /** function: MediaLayer_GenerateOutput()
  * 
  */
-void MediaLayer::MediaLayer_GenerateOutput(MediaLayer* layer){
+void MediaLayer::MediaLayer_GenerateOutput(MediaLayer* layer)
+{
     layer->generate_output();
 }
 
 /** function MediaLayer_GetDeltaTime()
  * 
  */
-double MediaLayer::MediaLayer_GetDeltaTime(MediaLayer* layer){
+double MediaLayer::MediaLayer_GetDeltaTime(MediaLayer* layer)
+{
     return layer->get_delta_time();
 }

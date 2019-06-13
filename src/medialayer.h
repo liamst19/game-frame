@@ -89,6 +89,9 @@ public:
     // Add a drawing to be rendered
     void add_drawing(Drawing drawing);
 
+    int window_width(){ return _window_width; }
+    int widow_height(){ return _window_height; }
+
 protected:
     std::string _title;
     int _window_width, _window_height;          // Window size
