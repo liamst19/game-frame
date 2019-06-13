@@ -13,7 +13,6 @@
 
 #include "medialayer_sdl_texture.h"
 
-#include "math.h"
 #include "drawing.h"
 
 class MediaLayer_SDL_Texture_Drawing: public MediaLayer_SDL_Texture{

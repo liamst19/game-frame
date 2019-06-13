@@ -8,13 +8,8 @@
 
 #include <SDL2/SDL.h>
 
-
-
 #include <string>
 #include <vector>
-
-#include "math.h"
-#include "drawing.h"
 
 class MediaLayer_SDL_Texture{
 

@@ -14,7 +14,6 @@
 #include <vector>
 
 #include "medialayer_sdl_texture_text.h"
-#include "math.h"
 
 /** Constructor
  * 
@@ -55,7 +54,7 @@ bool MediaLayer_SDL_Texture_Text::load(){
 	//Get rid of preexisting texture
 	free();
 
-    _font = TTF_OpenFont(_source_path.c_str(), _font_size);
+    _font = TTF_OpenFont(_font_source_path.c_str(), _font_size);
 
     if(_font == nullptr){
         SDL_Log("Unable to load font");
@@ -86,7 +85,7 @@ bool MediaLayer_SDL_Texture_Text::load(){
 		}
 
 		//Get rid of old surface
-		SDL_FreeSurface( text_surface );
+		SDL_FreeSurface(text_surface);
 	}
 
     TTF_CloseFont(_font);	

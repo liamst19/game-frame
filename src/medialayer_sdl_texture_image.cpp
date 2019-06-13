@@ -14,7 +14,6 @@
 #include <vector>
 
 #include "medialayer_sdl_texture_image.h"
-#include "math.h"
 
 /** Constructor
  * 

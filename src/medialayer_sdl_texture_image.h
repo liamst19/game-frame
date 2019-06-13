@@ -30,9 +30,6 @@ public:
 
     bool load() override;
 
-    // Loads image from specific path
-    void load_image(std::string path);
-
 private:
 
     std::string _source_path;
@@ -40,6 +37,3 @@ private:
 };
 
 #endif
- 
-
-

@@ -13,7 +13,7 @@
 #include <vector>
 
 #include "medialayer_sdl_texture_drawing.h"
-#include "math.h"
+#include "math_vector_2d.h"
 #include "drawing.h"
 #include "drawing_element.h"
 
@@ -64,7 +64,7 @@ bool MediaLayer_SDL_Texture_Drawing::load(){
                                element.color_alpha());
         // Render Points
         for(Vector2d point: element.draw()){
-               SDL_RenderDrawPoint(_renderer, point.x, point.y); 
+               SDL_RenderDrawPoint(_renderer, point.xInt(), point.yInt()); 
         }
     }
 

@@ -11,7 +11,7 @@
 #include <vector>
 #include <string>
 
-#include "math.h"
+#include "math_vector_2d.h"
 #include "drawing.h"
 
 // Keyboard inputs and window events
@@ -76,15 +76,6 @@ public:
 
     // Calculates delta time
     virtual double get_delta_time() =0;
-
-    // Draw various shapes? Possibilities:
-    // Line
-    // Lines
-    // Point
-    // Points
-    // Circle: midpoint, radius, fill color (optional)
-    // Polygon: coordinates of vertices, fill color (optional) - no need for triangles and rectangles?
-    // Fill region
 
     // Clear shapes to ready to be added
     void clear_shapes();

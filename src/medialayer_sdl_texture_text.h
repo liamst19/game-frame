@@ -26,7 +26,7 @@ class MediaLayer_SDL_Texture_Text: public MediaLayer_SDL_Texture{
     void free();
 
     // Set path of the image or ttf font
-    void set_source_path(std::string path){ _source_path = path; }
+    void set_font_source_path(std::string path){ _font_source_path = path; }
 
     // Set font size
     void set_font_size(int size){ _font_size = size; }
@@ -38,7 +38,7 @@ class MediaLayer_SDL_Texture_Text: public MediaLayer_SDL_Texture{
 
 private:
 
-    std::string _source_path;
+    std::string _font_source_path;
     TTF_Font* _font;
     int _font_size;
 
