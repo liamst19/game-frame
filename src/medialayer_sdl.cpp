@@ -13,7 +13,8 @@
 /* function: initialize()
  * 
  */
-bool MediaLayer_SDL::initialize(){
+bool MediaLayer_SDL::initialize()
+{
 
     // Create Window
     if(!create_window())
@@ -33,8 +34,8 @@ bool MediaLayer_SDL::initialize(){
 /* function: initialize()
  * 
  */
-bool MediaLayer_SDL::initialize(std::string title, int window_width, int window_height, int window_x, int window_y){
-
+bool MediaLayer_SDL::initialize(std::string title, int window_width, int window_height, int window_x, int window_y)
+{
     // Set Window title
     _title = title;
 
@@ -53,14 +54,16 @@ bool MediaLayer_SDL::initialize(std::string title, int window_width, int window_
  *
  * Initialize with given window dimensions, position window at the center of screen
  */
-bool MediaLayer_SDL::initialize(std::string title, int window_width, int window_height){
+bool MediaLayer_SDL::initialize(std::string title, int window_width, int window_height)
+{
     return initialize(title, window_width, window_height, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED);
 }
 
 /* function: shutdown()
  * 
  */
-void MediaLayer_SDL::shutdown(){
+void MediaLayer_SDL::shutdown()
+{
     SDL_DestroyRenderer(_renderer);
     _renderer = nullptr;
     SDL_DestroyWindow(_window);
@@ -71,15 +74,16 @@ void MediaLayer_SDL::shutdown(){
 /* function: create_window()
  * 
  */
-bool MediaLayer_SDL::create_window(){
-
+bool MediaLayer_SDL::create_window()
+{
     _window = SDL_CreateWindow(_title.c_str(),
                                _win_coordinate_x,
                                _win_coordinate_y,
                                _window_width,
                                _window_height,
                                _sdl_flag);
-  if(!_window){
+  if(!_window)
+  {
     SDL_Log("Failed to create window: %s", SDL_GetError());
     // Throw exception
     return false;
@@ -91,8 +95,8 @@ bool MediaLayer_SDL::create_window(){
 /* function: generate_output()
  * 
  */
-void MediaLayer_SDL::generate_output(){
-
+void MediaLayer_SDL::generate_output()
+{
     // Reset Window Color: to black
     SDL_SetRenderDrawColor(_renderer, 0, 0, 0, SDL_ALPHA_OPAQUE);
 
@@ -110,11 +114,13 @@ void MediaLayer_SDL::generate_output(){
  * Returns delta time in seconds, used for calculating updated data such as position
  * 
  */
-double MediaLayer_SDL::get_delta_time(){
+double MediaLayer_SDL::get_delta_time()
+{
     double delta = (SDL_GetTicks() - _ticks_count) / 1000.0;
 
     // cap delta time
-    if(delta > _delta_max){
+    if(delta > _delta_max)
+    {
         delta = _delta_max;
     }
 
@@ -127,13 +133,16 @@ double MediaLayer_SDL::get_delta_time(){
 /* function: get_input()
  * get keyboard input 
  */
-std::vector<Medialayer_Key_Code> MediaLayer_SDL::get_input(){
+std::vector<Medialayer_Key_Code> MediaLayer_SDL::get_input()
+{
     std::vector<Medialayer_Key_Code> key_codes;
 
     // Close Window
     SDL_Event event;
-    while(SDL_PollEvent(&event)){
-        switch(event.type){
+    while(SDL_PollEvent(&event))
+    {
+        switch(event.type)
+        {
         case SDL_QUIT:
             key_codes.push_back(Medialayer_Key_Code::quit);
             return key_codes;
@@ -154,7 +163,8 @@ std::vector<Medialayer_Key_Code> MediaLayer_SDL::get_input(){
 /* function: create_renderer()
  * 
  */
-bool MediaLayer_SDL::create_renderer(){
+bool MediaLayer_SDL::create_renderer()
+{
     // create renderer
     _renderer = SDL_CreateRenderer(
             _window,
@@ -162,7 +172,8 @@ bool MediaLayer_SDL::create_renderer(){
             SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC
     );
 
-    if(!_renderer){
+    if(!_renderer)
+    {
         SDL_Log("Failed to create renderer: %s", SDL_GetError());
         // Throw exception
         return false;
@@ -174,10 +185,13 @@ bool MediaLayer_SDL::create_renderer(){
 /** function: add_key_code()
  *  add key_code to vector 
  */
-void MediaLayer_SDL::add_key_code(std::vector<Medialayer_Key_Code>& key_codes, Medialayer_Key_Code key_code){
+void MediaLayer_SDL::add_key_code(std::vector<Medialayer_Key_Code>& key_codes, Medialayer_Key_Code key_code)
+{
     // Check if key is already in the vector
-    for(auto key: key_codes){
-        if(key == key_code){
+    for(auto key: key_codes)
+    {
+        if(key == key_code)
+        {
             return;
         }
     }
@@ -187,26 +201,32 @@ void MediaLayer_SDL::add_key_code(std::vector<Medialayer_Key_Code>& key_codes, M
 /** function: fill_key_codes()
  * fill a vector with keyboard inputs
  */
-void MediaLayer_SDL::fill_key_codes(std::vector<Medialayer_Key_Code>& key_codes){
-
+void MediaLayer_SDL::fill_key_codes(std::vector<Medialayer_Key_Code>& key_codes)
+{
     // Get state of keyboard
     const Uint8* state = SDL_GetKeyboardState(nullptr);
-    if(state[SDL_SCANCODE_ESCAPE]){
+    if(state[SDL_SCANCODE_ESCAPE])
+    {
         add_key_code(key_codes, Medialayer_Key_Code::esc);
     };
-    if(state[SDL_SCANCODE_W]){
+    if(state[SDL_SCANCODE_W])
+    {
         add_key_code(key_codes, Medialayer_Key_Code::w);
     }
-    if(state[SDL_SCANCODE_A]){
+    if(state[SDL_SCANCODE_A])
+    {
         add_key_code(key_codes, Medialayer_Key_Code::a);
     }
-    if(state[SDL_SCANCODE_S]){
+    if(state[SDL_SCANCODE_S])
+    {
         add_key_code(key_codes, Medialayer_Key_Code::s);
     }
-    if(state[SDL_SCANCODE_D]){
+    if(state[SDL_SCANCODE_D])
+    {
         add_key_code(key_codes, Medialayer_Key_Code::d);
     }
-    if(state[SDL_SCANCODE_SEMICOLON]){
+    if(state[SDL_SCANCODE_SEMICOLON])
+    {
         add_key_code(key_codes, Medialayer_Key_Code::semicolon);
     }
 }
@@ -214,14 +234,15 @@ void MediaLayer_SDL::fill_key_codes(std::vector<Medialayer_Key_Code>& key_codes)
 /* function: render_objects()
  *  Render all game objects to window surface
  */
-void MediaLayer_SDL::render_objects(){
-
+void MediaLayer_SDL::render_objects()
+{
     // Convert game object shape data and populate _shapes
 
     // iterate through std::vector<std::vector<Vector2d>>
     // from each std::vector<Vector2d>, draw lines from coordinates,
     // closing the shape by drawing the line from end to beginning.
-    for(auto shape: _shapes){
+    for(auto shape: _shapes)
+    {
         draw_shape(shape);
     }
 
@@ -230,8 +251,10 @@ void MediaLayer_SDL::render_objects(){
 /** function: draw_shape()
  * Render shape to window surface
  */
-void MediaLayer_SDL::draw_shape(std::vector<Vector2d> shape){
-    if(shape.size() < 3){
+void MediaLayer_SDL::draw_shape(std::vector<Vector2d> shape)
+{
+    if(shape.size() < 3)
+    {
         // not a shape
         SDL_Log("Not a shape");
         return;
@@ -242,7 +265,8 @@ void MediaLayer_SDL::draw_shape(std::vector<Vector2d> shape){
 
     int size = shape.size() + 1;
     SDL_Point points[size];
-    for(int i = 0; i < shape.size(); ++i){
+    for(int i = 0; i < shape.size(); ++i)
+    {
         points[i] = convert_point(shape[i]);
     }
 
@@ -255,6 +279,7 @@ void MediaLayer_SDL::draw_shape(std::vector<Vector2d> shape){
 /** function: convert_point()
  *  Converts Vector2d to SDL_Point object 
  */
-SDL_Point MediaLayer_SDL::convert_point(Vector2d point){
+SDL_Point MediaLayer_SDL::convert_point(Vector2d point)
+{
     return SDL_Point{static_cast<int>(point.x), static_cast<int>(point.y)};
 }

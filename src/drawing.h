@@ -22,7 +22,7 @@ public:
 
     std::vector<DrawingElement> elements();
 
-    void add_element(DrawingElement element){ _elements.push_back(element); }
+    void add_element(DrawingElement element);
 
 private:
 

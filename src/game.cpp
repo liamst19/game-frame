@@ -14,13 +14,15 @@
 /** function: initialize()
  * 
  */
-bool Game::initialize(){
-
+bool Game::initialize()
+{
     // Check if Media Layer exists
-    if(_media_layer == nullptr){
+    if(_media_layer == nullptr)
+    {
         // throw exception: media layer is not initialized
         return false;
-    } else if(_window_width <= 0 || _window_height <= 0){
+    } else if(_window_width <= 0 || _window_height <= 0)
+    {
         // throw exception: invalid window size
         return false;
     }
@@ -38,10 +40,12 @@ bool Game::initialize(){
 /** function: run_loop()
  * 
  */
-void Game::run_loop(){
+void Game::run_loop()
+{
     _is_running = true;
 
-    while(_is_running){
+    while(_is_running)
+    {
         process_input();
         update_game();
         generate_output();
@@ -52,8 +56,10 @@ void Game::run_loop(){
 /** function: shutdown()
  * 
  */
-void Game::shutdown(){
-    if(_media_layer != nullptr){
+void Game::shutdown()
+{
+    if(_media_layer != nullptr)
+    {
         MediaLayer::MediaLayer_Shutdown(_media_layer);
         _media_layer = nullptr;
     }
@@ -78,7 +84,8 @@ int Game::window_height()
 /** function: rand()
  * 
  */
-int Game::rand(int min, int max){
+int Game::rand(int min, int max)
+{
     return _rand.rand(min, max);
 }
 
@@ -88,20 +95,22 @@ int Game::rand(int min, int max){
 /** function: process_input()
  * 
  */
-void Game::process_input(){
-
+void Game::process_input()
+{
     // Get Device Inputs
     std::vector<Medialayer_Key_Code> key_codes = MediaLayer::MediaLayer_GetInput(_media_layer);
 
     // Iterate through inputs and do something
-    for(auto key: key_codes){
-    
+    for(auto key: key_codes)
+    {
         // Check for exit
-        if(key == Medialayer_Key_Code::quit || key == Medialayer_Key_Code::esc){
+        if(key == Medialayer_Key_Code::quit || key == Medialayer_Key_Code::esc)
+        {
             // Exit game
             _is_running = false;
             return;
-        } else if(key != Medialayer_Key_Code::null){
+        } else if(key != Medialayer_Key_Code::null)
+        {
             // If key is a valid key, do something (e.g., map key to game action)
 
         }
@@ -111,7 +120,8 @@ void Game::process_input(){
 /** function: update_game()
  * 
  */
-void Game::update_game(){
+void Game::update_game()
+{
 
     // Get delta time
     double delta_time = MediaLayer::MediaLayer_GetDeltaTime(_media_layer);
@@ -123,11 +133,12 @@ void Game::update_game(){
 /** function: generate_output()
  * 
  */
-void Game::generate_output(){
+void Game::generate_output()
+{
     _media_layer->clear_shapes();
 
     // Convert and Populate Media Layer with Shapes to be rendered
-    
+    //
 
     MediaLayer::MediaLayer_GenerateOutput(_media_layer);
  }

@@ -24,16 +24,16 @@ public:
     ~Circle(){}
 
     // Set the radius of circle
-    void set_radius(float radius){ _radius = radius; }
+    void set_radius(float radius);
 
     // Get the radius of circle
-    float radius(){ return _radius; }
+    float radius();
 
     // Set the center coordinates of circle
-    void set_center(Vector2d center){ _center = center; }
+    void set_center(Vector2d center);
 
     // Get the center coordinates of circle
-    Vector2d center(){ return _center; }
+    Vector2d center();
 
     // Draw circle as collection of Vector2d coordinates
     std::vector<Vector2d> draw() override;

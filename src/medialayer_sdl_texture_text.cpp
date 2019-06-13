@@ -32,31 +32,54 @@ MediaLayer_SDL_Texture_Text::~MediaLayer_SDL_Texture_Text()
 	free();
 }
 
-void MediaLayer_SDL_Texture_Text::free(){
+/** function: free() 
+ * 
+ */
+void MediaLayer_SDL_Texture_Text::free()
+{
 	MediaLayer_SDL_Texture::free();
 
-    if(_font != nullptr){
+    if(_font != nullptr)
+	{
         _font = nullptr;
         _font_size = 0;
     }
 }
 
+/** function: set_font_source_path
+ * 
+ */
+void MediaLayer_SDL_Texture_Text::set_font_source_path(std::string path)
+{ 
+	_font_source_path = path; 
+}
+
+/** function: set_font_size()
+ * 
+ */
+void MediaLayer_SDL_Texture_Text::set_font_size(int size)
+{ 
+	_font_size = size; 
+}
+
 /** function: load_text()
  * 
  */
-void MediaLayer_SDL_Texture_Text::load_text(std::string text, SDL_Color color){
+void MediaLayer_SDL_Texture_Text::load_text(std::string text, SDL_Color color)
+{
 	_text = text;
 	_color = color;
 }
 
-bool MediaLayer_SDL_Texture_Text::load(){
-
+bool MediaLayer_SDL_Texture_Text::load()
+{
 	//Get rid of preexisting texture
 	free();
 
     _font = TTF_OpenFont(_font_source_path.c_str(), _font_size);
 
-    if(_font == nullptr){
+    if(_font == nullptr)
+	{
         SDL_Log("Unable to load font");
         return false;
     }

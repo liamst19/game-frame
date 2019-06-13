@@ -21,7 +21,7 @@ public:
 
     void add_point(Vector2d point);
 
-    std::vector<Vector2d> draw() override { return _points; }
+    std::vector<Vector2d> draw() override;
 
 private:
 

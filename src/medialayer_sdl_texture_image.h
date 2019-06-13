@@ -26,14 +26,12 @@ public:
     void free();
 
     // Set path of the image or ttf font
-    void set_source_path(std::string path){ _source_path = path; }
+    void set_source_path(std::string path);
 
     bool load() override;
 
 private:
 
     std::string _source_path;
-
 };
-
 #endif

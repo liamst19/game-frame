@@ -20,17 +20,18 @@ class MediaLayer_SDL_Texture_Text: public MediaLayer_SDL_Texture{
 
     MediaLayer_SDL_Texture_Text(SDL_Renderer* renderer, SDL_Window* window);
 
-    // Deallocates memory
     ~MediaLayer_SDL_Texture_Text();
 
+    // Deallocates memory
     void free();
 
     // Set path of the image or ttf font
-    void set_font_source_path(std::string path){ _font_source_path = path; }
+    void set_font_source_path(std::string path);
 
     // Set font size
-    void set_font_size(int size){ _font_size = size; }
+    void set_font_size(int size);
 
+    // Load texture with text
     bool load() override;
 
     // Creates image from font string, with color

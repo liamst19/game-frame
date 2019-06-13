@@ -31,7 +31,12 @@ class MediaLayer{
 
 public:
 
-    MediaLayer(){};
+    MediaLayer(int window_width = 0, int window_height = 0, int window_x = 0, int window_y = 0):
+        _window_width(window_width),
+        _window_height(window_height),
+        _win_coordinate_x(window_x),
+        _win_coordinate_y(window_y)
+    {};
     virtual ~MediaLayer(){};
 
     // --------------------------------------------------
@@ -89,10 +94,14 @@ public:
     // Add a drawing to be rendered
     void add_drawing(Drawing drawing);
 
-    int window_width(){ return _window_width; }
-    int widow_height(){ return _window_height; }
+    // Window Width
+    int window_width();
+
+    // Window Height
+    int window_height();
 
 protected:
+
     std::string _title;
     int _window_width, _window_height;          // Window size
     int _win_coordinate_x, _win_coordinate_y;   // Coordinate where the window will be created
@@ -101,8 +110,11 @@ protected:
     const int _ms_per_frame{16};        // For delta time: 60fps = apprx. 1 frame per 16ms
     const double _delta_max{0.05};      // Cap for delta time, in seconds
 
+    /* Shapes / Drawings
+     * In process of removing shapes in favor of Drawing objects,
+     * or possibly some other object type which would include UI typographic elements
+     */
     std::vector<std::vector<Vector2d>> _shapes; // collection of shapes to be rendered
-
     std::vector<Drawing> _drawings; // collection of drawings to be rendered
 
 private:

@@ -29,7 +29,7 @@ public:
     bool load() override;
 
     // Creates vector graphics from collection of points
-    void set_drawing(Drawing drawing){ _drawing = drawing; }
+    void set_drawing(Drawing drawing);
 
 private:
 

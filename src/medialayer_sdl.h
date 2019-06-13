@@ -15,24 +15,12 @@
 class MediaLayer_SDL: public MediaLayer{
 
 public:
-  
-    MediaLayer_SDL():
+
+    MediaLayer_SDL(int window_width = 0, int window_height = 0, int window_x = 0, int window_y = 0):
+        MediaLayer(window_width, window_height, window_x, window_y),
         _window(nullptr),
         _renderer(nullptr)
     {};
-
-    MediaLayer_SDL(int window_width, int window_height, int window_x, int window_y)
-    {
-        _window_width = window_width;
-        _window_height = window_height;
-        _win_coordinate_x = window_x;
-        _win_coordinate_y = window_y;
-        MediaLayer_SDL();
-    };
-
-    MediaLayer_SDL(int window_width, int window_height){
-        MediaLayer_SDL(window_width, window_height, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED);
-    };
 
     ~MediaLayer_SDL(){
         // check if shut down was called?
@@ -67,7 +55,7 @@ private:
 
     SDL_Window* _window;        // Window created by SDL 
     SDL_Renderer* _renderer;    // SDL Renderer
-    int _sdl_flag{0};           // SDL Flags: I don't know what this is
+    int _sdl_flag{0};           // SDL Flags: I don't know what this is - openGL?
 
     // Creates SDL 2D rendering context
     bool create_renderer();

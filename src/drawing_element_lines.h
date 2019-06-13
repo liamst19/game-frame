@@ -31,7 +31,7 @@ public:
     void add_line(Line line);
 
     // Get Lines
-    std::vector<Line> lines(){ return _lines; }
+    std::vector<Line> lines();
 
     std::vector<Vector2d> draw() override;
 

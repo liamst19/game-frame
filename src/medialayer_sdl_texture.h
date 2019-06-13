@@ -24,7 +24,7 @@ public:
     void free();
 
     // Set SDL_Renderer
-    void set_renderer(SDL_Renderer* renderer){ _renderer = renderer; }
+    void set_renderer(SDL_Renderer* renderer);
 
     // Set color modulation
     void set_color(Uint8 red, Uint8 green, Uint8 blue);

@@ -33,14 +33,31 @@ MediaLayer_SDL_Texture_Drawing::~MediaLayer_SDL_Texture_Drawing()
     free();
 }
 
-void MediaLayer_SDL_Texture_Drawing::free(){
+/** function: free()
+ * 
+ */
+void MediaLayer_SDL_Texture_Drawing::free()
+{
     MediaLayer_SDL_Texture::free();
 }
 
-bool MediaLayer_SDL_Texture_Drawing::load(){
+/** function: set_drawing()
+ * 
+ */
+void MediaLayer_SDL_Texture_Drawing::set_drawing(Drawing drawing)
+{ 
+    _drawing = drawing; 
+}
+
+/** function: load()
+ * 
+ */
+bool MediaLayer_SDL_Texture_Drawing::load()
+{
     free();
 
-    if(_drawing.elements().empty()){
+    if(_drawing.elements().empty())
+    {
         // Drawing is empty
         return false;
     }
@@ -55,7 +72,8 @@ bool MediaLayer_SDL_Texture_Drawing::load(){
     int i = SDL_SetRenderTarget(_renderer, _texture);
 
     // Render all the points in the drawing 
-    for(DrawingElement element: _drawing.elements()){
+    for(DrawingElement element: _drawing.elements())
+    {
         // Set Color
         SDL_SetRenderDrawColor(_renderer,
                                element.color_red(), 
@@ -63,7 +81,8 @@ bool MediaLayer_SDL_Texture_Drawing::load(){
                                element.color_blue(), 
                                element.color_alpha());
         // Render Points
-        for(Vector2d point: element.draw()){
+        for(Vector2d point: element.draw())
+        {
                SDL_RenderDrawPoint(_renderer, point.xInt(), point.yInt()); 
         }
     }

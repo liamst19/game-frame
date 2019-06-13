@@ -87,6 +87,7 @@ namespace Math{
 
 // --------------------------------------------------
 
+	// Get slope of the line between two points
 	inline float Slope(float aX, float aY, float bX, float bY){
 		return (bY - aY) / (bX - aX);
 	}

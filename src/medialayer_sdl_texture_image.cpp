@@ -33,16 +33,31 @@ MediaLayer_SDL_Texture_Image::~MediaLayer_SDL_Texture_Image()
     free();
 }
 
-void MediaLayer_SDL_Texture_Image::free(){
-
+/** function: free()
+ * 
+ */
+void MediaLayer_SDL_Texture_Image::free()
+{
     MediaLayer_SDL_Texture::free();
-
 }
 
-bool MediaLayer_SDL_Texture_Image::load(){
+/** function: set_source_path()
+ * 
+ */
+void MediaLayer_SDL_Texture_Image::set_source_path(std::string path)
+{ 
+    _source_path = path; 
+}
+
+/** function: load()
+ * 
+ */
+bool MediaLayer_SDL_Texture_Image::load()
+{
     free();
 
-    if(_source_path == ""){
+    if(_source_path == "")
+    {
         // No Path Set
         return false;
     }
@@ -53,10 +68,12 @@ bool MediaLayer_SDL_Texture_Image::load(){
     // Load image at specified path
     SDL_Surface* loaded_surface{IMG_Load(_source_path.c_str())};
 
-    if(loaded_surface == NULL){
+    if(loaded_surface == NULL)
+    {
         // failed to load image
         SDL_Log("Unable to load image %s : SDL_image Error: %s", _source_path.c_str(), IMG_GetError());
-    } else{
+    } else
+    {
         //Color key image
         SDL_SetColorKey(loaded_surface, 
                         SDL_TRUE, 
@@ -66,7 +83,8 @@ bool MediaLayer_SDL_Texture_Image::load(){
         new_texture = SDL_CreateTextureFromSurface(_renderer, loaded_surface);
         if(new_texture == NULL){
             SDL_Log("Unable to create texture from %s : SDL Error: %s", _source_path.c_str(), SDL_GetError());
-        } else{
+        } else
+        {
             // Get dimensions
             _width = loaded_surface->w;
             _height = loaded_surface->h;
