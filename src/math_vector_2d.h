@@ -83,4 +83,19 @@ public:
 
 };
 
+// ----------------------------------------
+// Vector Operators
+
+// Vector Addition (a + b)
+Vector2d operator+(const Vector2d& a, const Vector2d& b);
+
+// Vector Subtraction (a - b)
+Vector2d operator-(const Vector2d& minuend, const Vector2d& subtrahend);
+
+// Vector Scaling (vector * scalar)
+Vector2d operator*(const Vector2d vector, const float scalar);
+
+// Vector Scaling, commutative (scalar * vector) 
+Vector2d operator*(const float scalar, const Vector2d vector);
+
 #endif

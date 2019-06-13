@@ -1,11 +1,10 @@
-/** math-vector.test.cpp
- * 
+/** math_vector_2d.test.cpp
  * 
  */
 
 #include <cmath>
 #include "gtest/gtest.h"
-#include "../src/math.h"
+#include "../src/math_vector_2d.h"
 
 namespace {
 

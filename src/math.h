@@ -30,16 +30,9 @@ namespace Math{
 	}
 
     // Checks whether float value is near zero
-	inline bool NearZero(float val, float epsilon = 0.001f)
+	inline bool NearZero(float value, float epsilon = 0.001f)
 	{
-		if (fabs(val) <= epsilon)
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
+		return (fabs(value) <= epsilon);
 	}
 
     // Square root of float
@@ -50,45 +43,57 @@ namespace Math{
 // --------------------------------------------------
 // Trigonometric Functions
 
-	inline float Cos(float angle)
+	// Cosine from Radians
+	inline float Cos(float radians)
 	{
-		return cosf(angle);
+		return cosf(radians);
 	}
 
-	inline float Sin(float angle)
+	// Sine from Radians
+	inline float Sin(float radians)
 	{
-		return sinf(angle);
+		return sinf(radians);
 	}
 
-	inline float Tan(float angle)
+	// Tangent from Radians
+	inline float Tan(float radians)
 	{
-		return tanf(angle);
+		return tanf(radians);
 	}
 
+	// Cotangent from Radians
+	inline float Cot(float radians)
+	{
+		return 1.0f / Tan(radians);
+	}
+
+	// Arccosine in Radians
 	inline float Acos(float value)
 	{
 		return acosf(value);
 	}
+
+	// Arcsine in Radians
+	inline float Asin(float value)
+	{
+		return asinf(value);
+	}
 	
+	// Arctangent in Radians
 	inline float Atan2(float y, float x)
 	{
 		return atan2f(y, x);
 	}
 
-	inline float Cot(float angle)
-	{
-		return 1.0f / Tan(angle);
-	}
-
 // --------------------------------------------------
 
-	inline float GetSlope(float aX, float aY, float bX, float bY){
-		return (bY - aY)/(bX - aX);
+	inline float Slope(float aX, float aY, float bX, float bY){
+		return (bY - aY) / (bX - aX);
 	}
 
 	// Get y-coordinate via linear equation
-	inline float GetLinearY(float slope, float x, float b){
-		return (slope * x) + b;
+	inline float LinearY(float slope, float x, float b){
+		return slope * x + b;
 	}
 
 }

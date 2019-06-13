@@ -47,4 +47,5 @@ endif()
 # Now simply link against gtest or gtest_main as needed. Eg
 target_link_libraries(game-test gtest_main)
 add_test(NAME vector-test COMMAND Vector2dTest)
+add_test(NAME math-test COMMAND MathTest)
 add_test(NAME game-test COMMAND GameTest)
