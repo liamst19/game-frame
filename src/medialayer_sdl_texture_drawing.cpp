@@ -59,6 +59,7 @@ bool MediaLayer_SDL_Texture_Drawing::load()
     if(_drawing.elements().empty())
     {
         // Drawing is empty
+        SDL_Log("Drawing is Empty");
         return false;
     }
 
@@ -83,7 +84,7 @@ bool MediaLayer_SDL_Texture_Drawing::load()
         // Render Points
         for(Vector2d point: element.draw())
         {
-               SDL_RenderDrawPoint(_renderer, point.xInt(), point.yInt()); 
+            SDL_RenderDrawPoint(_renderer, point.xInt(), point.yInt()); 
         }
     }
 

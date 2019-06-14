@@ -68,5 +68,10 @@ private:
 
     // Renders updated game objects
     void generate_output();
+
+    // For testing
+    void populate_shapes();
+    void populate_drawings();
+
 };
 #endif

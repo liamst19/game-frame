@@ -7,6 +7,8 @@
 #include "game.h"
 #include "randomnumber.h"
 #include "medialayer.h"
+#include "drawing.h"
+#include "drawing_element_lines.h"
 
 /* --------------------------------------------------
 /* Public
@@ -138,7 +140,27 @@ void Game::generate_output()
     _media_layer->clear_shapes();
 
     // Convert and Populate Media Layer with Shapes to be rendered
-    //
+    // populate_shapes();
+    populate_drawings();
 
     MediaLayer::MediaLayer_GenerateOutput(_media_layer);
  }
+
+void Game::populate_shapes(){
+    std::vector<Vector2d> shape;
+    shape.push_back(Vector2d{100, 100}); 
+    shape.push_back(Vector2d{250, 300}); 
+    shape.push_back(Vector2d{100, 200}); 
+    _media_layer->add_shape(shape);
+}
+
+void Game::populate_drawings(){
+    Drawing drawing;
+    Lines lines;
+    lines.add_line(Vector2d{100, 100}, Vector2d{100, 200});
+    lines.add_line(Vector2d{100, 200}, Vector2d{150, 150});
+    lines.add_line(Vector2d{150, 150}, Vector2d{100, 100});
+    lines.add_line(Vector2d{300, 350}, Vector2d{40, 10});
+    drawing.add_element(lines);
+    _media_layer->add_drawing(drawing);
+}

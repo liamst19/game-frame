@@ -35,7 +35,7 @@ protected:
     int _color_red{255}, 
         _color_green{255}, 
         _color_blue{255}, 
-        _color_alpha{0};
+        _color_alpha{255};
 
 };
 

@@ -6,6 +6,11 @@
 #include <string>
 #include <SDL2/SDL.h>
 #include "medialayer_sdl.h"
+#include "medialayer_sdl_texture_drawing.h"
+
+#include "drawing.h"
+#include "drawing_element.h"
+#include "drawing_element_lines.h"
 
 // --------------------------------------------------
 // Public
@@ -246,6 +251,25 @@ void MediaLayer_SDL::render_objects()
         draw_shape(shape);
     }
 
+    for(auto drawing: _drawings)
+    {
+        draw(drawing);
+    }
+}
+
+
+void MediaLayer_SDL::draw(Drawing drawing)
+{
+    MediaLayer_SDL_Texture_Drawing texture{_renderer, _window};
+    texture.set_drawing(drawing);
+    if(texture.load())
+    {
+        texture.render(100, 100);
+    } else
+    {
+        // Something went wrong
+        SDL_Log("Texture was not loaded");
+    };
 }
 
 /** function: draw_shape()

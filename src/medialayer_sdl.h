@@ -66,6 +66,8 @@ private:
     // Render shape to window surface
     void draw_shape(std::vector<Vector2d> shape); 
 
+    void draw(Drawing drawing);
+
     // Converts Vector2d to SDL_Point object
     SDL_Point convert_point(Vector2d point);
 
