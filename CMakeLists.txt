@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.7)
+cmake_minimum_required(VERSION 3.8)
 project(game CXX)
 
 # Toggle compilation of test framework (cmake .. -Dadd_test=ON)

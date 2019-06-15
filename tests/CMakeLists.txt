@@ -3,9 +3,8 @@ set(TEST_DIR ${CMAKE_SOURCE_DIR}/tests)
 FILE(GLOB TEST_SOURCES ${TEST_DIR}/*.test.cpp)
 add_executable(game-test ${TEST_SOURCES})
 
-target_link_libraries(game-test lib-game) # From CMakeLists in ~/src
+target_link_libraries(game-test lib-game) # Linking library from CMakeLists in ~/src
 
-# ----------------------------------------------------------------------
 # ----------------------------------------------------------------------
 # Testing
 # ----------------------------------------------------------------------
@@ -44,9 +43,15 @@ if (CMAKE_VERSION VERSION_LESS 2.8.11)
   include_directories("${gtest_SOURCE_DIR}/include")
 endif()
 
-# Now simply link against gtest or gtest_main as needed. Eg
+# ----------------------------------------------------------------------
+# ----------------------------------------------------------------------
+
+# Adding Tests
+
+include(GoogleTest)
 target_link_libraries(game-test gtest_main)
-add_test(NAME vector-test COMMAND Vector2dTest)
-add_test(NAME math-test COMMAND MathTest)
-add_test(NAME game-test COMMAND GameTest)
-add_test(NAME drawing-test COMMAND Drawing_Test)
+
+gtest_add_tests(TARGET game-test
+                TEST_SUFFIX .test.cpp
+                TEST_LIST   game-tests)
+set_tests_properties(${game-tests}   PROPERTIES TIMEOUT 10)              
