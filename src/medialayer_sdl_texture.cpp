@@ -17,9 +17,9 @@
 /** Constructor
  * 
  */
-MediaLayer_SDL_Texture::MediaLayer_SDL_Texture(SDL_Renderer* renderer, SDL_Window* window):
-    _renderer{renderer},
-    _window{window},
+MediaLayer_SDL_Texture::MediaLayer_SDL_Texture():
+    _renderer{nullptr},
+    _window{nullptr},
     _texture{nullptr},
     _width{0},
     _height{0}
@@ -33,6 +33,13 @@ MediaLayer_SDL_Texture::~MediaLayer_SDL_Texture()
 {
     // Deallocate
     free();
+}
+
+bool MediaLayer_SDL_Texture::initialize(SDL_Renderer* renderer, SDL_Window* window)
+{
+    _renderer = renderer;
+    _window = window;
+    return true;
 }
 
 /** function: free()

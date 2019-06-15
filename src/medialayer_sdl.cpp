@@ -4,13 +4,13 @@
 
 #include <vector>
 #include <string>
+#include <memory>
 #include <SDL2/SDL.h>
+
 #include "medialayer_sdl.h"
 #include "medialayer_sdl_texture_drawing.h"
 
 #include "drawing.h"
-#include "drawing_element.h"
-#include "drawing_element_lines.h"
 
 // --------------------------------------------------
 // Public
@@ -30,6 +30,13 @@ bool MediaLayer_SDL::initialize()
     // Create Rendering context
     if (!create_renderer())
     {
+        return false;
+    }
+
+    // Initialize texture for drawing
+    if(!_drawing_texture.initialize(_renderer, _window))
+    {
+        // something went wrong
         return false;
     }
 
@@ -243,33 +250,33 @@ void MediaLayer_SDL::render_objects()
 {
     // Convert game object shape data and populate _shapes
 
-    // iterate through std::vector<std::vector<Vector2d>>
-    // from each std::vector<Vector2d>, draw lines from coordinates,
-    // closing the shape by drawing the line from end to beginning.
-    for(auto shape: _shapes)
-    {
-        draw_shape(shape);
-    }
-
     for(auto drawing: _drawings)
     {
-        draw(drawing);
+        render_drawing(drawing);
     }
 }
 
-
-void MediaLayer_SDL::draw(Drawing drawing)
+void MediaLayer_SDL::render_drawing(Drawing drawing)
 {
-    MediaLayer_SDL_Texture_Drawing texture{_renderer, _window};
-    texture.set_drawing(drawing);
-    if(texture.load())
+    if(_drawing_texture.load())
     {
-        texture.render(100, 100);
+        _drawing_texture.render_drawing(drawing); // Render drawing onto texture surface
+        _drawing_texture.render(0, 0); // Render texture onto window surface
     } else
     {
         // Something went wrong
         SDL_Log("Texture was not loaded");
     };
+}
+
+void MediaLayer_SDL::render_point(Drawing::Point point)
+{
+    SDL_SetRenderDrawColor(_renderer, 
+                           point.color.r, 
+                           point.color.g, 
+                           point.color.b, 
+                           point.color.alpha);
+    SDL_RenderDrawPoint(_renderer, point.x, point.y);
 }
 
 /** function: draw_shape()

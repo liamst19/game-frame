@@ -18,7 +18,7 @@ class MediaLayer_SDL_Texture_Image: public MediaLayer_SDL_Texture{
 
 public:
 
-    MediaLayer_SDL_Texture_Image(SDL_Renderer* renderer, SDL_Window* window);
+    MediaLayer_SDL_Texture_Image();
 
     // Deallocates memory
     ~MediaLayer_SDL_Texture_Image();

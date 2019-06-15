@@ -11,6 +11,7 @@
 #include <string>
 #include <SDL2/SDL.h> // hopefully this is contained
 #include "medialayer.h"
+#include "medialayer_sdl_texture_drawing.h"
 
 class MediaLayer_SDL: public MediaLayer{
 
@@ -57,6 +58,8 @@ private:
     SDL_Renderer* _renderer;    // SDL Renderer
     int _sdl_flag{0};           // SDL Flags: I don't know what this is - openGL?
 
+    MediaLayer_SDL_Texture_Drawing _drawing_texture;
+
     // Creates SDL 2D rendering context
     bool create_renderer();
 
@@ -66,7 +69,9 @@ private:
     // Render shape to window surface
     void draw_shape(std::vector<Vector2d> shape); 
 
-    void draw(Drawing drawing);
+    void render_drawing(Drawing drawing);
+
+    void render_point(Drawing::Point point);
 
     // Converts Vector2d to SDL_Point object
     SDL_Point convert_point(Vector2d point);

@@ -19,7 +19,7 @@ class MediaLayer_SDL_Texture_Drawing: public MediaLayer_SDL_Texture{
 
 public:
 
-    MediaLayer_SDL_Texture_Drawing(SDL_Renderer* renderer, SDL_Window* window);
+    MediaLayer_SDL_Texture_Drawing();
 
     // Deallocates memory
     ~MediaLayer_SDL_Texture_Drawing();
@@ -29,11 +29,9 @@ public:
     bool load() override;
 
     // Creates vector graphics from collection of points
-    void set_drawing(Drawing drawing);
+    void render_drawing(Drawing drawing);
 
 private:
-
-    Drawing _drawing;
 
 };
 

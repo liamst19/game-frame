@@ -15,10 +15,12 @@ class MediaLayer_SDL_Texture{
 
 public:
 
-    MediaLayer_SDL_Texture(SDL_Renderer* renderer, SDL_Window* window);
+    MediaLayer_SDL_Texture();
 
     // Deallocates memory
     ~MediaLayer_SDL_Texture();
+
+    bool initialize(SDL_Renderer* renderer, SDL_Window* window);
 
     // Deallocates texture
     void free();

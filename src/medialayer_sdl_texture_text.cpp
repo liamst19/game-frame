@@ -18,8 +18,8 @@
 /** Constructor
  * 
  */
-MediaLayer_SDL_Texture_Text::MediaLayer_SDL_Texture_Text(SDL_Renderer* renderer, SDL_Window* window):
-    MediaLayer_SDL_Texture(renderer, window),
+MediaLayer_SDL_Texture_Text::MediaLayer_SDL_Texture_Text():
+    MediaLayer_SDL_Texture(),
     _font_size(0)
 {
 }

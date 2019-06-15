@@ -18,8 +18,8 @@
 /** Constructor
  * 
  */
-MediaLayer_SDL_Texture_Image::MediaLayer_SDL_Texture_Image(SDL_Renderer* renderer, SDL_Window* window):
-    MediaLayer_SDL_Texture(renderer, window)
+MediaLayer_SDL_Texture_Image::MediaLayer_SDL_Texture_Image():
+    MediaLayer_SDL_Texture()
 {
 }
 

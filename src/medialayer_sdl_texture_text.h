@@ -18,7 +18,7 @@ class MediaLayer_SDL_Texture_Text: public MediaLayer_SDL_Texture{
  
  public:
 
-    MediaLayer_SDL_Texture_Text(SDL_Renderer* renderer, SDL_Window* window);
+    MediaLayer_SDL_Texture_Text();
 
     ~MediaLayer_SDL_Texture_Text();
 

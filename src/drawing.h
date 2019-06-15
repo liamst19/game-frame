@@ -9,24 +9,40 @@
 
 #include <vector>
 
-#include "math.h"
-#include "drawing_element.h"
-
 class Drawing{
 
 public:
 
-    Drawing(){};
+    struct Color
+    {
+        int r;
+        int g;
+        int b;
+        int alpha;
+    };
 
-    ~Drawing(){};
+    struct Point
+    {
+        int x;
+        int y;
+        Color color;
+    };
 
-    std::vector<DrawingElement> elements();
+    Drawing(){}
 
-    void add_element(DrawingElement element);
+    ~Drawing();
+
+    std::vector<Point> drawing();
+
+    void draw_circle(int x, int y, int radius, Color color = Color{255, 255, 255, 0});
+    
+    void draw_line(int aX, int aY, int bX, int bY, Color color = Color{255, 255, 255, 0});
+
+    void draw_point(int x, int y, Color color = Color{255, 255, 255, 0});
 
 private:
 
-    std::vector<DrawingElement> _elements;
+    std::vector<Point> _drawing;
 
 };
 
