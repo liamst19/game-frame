@@ -5,11 +5,11 @@ set(SRC_DIR ${CMAKE_SOURCE_DIR}/src)
 
 set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/CMakeModules)
 
-find_package(SDL2 REQUIRED)
-find_package(SDL2_ttf REQUIRED)
+find_package(SDL2       REQUIRED)
+find_package(SDL2_ttf   REQUIRED)
 find_package(SDL2_image REQUIRED)
 
-find_library(SDL2TTF_LIBRARIES SDL_ttf)
+find_library(SDL2TTF_LIBRARIES   SDL_ttf)
 find_library(SDL2IMAGE_LIBRARIES SDL_image)
 
 include_directories(${SDL2_INCLUDE_DIR})

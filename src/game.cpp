@@ -137,24 +137,24 @@ void Game::update_game()
  */
 void Game::generate_output()
 {
-    _media_layer->clear_shapes();
+//    _media_layer->clear_shapes();
 
-    // Convert and Populate Media Layer with Shapes to be rendered
-    populate_drawings();
+//    // Convert and Populate Media Layer with Shapes to be rendered
+//   populate_drawings();
 
     MediaLayer::MediaLayer_GenerateOutput(_media_layer);
  }
 
-void Game::populate_drawings(){
-    Drawing drawing;
+// void Game::populate_drawings(){
+//     Drawing drawing;
 
-    drawing.draw_line(10, 10, 10, 50);
-    drawing.draw_line(10, 50, 370, 50);
-    drawing.draw_line(370, 50, 370, 10);
-    drawing.draw_line(370, 10, 10, 10);
+//     drawing.draw_line(10, 10, 10, 50);
+//     drawing.draw_line(10, 50, 370, 50);
+//     drawing.draw_line(370, 50, 370, 10);
+//     drawing.draw_line(370, 10, 10, 10);
 
-    drawing.draw_line(20, 20, 450, 450, Drawing::Color{150, 0, 200, 0});
+//     drawing.draw_line(20, 20, 450, 450, Drawing::Color{150, 0, 200, 0});
 
-    drawing.draw_circle(500, 250, 100);
-    _media_layer->add_drawing(drawing);
-}
+//     drawing.draw_circle(500, 250, 100);
+//     _media_layer->add_drawing(drawing);
+// }

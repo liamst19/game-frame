@@ -81,20 +81,20 @@ private:
 
     // ----------------------------------------
  
-    // Render single drawing
-    void render_drawing(Drawing drawing);
+//    // Render single drawing
+//    void render_drawing(Drawing drawing);
 
-    // Render single point
-    void render_point(Drawing::Point point);
+//    // Render single point
+//    void render_point(Drawing::Point point);
 
-    // ----------------------------------------
-    // Shapes: to be removed
+//    // ----------------------------------------
+//    // Shapes: to be removed
 
-    // Render shape to window surface
-    void draw_shape(std::vector<Vector2d> shape); 
+//    // Render shape to window surface
+//    void draw_shape(std::vector<Vector2d> shape); 
 
-    // Converts Vector2d to SDL_Point object
-    SDL_Point convert_point(Vector2d point);
+//    // Converts Vector2d to SDL_Point object
+//    SDL_Point convert_point(Vector2d point);
 
 };
 

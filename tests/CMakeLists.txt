@@ -1,9 +1,11 @@
 set(TEST_DIR ${CMAKE_SOURCE_DIR}/tests)
 
 FILE(GLOB TEST_SOURCES ${TEST_DIR}/*.test.cpp)
+FILE(GLOB TEST_MOCK_SOURCES ${TEST_DIR}/mock/*.hpp)
 add_executable(game-test ${TEST_SOURCES})
 
-target_link_libraries(game-test lib-game) # Linking library from CMakeLists in ~/src
+# Linking library from CMakeLists in ~/src
+target_link_libraries(game-test lib-game) 
 
 # ----------------------------------------------------------------------
 # Testing
@@ -54,4 +56,4 @@ target_link_libraries(game-test gtest_main)
 gtest_add_tests(TARGET game-test
                 TEST_SUFFIX .test.cpp
                 TEST_LIST   game-tests)
-set_tests_properties(${game-tests}   PROPERTIES TIMEOUT 10)              
+set_tests_properties(${game-tests} PROPERTIES TIMEOUT 10)

@@ -8,8 +8,8 @@
 #include <string>
 #include <SDL2/SDL.h>
 
-#include "medialayer_sdl_texture_drawing.h"
-#include "drawing.h"
+// #include "medialayer_sdl_texture_drawing.h"
+// #include "drawing.h"
 
 // --------------------------------------------------
 // Public
@@ -255,75 +255,75 @@ void MediaLayer_SDL::render_objects()
     // Iterate through drawings and render
     // _drawing_texture.render(_drawings, 0, 0);
 
-    for(auto drawing: _drawings)
-    {
-        render_drawing(drawing);
-    }
+//    for(auto drawing: _drawings)
+//    {
+//        render_drawing(drawing);
+//    }
 }
 
 // -------------------------------------------------------------------
 
-/** function: render_drawing()
- * 
- */
-void MediaLayer_SDL::render_drawing(Drawing drawing)
-{
-    // Render all the points in the drawing 
-    for(Drawing::Point point: drawing.drawing())
-    {
-        render_point(point);
-    }
-}
+// /** function: render_drawing()
+//  * 
+//  */
+// void MediaLayer_SDL::render_drawing(Drawing drawing)
+// {
+//     // Render all the points in the drawing 
+//     for(Drawing::Point point: drawing.drawing())
+//     {
+//         render_point(point);
+//     }
+// }
 
-/** function: render_point()
- * 
- */
-void MediaLayer_SDL::render_point(Drawing::Point point)
-{
-        // Set Color
-        SDL_SetRenderDrawColor(_renderer,
-                                point.color.r, 
-                                point.color.g, 
-                                point.color.b, 
-                                point.color.alpha);
-        SDL_RenderDrawPoint(_renderer, point.x, point.y); 
-}
+// /** function: render_point()
+//  * 
+//  */
+// void MediaLayer_SDL::render_point(Drawing::Point point)
+// {
+//         // Set Color
+//         SDL_SetRenderDrawColor(_renderer,
+//                                 point.color.r, 
+//                                 point.color.g, 
+//                                 point.color.b, 
+//                                 point.color.alpha);
+//         SDL_RenderDrawPoint(_renderer, point.x, point.y); 
+// }
 
-// -------------------------------------------------------------------
+// // -------------------------------------------------------------------
 
-/** function: draw_shape()
- * Render shape to window surface
- */
-void MediaLayer_SDL::draw_shape(std::vector<Vector2d> shape)
-{
-    if(shape.size() < 3)
-    {
-        // not a shape
-        SDL_Log("Not a shape");
-        return;
-    }
+// /** function: draw_shape()
+//  * Render shape to window surface
+//  */
+// void MediaLayer_SDL::draw_shape(std::vector<Vector2d> shape)
+// {
+//     if(shape.size() < 3)
+//     {
+//         // not a shape
+//         SDL_Log("Not a shape");
+//         return;
+//     }
 
-    // Set color: opaque white
-    SDL_SetRenderDrawColor(_renderer, 255, 255, 255, SDL_ALPHA_OPAQUE);
+//     // Set color: opaque white
+//     SDL_SetRenderDrawColor(_renderer, 255, 255, 255, SDL_ALPHA_OPAQUE);
 
-    int size = shape.size() + 1;
-    SDL_Point points[size];
-    for(int i = 0; i < shape.size(); ++i)
-    {
-        points[i] = convert_point(shape[i]);
-    }
+//     int size = shape.size() + 1;
+//     SDL_Point points[size];
+//     for(int i = 0; i < shape.size(); ++i)
+//     {
+//         points[i] = convert_point(shape[i]);
+//     }
 
-    // Close shape by connecting to the beginning
-    points[size - 1] = convert_point(shape[0]);
+//     // Close shape by connecting to the beginning
+//     points[size - 1] = convert_point(shape[0]);
 
-    SDL_RenderDrawLines(_renderer, points, size);
-}
+//     SDL_RenderDrawLines(_renderer, points, size);
+// }
 
-/** function: convert_point()
- *  Converts Vector2d to SDL_Point object 
- */
-SDL_Point MediaLayer_SDL::convert_point(Vector2d point)
-{
-    return SDL_Point{static_cast<int>(point.x), static_cast<int>(point.y)};
-}
+// /** function: convert_point()
+//  *  Converts Vector2d to SDL_Point object 
+//  */
+// SDL_Point MediaLayer_SDL::convert_point(Vector2d point)
+// {
+//     return SDL_Point{static_cast<int>(point.x), static_cast<int>(point.y)};
+// }
 

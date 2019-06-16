@@ -28,15 +28,15 @@ public:
     bool load() override;
 
     // Renders collection of Drawing objects to texture
-    void render(std::vector<Drawing> drawings, int x, int y);
+//    void render(std::vector<Drawing> drawings, int x, int y);
 
 private:
 
-    // Render individual drawing to texture
-    void render_drawing(Drawing drawing);
+//    // Render individual drawing to texture
+//    void render_drawing(Drawing drawing);
 
-    // Renders individual point to texture
-    void render_point(Drawing::Point point);
+//    // Renders individual point to texture
+//    void render_point(Drawing::Point point);
 
 };
 

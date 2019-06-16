@@ -28,21 +28,36 @@ public:
         Color color;
     };
 
-    Drawing(){}
+    Drawing();
 
     ~Drawing();
 
+    // --------------------------------------------------
+    // Virtual Methods
+
+    // Render drawing to screen 
+    virtual bool render() =0;
+
+
+// --------------------------------------------------
+// TO BE REMOVED
     std::vector<Point> drawing();
-
     void draw_circle(int x, int y, int radius, Color color = Color{255, 255, 255, 0});
-    
     void draw_line(int aX, int aY, int bX, int bY, Color color = Color{255, 255, 255, 0});
-
     void draw_point(int x, int y, Color color = Color{255, 255, 255, 0});
+// --------------------------------------------------
+ 
+// --------------------------------------------------
 
-private:
+ private:
 
-    std::vector<Point> _drawing;
+    // To be implemented
+    // MediaLayer_Drawing* _medialayer_drawing;
+
+// --------------------------------------------------
+// TO BE REMOVED
+   std::vector<Point> _drawing;
+// --------------------------------------------------
 
 };
 

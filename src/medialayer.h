@@ -56,6 +56,7 @@ public:
 
     // Wrapper function for getting delta time
     static double MediaLayer_GetDeltaTime(MediaLayer* layer);
+
     // --------------------------------------------------
 
     // Initializes media layer
@@ -82,17 +83,19 @@ public:
     // Calculates delta time
     virtual double get_delta_time() =0;
 
-    // Clear shapes to ready to be added
-    void clear_shapes();
+    // --------------------------------------------------
 
-    // Add a shape to be rendered
-    void add_shape(std::vector<Vector2d> shape);
+//    // Clear shapes to ready to be added
+//    void clear_shapes();
 
-    // Clear drawings to ready to be added
-    void clear_drawings();
+//    // Add a shape to be rendered
+//    void add_shape(std::vector<Vector2d> shape);
 
-    // Add a drawing to be rendered
-    void add_drawing(Drawing drawing);
+//    // Clear drawings to ready to be added
+//    void clear_drawings();
+
+//    // Add a drawing to be rendered
+//    void add_drawing(Drawing drawing);
 
     // Window Width
     int window_width();
@@ -114,8 +117,8 @@ protected:
      * In process of removing shapes in favor of Drawing objects,
      * or possibly some other object type which would include UI typographic elements
      */
-    std::vector<std::vector<Vector2d>> _shapes; // collection of shapes to be rendered
-    std::vector<Drawing> _drawings; // collection of drawings to be rendered
+    // std::vector<std::vector<Vector2d>> _shapes; // collection of shapes to be rendered
+    // std::vector<Drawing> _drawings; // collection of drawings to be rendered
 
 private:
 

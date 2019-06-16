@@ -10,43 +10,43 @@
 
 #include "drawing.h"
 
-/** function: clear_shapes()
- * 
- */
-void MediaLayer::clear_shapes()
-{
-    if(!_shapes.empty())
-    {
-        _shapes.clear();
-    }
-}
+// /** function: clear_shapes()
+//  * 
+//  */
+// void MediaLayer::clear_shapes()
+// {
+//     if(!_shapes.empty())
+//     {
+//         _shapes.clear();
+//     }
+// }
 
-/** function: add_shape()
- * 
- */
-void MediaLayer::add_shape(std::vector<Vector2d> shape)
-{
-    _shapes.push_back(shape);
-}
+// /** function: add_shape()
+//  * 
+//  */
+// void MediaLayer::add_shape(std::vector<Vector2d> shape)
+// {
+//     _shapes.push_back(shape);
+// }
 
-/** function: clear_drawings()
- * 
- */
-void MediaLayer::clear_drawings()
-{
-    if(!_drawings.empty())
-    {
-        _drawings.clear();
-    }
-}
+// /** function: clear_drawings()
+//  * 
+//  */
+// void MediaLayer::clear_drawings()
+// {
+//     if(!_drawings.empty())
+//     {
+//         _drawings.clear();
+//     }
+// }
 
-/** function: add_drawing()
- * 
- */
-void MediaLayer::add_drawing(Drawing drawing)
-{
-    _drawings.push_back(drawing);
-}
+// /** function: add_drawing()
+//  * 
+//  */
+// void MediaLayer::add_drawing(Drawing drawing)
+// {
+//     _drawings.push_back(drawing);
+// }
 
 /** function: window_width()
  * 

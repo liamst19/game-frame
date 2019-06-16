@@ -7,6 +7,14 @@
 #include <vector>
 #include "math.h"
 
+
+/** Constructor
+ * 
+ */
+Drawing::Drawing()
+{
+}
+
 /** Destructor
  * 
  */

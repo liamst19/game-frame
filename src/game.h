@@ -70,8 +70,8 @@ private:
     void generate_output();
 
     // For testing
-    void populate_shapes();
-    void populate_drawings();
+//    void populate_shapes();
+//    void populate_drawings();
 
 };
 #endif
