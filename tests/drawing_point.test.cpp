@@ -4,15 +4,19 @@
 
 #include <vector>
 #include "gtest/gtest.h"
+
 #include "../src/drawing_point.h"
 #include "../src/drawing.h"
+
+#include "mocks/medialayer_mock_drawing_renderer.hpp"
 
 namespace
 {
 
     TEST(Drawing_Point, Constructor_Ints)
     {
-        PointDrawing point{0, 0, 0, 0, 0, 0};
+        MediaLayer_Mock_Drawing_Renderer renderer;
+        PointDrawing point{0, 0, 0, 0, 0, 0, &renderer};
         
         ASSERT_EQ(0, point.x());
         ASSERT_EQ(0, point.y());
@@ -24,9 +28,10 @@ namespace
     
     TEST(Drawing_Point, Constructor_Structs)
     {
+        MediaLayer_Mock_Drawing_Renderer renderer;
         Drawing::Point crd{29, 57};
         Drawing::Color color{1, 2, 3, 4};
-        PointDrawing point{crd, color};
+        PointDrawing point{crd, color, &renderer};
 
         ASSERT_EQ(29, point.x());
         ASSERT_EQ(57, point.y());
@@ -38,7 +43,8 @@ namespace
 
     TEST(Drawing_Point, Render)
     {
-        PointDrawing point(Drawing::Point{100, 100}, Drawing::Color{256, 256, 256, 0});
+        MediaLayer_Mock_Drawing_Renderer renderer;
+        PointDrawing point(Drawing::Point{100, 100}, Drawing::Color{256, 256, 256, 0}, &renderer);
         ASSERT_TRUE(point.render());   
     }
 

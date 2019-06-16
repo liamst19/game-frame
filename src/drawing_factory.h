@@ -5,19 +5,19 @@
 #ifndef DRAWING_FACTORY_H
 #define DRAWING_FACTORY_H
 
-#include "medialayer.h"
+#include "medialayer_drawing_renderer.h"
 #include "drawing.h"
 #include "drawing_point.h"
 
 class DrawingFactory
 {
 
-    MediaLayer* _media_layer;
+    MediaLayer_Drawing_Renderer* _drawing_renderer;
 
 public:
 
     // Constructor
-    DrawingFactory(MediaLayer *media_layer);
+    DrawingFactory(MediaLayer_Drawing_Renderer* renderer);
 
     // Destructor
     ~DrawingFactory();

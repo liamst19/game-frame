@@ -8,6 +8,7 @@
 #define DRAWING_H
 
 #include <vector>
+#include "medialayer_drawing_renderer.h"
 
 class Drawing{
 
@@ -28,7 +29,7 @@ public:
         Color color;
     };
 
-    Drawing();
+    Drawing(MediaLayer_Drawing_Renderer* drawing_renderer);
 
     ~Drawing();
 
@@ -37,27 +38,13 @@ public:
 
     // Render drawing to screen 
     virtual bool render() =0;
-
-
-// --------------------------------------------------
-// TO BE REMOVED
-    std::vector<Point> drawing();
-    void draw_circle(int x, int y, int radius, Color color = Color{255, 255, 255, 0});
-    void draw_line(int aX, int aY, int bX, int bY, Color color = Color{255, 255, 255, 0});
-    void draw_point(int x, int y, Color color = Color{255, 255, 255, 0});
-// --------------------------------------------------
  
 // --------------------------------------------------
 
- private:
+ protected:
 
     // To be implemented
-    // MediaLayer_Drawing* _medialayer_drawing;
-
-// --------------------------------------------------
-// TO BE REMOVED
-   std::vector<Point> _drawing;
-// --------------------------------------------------
+    MediaLayer_Drawing_Renderer* _drawing_renderer;
 
 };
 

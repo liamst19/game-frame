@@ -8,6 +8,10 @@
 #include <string>
 #include <SDL2/SDL.h>
 
+#include "medialayer_sdl_drawing_renderer.h"
+#include "drawing_factory.h" 
+#include "drawing_point.h"
+
 // #include "medialayer_sdl_texture_drawing.h"
 // #include "drawing.h"
 
@@ -31,6 +35,8 @@ bool MediaLayer_SDL::initialize()
     {
         return false;
     }
+
+    _drawing_renderer.initialize(_renderer, _window);
 
 //    // Initialize texture for drawing
 //    if(!_drawing_texture.initialize(_renderer, _window, 500, 500))
@@ -94,14 +100,14 @@ bool MediaLayer_SDL::create_window()
                                _window_width,
                                _window_height,
                                _sdl_flag);
-  if(!_window)
-  {
-    SDL_Log("Failed to create window: %s", SDL_GetError());
-    // Throw exception
-    return false;
-  };
+    if(!_window)
+    {
+        SDL_Log("Failed to create window: %s", SDL_GetError());
+        // Throw exception
+        return false;
+    };
 
-  return true;
+    return true;
 }
 
 /* function: generate_output()
@@ -253,8 +259,6 @@ bool MediaLayer_SDL::create_renderer()
 void MediaLayer_SDL::render_objects()
 {
     // Iterate through drawings and render
-    // _drawing_texture.render(_drawings, 0, 0);
-
 //    for(auto drawing: _drawings)
 //    {
 //        render_drawing(drawing);

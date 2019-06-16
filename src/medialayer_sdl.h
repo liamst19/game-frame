@@ -12,7 +12,8 @@
 #include <SDL2/SDL.h> // hopefully this is contained
 
 #include "medialayer.h"
-#include "medialayer_sdl_texture_drawing.h"
+// #include "medialayer_sdl_texture_drawing.h"
+#include "medialayer_sdl_drawing_renderer.h"
 
 class MediaLayer_SDL: public MediaLayer{
 
@@ -30,28 +31,28 @@ public:
     }
 
     // Initializes Media Layer
-    bool initialize();
+    bool initialize() override;
     
     // Initializes media layer with window dimensions, position window at the center of screen
-    bool initialize(std::string title, int window_width, int window_height);
+    bool initialize(std::string title, int window_width, int window_height) override;
 
     // Initializes media layer with window dimensions and position
-    bool initialize(std::string title, int window_width, int window_height, int window_x, int window_y);
+    bool initialize(std::string title, int window_width, int window_height, int window_x, int window_y) override;
 
     // Shuts down media layer
-    void shutdown();
+    void shutdown() override;
 
     // Creates new window
-    bool create_window();
+    bool create_window() override;
 
     // Retrieves input (keyboard) from media layer
-    std::vector<Medialayer_Key_Code> get_input();
+    std::vector<Medialayer_Key_Code> get_input() override;
 
     // Renders contents onto screen
-    void generate_output();
+    void generate_output() override;
 
     // Calculates delta time
-    double get_delta_time();
+    double get_delta_time() override;
 
 private:
 
@@ -60,6 +61,8 @@ private:
     int _sdl_flag{0};           // SDL Flags: I don't know what this is - openGL?
 
     // MediaLayer_SDL_Texture_Drawing _drawing_texture;
+
+    MediaLayer_SDL_Drawing_Renderer _drawing_renderer;
 
     // ----------------------------------------
     // Input

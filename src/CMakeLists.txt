@@ -1,5 +1,6 @@
 set(SRC_DIR ${CMAKE_SOURCE_DIR}/src)
 
+
 # -----------------------------------------------------
 # SDL Library
 
@@ -19,11 +20,14 @@ include_directories(${SDL2_IMAGE_INCLUDE_DIRS})
 # -----------------------------------------------------
 # Library
 
-# Gather library headers
+include_directories(${CMAKE_SOURCE_DIR}/include)
+link_directories(${CMAKE_SOURCE_DIR}/lib)
+
+# Gather headers
 FILE(GLOB GAME_HEADERS 
      ${SRC_DIR}/*.h
      )
-# Gather library sources
+# Gather sources
 FILE(GLOB GAME_SOURCES
      ${SRC_DIR}/*.cpp
      )

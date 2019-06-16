@@ -1,20 +1,23 @@
-/** medialayer_sdl_drawing.h
+/** medialayer_sdl_drawing_renderer.h
  *
  * 
  */
-#ifndef MEDIALAYER_SDL_DRAWING_H
-#define MEDIALAYER_SDL_DRAWING_H
+#ifndef MEDIALAYER_SDL_DRAWING_RENDERER_H
+#define MEDIALAYER_SDL_DRAWING_RENDERER_H
 
 #include <SDL2/SDL.h>
+#include "medialayer_drawing_renderer.h"
 
-class MediaLayer_SDL_Drawing
+class MediaLayer_SDL_Drawing_Renderer: public MediaLayer_Drawing_Renderer
 {
 
 public:
 
-    MediaLayer_SDL_Drawing(SDL_Renderer* renderer, SDL_Window* window);
+    MediaLayer_SDL_Drawing_Renderer();
 
-    ~MediaLayer_SDL_Drawing();
+    ~MediaLayer_SDL_Drawing_Renderer();
+
+    bool initialize(SDL_Renderer* renderer, SDL_Window* window);
 
     // Render point
     bool render_point(int x, int y, int r, int g, int b, int alpha);
