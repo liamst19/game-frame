@@ -6,14 +6,11 @@
  * 
  */
 
+#include "medialayer_sdl_texture_image.h"
+
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
-
-#include <iostream>
 #include <string>
-#include <vector>
-
-#include "medialayer_sdl_texture_image.h"
 
 /** Constructor
  * 
@@ -62,9 +59,6 @@ bool MediaLayer_SDL_Texture_Image::load()
         return false;
     }
 
-    // The final texture
-    SDL_Texture* new_texture{NULL};
-
     // Load image at specified path
     SDL_Surface* loaded_surface{IMG_Load(_source_path.c_str())};
 
@@ -80,8 +74,9 @@ bool MediaLayer_SDL_Texture_Image::load()
                         SDL_MapRGB(loaded_surface->format, 0, 0xFF, 0xFF));
         
         // Create texture
-        new_texture = SDL_CreateTextureFromSurface(_renderer, loaded_surface);
-        if(new_texture == NULL){
+        _texture = SDL_CreateTextureFromSurface(_renderer, loaded_surface);
+
+        if(_texture == nullptr){
             SDL_Log("Unable to create texture from %s : SDL Error: %s", _source_path.c_str(), SDL_GetError());
         } else
         {
@@ -91,11 +86,11 @@ bool MediaLayer_SDL_Texture_Image::load()
         }
 
         // Get rid of old loaded surface
-        SDL_FreeSurface(loaded_surface);
     }
+    
+    // Free surface resource 
+    SDL_FreeSurface(loaded_surface);
 
-    //Return
-    _texture = new_texture;
-    return _texture != NULL;
+    return _texture != nullptr;
 }
 

@@ -2,14 +2,13 @@
  *
  */
 
+#include "medialayer_sdl.h"
+
 #include <vector>
 #include <string>
-#include <memory>
 #include <SDL2/SDL.h>
 
-#include "medialayer_sdl.h"
 #include "medialayer_sdl_texture_drawing.h"
-
 #include "drawing.h"
 
 // --------------------------------------------------
@@ -33,12 +32,12 @@ bool MediaLayer_SDL::initialize()
         return false;
     }
 
-    // Initialize texture for drawing
-    if(!_drawing_texture.initialize(_renderer, _window))
-    {
-        // something went wrong
-        return false;
-    }
+//    // Initialize texture for drawing
+//    if(!_drawing_texture.initialize(_renderer, _window, 500, 500))
+//    {
+//        // something went wrong
+//        return false;
+//    }
 
     return true;
 }
@@ -76,6 +75,7 @@ bool MediaLayer_SDL::initialize(std::string title, int window_width, int window_
  */
 void MediaLayer_SDL::shutdown()
 {
+    // _drawing_texture.free();
     SDL_DestroyRenderer(_renderer);
     _renderer = nullptr;
     SDL_DestroyWindow(_window);
@@ -172,28 +172,6 @@ std::vector<Medialayer_Key_Code> MediaLayer_SDL::get_input()
 // --------------------------------------------------
 // Private
 
-/* function: create_renderer()
- * 
- */
-bool MediaLayer_SDL::create_renderer()
-{
-    // create renderer
-    _renderer = SDL_CreateRenderer(
-            _window,
-            -1,
-            SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC
-    );
-
-    if(!_renderer)
-    {
-        SDL_Log("Failed to create renderer: %s", SDL_GetError());
-        // Throw exception
-        return false;
-    }
-
-    return true;
-}
-
 /** function: add_key_code()
  *  add key_code to vector 
  */
@@ -243,12 +221,39 @@ void MediaLayer_SDL::fill_key_codes(std::vector<Medialayer_Key_Code>& key_codes)
     }
 }
 
+// -------------------------------------------------------------------
+
+/* function: create_renderer()
+ * 
+ */
+bool MediaLayer_SDL::create_renderer()
+{
+    // create renderer
+    _renderer = SDL_CreateRenderer(
+            _window,
+            -1,
+            SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC
+    );
+
+    if(!_renderer)
+    {
+        SDL_Log("Failed to create renderer: %s", SDL_GetError());
+        // Throw exception
+        return false;
+    }
+
+    return true;
+}
+
+// -------------------------------------------------------------------
+
 /* function: render_objects()
  *  Render all game objects to window surface
  */
 void MediaLayer_SDL::render_objects()
 {
-    // Convert game object shape data and populate _shapes
+    // Iterate through drawings and render
+    // _drawing_texture.render(_drawings, 0, 0);
 
     for(auto drawing: _drawings)
     {
@@ -256,28 +261,35 @@ void MediaLayer_SDL::render_objects()
     }
 }
 
+// -------------------------------------------------------------------
+
+/** function: render_drawing()
+ * 
+ */
 void MediaLayer_SDL::render_drawing(Drawing drawing)
 {
-    if(_drawing_texture.load())
+    // Render all the points in the drawing 
+    for(Drawing::Point point: drawing.drawing())
     {
-        _drawing_texture.render_drawing(drawing); // Render drawing onto texture surface
-        _drawing_texture.render(0, 0); // Render texture onto window surface
-    } else
-    {
-        // Something went wrong
-        SDL_Log("Texture was not loaded");
-    };
+        render_point(point);
+    }
 }
 
+/** function: render_point()
+ * 
+ */
 void MediaLayer_SDL::render_point(Drawing::Point point)
 {
-    SDL_SetRenderDrawColor(_renderer, 
-                           point.color.r, 
-                           point.color.g, 
-                           point.color.b, 
-                           point.color.alpha);
-    SDL_RenderDrawPoint(_renderer, point.x, point.y);
+        // Set Color
+        SDL_SetRenderDrawColor(_renderer,
+                                point.color.r, 
+                                point.color.g, 
+                                point.color.b, 
+                                point.color.alpha);
+        SDL_RenderDrawPoint(_renderer, point.x, point.y); 
 }
+
+// -------------------------------------------------------------------
 
 /** function: draw_shape()
  * Render shape to window surface
@@ -314,3 +326,4 @@ SDL_Point MediaLayer_SDL::convert_point(Vector2d point)
 {
     return SDL_Point{static_cast<int>(point.x), static_cast<int>(point.y)};
 }
+

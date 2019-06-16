@@ -7,12 +7,9 @@
 #define MEDIALAYER_SDL_TEXTURE_DRAWING_H
 
 #include <SDL2/SDL.h>
-
-#include <string>
 #include <vector>
 
 #include "medialayer_sdl_texture.h"
-
 #include "drawing.h"
 
 class MediaLayer_SDL_Texture_Drawing: public MediaLayer_SDL_Texture{
@@ -24,14 +21,22 @@ public:
     // Deallocates memory
     ~MediaLayer_SDL_Texture_Drawing();
 
+    bool initialize(SDL_Renderer* renderer, SDL_Window* window, int width, int height);
+
     void free();
 
     bool load() override;
 
-    // Creates vector graphics from collection of points
-    void render_drawing(Drawing drawing);
+    // Renders collection of Drawing objects to texture
+    void render(std::vector<Drawing> drawings, int x, int y);
 
 private:
+
+    // Render individual drawing to texture
+    void render_drawing(Drawing drawing);
+
+    // Renders individual point to texture
+    void render_point(Drawing::Point point);
 
 };
 

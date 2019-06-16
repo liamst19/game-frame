@@ -74,8 +74,11 @@ void MediaLayer_SDL_Texture::render(int x,
                                     SDL_Point* center, 
                                     SDL_RendererFlip flip)
 {
-    // Set rendering space and render to screen
+
+    // Set rendering space
     SDL_Rect render_quad{x, y, _width, _height};
+
+    // Set clip rendering dimensions
     if(clip != nullptr){
         render_quad.w = clip->w;
         render_quad.h = clip->h;

@@ -41,8 +41,8 @@ public:
     void render(int x, 
                 int y, 
                 double angle = 0.0, 
-                SDL_Rect* clip = NULL, 
-                SDL_Point* center = NULL, 
+                SDL_Rect* clip = nullptr, 
+                SDL_Point* center = nullptr, 
                 SDL_RendererFlip flip = SDL_FLIP_NONE);
     
     // Gets image width

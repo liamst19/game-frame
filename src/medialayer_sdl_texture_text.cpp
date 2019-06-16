@@ -6,14 +6,11 @@
  * 
  */
 
+#include "medialayer_sdl_texture_text.h"
+
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_ttf.h>
-
-#include <iostream>
 #include <string>
-#include <vector>
-
-#include "medialayer_sdl_texture_text.h"
 
 /** Constructor
  * 
@@ -114,5 +111,5 @@ bool MediaLayer_SDL_Texture_Text::load()
     TTF_CloseFont(_font);	
 
 	//Return success
-	return _texture != NULL;
+	return _texture != nullptr;
 }
