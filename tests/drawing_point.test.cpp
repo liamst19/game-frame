@@ -16,7 +16,7 @@ namespace
     TEST(Drawing_Point, Constructor_Ints)
     {
         MediaLayer_Mock_Drawing_Renderer renderer;
-        PointDrawing point{0, 0, 0, 0, 0, 0, &renderer};
+        PointDrawing point{&renderer, 0, 0, 0, 0, 0, 0};
         
         ASSERT_EQ(0, point.x());
         ASSERT_EQ(0, point.y());
@@ -31,7 +31,7 @@ namespace
         MediaLayer_Mock_Drawing_Renderer renderer;
         Drawing::Point crd{29, 57};
         Drawing::Color color{1, 2, 3, 4};
-        PointDrawing point{crd, color, &renderer};
+        PointDrawing point{&renderer, crd, color};
 
         ASSERT_EQ(29, point.x());
         ASSERT_EQ(57, point.y());
@@ -44,7 +44,7 @@ namespace
     TEST(Drawing_Point, Render)
     {
         MediaLayer_Mock_Drawing_Renderer renderer;
-        PointDrawing point(Drawing::Point{100, 100}, Drawing::Color{256, 256, 256, 0}, &renderer);
+        PointDrawing point(&renderer, Drawing::Point{100, 100}, Drawing::Color{256, 256, 256, 0});
         ASSERT_TRUE(point.render());   
     }
 

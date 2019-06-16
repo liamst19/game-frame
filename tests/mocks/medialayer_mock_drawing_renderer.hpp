@@ -18,20 +18,34 @@ public:
     virtual ~MediaLayer_Mock_Drawing_Renderer(){}
 
     // Render point
-    virtual bool render_point(int x, int y, int r, int g, int b, int alpha){}
+    virtual bool render_point(int x, int y, int r, int g, int b, int alpha)
+    {
+        return true;
+    }
 
     // Render line
-    virtual bool render_line(int aX, int aY, int bX, int bY, int r, int g, int b, int alpha, int thickness =1){}
+    virtual bool render_line(int aX, int aY, int bX, int bY, int r, int g, int b, int alpha, int thickness =1)
+    {
+        return true; 
+    }
 
     // Render rectangle outline
-    virtual bool render_rectangle(int aX, int aY, int bX, int bY, int r, int g, int b, int alpha, bool fill = false){}
+    virtual bool render_rectangle(int aX, int aY, int bX, int bY, int r, int g, int b, int alpha, bool fill = false)
+    {
+        return true; 
+    }
 
     // Render circle
-    virtual bool render_circle(int centerX, int centerY, int radius, int r, int g, int b, int alpha, bool fill = false){}
+    virtual bool render_circle(int centerX, int centerY, int radius, int r, int g, int b, int alpha, bool fill = false)
+    {
+        return true; 
+    }
 
     // Render ellipse
-    virtual bool render_ellipse(int aX, int aY, int bX, int bY, int r, int g, int b, int alpha, bool fill = false){}
-
+    virtual bool render_ellipse(int aX, int aY, int bX, int bY, int r, int g, int b, int alpha, bool fill = false)
+    {
+        return true; 
+    }
 
 };
 #endif

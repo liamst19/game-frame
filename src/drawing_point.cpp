@@ -7,22 +7,22 @@
 
 #include "medialayer_drawing_renderer.h"
 
-PointDrawing::PointDrawing(int x, 
+PointDrawing::PointDrawing(MediaLayer_Drawing_Renderer* renderer,
+                           int x, 
                            int y, 
                            int r,
                            int g,
                            int b, 
-                           int alpha,
-                           MediaLayer_Drawing_Renderer* renderer):
+                           int alpha):
   Drawing(renderer),                           
   _point_coordinates(Drawing::Point{x, y}),
   _point_color(Drawing::Color{r, g, b, alpha})
 {
 }
 
-PointDrawing::PointDrawing(Drawing::Point point_coordinates,
-                           Drawing::Color point_color,
-                           MediaLayer_Drawing_Renderer* renderer):
+PointDrawing::PointDrawing(MediaLayer_Drawing_Renderer* renderer,
+                           Drawing::Point point_coordinates,
+                           Drawing::Color point_color):
   Drawing(renderer),                           
   _point_coordinates(point_coordinates),
   _point_color(point_color)

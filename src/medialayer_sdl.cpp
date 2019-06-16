@@ -258,7 +258,12 @@ bool MediaLayer_SDL::create_renderer()
  */
 void MediaLayer_SDL::render_objects()
 {
-    // Iterate through drawings and render
+
+    DrawingFactory factory{&_drawing_renderer};
+    LineDrawing line = factory.getLine(10, 10, 450, 250, 255, 0, 255, 255);
+    line.render();
+
+// Iterate through drawings and render
 //    for(auto drawing: _drawings)
 //    {
 //        render_drawing(drawing);

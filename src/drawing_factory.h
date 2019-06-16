@@ -8,6 +8,7 @@
 #include "medialayer_drawing_renderer.h"
 #include "drawing.h"
 #include "drawing_point.h"
+#include "drawing_line.h"
 
 class DrawingFactory
 {
@@ -26,7 +27,7 @@ public:
     PointDrawing getPoint(int x, int y, int r, int g, int b, int alpha);
 
     // Create HLine object
-    // LineDrawing getHLine(int aX, int aY, int bX, int bY, int r, int g, int b, int alpha);
+    LineDrawing getLine(int aX, int aY, int bX, int bY, int r, int g, int b, int alpha);
 
 };
 #endif

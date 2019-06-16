@@ -13,13 +13,9 @@ class PointDrawing: public Drawing
 
 public:
 
-    // Constructor
-    /* Probably would need a reference to an abstract class
-     * containing method for rendering point
-     */
-    PointDrawing(int x, int y, int r, int g, int b, int alpha, MediaLayer_Drawing_Renderer* renderer);
+    PointDrawing(MediaLayer_Drawing_Renderer* renderer, int x, int y, int r, int g, int b, int alpha);
 
-    PointDrawing(Drawing::Point coordinates, Drawing::Color color, MediaLayer_Drawing_Renderer* renderer);
+    PointDrawing(MediaLayer_Drawing_Renderer* renderer, Drawing::Point coordinates, Drawing::Color color);
 
     ~PointDrawing();
 
