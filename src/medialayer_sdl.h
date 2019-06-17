@@ -13,6 +13,7 @@
 
 #include "medialayer.h"
 #include "medialayer_sdl_drawing_renderer.h"
+#include "medialayer_sdl_texture_text.h"
 
 class MediaLayer_SDL: public MediaLayer{
 
@@ -60,6 +61,10 @@ private:
     int _sdl_flag{0};           // SDL Flags: I don't know what this is - openGL?
 
     MediaLayer_SDL_Drawing_Renderer _drawing_renderer;
+
+    // For Testing
+    const std::string _font_src{"data/Univers-Extended.ttf"};
+    MediaLayer_SDL_Texture_Text _texture;
 
     // ----------------------------------------
     // Input

@@ -7,6 +7,8 @@
 #include <vector>
 #include <string>
 #include <SDL2/SDL.h>
+#include "SDL_ttf.h"
+#include "SDL_image.h"
 
 #include "medialayer_sdl_drawing_renderer.h"
 #include "drawing_factory.h" 
@@ -31,23 +33,38 @@ bool MediaLayer_SDL::initialize()
     // Create Window
     if(!create_window())
     {
+        SDL_Log("Failed to create SDL_Window: %s", SDL_GetError());
         return false;
     } 
     
     // Create Rendering context
     if (!_create_renderer())
     {
+        SDL_Log("Failed to create SDL_Renderer: %s", SDL_GetError());
+        return false;
+    }
+
+    // Initialize SDL_ttf
+    if(TTF_Init() == -1)
+    {
+        SDL_Log("SDL_ttf failed to initialize: %s", SDL_GetError());
         return false;
     }
 
     _drawing_renderer.initialize(_renderer, _window);
 
-//    // Initialize texture for drawing
-//    if(!_drawing_texture.initialize(_renderer, _window, 500, 500))
-//    {
-//        // something went wrong
-//        return false;
-//    }
+    // Initialize texture for drawing
+    if(_texture.initialize(_renderer, _window))
+    {
+        _texture.set_font_source_path(_font_src);
+        _texture.load_text(_title, 40, SDL_Color{255, 255, 255, 255});
+        _texture.load();
+    }
+    else
+    {
+        // something went wrong
+        return false;
+    }
 
     return true;
 }
@@ -269,4 +286,7 @@ void MediaLayer_SDL::_render_objects()
     circle2.render();
     RectangleDrawing rect = factory.getRectangle(250, 300, 300, 100, 255, 0, 120, 150, true);
     rect.render();
+
+    // Text
+    _texture.render(200, 50);
 }

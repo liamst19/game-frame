@@ -39,7 +39,6 @@ void MediaLayer_SDL_Texture_Text::free()
     if(_font != nullptr)
 	{
         _font = nullptr;
-        _font_size = 0;
     }
 }
 
@@ -53,7 +52,7 @@ void MediaLayer_SDL_Texture_Text::set_font_source_path(std::string path)
 
 /** function: set_font_size()
  * 
- */
+ /
 void MediaLayer_SDL_Texture_Text::set_font_size(int size)
 { 
 	_font_size = size; 
@@ -62,9 +61,11 @@ void MediaLayer_SDL_Texture_Text::set_font_size(int size)
 /** function: load_text()
  * 
  */
-void MediaLayer_SDL_Texture_Text::load_text(std::string text, SDL_Color color)
+void MediaLayer_SDL_Texture_Text::load_text(std::string text, int size, SDL_Color color)
 {
+	SDL_Log("Loading Text: \"%s\"\n font size: %i", text.c_str(), size);
 	_text = text;
+	_font_size = size;
 	_color = color;
 }
 
@@ -73,11 +74,13 @@ bool MediaLayer_SDL_Texture_Text::load()
 	//Get rid of preexisting texture
 	free();
 
+	SDL_Log("Loading \"%s\" size: %i", _font_source_path.c_str(), _font_size);
+
     _font = TTF_OpenFont(_font_source_path.c_str(), _font_size);
 
-    if(_font == nullptr)
+    if(!_font)
 	{
-        SDL_Log("Unable to load font");
+        SDL_Log("Unable to load font %s\n%s", _font_source_path.c_str(), SDL_GetError());
         return false;
     }
 
@@ -109,6 +112,8 @@ bool MediaLayer_SDL_Texture_Text::load()
 	}
 
     TTF_CloseFont(_font);	
+
+	SDL_Log("%ix%i %s size: %i", _width, _height, _font_source_path.c_str(), _font_size);
 
 	//Return success
 	return _texture != nullptr;

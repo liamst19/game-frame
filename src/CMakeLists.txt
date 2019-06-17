@@ -46,3 +46,6 @@ target_link_libraries(game lib-game)
 target_link_libraries(game ${SDL2_LIBRARIES})
 target_link_libraries(game ${SDL2_TTF_LIBRARIES})
 target_link_libraries(game ${SDL2_IMAGE_LIBRARIES})
+
+# Copy Assets
+file(COPY ${CMAKE_SOURCE_DIR}/data DESTINATION ${CMAKE_BINARY_DIR})
