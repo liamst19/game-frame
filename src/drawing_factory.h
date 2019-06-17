@@ -10,7 +10,7 @@
 #include "drawing_point.h"
 #include "drawing_line.h"
 #include "drawing_ellipse.h"
-// #include "drawing_rectangle.h"
+#include "drawing_rectangle.h"
 // #include "drawing_polygon.h"
 
 class DrawingFactory
@@ -37,6 +37,13 @@ public:
                     int bX, int bY, 
                     int r, int g, int b, int alpha);
 
+    // Create Rectangle
+    RectangleDrawing getRectangle(
+                    int aX, int aY, 
+                    int bX, int bY, 
+                    int r, int g, int b, int alpha,
+                    bool fill = false);
+
     // Create Ellipse
     EllipseDrawing getEllipse(
                     int x, int y, 
@@ -44,6 +51,7 @@ public:
                     int r, int g, int b, int alpha,
                     bool fill = false);
     
+    // Create Circle
     EllipseDrawing getCircle(
                     int x, int y, 
                     int radius, 

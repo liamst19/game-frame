@@ -11,9 +11,6 @@
 #include <vector>
 #include <string>
 
-#include "math_vector_2d.h"
-#include "drawing.h"
-
 // Keyboard inputs and window events
 enum class Medialayer_Key_Code{
     null=0, // default
@@ -85,18 +82,6 @@ public:
 
     // --------------------------------------------------
 
-//    // Clear shapes to ready to be added
-//    void clear_shapes();
-
-//    // Add a shape to be rendered
-//    void add_shape(std::vector<Vector2d> shape);
-
-//    // Clear drawings to ready to be added
-//    void clear_drawings();
-
-//    // Add a drawing to be rendered
-//    void add_drawing(Drawing drawing);
-
     // Window Width
     int window_width();
 
@@ -112,13 +97,6 @@ protected:
     int _ticks_count{0};                // For calculating delta time
     const int _ms_per_frame{16};        // For delta time: 60fps = apprx. 1 frame per 16ms
     const double _delta_max{0.05};      // Cap for delta time, in seconds
-
-    /* Shapes / Drawings
-     * In process of removing shapes in favor of Drawing objects,
-     * or possibly some other object type which would include UI typographic elements
-     */
-    // std::vector<std::vector<Vector2d>> _shapes; // collection of shapes to be rendered
-    // std::vector<Drawing> _drawings; // collection of drawings to be rendered
 
 private:
 

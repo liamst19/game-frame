@@ -117,7 +117,16 @@ bool MediaLayer_SDL_Drawing_Renderer::render_rectangle(
 	result = 0;
 	result |= SDL_SetRenderDrawBlendMode(_renderer, (alpha == 255) ? SDL_BLENDMODE_NONE : SDL_BLENDMODE_BLEND);
 	result |= SDL_SetRenderDrawColor(_renderer, r, g, b, alpha);	
-	result |= SDL_RenderDrawRect(_renderer, &rect);
+	
+	if(fill)
+	{
+		result |= SDL_RenderFillRect(_renderer, &rect);
+	}
+	else
+	{
+		result |= SDL_RenderDrawRect(_renderer, &rect);
+	}
+
     return result == 0;
 }
 

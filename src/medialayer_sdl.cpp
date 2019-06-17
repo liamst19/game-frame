@@ -11,7 +11,10 @@
 #include "medialayer_sdl_drawing_renderer.h"
 #include "drawing_factory.h" 
 #include "drawing_point.h"
+#include "drawing_line.h"
 #include "drawing_ellipse.h"
+#include "drawing_rectangle.h"
+// #include "drawing_polygon.h"
 
 // #include "medialayer_sdl_texture_drawing.h"
 // #include "drawing.h"
@@ -32,7 +35,7 @@ bool MediaLayer_SDL::initialize()
     } 
     
     // Create Rendering context
-    if (!create_renderer())
+    if (!_create_renderer())
     {
         return false;
     }
@@ -123,7 +126,7 @@ void MediaLayer_SDL::generate_output()
     SDL_RenderClear(_renderer);
 
     // Render Game Objects ------------------------------
-    render_objects();
+    _render_objects();
     // --------------------------------------------------
     
     SDL_RenderPresent(_renderer);
@@ -170,7 +173,7 @@ std::vector<Medialayer_Key_Code> MediaLayer_SDL::get_input()
     };
 
     // Get Keyboard Inputs
-    fill_key_codes(key_codes);
+    _fill_key_codes(key_codes);
 
     // Return null
     return key_codes;
@@ -179,10 +182,10 @@ std::vector<Medialayer_Key_Code> MediaLayer_SDL::get_input()
 // --------------------------------------------------
 // Private
 
-/** function: add_key_code()
+/** function: _add_key_code()
  *  add key_code to vector 
  */
-void MediaLayer_SDL::add_key_code(std::vector<Medialayer_Key_Code>& key_codes, Medialayer_Key_Code key_code)
+void MediaLayer_SDL::_add_key_code(std::vector<Medialayer_Key_Code>& key_codes, Medialayer_Key_Code key_code)
 {
     // Check if key is already in the vector
     for(auto key: key_codes)
@@ -195,45 +198,45 @@ void MediaLayer_SDL::add_key_code(std::vector<Medialayer_Key_Code>& key_codes, M
     key_codes.push_back(key_code);
 }
 
-/** function: fill_key_codes()
+/** function: _fill_key_codes()
  * fill a vector with keyboard inputs
  */
-void MediaLayer_SDL::fill_key_codes(std::vector<Medialayer_Key_Code>& key_codes)
+void MediaLayer_SDL::_fill_key_codes(std::vector<Medialayer_Key_Code>& key_codes)
 {
     // Get state of keyboard
     const Uint8* state = SDL_GetKeyboardState(nullptr);
     if(state[SDL_SCANCODE_ESCAPE])
     {
-        add_key_code(key_codes, Medialayer_Key_Code::esc);
+        _add_key_code(key_codes, Medialayer_Key_Code::esc);
     };
     if(state[SDL_SCANCODE_W])
     {
-        add_key_code(key_codes, Medialayer_Key_Code::w);
+        _add_key_code(key_codes, Medialayer_Key_Code::w);
     }
     if(state[SDL_SCANCODE_A])
     {
-        add_key_code(key_codes, Medialayer_Key_Code::a);
+        _add_key_code(key_codes, Medialayer_Key_Code::a);
     }
     if(state[SDL_SCANCODE_S])
     {
-        add_key_code(key_codes, Medialayer_Key_Code::s);
+        _add_key_code(key_codes, Medialayer_Key_Code::s);
     }
     if(state[SDL_SCANCODE_D])
     {
-        add_key_code(key_codes, Medialayer_Key_Code::d);
+        _add_key_code(key_codes, Medialayer_Key_Code::d);
     }
     if(state[SDL_SCANCODE_SEMICOLON])
     {
-        add_key_code(key_codes, Medialayer_Key_Code::semicolon);
+        _add_key_code(key_codes, Medialayer_Key_Code::semicolon);
     }
 }
 
 // -------------------------------------------------------------------
 
-/* function: create_renderer()
+/* function: _create_renderer()
  * 
  */
-bool MediaLayer_SDL::create_renderer()
+bool MediaLayer_SDL::_create_renderer()
 {
     // create renderer
     _renderer = SDL_CreateRenderer(
@@ -252,90 +255,16 @@ bool MediaLayer_SDL::create_renderer()
     return true;
 }
 
-// -------------------------------------------------------------------
-
-/* function: render_objects()
+/* function: _render_objects()
  *  Render all game objects to window surface
  */
-void MediaLayer_SDL::render_objects()
+void MediaLayer_SDL::_render_objects()
 {
-
     DrawingFactory factory{&_drawing_renderer};
     LineDrawing line = factory.getLine(10, 10, 450, 250, 255, 0, 255, 255);
     line.render();
-    EllipseDrawing circle = factory.getCircle(250, 300, 100, 0, 255, 255, 255, false);
+    EllipseDrawing circle = factory.getCircle(250, 300, 100, 0, 255, 255, 255, true);
     circle.render();
-
-// Iterate through drawings and render
-//    for(auto drawing: _drawings)
-//    {
-//        render_drawing(drawing);
-//    }
+    RectangleDrawing rect = factory.getRectangle(300, 250, 500, 500, 255, 0, 120, 150, true);
+    rect.render();
 }
-
-// -------------------------------------------------------------------
-
-// /** function: render_drawing()
-//  * 
-//  */
-// void MediaLayer_SDL::render_drawing(Drawing drawing)
-// {
-//     // Render all the points in the drawing 
-//     for(Drawing::Point point: drawing.drawing())
-//     {
-//         render_point(point);
-//     }
-// }
-
-// /** function: render_point()
-//  * 
-//  */
-// void MediaLayer_SDL::render_point(Drawing::Point point)
-// {
-//         // Set Color
-//         SDL_SetRenderDrawColor(_renderer,
-//                                 point.color.r, 
-//                                 point.color.g, 
-//                                 point.color.b, 
-//                                 point.color.alpha);
-//         SDL_RenderDrawPoint(_renderer, point.x, point.y); 
-// }
-
-// // -------------------------------------------------------------------
-
-// /** function: draw_shape()
-//  * Render shape to window surface
-//  */
-// void MediaLayer_SDL::draw_shape(std::vector<Vector2d> shape)
-// {
-//     if(shape.size() < 3)
-//     {
-//         // not a shape
-//         SDL_Log("Not a shape");
-//         return;
-//     }
-
-//     // Set color: opaque white
-//     SDL_SetRenderDrawColor(_renderer, 255, 255, 255, SDL_ALPHA_OPAQUE);
-
-//     int size = shape.size() + 1;
-//     SDL_Point points[size];
-//     for(int i = 0; i < shape.size(); ++i)
-//     {
-//         points[i] = convert_point(shape[i]);
-//     }
-
-//     // Close shape by connecting to the beginning
-//     points[size - 1] = convert_point(shape[0]);
-
-//     SDL_RenderDrawLines(_renderer, points, size);
-// }
-
-// /** function: convert_point()
-//  *  Converts Vector2d to SDL_Point object 
-//  */
-// SDL_Point MediaLayer_SDL::convert_point(Vector2d point)
-// {
-//     return SDL_Point{static_cast<int>(point.x), static_cast<int>(point.y)};
-// }
-

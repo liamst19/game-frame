@@ -61,17 +61,13 @@ private:
     int _window_height{480};
 
     // Retrieves and handles keyboard input from media layer
-    void process_input();
+    void _process_input();
 
     // Update game objects
-    void update_game();
+    void _update_game();
 
     // Renders updated game objects
-    void generate_output();
-
-    // For testing
-//    void populate_shapes();
-//    void populate_drawings();
+    void _generate_output();
 
 };
 #endif

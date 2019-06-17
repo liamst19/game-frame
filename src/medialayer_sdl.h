@@ -12,7 +12,6 @@
 #include <SDL2/SDL.h> // hopefully this is contained
 
 #include "medialayer.h"
-// #include "medialayer_sdl_texture_drawing.h"
 #include "medialayer_sdl_drawing_renderer.h"
 
 class MediaLayer_SDL: public MediaLayer{
@@ -60,44 +59,25 @@ private:
     SDL_Renderer* _renderer;    // SDL Renderer
     int _sdl_flag{0};           // SDL Flags: I don't know what this is - openGL?
 
-    // MediaLayer_SDL_Texture_Drawing _drawing_texture;
-
     MediaLayer_SDL_Drawing_Renderer _drawing_renderer;
 
     // ----------------------------------------
     // Input
 
     // fill keyboard input
-    void fill_key_codes(std::vector<Medialayer_Key_Code>& key_codes);
+    void _fill_key_codes(std::vector<Medialayer_Key_Code>& key_codes);
 
     // add key_code to vector
-    void add_key_code(std::vector<Medialayer_Key_Code>& key_codes, Medialayer_Key_Code key_code);
+    void _add_key_code(std::vector<Medialayer_Key_Code>& key_codes, Medialayer_Key_Code key_code);
 
     // ----------------------------------------
     // Output
 
     // Creates SDL 2D rendering context
-    bool create_renderer();
+    bool _create_renderer();
 
     // Render game objects to window surface 
-    void render_objects();
-
-    // ----------------------------------------
- 
-//    // Render single drawing
-//    void render_drawing(Drawing drawing);
-
-//    // Render single point
-//    void render_point(Drawing::Point point);
-
-//    // ----------------------------------------
-//    // Shapes: to be removed
-
-//    // Render shape to window surface
-//    void draw_shape(std::vector<Vector2d> shape); 
-
-//    // Converts Vector2d to SDL_Point object
-//    SDL_Point convert_point(Vector2d point);
+    void _render_objects();
 
 };
 
