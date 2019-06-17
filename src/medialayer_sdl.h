@@ -62,9 +62,10 @@ private:
 
     MediaLayer_SDL_Drawing_Renderer _drawing_renderer;
 
-    // For Testing
+    // For Testing ----------------------------
     const std::string _font_src{"data/Univers-Extended.ttf"};
-    MediaLayer_SDL_Texture_Text _texture;
+    MediaLayer_SDL_Texture_Text _text_texture;
+    // ----------------------------------------
 
     // ----------------------------------------
     // Input

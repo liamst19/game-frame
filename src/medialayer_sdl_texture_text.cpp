@@ -74,8 +74,6 @@ bool MediaLayer_SDL_Texture_Text::load()
 	//Get rid of preexisting texture
 	free();
 
-	SDL_Log("Loading \"%s\" size: %i", _font_source_path.c_str(), _font_size);
-
     _font = TTF_OpenFont(_font_source_path.c_str(), _font_size);
 
     if(!_font)
@@ -112,8 +110,6 @@ bool MediaLayer_SDL_Texture_Text::load()
 	}
 
     TTF_CloseFont(_font);	
-
-	SDL_Log("%ix%i %s size: %i", _width, _height, _font_source_path.c_str(), _font_size);
 
 	//Return success
 	return _texture != nullptr;

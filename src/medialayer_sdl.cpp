@@ -51,20 +51,29 @@ bool MediaLayer_SDL::initialize()
         return false;
     }
 
+    // Initialize SDL_image
+    if(IMG_Init(IMG_INIT_JPG) == -1)
+    {
+        SDL_Log("SDL_image failed to initialize: %s", SDL_GetError());
+        return false;
+    }
+
+    // Testing --------------------------------------------------
     _drawing_renderer.initialize(_renderer, _window);
 
-    // Initialize texture for drawing
-    if(_texture.initialize(_renderer, _window))
+    // Initialize texture: text
+    if(_text_texture.initialize(_renderer, _window))
     {
-        _texture.set_font_source_path(_font_src);
-        _texture.load_text(_title, 40, SDL_Color{255, 255, 255, 255});
-        _texture.load();
+        _text_texture.set_font_source_path(_font_src);
+        _text_texture.load_text(_title, 80, SDL_Color{255, 255, 255, 255});
+        _text_texture.load();
     }
     else
     {
         // something went wrong
         return false;
     }
+    // ----------------------------------------------------------
 
     return true;
 }
@@ -288,5 +297,5 @@ void MediaLayer_SDL::_render_objects()
     rect.render();
 
     // Text
-    _texture.render(200, 50);
+    _text_texture.render(50, 150);
 }
