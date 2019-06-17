@@ -52,7 +52,7 @@ void MediaLayer_SDL_Texture_Text::set_font_source_path(std::string path)
 
 /** function: set_font_size()
  * 
- /
+ */
 void MediaLayer_SDL_Texture_Text::set_font_size(int size)
 { 
 	_font_size = size; 
@@ -63,7 +63,6 @@ void MediaLayer_SDL_Texture_Text::set_font_size(int size)
  */
 void MediaLayer_SDL_Texture_Text::load_text(std::string text, int size, SDL_Color color)
 {
-	SDL_Log("Loading Text: \"%s\"\n font size: %i", text.c_str(), size);
 	_text = text;
 	_font_size = size;
 	_color = color;
