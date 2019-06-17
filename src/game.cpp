@@ -13,8 +13,8 @@
 /* --------------------------------------------------
 /* Public
 
-/** function: initialize()
- * 
+/** public function: initialize()
+ *  Initializes the game, readying game input/output
  */
 bool Game::initialize()
 {
@@ -39,8 +39,8 @@ bool Game::initialize()
     return initialized;
 }
 
-/** function: run_loop()
- * 
+/** public function: run_loop()
+ *  Begins game loop.
  */
 void Game::run_loop()
 {
@@ -55,8 +55,8 @@ void Game::run_loop()
 
 }
 
-/** function: shutdown()
- * 
+/** public function: shutdown()
+ *  Frees resources for closing.
  */
 void Game::shutdown()
 {
@@ -67,7 +67,7 @@ void Game::shutdown()
     }
 }
 
-/** function: window_width
+/** public function: window_width
  * Might refer to Media Layer if window is adjustable
  */
 int Game::window_width()
@@ -75,7 +75,7 @@ int Game::window_width()
     return _window_width;
 }
 
-/** function: window_height
+/** public function: window_height
  * Might refer to Media Layer if window is adjustable 
  */
 int Game::window_height()
@@ -83,8 +83,9 @@ int Game::window_height()
     return _window_height;
 }
 
-/** function: rand()
- * 
+/** public function: rand()
+ *  Returns a random integer between min and max 
+ *  values specified.
  */
 int Game::rand(int min, int max)
 {
@@ -94,8 +95,8 @@ int Game::rand(int min, int max)
 /* --------------------------------------------------
 /* Private
 
-/** function: process_input()
- * 
+/** private function: _process_input()
+ *  Listens for keyboard inputs and do something with them.
  */
 void Game::_process_input()
 {
@@ -119,8 +120,8 @@ void Game::_process_input()
     }
 }
 
-/** function: update_game()
- * 
+/** private function: _update_game()
+ *  
  */
 void Game::_update_game()
 {
@@ -132,7 +133,7 @@ void Game::_update_game()
 
 }
 
-/** function: generate_output()
+/** private function: _generate_output()
  * 
  */
 void Game::_generate_output()

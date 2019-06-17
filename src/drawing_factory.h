@@ -1,5 +1,8 @@
 /** drawing_factory.h
  * 
+ *  Collection of methods that return Drawing objects for
+ *  rendering to screen.
+ * 
  */
 
 #ifndef DRAWING_FACTORY_H
@@ -13,10 +16,7 @@
 #include "drawing_rectangle.h"
 // #include "drawing_polygon.h"
 
-class DrawingFactory
-{
-
-    MediaLayer_Drawing_Renderer* _drawing_renderer;
+class DrawingFactory{
 
 public:
 
@@ -57,5 +57,11 @@ public:
                     int radius, 
                     int r, int g, int b, int alpha,
                     bool fill = false);
+
+private:
+
+    // Handles screen output
+    MediaLayer_Drawing_Renderer* _drawing_renderer;
+
 };
 #endif

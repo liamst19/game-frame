@@ -1,5 +1,5 @@
 /** drawing_ellipse.cpp
- * 
+ * Object for rendering ellipse
  */
 
 #include "drawing_ellipse.h"
@@ -7,41 +7,57 @@
 #include "drawing.h"
 #include "medialayer_drawing_renderer.h"
 
+/** Constructor
+ *    @renderer: Pointer to object handling screen output.
+ *    @x, y: coordinates of the center of an ellipse
+ *    @radiusX, @radiusY: horizontal and vertical radii, respectively
+ *    @r, @g, @b, @alpha: color/alpha transparency of the ellipse line/shape
+ *    @fill: renders a solid shape if true, line if false
+ */
 EllipseDrawing::EllipseDrawing(
                 MediaLayer_Drawing_Renderer* renderer, 
                 int x, int y, 
                 int radiusX, int radiusY, 
                 int r, int g, int b, int alpha,
                 bool fill):
-  Drawing(renderer),
+  Drawing(renderer, Drawing::Color{r, g, b, alpha}),
   _center(Drawing::Point{x, y}),
   _radius_x(radiusX), 
   _radius_y(radiusY),
-  _color(Drawing::Color{r, g, b, alpha}),
   _fill_shape(fill)
 {
 }
 
+/** Constructor
+ *     @renderer: Pointer to object handling screen output.
+ *     @center: coordinates of the center of an ellipse
+ *     @radiusX, @radiusY: horizontal and vertical radii, respectively
+ *     @a: color/alpha transparency of the ellipse line/shape
+ *     @fill: renders a solid shape if true, line if false.
+ */
 EllipseDrawing::EllipseDrawing(
                 MediaLayer_Drawing_Renderer* renderer, 
                 Drawing::Point center, 
                 int radiusX, int radiusY,
                 Drawing::Color color,
                 bool fill):
-  Drawing(renderer),
+  Drawing(renderer, color),
   _center(center),
   _radius_x(radiusX), 
   _radius_y(radiusY),
-  _color(color),
   _fill_shape(fill)
 {
 }
 
+/** Destructor
+ */
 EllipseDrawing::~EllipseDrawing()
 {
 }
 
-// Renders ellipse to screen
+/** public function: render()
+ *  Renders ellipse to screen.
+ */
 bool EllipseDrawing::render()
 {
     return _drawing_renderer->render_ellipse(
@@ -51,22 +67,26 @@ bool EllipseDrawing::render()
                 _fill_shape);
 }
 
+/** public function: center
+ *  Returns the coordinates of the center of the ellipse.
+ */
 Drawing::Point EllipseDrawing::center()
 {
     return _center;
 }
 
+/** public function: radius_x
+ *  Returns the horizontal radius of the ellipse.
+ */
 int EllipseDrawing::radius_x()
 {
     return _radius_x;
 }
 
+/** public function: radius_y
+ *  Returns the vertical radius of the ellipse.
+ */
 int EllipseDrawing::radius_y()
 {
     return _radius_y;
-}
-
-Drawing::Color EllipseDrawing::color()
-{
-    return _color;
 }

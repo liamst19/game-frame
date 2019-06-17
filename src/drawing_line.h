@@ -1,5 +1,5 @@
 /** drawing_line.h
- * 
+ *  Object for rendering line to screen.
  */
 
 #ifndef DRAWING_LINE_H
@@ -13,25 +13,33 @@ class LineDrawing: public Drawing
 
 public:
 
-    LineDrawing(MediaLayer_Drawing_Renderer* renderer, int aX, int aY, int bX, int bY, int r, int g, int b, int alpha);
+    // Constructor
+    LineDrawing(MediaLayer_Drawing_Renderer* renderer, 
+        int aX, int aY, 
+        int bX, int bY, 
+        int r, int g, int b, int alpha);
 
-    LineDrawing(MediaLayer_Drawing_Renderer* renderer, Drawing::Point a, Drawing::Point b, Drawing::Color color);
+    // Constructor
+    LineDrawing(MediaLayer_Drawing_Renderer* renderer, 
+        Drawing::Point a, 
+        Drawing::Point b, 
+        Drawing::Color color);
 
+    // Destructor
     ~LineDrawing();
 
     // Renders line to screen
     bool render() override;
 
+    // End point of line ab
     Drawing::Point a();
 
+    // End point of line ab
     Drawing::Point b();
-
-    Drawing::Color color();
 
 private:
 
     Drawing::Point _point_a, _point_b;
-    Drawing::Color _color;
 
 };
 #endif

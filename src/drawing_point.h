@@ -1,5 +1,5 @@
 /** drawing_point.h
- * 
+ *  Class for rendering single pixel to screen.
  */
 
 #ifndef DRAWING_POINT_H
@@ -13,10 +13,17 @@ class PointDrawing: public Drawing
 
 public:
 
-    PointDrawing(MediaLayer_Drawing_Renderer* renderer, int x, int y, int r, int g, int b, int alpha);
+    // Constructor
+    PointDrawing(MediaLayer_Drawing_Renderer* renderer, 
+        int x, int y, 
+        int r, int g, int b, int alpha);
 
-    PointDrawing(MediaLayer_Drawing_Renderer* renderer, Drawing::Point coordinates, Drawing::Color color);
+    // Constructor
+    PointDrawing(MediaLayer_Drawing_Renderer* renderer, 
+        Drawing::Point coordinates, 
+        Drawing::Color color);
 
+    // Destructor
     ~PointDrawing();
 
     // Renders point to screen
@@ -31,14 +38,10 @@ public:
     // Y-coordinate of the point
     int y();
 
-    // Render color of the point
-    Drawing::Color color();
-
 private:
 
     Drawing::Point _point_coordinates;
 
-    Drawing::Color _point_color;
 
 };
 #endif

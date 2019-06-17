@@ -1,7 +1,5 @@
 /** game.h
- *
  * Game entry point.
- * 
  */
 
 #ifndef GAME_H
@@ -16,6 +14,7 @@ class Game{
 
 public:
 
+    // Constructor
     Game(std::string game_title, 
          MediaLayer* media_layer,
          int window_width,
@@ -27,6 +26,7 @@ public:
     {
     };
 
+    // Destructor
     ~Game(){};
 
     // Initializes Game
