@@ -1,5 +1,10 @@
 /** drawing_ellipse.h
  *  Class for rendering ellipse to screen
+ * 
+ *  Possible future plans:
+ *   - Line thickness
+ *   - Non-axis-aligned ellipses
+ * 
  */
 
 #ifndef DRAWING_ELLIPSE_H
@@ -44,7 +49,7 @@ public:
 
 private:
 
-    Drawing::Point _center;
+    Drawing::Point _center; // _focus_a, _focus_b;
 
     int _radius_x, _radius_y;
 

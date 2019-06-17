@@ -261,10 +261,12 @@ bool MediaLayer_SDL::_create_renderer()
 void MediaLayer_SDL::_render_objects()
 {
     DrawingFactory factory{&_drawing_renderer};
-    LineDrawing line = factory.getLine(10, 10, 450, 250, 255, 0, 255, 255);
+    LineDrawing line = factory.getLine(100, 100, 350, 250, 255, 255, 255, 255);
     line.render();
-    EllipseDrawing circle = factory.getCircle(250, 300, 100, 0, 255, 255, 255, true);
+    EllipseDrawing circle = factory.getCircle(250, 300, 50, 0, 255, 255, 255, true);
     circle.render();
-    RectangleDrawing rect = factory.getRectangle(300, 250, 500, 500, 255, 0, 120, 150, true);
+    EllipseDrawing circle2 = factory.getCircle(400, 300, 50, 0, 255, 0, 255, false);
+    circle2.render();
+    RectangleDrawing rect = factory.getRectangle(250, 300, 300, 100, 255, 0, 120, 150, true);
     rect.render();
 }

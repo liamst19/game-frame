@@ -31,10 +31,10 @@ public:
             int r, int g, int b, int alpha, 
             int thickness = 1);
 
-    // Render rectangle outline
+    // Render rectangle
     bool render_rectangle(
-            int aX, int aY, 
-            int w, int h, 
+            int x1, int y1, 
+            int x2, int y2, 
             int r, int g, int b, int alpha, 
             bool fill = false);
 
@@ -60,9 +60,33 @@ private:
     // Free Resources
     void free();
 
+    // Sets color and blendmode
+    int _set_color(int r, int g, int b, int alpha);
+
     // For rendering ellipse
     int _ellipse_adjust_overscan(int rxi, int ryi);
-    int _draw_quadrants(int x, int y, int rX, int rY, bool fill = false);
+    int _ellipse_draw_quadrants(int x, int y, int rX, int rY, bool fill = false);
+    int _ellipse_draw_segment_1(
+            int& error,
+            int& deltaX, int& deltaY, 
+            int& scrX, int& scrY,
+            int& curX, int& curY, int& oldX, int& oldY,
+            int x, int y,
+            int rx2, int ry2, int rx22, int ry22,
+            int ellipseOverscan,
+            bool fill
+    );
+    int _ellipse_draw_segment_2(
+            int& error,
+            int& deltaX, int& deltaY, 
+            int& scrX, int& scrY,
+            int& curX, int& curY, int& oldX, int& oldY,
+            int x, int y,
+            int rx2, int ry2, int rx22, int ry22,
+            int ellipseOverscan,
+            bool fill
+    );
+
 
 };
 #endif

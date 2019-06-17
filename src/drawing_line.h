@@ -1,5 +1,12 @@
 /** drawing_line.h
  *  Object for rendering line to screen.
+ * 
+ *  Currently this renders only a straight line of 1px thickness.
+ * 
+ *  Possibile future plans:
+ *   - thickness
+ *   - option for drawing curved line
+ * 
  */
 
 #ifndef DRAWING_LINE_H

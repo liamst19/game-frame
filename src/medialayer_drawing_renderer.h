@@ -25,10 +25,10 @@ public:
             int r, int g, int b, int alpha, 
             int thickness =1)=0;
 
-    // Render rectangle outline
+    // Render rectangle
     virtual bool render_rectangle(
-            int aX, int aY, 
-            int bX, int bY, 
+            int x1, int y1, 
+            int x2, int y2, 
             int r, int g, int b, int alpha, 
             bool fill = false)=0;
 

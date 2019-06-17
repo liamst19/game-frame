@@ -1,5 +1,10 @@
 /** drawing_rectangle.h
  *  Class for rendering rectangle to screen.
+ * 
+ *  Possible future plans:
+ *   - Line thickness
+ *   - Rounded corners
+ * 
  */
 
 #ifndef DRAWING_RECTANGLE_H

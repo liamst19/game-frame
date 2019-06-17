@@ -1,6 +1,6 @@
 /** drawing_point.h
  *  Class for rendering single pixel to screen.
- */
+  */
 
 #ifndef DRAWING_POINT_H
 #define DRAWING_POINT_H
@@ -41,7 +41,6 @@ public:
 private:
 
     Drawing::Point _point_coordinates;
-
 
 };
 #endif
