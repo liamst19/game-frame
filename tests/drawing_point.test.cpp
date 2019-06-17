@@ -48,5 +48,4 @@ namespace
         ASSERT_TRUE(point.render());   
     }
 
-
 }

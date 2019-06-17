@@ -26,3 +26,24 @@ LineDrawing DrawingFactory::getLine(int aX, int aY, int bX, int bY, int r, int g
     LineDrawing line{_drawing_renderer, aX, aY, bX, bY, r, g, b, alpha};
     return line;
 }
+
+EllipseDrawing DrawingFactory::getEllipse(
+                int x, int y, 
+                int radiusX, int radiusY, 
+                int r, int g, int b, int alpha,
+                bool fill)
+{
+    EllipseDrawing ellipse{_drawing_renderer, x, y, radiusX, radiusY, r, g, b, alpha, fill};
+    return ellipse;
+}
+
+EllipseDrawing DrawingFactory::getCircle(
+                int x, int y, 
+                int radius, 
+                int r, int g, int b, int alpha,
+                bool fill)
+{
+    EllipseDrawing ellipse{_drawing_renderer, x, y, radius, radius, r, g, b, alpha, fill};
+    return ellipse;
+}
+

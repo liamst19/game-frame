@@ -20,19 +20,37 @@ public:
     bool initialize(SDL_Renderer* renderer, SDL_Window* window);
 
     // Render point
-    bool render_point(int x, int y, int r, int g, int b, int alpha);
+    bool render_point(
+            int x, int y, 
+            int r, int g, int b, int alpha);
 
     // Render line
-    bool render_line(int aX, int aY, int bX, int bY, int r, int g, int b, int alpha, int thickness = 1);
+    bool render_line(
+            int aX, int aY, 
+            int bX, int bY, 
+            int r, int g, int b, int alpha, 
+            int thickness = 1);
 
     // Render rectangle outline
-    bool render_rectangle(int aX, int aY, int w, int h, int r, int g, int b, int alpha, bool fill = false);
+    bool render_rectangle(
+            int aX, int aY, 
+            int w, int h, 
+            int r, int g, int b, int alpha, 
+            bool fill = false);
 
     // Render circle
-    bool render_circle(int centerX, int centerY, int radius, int r, int g, int b, int alpha, bool fill = false);
+    bool render_circle(
+            int centerX, int centerY, 
+            int radius, 
+            int r, int g, int b, int alpha, 
+            bool fill = false);
 
     // Render ellipse
-    bool render_ellipse(int aX, int aY, int bX, int bY, int r, int g, int b, int alpha, bool fill = false);
+    bool render_ellipse(
+            int aX, int aY, 
+            int radiusX, int radiusY, 
+            int r, int g, int b, int alpha, 
+            bool fill = false);
 
 private:
 
@@ -41,6 +59,10 @@ private:
 
     // Free Resources
     void free();
+
+    // For rendering ellipse
+    int _ellipse_adjust_overscan(int rxi, int ryi);
+    int _draw_quadrants(int x, int y, int rX, int rY, bool fill = false);
 
 };
 #endif

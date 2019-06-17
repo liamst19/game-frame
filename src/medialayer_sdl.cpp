@@ -11,6 +11,7 @@
 #include "medialayer_sdl_drawing_renderer.h"
 #include "drawing_factory.h" 
 #include "drawing_point.h"
+#include "drawing_ellipse.h"
 
 // #include "medialayer_sdl_texture_drawing.h"
 // #include "drawing.h"
@@ -262,6 +263,8 @@ void MediaLayer_SDL::render_objects()
     DrawingFactory factory{&_drawing_renderer};
     LineDrawing line = factory.getLine(10, 10, 450, 250, 255, 0, 255, 255);
     line.render();
+    EllipseDrawing circle = factory.getCircle(250, 300, 100, 0, 255, 255, 255, false);
+    circle.render();
 
 // Iterate through drawings and render
 //    for(auto drawing: _drawings)
