@@ -49,6 +49,7 @@ void MediaLayer_SDL_Texture::free()
 {
     // Free texture
     if(_texture != nullptr){
+        SDL_Log("Destroying Texture");
         SDL_DestroyTexture(_texture);
         _texture = nullptr;
         _width = 0;
@@ -74,6 +75,13 @@ void MediaLayer_SDL_Texture::render(int x,
                                     SDL_Point* center, 
                                     SDL_RendererFlip flip)
 {
+    int result = 0;
+    
+    if(!_texture)
+    {
+        SDL_Log("No texture");
+        return;
+    }
 
     // Set rendering space
     SDL_Rect render_quad{x, y, _width, _height};
@@ -85,13 +93,16 @@ void MediaLayer_SDL_Texture::render(int x,
     }
 
     //Render
-    SDL_RenderCopyEx(_renderer, 
-                     _texture, 
-                     clip, 
-                     &render_quad, 
-                     angle, 
-                     center, 
-                     flip);
+    result = SDL_RenderCopyEx(_renderer, 
+                              _texture, 
+                              clip, 
+                              &render_quad, 
+                              angle, 
+                              center, 
+                              flip);
+    if(result != 0){
+        SDL_Log("%s", SDL_GetError());
+    }
 }
 
 /** function: width()

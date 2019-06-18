@@ -68,6 +68,14 @@ void MediaLayer_SDL_Texture_Text::load_text(std::string text, int size, SDL_Colo
 	_color = color;
 }
 
+/** public function: text()
+ * 
+ */
+std::string MediaLayer_SDL_Texture_Text::text()
+{
+	return _text;
+}
+
 bool MediaLayer_SDL_Texture_Text::load()
 {
 	//Get rid of preexisting texture
@@ -84,7 +92,7 @@ bool MediaLayer_SDL_Texture_Text::load()
 	//Render text surface
 	SDL_Surface* text_surface = TTF_RenderText_Solid(_font, _text.c_str(), _color);
 
-	if(text_surface == nullptr)
+	if(!text_surface)
 	{
 		SDL_Log( "Unable to render text surface. SDL_ttf Error: %s\n", TTF_GetError() );
 	}
@@ -93,7 +101,7 @@ bool MediaLayer_SDL_Texture_Text::load()
 		//Create texture from surface pixels
         _texture = SDL_CreateTextureFromSurface(_renderer, text_surface);
 
-		if(_texture == nullptr)
+		if(!_texture)
 		{
 			SDL_Log( "Unable to create texture from rendered text. SDL Error: %s\n", SDL_GetError() );
 		}

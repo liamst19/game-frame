@@ -38,7 +38,7 @@ public:
     // Virtual Methods
 
     // Render drawing to screen 
-    virtual bool render() =0;
+    virtual bool render()=0;
  
     // --------------------------------------------------
 

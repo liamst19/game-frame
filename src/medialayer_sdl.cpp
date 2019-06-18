@@ -10,7 +10,9 @@
 #include "SDL_ttf.h"
 #include "SDL_image.h"
 
+#include "medialayer_drawing_renderer.h"
 #include "medialayer_sdl_drawing_renderer.h"
+#include "drawing.h"
 #include "drawing_factory.h" 
 #include "drawing_point.h"
 #include "drawing_line.h"
@@ -20,6 +22,63 @@
 
 // #include "medialayer_sdl_texture_drawing.h"
 // #include "drawing.h"
+
+
+// --------------------------------------------------
+// Testing ------------------------------------------
+
+/** private function _test_init()
+ *  Initializing Test objects
+ */
+bool MediaLayer_SDL::_test_init()
+{
+
+    // Initialize texture: text
+
+    if(_text_texture1.initialize(_renderer, _window))
+    {
+        _text_texture1.set_font_source_path(_font_univers);
+        _text_texture1.load_text("amamamanan", 80, SDL_Color{255, 255, 255, 255});
+        _text_texture1.load();
+    }
+    else
+    {
+        // something went wrong
+        return false;
+    }
+
+    if(_text_texture2.initialize(_renderer, _window))
+    {
+        _text_texture2.set_font_source_path(_font_lucon);
+        _text_texture2.load_text(
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+                16, SDL_Color{255, 255, 255, 255});
+        _text_texture2.load();
+    }
+    else
+    {
+        // something went wrong
+        return false;
+    }
+
+    return true;
+}
+
+/** private function: _test_render()
+ *  Render Test objects
+ */
+void MediaLayer_SDL::_test_render()
+{
+    // Text
+    _text_texture1.render(_window_width/2 - _text_texture1.width()/2, 20);
+
+    // Drawing
+    _drawing_renderer.render_line(50, 50, 450, 367, 255, 255, 255, 255);
+    _drawing_renderer.render_line(70, 50, 550, 667, 255, 255, 255, 255, 5);
+    _drawing_renderer.render_ellipse(500, 100, 100, 50, 100, 150, 0, 100, true);
+
+    _text_texture2.render(50, 100);
+}
 
 // --------------------------------------------------
 // Public
@@ -58,19 +117,16 @@ bool MediaLayer_SDL::initialize()
         return false;
     }
 
-    // Testing --------------------------------------------------
-    _drawing_renderer.initialize(_renderer, _window);
-
-    // Initialize texture: text
-    if(_text_texture.initialize(_renderer, _window))
+    // Initialize Drawing Renderer
+    if(!_drawing_renderer.initialize(_renderer, _window))
     {
-        _text_texture.set_font_source_path(_font_src);
-        _text_texture.load_text(_title, 80, SDL_Color{255, 255, 255, 255});
-        _text_texture.load();
+        return false;
     }
-    else
+
+    // Testing --------------------------------------------------
+    if(!_test_init())
     {
-        // something went wrong
+        SDL_Log("Tests failed to initialize");
         return false;
     }
     // ----------------------------------------------------------
@@ -111,7 +167,9 @@ bool MediaLayer_SDL::initialize(std::string title, int window_width, int window_
  */
 void MediaLayer_SDL::shutdown()
 {
-    // _drawing_texture.free();
+    _text_texture1.free();
+    _text_texture2.free();
+
     SDL_DestroyRenderer(_renderer);
     _renderer = nullptr;
     SDL_DestroyWindow(_window);
@@ -156,6 +214,14 @@ void MediaLayer_SDL::generate_output()
     // --------------------------------------------------
     
     SDL_RenderPresent(_renderer);
+}
+
+/** public function: get_drawing_renderer()
+ *  Gets drawing renderer
+ */
+MediaLayer_Drawing_Renderer* MediaLayer_SDL::get_drawing_renderer()
+{
+    return &_drawing_renderer;
 }
 
 /* function: delta_time()
@@ -286,16 +352,7 @@ bool MediaLayer_SDL::_create_renderer()
  */
 void MediaLayer_SDL::_render_objects()
 {
-    DrawingFactory factory{&_drawing_renderer};
-    LineDrawing line = factory.getLine(100, 100, 350, 250, 255, 255, 255, 255);
-    line.render();
-    EllipseDrawing circle = factory.getCircle(250, 300, 50, 0, 255, 255, 255, true);
-    circle.render();
-    EllipseDrawing circle2 = factory.getCircle(400, 300, 50, 0, 255, 0, 255, false);
-    circle2.render();
-    RectangleDrawing rect = factory.getRectangle(250, 300, 300, 100, 255, 0, 120, 150, true);
-    rect.render();
-
-    // Text
-    _text_texture.render(50, 150);
+    // Tests --------------
+    _test_render();
+    // --------------------    
 }

@@ -10,6 +10,7 @@
 
 #include <vector>
 #include <string>
+#include "medialayer_drawing_renderer.h"
 
 // Keyboard inputs and window events
 enum class Medialayer_Key_Code{
@@ -79,6 +80,9 @@ public:
 
     // Calculates delta time
     virtual double get_delta_time() =0;
+
+    // Get pointer to drawing renderer
+    virtual MediaLayer_Drawing_Renderer* get_drawing_renderer() =0;
 
     // --------------------------------------------------
 

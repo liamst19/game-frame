@@ -33,3 +33,11 @@ Drawing::Color Drawing::color()
 {
     return _color;
 }
+
+// /** public function: render()
+//  *  
+//  */
+// bool Drawing::render()
+// {
+//     return false;
+// }

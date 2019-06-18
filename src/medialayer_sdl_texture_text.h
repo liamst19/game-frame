@@ -37,6 +37,8 @@ class MediaLayer_SDL_Texture_Text: public MediaLayer_SDL_Texture{
     // Creates image from font string, with color
     void load_text(std::string text, int size, SDL_Color color);
 
+    std::string text();
+
 private:
 
     std::string _font_source_path;

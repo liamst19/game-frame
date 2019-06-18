@@ -12,8 +12,11 @@
 #include <SDL2/SDL.h> // hopefully this is contained
 
 #include "medialayer.h"
+#include "medialayer_drawing_renderer.h"
 #include "medialayer_sdl_drawing_renderer.h"
 #include "medialayer_sdl_texture_text.h"
+
+#include "drawing.h"
 
 class MediaLayer_SDL: public MediaLayer{
 
@@ -54,6 +57,8 @@ public:
     // Calculates delta time
     double get_delta_time() override;
 
+    MediaLayer_Drawing_Renderer* get_drawing_renderer() override;
+
 private:
 
     SDL_Window* _window;        // Window created by SDL 
@@ -63,8 +68,12 @@ private:
     MediaLayer_SDL_Drawing_Renderer _drawing_renderer;
 
     // For Testing ----------------------------
-    const std::string _font_src{"data/Univers-Extended.ttf"};
-    MediaLayer_SDL_Texture_Text _text_texture;
+    const std::string _font_univers{"data/Univers-Extended.ttf"};
+    const std::string _font_lucon{"data/lucon.ttf"};
+    MediaLayer_SDL_Texture_Text _text_texture1, _text_texture2;
+
+    bool _test_init();
+    void _test_render();
     // ----------------------------------------
 
     // ----------------------------------------
