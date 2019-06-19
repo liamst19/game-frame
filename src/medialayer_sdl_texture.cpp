@@ -49,7 +49,6 @@ void MediaLayer_SDL_Texture::free()
 {
     // Free texture
     if(_texture != nullptr){
-        SDL_Log("Destroying Texture");
         SDL_DestroyTexture(_texture);
         _texture = nullptr;
         _width = 0;

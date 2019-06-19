@@ -4,6 +4,7 @@
 
 #include "medialayer_sdl.h"
 
+#include <iostream>
 #include <vector>
 #include <string>
 #include <SDL2/SDL.h>
@@ -32,13 +33,14 @@
  */
 bool MediaLayer_SDL::_test_init()
 {
+    std::cout << "Initializing SDL Tests" << std::endl;
 
     // Initialize texture: text
-
+    std::cout << "Initializing Text1 test" << std::endl;
     if(_text_texture1.initialize(_renderer, _window))
     {
-        _text_texture1.set_font_source_path(_font_univers);
-        _text_texture1.load_text("amamamanan", 80, SDL_Color{255, 255, 255, 255});
+        _text_texture1.set_font(_font_univers, 80, SDL_Color{255, 255, 255, 255});
+        _text_texture1.load_text("amamamanan");
         _text_texture1.load();
     }
     else
@@ -47,12 +49,11 @@ bool MediaLayer_SDL::_test_init()
         return false;
     }
 
+    std::cout << "Initializing Text2 test" << std::endl;
     if(_text_texture2.initialize(_renderer, _window))
     {
-        _text_texture2.set_font_source_path(_font_lucon);
-        _text_texture2.load_text(
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-                16, SDL_Color{255, 255, 255, 255});
+        _text_texture2.set_font(_font_lucon, 16, SDL_Color{255, 255, 255, 255});
+        _text_texture2.load_text("Lorem ipsum dolor sit amet, consectetur adipiscing elit");
         _text_texture2.load();
     }
     else
@@ -77,7 +78,7 @@ void MediaLayer_SDL::_test_render()
     _drawing_renderer.render_line(70, 50, 550, 667, 255, 255, 255, 255, 5);
     _drawing_renderer.render_ellipse(500, 100, 100, 50, 100, 150, 0, 100, true);
 
-    _text_texture2.render(50, 100);
+     _text_texture2.render(50, 100);
 }
 
 // --------------------------------------------------
