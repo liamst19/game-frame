@@ -1,15 +1,15 @@
-/** drawing.h
+/** drawing_element.h
  * Drawing object represents an image of a single object.
  * It should contain various simple drawing elements that make up the image.
  */
 
-#ifndef DRAWING_H
-#define DRAWING_H
+#ifndef DRAWING_ELEMENT_H
+#define DRAWING_ELEMENT_H
 
 #include <vector>
 #include "medialayer_drawing_renderer.h"
 
-class Drawing{
+class DrawingElement{
 
 public:
 
@@ -28,11 +28,11 @@ public:
     };
 
     // Constructor
-    Drawing(MediaLayer_Drawing_Renderer* drawing_renderer,
+    DrawingElement(MediaLayer_Drawing_Renderer* drawing_renderer,
         Color color);
 
     // Destructor
-    ~Drawing();
+    ~DrawingElement();
 
     // --------------------------------------------------
     // Virtual Methods
@@ -43,14 +43,14 @@ public:
     // --------------------------------------------------
 
     // Render color of the drawing
-    Drawing::Color color();
+    DrawingElement::Color color();
 
  protected:
 
     // Pointer to object which handles screen output.
     MediaLayer_Drawing_Renderer* _drawing_renderer;
 
-    Drawing::Color _color;
+    DrawingElement::Color _color;
 
 };
 

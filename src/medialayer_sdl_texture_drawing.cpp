@@ -12,7 +12,7 @@
 #include <SDL2/SDL.h>
 #include <vector>
 
-#include "drawing.h"
+#include "drawing_element.h"
 
 /** Constructor
  * 
@@ -90,7 +90,7 @@ bool MediaLayer_SDL_Texture_Drawing::load()
 //        // render_drawing(drawing);
 //        // Render all the points in the drawing
 
-//        for(Drawing::Point point: drawing.drawing())
+//        for(DrawingElement::Point point: drawing.drawing())
 //        {
 //            // Set Color
 //            SDL_SetRenderDrawColor(_renderer,
@@ -117,7 +117,7 @@ bool MediaLayer_SDL_Texture_Drawing::load()
 // void MediaLayer_SDL_Texture_Drawing::render_drawing(Drawing drawing)
 // {
 //     // Render all the points in the drawing 
-//     for(Drawing::Point point: drawing.drawing())
+//     for(DrawingElement::Point point: drawing.drawing())
 //     {
 //         render_point(point);
 //     }
@@ -126,7 +126,7 @@ bool MediaLayer_SDL_Texture_Drawing::load()
 // /** function: render_point()
 //  * 
 //  */
-// void MediaLayer_SDL_Texture_Drawing::render_point(Drawing::Point point)
+// void MediaLayer_SDL_Texture_Drawing::render_point(DrawingElement::Point point)
 // {
 //         // Set Color
 //         SDL_SetRenderDrawColor(_renderer,

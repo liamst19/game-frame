@@ -4,7 +4,7 @@
 
 #include "drawing_polygon.h"
 
-#include "drawing.h"
+#include "drawing_element.h"
 #include "medialayer_drawing_renderer.h"
 
 /** Constructor
@@ -16,7 +16,7 @@ PolygonDrawing::PolygonDrawing(
     MediaLayer_Drawing_Renderer* renderer, 
     int r, int g, int b, int alpha,
     bool fill):
-  Drawing(renderer, Drawing::Color{r, g, b, alpha}),
+  DrawingElement(renderer, DrawingElement::Color{r, g, b, alpha}),
   _fill_shape(fill)
 {
 }
@@ -28,9 +28,9 @@ PolygonDrawing::PolygonDrawing(
  */
 PolygonDrawing::PolygonDrawing(
     MediaLayer_Drawing_Renderer* renderer, 
-    Drawing::Color color,
+    DrawingElement::Color color,
     bool fill):
-  Drawing(renderer, color),
+  DrawingElement(renderer, color),
   _fill_shape(fill)
 {
 }

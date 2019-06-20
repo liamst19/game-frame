@@ -5,7 +5,7 @@
 #include <vector>
 #include "gtest/gtest.h"
 #include "../src/drawing_factory.h"
-#include "../src/drawing.h"
+#include "../src/drawing_element.h"
 
 #include "../src/drawing_point.h"
 #include "../src/drawing_line.h"

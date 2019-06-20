@@ -6,7 +6,7 @@
 #include "gtest/gtest.h"
 
 #include "../src/drawing_point.h"
-#include "../src/drawing.h"
+#include "../src/drawing_element.h"
 
 #include "mocks/medialayer_mock_drawing_renderer.hpp"
 
@@ -29,8 +29,8 @@ namespace
     TEST(Drawing_Point, Constructor_Structs)
     {
         MediaLayer_Mock_Drawing_Renderer renderer;
-        Drawing::Point crd{29, 57};
-        Drawing::Color color{1, 2, 3, 4};
+        DrawingElement::Point crd{29, 57};
+        DrawingElement::Color color{1, 2, 3, 4};
         PointDrawing point{&renderer, crd, color};
 
         ASSERT_EQ(29, point.x());
@@ -44,7 +44,7 @@ namespace
     TEST(Drawing_Point, Render)
     {
         MediaLayer_Mock_Drawing_Renderer renderer;
-        PointDrawing point(&renderer, Drawing::Point{100, 100}, Drawing::Color{256, 256, 256, 0});
+        PointDrawing point(&renderer, DrawingElement::Point{100, 100}, DrawingElement::Color{256, 256, 256, 0});
         ASSERT_TRUE(point.render());   
     }
 

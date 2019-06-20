@@ -1,8 +1,8 @@
-/** drawing.cpp
+/** drawing_element.cpp
  *  Abstract class for rendering points, shapes, 
  *  and lines to screen.
  */
-#include "drawing.h"
+#include "drawing_element.h"
 
 #include <vector>
 #include "math.h"
@@ -12,8 +12,8 @@
 /** Constructor
  *    @renderer: Pointer to object handling screen output.
  */
-Drawing::Drawing(MediaLayer_Drawing_Renderer* renderer,
-    Drawing::Color color):
+DrawingElement::DrawingElement(MediaLayer_Drawing_Renderer* renderer,
+    DrawingElement::Color color):
  _drawing_renderer(renderer),
  _color(color)
 {
@@ -21,7 +21,7 @@ Drawing::Drawing(MediaLayer_Drawing_Renderer* renderer,
 
 /** Destructor
  */
-Drawing::~Drawing()
+DrawingElement::~DrawingElement()
 {
     _drawing_renderer = nullptr;
 }
@@ -29,7 +29,7 @@ Drawing::~Drawing()
 /** public function: color()
  *  Color and alpha transparency values of the drawing. 
  */
-Drawing::Color Drawing::color()
+DrawingElement::Color DrawingElement::color()
 {
     return _color;
 }
@@ -37,7 +37,7 @@ Drawing::Color Drawing::color()
 // /** public function: render()
 //  *  
 //  */
-// bool Drawing::render()
+// bool DrawingElement::render()
 // {
 //     return false;
 // }

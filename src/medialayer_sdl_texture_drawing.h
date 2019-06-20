@@ -1,4 +1,4 @@
-/** medialayer_sdl_texture_drawing.h
+/** medialayer_sdl_texture_drawing_element.h
  * 
  *  SDL texture wrapper class for rendering vector shapes
  */
@@ -10,7 +10,7 @@
 #include <vector>
 
 #include "medialayer_sdl_texture.h"
-#include "drawing.h"
+#include "drawing_element.h"
 
 class MediaLayer_SDL_Texture_Drawing: public MediaLayer_SDL_Texture{
 
@@ -36,7 +36,7 @@ private:
 //    void render_drawing(Drawing drawing);
 
 //    // Renders individual point to texture
-//    void render_point(Drawing::Point point);
+//    void render_point(DrawingElement::Point point);
 
 };
 

@@ -13,7 +13,7 @@
 
 #include "medialayer_drawing_renderer.h"
 #include "medialayer_sdl_drawing_renderer.h"
-#include "drawing.h"
+#include "drawing_element.h"
 #include "drawing_factory.h" 
 #include "drawing_point.h"
 #include "drawing_line.h"
@@ -21,8 +21,8 @@
 #include "drawing_rectangle.h"
 // #include "drawing_polygon.h"
 
-// #include "medialayer_sdl_texture_drawing.h"
-// #include "drawing.h"
+// #include "medialayer_sdl_texture_drawing_element.h"
+// #include "drawing_element.h"
 
 
 // --------------------------------------------------

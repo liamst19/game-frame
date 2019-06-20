@@ -3,7 +3,7 @@
  */
 
 #include "drawing_point.h"
-#include "drawing.h"
+#include "drawing_element.h"
 
 #include "medialayer_drawing_renderer.h"
 
@@ -15,8 +15,8 @@
 PointDrawing::PointDrawing(MediaLayer_Drawing_Renderer* renderer,
     int x, int y, 
     int r, int g, int b, int alpha):
-  Drawing(renderer, Drawing::Color{r, g, b, alpha}),                           
-  _point_coordinates(Drawing::Point{x, y})
+  DrawingElement(renderer, DrawingElement::Color{r, g, b, alpha}),                           
+  _point_coordinates(DrawingElement::Point{x, y})
 {
 }
 
@@ -26,9 +26,9 @@ PointDrawing::PointDrawing(MediaLayer_Drawing_Renderer* renderer,
  *    @color: Color and alpha transparency values.
  */
 PointDrawing::PointDrawing(MediaLayer_Drawing_Renderer* renderer,
-    Drawing::Point coordinates,
-    Drawing::Color color):
-  Drawing(renderer, color),                           
+    DrawingElement::Point coordinates,
+    DrawingElement::Color color):
+  DrawingElement(renderer, color),                           
   _point_coordinates(coordinates)
 {
 }                           
@@ -53,7 +53,7 @@ bool PointDrawing::render()
 /** public function: coordinates()
  *  Coordinates of the pixel
  */
-Drawing::Point PointDrawing::coordinates()
+DrawingElement::Point PointDrawing::coordinates()
 {
     return _point_coordinates;
 }

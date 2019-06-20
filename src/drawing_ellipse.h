@@ -10,10 +10,10 @@
 #ifndef DRAWING_ELLIPSE_H
 #define DRAWING_ELLIPSE_H
 
-#include "drawing.h"
+#include "drawing_element.h"
 #include "medialayer_drawing_renderer.h"
 
-class EllipseDrawing: public Drawing
+class EllipseDrawing: public DrawingElement
 {
 
 public:
@@ -27,9 +27,9 @@ public:
 
     // Constructor
     EllipseDrawing(MediaLayer_Drawing_Renderer* renderer, 
-                   Drawing::Point a, 
+                   DrawingElement::Point a, 
                    int radiusX, int radiusY,
-                   Drawing::Color color,
+                   DrawingElement::Color color,
                    bool fill = false);
 
     // Destructor
@@ -39,7 +39,7 @@ public:
     bool render() override;
 
     // Center of ellipse
-    Drawing::Point center();
+    DrawingElement::Point center();
 
     // Horizontal radius
     int radius_x();
@@ -49,7 +49,7 @@ public:
 
 private:
 
-    Drawing::Point _center; // _focus_a, _focus_b;
+    DrawingElement::Point _center; // _focus_a, _focus_b;
 
     int _radius_x, _radius_y;
 

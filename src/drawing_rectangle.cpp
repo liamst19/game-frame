@@ -4,7 +4,7 @@
 
 #include "drawing_rectangle.h"
 
-#include "drawing.h"
+#include "drawing_element.h"
 #include "medialayer_drawing_renderer.h"
 
 /** Constructor
@@ -19,9 +19,9 @@ RectangleDrawing::RectangleDrawing(
     int bX, int bY, 
     int r, int g, int b, int alpha,
     bool fill):
-  Drawing(renderer, Drawing::Color{r, g, b, alpha}),
-  _point_a(Drawing::Point{aX, aY}),
-  _point_b(Drawing::Point{bX, bY}),
+  DrawingElement(renderer, DrawingElement::Color{r, g, b, alpha}),
+  _point_a(DrawingElement::Point{aX, aY}),
+  _point_b(DrawingElement::Point{bX, bY}),
   _fill_shape(fill)
 {
 }
@@ -34,11 +34,11 @@ RectangleDrawing::RectangleDrawing(
  */
 RectangleDrawing::RectangleDrawing(
     MediaLayer_Drawing_Renderer* renderer, 
-    Drawing::Point a, 
-    Drawing::Point b, 
-    Drawing::Color color,
+    DrawingElement::Point a, 
+    DrawingElement::Point b, 
+    DrawingElement::Color color,
     bool fill):
-  Drawing(renderer, color),
+  DrawingElement(renderer, color),
   _point_a(a),
   _point_b(b),
   _fill_shape(fill)
@@ -67,7 +67,7 @@ bool RectangleDrawing::render()
 /** public function: a()
  *  Coordinates of a vertice of the rectangle
  */
-Drawing::Point RectangleDrawing::a()
+DrawingElement::Point RectangleDrawing::a()
 {
     return _point_a;
 }
@@ -75,7 +75,7 @@ Drawing::Point RectangleDrawing::a()
 /** public function: b()
  *  Coordinates of a vertice of the rectangle
  */
-Drawing::Point RectangleDrawing::b()
+DrawingElement::Point RectangleDrawing::b()
 {
     return _point_b;
 }
