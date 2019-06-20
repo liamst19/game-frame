@@ -20,7 +20,7 @@ public:
 
     // Constructor
     PointDrawing(MediaLayer_Drawing_Renderer* renderer, 
-        DrawingElement::Point coordinates, 
+        DrawingElement::Position coordinates, 
         DrawingElement::Color color);
 
     // Destructor
@@ -30,7 +30,7 @@ public:
     bool render() override;
 
     // Coordinates of the point
-    DrawingElement::Point coordinates();
+    DrawingElement::Position coordinates();
 
     // X-coordinate of the point
     int x();
@@ -40,7 +40,7 @@ public:
 
 private:
 
-    DrawingElement::Point _point_coordinates;
+    DrawingElement::Position _point_coordinates;
 
 };
 #endif

@@ -5,6 +5,8 @@
 #ifndef UI_ELEMENT_H
 #define UI_ELEMENT_H
 
+#include "drawing_element.h"
+
 class UIElement{
 public:
 
@@ -17,6 +19,8 @@ public:
     virtual void render()=0;
 
 private:
+
+    DrawingElement::Position _position;
 
 };
 #endif

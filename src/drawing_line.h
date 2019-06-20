@@ -28,8 +28,8 @@ public:
 
     // Constructor
     LineDrawing(MediaLayer_Drawing_Renderer* renderer, 
-        DrawingElement::Point a, 
-        DrawingElement::Point b, 
+        DrawingElement::Position a, 
+        DrawingElement::Position b, 
         DrawingElement::Color color);
 
     // Destructor
@@ -39,14 +39,14 @@ public:
     bool render() override;
 
     // End point of line ab
-    DrawingElement::Point a();
+    DrawingElement::Position a();
 
     // End point of line ab
-    DrawingElement::Point b();
+    DrawingElement::Position b();
 
 private:
 
-    DrawingElement::Point _point_a, _point_b;
+    DrawingElement::Position _point_a, _point_b;
 
 };
 #endif

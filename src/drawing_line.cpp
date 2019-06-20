@@ -16,8 +16,8 @@ LineDrawing::LineDrawing(MediaLayer_Drawing_Renderer* renderer,
     int bX, int bY, 
     int r, int g, int b, int alpha):
   DrawingElement(renderer, DrawingElement::Color{r, g, b, alpha}),
-  _point_a(DrawingElement::Point{aX, aY}),
-  _point_b(DrawingElement::Point{bX, bY})
+  _point_a(DrawingElement::Position{aX, aY}),
+  _point_b(DrawingElement::Position{bX, bY})
 {
 }
 
@@ -27,8 +27,8 @@ LineDrawing::LineDrawing(MediaLayer_Drawing_Renderer* renderer,
  *    @r, @g, @b, @alpha: Color and alpha transparency values.
  */
 LineDrawing::LineDrawing(MediaLayer_Drawing_Renderer* renderer, 
-    DrawingElement::Point a, 
-    DrawingElement::Point b, 
+    DrawingElement::Position a, 
+    DrawingElement::Position b, 
     DrawingElement::Color color):
   DrawingElement(renderer, color),
   _point_a(a),
@@ -57,7 +57,7 @@ bool LineDrawing::render()
 /** public function: a()
  *  End point of line ab.
  */
-DrawingElement::Point LineDrawing::a()
+DrawingElement::Position LineDrawing::a()
 {
     return _point_a;
 }
@@ -65,7 +65,7 @@ DrawingElement::Point LineDrawing::a()
 /** public function: b()
  *  End point of line ab.
  */
-DrawingElement::Point LineDrawing::b()
+DrawingElement::Position LineDrawing::b()
 {
     return _point_b;
 }

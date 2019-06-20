@@ -31,8 +31,8 @@ namespace
     TEST(Drawing_Line, Constructor_Structs)
     {
         MediaLayer_Mock_Drawing_Renderer renderer;
-        DrawingElement::Point a{29, 57};
-        DrawingElement::Point b{55, 107};
+        DrawingElement::Position a{29, 57};
+        DrawingElement::Position b{55, 107};
         DrawingElement::Color color{1, 2, 3, 4};
         LineDrawing line{&renderer, a, b, color};
 
@@ -50,8 +50,8 @@ namespace
     {
         MediaLayer_Mock_Drawing_Renderer renderer;
         LineDrawing line(&renderer, 
-                         DrawingElement::Point{100, 100}, 
-                         DrawingElement::Point{500, 500}, 
+                         DrawingElement::Position{100, 100}, 
+                         DrawingElement::Position{500, 500}, 
                          DrawingElement::Color{256, 256, 256, 0});
         ASSERT_TRUE(line.render());   
     }

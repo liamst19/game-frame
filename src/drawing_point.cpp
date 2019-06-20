@@ -16,7 +16,7 @@ PointDrawing::PointDrawing(MediaLayer_Drawing_Renderer* renderer,
     int x, int y, 
     int r, int g, int b, int alpha):
   DrawingElement(renderer, DrawingElement::Color{r, g, b, alpha}),                           
-  _point_coordinates(DrawingElement::Point{x, y})
+  _point_coordinates(DrawingElement::Position{x, y})
 {
 }
 
@@ -26,7 +26,7 @@ PointDrawing::PointDrawing(MediaLayer_Drawing_Renderer* renderer,
  *    @color: Color and alpha transparency values.
  */
 PointDrawing::PointDrawing(MediaLayer_Drawing_Renderer* renderer,
-    DrawingElement::Point coordinates,
+    DrawingElement::Position coordinates,
     DrawingElement::Color color):
   DrawingElement(renderer, color),                           
   _point_coordinates(coordinates)
@@ -53,7 +53,7 @@ bool PointDrawing::render()
 /** public function: coordinates()
  *  Coordinates of the pixel
  */
-DrawingElement::Point PointDrawing::coordinates()
+DrawingElement::Position PointDrawing::coordinates()
 {
     return _point_coordinates;
 }

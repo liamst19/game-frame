@@ -22,7 +22,7 @@ public:
     };
 
     // Represents x and y-coordinates and color of a point.
-    struct Point
+    struct Position
     {
         int x, y;
     };

@@ -22,7 +22,7 @@ namespace{
 //        Drawing drawing;
 //        drawing.draw_line(0, 0, 50, 50);
 
-//        std::vector<DrawingElement::Point> points = drawing.drawing();
+//        std::vector<DrawingElement::Position> points = drawing.drawing();
 //        EXPECT_EQ(50, points.size());
 //        EXPECT_EQ(2, points.at(2).y);
 //    }

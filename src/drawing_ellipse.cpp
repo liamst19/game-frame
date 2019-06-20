@@ -21,7 +21,7 @@ EllipseDrawing::EllipseDrawing(
                 int r, int g, int b, int alpha,
                 bool fill):
   DrawingElement(renderer, DrawingElement::Color{r, g, b, alpha}),
-  _center(DrawingElement::Point{x, y}),
+  _center(DrawingElement::Position{x, y}),
   _radius_x(radiusX), 
   _radius_y(radiusY),
   _fill_shape(fill)
@@ -37,7 +37,7 @@ EllipseDrawing::EllipseDrawing(
  */
 EllipseDrawing::EllipseDrawing(
                 MediaLayer_Drawing_Renderer* renderer, 
-                DrawingElement::Point center, 
+                DrawingElement::Position center, 
                 int radiusX, int radiusY,
                 DrawingElement::Color color,
                 bool fill):
@@ -70,7 +70,7 @@ bool EllipseDrawing::render()
 /** public function: center
  *  Returns the coordinates of the center of the ellipse.
  */
-DrawingElement::Point EllipseDrawing::center()
+DrawingElement::Position EllipseDrawing::center()
 {
     return _center;
 }

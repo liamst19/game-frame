@@ -20,8 +20,8 @@ RectangleDrawing::RectangleDrawing(
     int r, int g, int b, int alpha,
     bool fill):
   DrawingElement(renderer, DrawingElement::Color{r, g, b, alpha}),
-  _point_a(DrawingElement::Point{aX, aY}),
-  _point_b(DrawingElement::Point{bX, bY}),
+  _point_a(DrawingElement::Position{aX, aY}),
+  _point_b(DrawingElement::Position{bX, bY}),
   _fill_shape(fill)
 {
 }
@@ -34,8 +34,8 @@ RectangleDrawing::RectangleDrawing(
  */
 RectangleDrawing::RectangleDrawing(
     MediaLayer_Drawing_Renderer* renderer, 
-    DrawingElement::Point a, 
-    DrawingElement::Point b, 
+    DrawingElement::Position a, 
+    DrawingElement::Position b, 
     DrawingElement::Color color,
     bool fill):
   DrawingElement(renderer, color),
@@ -67,7 +67,7 @@ bool RectangleDrawing::render()
 /** public function: a()
  *  Coordinates of a vertice of the rectangle
  */
-DrawingElement::Point RectangleDrawing::a()
+DrawingElement::Position RectangleDrawing::a()
 {
     return _point_a;
 }
@@ -75,7 +75,7 @@ DrawingElement::Point RectangleDrawing::a()
 /** public function: b()
  *  Coordinates of a vertice of the rectangle
  */
-DrawingElement::Point RectangleDrawing::b()
+DrawingElement::Position RectangleDrawing::b()
 {
     return _point_b;
 }

@@ -29,7 +29,7 @@ namespace
     TEST(Drawing_Point, Constructor_Structs)
     {
         MediaLayer_Mock_Drawing_Renderer renderer;
-        DrawingElement::Point crd{29, 57};
+        DrawingElement::Position crd{29, 57};
         DrawingElement::Color color{1, 2, 3, 4};
         PointDrawing point{&renderer, crd, color};
 
@@ -44,7 +44,7 @@ namespace
     TEST(Drawing_Point, Render)
     {
         MediaLayer_Mock_Drawing_Renderer renderer;
-        PointDrawing point(&renderer, DrawingElement::Point{100, 100}, DrawingElement::Color{256, 256, 256, 0});
+        PointDrawing point(&renderer, DrawingElement::Position{100, 100}, DrawingElement::Color{256, 256, 256, 0});
         ASSERT_TRUE(point.render());   
     }
 

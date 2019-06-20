@@ -27,7 +27,7 @@ public:
 
     // Constructor
     EllipseDrawing(MediaLayer_Drawing_Renderer* renderer, 
-                   DrawingElement::Point a, 
+                   DrawingElement::Position a, 
                    int radiusX, int radiusY,
                    DrawingElement::Color color,
                    bool fill = false);
@@ -39,7 +39,7 @@ public:
     bool render() override;
 
     // Center of ellipse
-    DrawingElement::Point center();
+    DrawingElement::Position center();
 
     // Horizontal radius
     int radius_x();
@@ -49,7 +49,7 @@ public:
 
 private:
 
-    DrawingElement::Point _center; // _focus_a, _focus_b;
+    DrawingElement::Position _center; // _focus_a, _focus_b;
 
     int _radius_x, _radius_y;
 
