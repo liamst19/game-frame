@@ -4,7 +4,7 @@
 
 #include "drawing_ellipse.h"
 
-#include "drawing.h"
+#include "drawing_element.h"
 #include "medialayer_drawing_renderer.h"
 
 /** Constructor
@@ -20,8 +20,8 @@ EllipseDrawing::EllipseDrawing(
                 int radiusX, int radiusY, 
                 int r, int g, int b, int alpha,
                 bool fill):
-  Drawing(renderer, Drawing::Color{r, g, b, alpha}),
-  _center(Drawing::Point{x, y}),
+  DrawingElement(renderer, DrawingElement::Color{r, g, b, alpha}),
+  _center(DrawingElement::Point{x, y}),
   _radius_x(radiusX), 
   _radius_y(radiusY),
   _fill_shape(fill)
@@ -37,11 +37,11 @@ EllipseDrawing::EllipseDrawing(
  */
 EllipseDrawing::EllipseDrawing(
                 MediaLayer_Drawing_Renderer* renderer, 
-                Drawing::Point center, 
+                DrawingElement::Point center, 
                 int radiusX, int radiusY,
-                Drawing::Color color,
+                DrawingElement::Color color,
                 bool fill):
-  Drawing(renderer, color),
+  DrawingElement(renderer, color),
   _center(center),
   _radius_x(radiusX), 
   _radius_y(radiusY),
@@ -70,7 +70,7 @@ bool EllipseDrawing::render()
 /** public function: center
  *  Returns the coordinates of the center of the ellipse.
  */
-Drawing::Point EllipseDrawing::center()
+DrawingElement::Point EllipseDrawing::center()
 {
     return _center;
 }

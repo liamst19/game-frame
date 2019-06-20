@@ -1,10 +1,9 @@
 /** drawing_line.cpp
  *  Object for rendering line to screen.
  */
-
 #include "drawing_line.h"
 
-#include "drawing.h"
+#include "drawing_element.h"
 #include "medialayer_drawing_renderer.h"
 
 /** Constructor
@@ -16,9 +15,9 @@ LineDrawing::LineDrawing(MediaLayer_Drawing_Renderer* renderer,
     int aX, int aY, 
     int bX, int bY, 
     int r, int g, int b, int alpha):
-  Drawing(renderer, Drawing::Color{r, g, b, alpha}),
-  _point_a(Drawing::Point{aX, aY}),
-  _point_b(Drawing::Point{bX, bY})
+  DrawingElement(renderer, DrawingElement::Color{r, g, b, alpha}),
+  _point_a(DrawingElement::Point{aX, aY}),
+  _point_b(DrawingElement::Point{bX, bY})
 {
 }
 
@@ -28,10 +27,10 @@ LineDrawing::LineDrawing(MediaLayer_Drawing_Renderer* renderer,
  *    @r, @g, @b, @alpha: Color and alpha transparency values.
  */
 LineDrawing::LineDrawing(MediaLayer_Drawing_Renderer* renderer, 
-    Drawing::Point a, 
-    Drawing::Point b, 
-    Drawing::Color color):
-  Drawing(renderer, color),
+    DrawingElement::Point a, 
+    DrawingElement::Point b, 
+    DrawingElement::Color color):
+  DrawingElement(renderer, color),
   _point_a(a),
   _point_b(b)
 {
@@ -58,7 +57,7 @@ bool LineDrawing::render()
 /** public function: a()
  *  End point of line ab.
  */
-Drawing::Point LineDrawing::a()
+DrawingElement::Point LineDrawing::a()
 {
     return _point_a;
 }
@@ -66,7 +65,7 @@ Drawing::Point LineDrawing::a()
 /** public function: b()
  *  End point of line ab.
  */
-Drawing::Point LineDrawing::b()
+DrawingElement::Point LineDrawing::b()
 {
     return _point_b;
 }

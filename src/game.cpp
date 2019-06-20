@@ -8,7 +8,7 @@
 #include "game.h"
 #include "randomnumber.h"
 #include "medialayer.h"
-#include "drawing.h"
+#include "drawing_element.h"
 
 /* --------------------------------------------------
 /* Public

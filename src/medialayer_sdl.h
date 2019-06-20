@@ -16,7 +16,7 @@
 #include "medialayer_sdl_drawing_renderer.h"
 #include "medialayer_sdl_texture_text.h"
 
-#include "drawing.h"
+#include "drawing_element.h"
 
 class MediaLayer_SDL: public MediaLayer{
 

@@ -12,10 +12,10 @@
 #ifndef DRAWING_LINE_H
 #define DRAWING_LINE_H
 
-#include "drawing.h"
+#include "drawing_element.h"
 #include "medialayer_drawing_renderer.h"
 
-class LineDrawing: public Drawing
+class LineDrawing: public DrawingElement
 {
 
 public:
@@ -28,9 +28,9 @@ public:
 
     // Constructor
     LineDrawing(MediaLayer_Drawing_Renderer* renderer, 
-        Drawing::Point a, 
-        Drawing::Point b, 
-        Drawing::Color color);
+        DrawingElement::Point a, 
+        DrawingElement::Point b, 
+        DrawingElement::Color color);
 
     // Destructor
     ~LineDrawing();
@@ -39,14 +39,14 @@ public:
     bool render() override;
 
     // End point of line ab
-    Drawing::Point a();
+    DrawingElement::Point a();
 
     // End point of line ab
-    Drawing::Point b();
+    DrawingElement::Point b();
 
 private:
 
-    Drawing::Point _point_a, _point_b;
+    DrawingElement::Point _point_a, _point_b;
 
 };
 #endif

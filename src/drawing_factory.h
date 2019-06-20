@@ -9,7 +9,7 @@
 #define DRAWING_FACTORY_H
 
 #include "medialayer_drawing_renderer.h"
-#include "drawing.h"
+#include "drawing_element.h"
 #include "drawing_point.h"
 #include "drawing_line.h"
 #include "drawing_ellipse.h"

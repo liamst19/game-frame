@@ -10,10 +10,10 @@
 #ifndef DRAWING_RECTANGLE_H
 #define DRAWING_RECTANGLE_H
 
-#include "drawing.h"
+#include "drawing_element.h"
 #include "medialayer_drawing_renderer.h"
 
-class RectangleDrawing: public Drawing
+class RectangleDrawing: public DrawingElement
 {
 
 public:
@@ -29,8 +29,8 @@ public:
     // Constructor
     RectangleDrawing(
         MediaLayer_Drawing_Renderer* renderer, 
-        Drawing::Point a, Drawing::Point b, 
-        Drawing::Color color,
+        DrawingElement::Point a, DrawingElement::Point b, 
+        DrawingElement::Color color,
         bool fill = false);
 
     // Destructor
@@ -40,14 +40,14 @@ public:
     bool render() override;
 
     // Vertice
-    Drawing::Point a();
+    DrawingElement::Point a();
 
     // Vertice
-    Drawing::Point b();
+    DrawingElement::Point b();
 
 private:
 
-    Drawing::Point _point_a, _point_b;
+    DrawingElement::Point _point_a, _point_b;
     bool _fill_shape;
 
 };

@@ -5,10 +5,10 @@
 #ifndef DRAWING_POINT_H
 #define DRAWING_POINT_H
 
-#include "drawing.h"
+#include "drawing_element.h"
 #include "medialayer_drawing_renderer.h"
 
-class PointDrawing: public Drawing
+class PointDrawing: public DrawingElement
 {
 
 public:
@@ -20,8 +20,8 @@ public:
 
     // Constructor
     PointDrawing(MediaLayer_Drawing_Renderer* renderer, 
-        Drawing::Point coordinates, 
-        Drawing::Color color);
+        DrawingElement::Point coordinates, 
+        DrawingElement::Color color);
 
     // Destructor
     ~PointDrawing();
@@ -30,7 +30,7 @@ public:
     bool render() override;
 
     // Coordinates of the point
-    Drawing::Point coordinates();
+    DrawingElement::Point coordinates();
 
     // X-coordinate of the point
     int x();
@@ -40,7 +40,7 @@ public:
 
 private:
 
-    Drawing::Point _point_coordinates;
+    DrawingElement::Point _point_coordinates;
 
 };
 #endif

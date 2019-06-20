@@ -5,10 +5,10 @@
 #ifndef DRAWING_POLYGON_H
 #define DRAWING_POLYGON_H
 
-#include "drawing.h"
+#include "drawing_element.h"
 #include "medialayer_drawing_renderer.h"
 
-class PolygonDrawing: public Drawing
+class PolygonDrawing: public DrawingElement
 {
 
 public:
@@ -20,7 +20,7 @@ public:
 
     // Constructor
     PolygonDrawing(MediaLayer_Drawing_Renderer* renderer, 
-                   Drawing::Color color,
+                   DrawingElement::Color color,
                    bool fill = false);
 
     // Destructor
