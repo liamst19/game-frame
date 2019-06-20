@@ -2,6 +2,9 @@
  * 
  */
 
+#include "ui_element_clock.h"
+#include "ui_element.h"
+
 /** Constructor
  * 
  */
@@ -12,20 +15,21 @@ ClockUI::ClockUI()
 /** Destructor
  * 
  */
-ClockUI::~UI();
-{
-}
-
-/** public function: add_ui_element()
- * 
- */
-ClockUI::void add_ui_element(UIElement element);
+ClockUI::~ClockUI()
 {
 }
 
 /** public function render()
  * 
  */
-ClockUI::void render();
+void ClockUI::update()
+{
+
+}
+
+/** public function render()
+ * 
+ */
+void ClockUI::render()
 {
 }

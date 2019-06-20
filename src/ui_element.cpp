@@ -2,14 +2,10 @@
  * 
  */
 
+#include "ui_element.h"
+
 /** Constructor
  * 
  */
 UIElement::UIElement()
-{}
-
-/** Destructor
- * 
- */
-UIElement::~UIElement();
 {}

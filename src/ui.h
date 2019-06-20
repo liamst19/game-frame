@@ -8,6 +8,8 @@
 #include <vector>
 #include <memory>
 
+#include "ui_element.h"
+
 class UI{
 public:
 
@@ -15,7 +17,7 @@ public:
 
     ~UI();
 
-    void add_ui_element(uielement element);
+    void add_ui_element(std::unique_ptr<UIElement> element);
 
     void render();
 

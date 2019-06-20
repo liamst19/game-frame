@@ -5,6 +5,8 @@
 #ifndef UI_ELEMENT_CLOCK_H
 #define UI_ELEMENT_CLOCK_H
 
+#include "ui_element.h"
+
 class ClockUI : public UIElement{
 public:
 

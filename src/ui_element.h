@@ -10,7 +10,7 @@ public:
 
     UIElement();
 
-    virtual ~UIElement();
+    virtual ~UIElement(){};
 
     virtual void update()=0;
 
