@@ -78,17 +78,44 @@ bool MediaLayer_SDL_Texture_Text::_open_font()
 /** function: set_font_source_path
  * 
  */
-void MediaLayer_SDL_Texture_Text::set_font(std::string source_path, int size, SDL_Color color)
+void MediaLayer_SDL_Texture_Text::set_font(
+			std::string source_path, 
+			int size)
 { 
 	_font_source_path = source_path; 
 	_font_size = size;
-	_color = color;
+}
+
+/** function: set_font_source_path
+ * 
+ */
+void MediaLayer_SDL_Texture_Text::set_font(
+			std::string source_path, 
+			int size, 
+			int r, int g, int b, int alpha)
+{ 
+	_set_font_color(r, g, b, alpha);
+	set_font(source_path, size);
+}
+
+/** private function: set_font_color
+ * 
+ */
+void MediaLayer_SDL_Texture_Text::_set_font_color(
+			int r, int g, int b, int alpha)
+{ 
+	_color = SDL_Color{
+				static_cast<Uint8>(r), 
+				static_cast<Uint8>(g), 
+				static_cast<Uint8>(b), 
+				static_cast<Uint8>(alpha)};
 }
 
 /** function: load_text()
  * 
  */
-void MediaLayer_SDL_Texture_Text::load_text(std::string text)
+void MediaLayer_SDL_Texture_Text::load_text(
+			std::string text)
 {
 	_text = text;
 }
@@ -113,14 +140,14 @@ bool MediaLayer_SDL_Texture_Text::is_dynamic()
  * 
  */
 bool MediaLayer_SDL_Texture_Text::load(
-		std::string text,
-		std::string font_source_path, 
-		int font_size, 
-		SDL_Color font_color)
+			std::string text,
+			std::string font_source_path, 
+			int font_size, 
+			int r, int g, int b, int alpha)
 {
-	set_font(font_source_path, font_size, font_color);
+	set_font(font_source_path, font_size, r, g, b, alpha);
 	load_text(text);
-	load();
+	return load();
 }
 
 /** public function load()

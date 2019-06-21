@@ -78,7 +78,7 @@ bool MediaLayer_SDL_Drawing_Renderer::render_text(
 	MediaLayer_SDL_Texture_Text texture;
 	if(texture.initialize(_renderer, _window))
 	{
-		texture.load(text, font_src, font_size, SDL_Color{r, g, b, alpha});
+		texture.load(text, font_src, font_size, r, g, b, alpha);
 		texture.render(x, y);
 	}
 	else

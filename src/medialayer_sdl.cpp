@@ -39,7 +39,7 @@ bool MediaLayer_SDL::_test_init()
     std::cout << "Initializing Text1 test" << std::endl;
     if(_text_texture1.initialize(_renderer, _window))
     {
-        _text_texture1.load("amamamanan", _font_univers, 80, SDL_Color{255, 255, 255, 255});
+        _text_texture1.load("amamamanan", _font_univers, 80, 255, 255, 255, 255);
     }
     else
     {
@@ -52,7 +52,7 @@ bool MediaLayer_SDL::_test_init()
     {
         _text_texture2.load(
                     "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-                    _font_lucon, 16, SDL_Color{255, 255, 255, 255});
+                    _font_lucon, 16, 255, 255, 255, 255);
     }
     else
     {
