@@ -6,18 +6,18 @@
 #define UI_ELEMENT_CLOCK_H
 
 #include <chrono>
+#include "medialayer.h"
 #include "ui_element.h"
+#include "drawing_text.h"
 
 class ClockUI : public UIElement{
 public:
 
-    ClockUI();
+    ClockUI(MediaLayer* media_layer);
 
     ~ClockUI();
 
-    void update() override;
-
-    void render() override;
+    void update(double delta_time) override;
 
     void reset_clock();
 
@@ -25,11 +25,11 @@ public:
 
     std::chrono::milliseconds duration();
 
-
-
 private:
 
+    MediaLayer* _media_layer;
     std::chrono::time_point<std::chrono::system_clock> _start;
+    TextDrawing _clock_text;
 
 };
 #endif

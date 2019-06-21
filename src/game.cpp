@@ -6,6 +6,8 @@
 #include <memory>
 
 #include "game.h"
+#include "ui.h"
+#include "ui_element_clock.h"
 #include "randomnumber.h"
 #include "medialayer.h"
 #include "drawing_element.h"
@@ -35,6 +37,9 @@ bool Game::initialize()
     initialized = MediaLayer::MediaLayer_Initialize(_game_title, _media_layer, _window_width, _window_height);
 
     // Initialize Game Objects
+
+    // Initialize UI Objects
+    initialized = _ui.initialize();
 
     return initialized;
 }
@@ -130,6 +135,8 @@ void Game::_update_game()
 
     // Update Game Objects
 
+    // Update UI
+    _ui.update(delta_time);
 }
 
 /** private function: _generate_output()
@@ -137,4 +144,4 @@ void Game::_update_game()
 void Game::_generate_output()
 {
     MediaLayer::MediaLayer_GenerateOutput(_media_layer);
- }
+}

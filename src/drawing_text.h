@@ -19,7 +19,7 @@ public:
     // Constructor
     TextDrawing(MediaLayer_Drawing_Renderer* renderer, 
         std::string text,
-        std::string font_src, int fon_size,
+        std::string font_src, int font_size,
         int x, int y, 
         int r, int g, int b, int alpha);
 

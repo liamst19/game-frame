@@ -78,6 +78,9 @@ void MediaLayer_SDL::_test_render()
     _drawing_renderer.render_text("test text", _font_lucon, 20, 300, 300, 150, 0, 255, 255);
 
     _text_texture2.render(50, 100);
+
+    _clock.update(get_delta_time());
+    _clock.render();
 }
 
 // --------------------------------------------------

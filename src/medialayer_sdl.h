@@ -17,6 +17,7 @@
 #include "medialayer_sdl_texture_text.h"
 
 #include "drawing_element.h"
+#include "ui_element_clock.h"
 
 class MediaLayer_SDL: public MediaLayer{
 
@@ -25,7 +26,8 @@ public:
     MediaLayer_SDL(int window_width = 0, int window_height = 0, int window_x = 0, int window_y = 0):
         MediaLayer(window_width, window_height, window_x, window_y),
         _window(nullptr),
-        _renderer(nullptr)
+        _renderer(nullptr),
+        _clock(this)
     {}
 
     ~MediaLayer_SDL(){
@@ -72,6 +74,7 @@ private:
     const std::string _font_univers{"data/Univers-Extended.ttf"};
     const std::string _font_lucon{"data/lucon.ttf"};
     MediaLayer_SDL_Texture_Text _text_texture1, _text_texture2;
+    ClockUI _clock;
 
     bool _test_init();
     void _test_render();

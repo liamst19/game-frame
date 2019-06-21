@@ -9,6 +9,7 @@
 #include <string>
 #include "randomnumber.h"
 #include "medialayer.h"
+#include "ui.h"
 
 class Game{
 
@@ -22,7 +23,8 @@ public:
         _game_title(game_title),
         _media_layer(media_layer),
         _window_width(window_width),
-        _window_height(window_height)
+        _window_height(window_height),
+        _ui(this)
     {
     };
 
@@ -50,6 +52,8 @@ public:
 private:
 
     MediaLayer* _media_layer;
+
+    GameUI _ui;
 
     std::string _game_title;
 

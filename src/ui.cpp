@@ -7,32 +7,56 @@
 #include <memory>
 #include <vector>
 
+#include "game.h"
 #include "ui_element.h"
 
 /** Constructor
- * 
  */
-UI::UI()
+GameUI::GameUI(Game* game):
+    _game(game)
 {}
 
 /** Destructor
- * 
  */
-UI::~UI()
+GameUI::~GameUI()
 {}
 
-/** public function: add_ui_element()
- * 
+/** public function: initialize()
+ * Initialize GameUI
  */
-void UI::add_ui_element(std::unique_ptr<UIElement> element)
+bool GameUI::initialize()
+{
+    return true;
+}
+
+/** public function: add_ui_element()
+ * Adds GameUI element
+ *   @elmeent: GameUI element object
+ */
+void GameUI::add_ui_element(std::unique_ptr<UIElement> element)
 {
     _ui_elements.emplace_back(std::move(element));
 }
 
-/** public function:: render()
- * 
+/** public function: update
+ * Updates GameUI elmeents
+ *   @delta_time: 
  */
-void UI::render()
+void GameUI::update(double delta_time)
 {
+    for(auto& element: _ui_elements)
+    {
+        element->update(delta_time);
+    }
+}
 
+/** public function:: render()
+ * Render GameUI elements
+ */
+void GameUI::render()
+{
+    for(auto& element: _ui_elements)
+    {
+        element->render();
+    }
 }
