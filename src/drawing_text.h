@@ -36,21 +36,28 @@ public:
     // Renders text to screen
     bool render() override;
 
+    // Text content
     std::string text();
 
+    // Set text content
     void set_text(std::string text);
 
+    // Location of font file
     std::string font_src();
 
+    // Set location of font file
     void set_font(std::string source_path, int size);
 
+    // Font size
     int font_size();
 
+    // Set font size
     void set_font_size(int size);
 
-    // End point of line ab
+    // Text position
     DrawingElement::Position position();
 
+    // Set text position
     void set_position(DrawingElement::Position position);
 
 private:

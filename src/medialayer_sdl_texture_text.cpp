@@ -14,7 +14,7 @@
 #include <iostream>
 
 /** Constructor
- * 
+ *	 @dynamic_text: [placeholder] indicates whether text content will update
  */
 MediaLayer_SDL_Texture_Text::MediaLayer_SDL_Texture_Text(bool dynamic_text):
     MediaLayer_SDL_Texture(),
@@ -24,7 +24,6 @@ MediaLayer_SDL_Texture_Text::MediaLayer_SDL_Texture_Text(bool dynamic_text):
 }
 
 /** Destructor
- * 
  */
 MediaLayer_SDL_Texture_Text::~MediaLayer_SDL_Texture_Text()
 {
@@ -32,7 +31,7 @@ MediaLayer_SDL_Texture_Text::~MediaLayer_SDL_Texture_Text()
 }
 
 /** function: free() 
- * 
+ * Frees resources
  */
 void MediaLayer_SDL_Texture_Text::free()
 {
@@ -75,19 +74,24 @@ bool MediaLayer_SDL_Texture_Text::_open_font()
 	return _font != nullptr;	
 }
 
-/** function: set_font_source_path
- * 
+/** function: set_font
+ * Sets font for the text
+ * 	 @source_path: path for the ttf font file
+ *   @font_size: font size
  */
 void MediaLayer_SDL_Texture_Text::set_font(
 			std::string source_path, 
-			int size)
+			int font_size)
 { 
 	_font_source_path = source_path; 
-	_font_size = size;
+	_font_size = font_size;
 }
 
-/** function: set_font_source_path
- * 
+/** function: set_font
+ * Sets font for the text
+ *   @source_path: path for the ttf font file
+ *   @font_size: font size
+ * 	 @r, @g, @b, @alpha: font color and transparency
  */
 void MediaLayer_SDL_Texture_Text::set_font(
 			std::string source_path, 
@@ -99,7 +103,8 @@ void MediaLayer_SDL_Texture_Text::set_font(
 }
 
 /** private function: set_font_color
- * 
+ * Sets font color and transparency
+ * 	 @r, @g, @b, @alpha: Color and transparency
  */
 void MediaLayer_SDL_Texture_Text::_set_font_color(
 			int r, int g, int b, int alpha)
@@ -112,7 +117,8 @@ void MediaLayer_SDL_Texture_Text::_set_font_color(
 }
 
 /** function: load_text()
- * 
+ * Sets text content to be rendered
+ * 	 @text: text content
  */
 void MediaLayer_SDL_Texture_Text::load_text(
 			std::string text)
@@ -121,7 +127,7 @@ void MediaLayer_SDL_Texture_Text::load_text(
 }
 
 /** public function: text()
- * 
+ * Text content to be rendered
  */
 std::string MediaLayer_SDL_Texture_Text::text()
 {
@@ -137,7 +143,10 @@ bool MediaLayer_SDL_Texture_Text::is_dynamic()
 }
 
 /** public function: load() 
- * 
+ * Creates texture and loads text to be rendered to screen
+ * 	@text: text content to be rendered
+ *  @font_source_path, @font_size: Font style and size
+ *  @r, @g, @b, @alpha: Font color and transparency
  */
 bool MediaLayer_SDL_Texture_Text::load(
 			std::string text,
@@ -151,7 +160,7 @@ bool MediaLayer_SDL_Texture_Text::load(
 }
 
 /** public function load()
- * 
+ * Creates Texture to be rendered to screen
  */
 bool MediaLayer_SDL_Texture_Text::load()
 {

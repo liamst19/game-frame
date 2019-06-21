@@ -32,7 +32,7 @@ MediaLayer_SDL_Drawing_Renderer::MediaLayer_SDL_Drawing_Renderer()
  */
 MediaLayer_SDL_Drawing_Renderer::~MediaLayer_SDL_Drawing_Renderer()
 {
-    free(); // Free resources, if any
+    _free(); // Free resources, if any
 }
 
 /** public function: initialize()
@@ -49,10 +49,10 @@ bool MediaLayer_SDL_Drawing_Renderer::initialize(SDL_Renderer* renderer, SDL_Win
 	return true;
 }
 
-/** public function: free()
+/** private function: free()
  *  Frees resources.
  */
-void MediaLayer_SDL_Drawing_Renderer::free()
+void MediaLayer_SDL_Drawing_Renderer::_free()
 {
     _renderer = nullptr;
     _window = nullptr;

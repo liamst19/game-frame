@@ -57,6 +57,7 @@ public:
     // Calculates delta time
     double get_delta_time() override;
 
+    // Pointer to drawing renderer object
     MediaLayer_Drawing_Renderer* get_drawing_renderer() override;
 
 private:

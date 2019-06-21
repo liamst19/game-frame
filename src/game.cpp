@@ -121,7 +121,6 @@ void Game::_process_input()
 }
 
 /** private function: _update_game()
- *  
  */
 void Game::_update_game()
 {
@@ -134,7 +133,6 @@ void Game::_update_game()
 }
 
 /** private function: _generate_output()
- * 
  */
 void Game::_generate_output()
 {

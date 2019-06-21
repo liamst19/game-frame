@@ -83,8 +83,7 @@ void MediaLayer_SDL::_test_render()
 // --------------------------------------------------
 // Public
 
-/* function: initialize()
- * 
+/* public function: initialize()
  */
 bool MediaLayer_SDL::initialize()
 {
@@ -134,8 +133,7 @@ bool MediaLayer_SDL::initialize()
     return true;
 }
 
-/* function: initialize()
- * 
+/* public function: initialize()
  */
 bool MediaLayer_SDL::initialize(std::string title, int window_width, int window_height, int window_x, int window_y)
 {
@@ -154,7 +152,6 @@ bool MediaLayer_SDL::initialize(std::string title, int window_width, int window_
 }
 
 /* function: initialize()
- *
  * Initialize with given window dimensions, position window at the center of screen
  */
 bool MediaLayer_SDL::initialize(std::string title, int window_width, int window_height)
@@ -162,8 +159,7 @@ bool MediaLayer_SDL::initialize(std::string title, int window_width, int window_
     return initialize(title, window_width, window_height, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED);
 }
 
-/* function: shutdown()
- * 
+/* public function: shutdown()
  */
 void MediaLayer_SDL::shutdown()
 {
@@ -178,7 +174,6 @@ void MediaLayer_SDL::shutdown()
 }
 
 /* function: create_window()
- * 
  */
 bool MediaLayer_SDL::create_window()
 {
@@ -198,8 +193,7 @@ bool MediaLayer_SDL::create_window()
     return true;
 }
 
-/* function: generate_output()
- * 
+/* public function: generate_output()
  */
 void MediaLayer_SDL::generate_output()
 {
@@ -224,7 +218,7 @@ MediaLayer_Drawing_Renderer* MediaLayer_SDL::get_drawing_renderer()
     return &_drawing_renderer;
 }
 
-/* function: delta_time()
+/* public function: delta_time()
  * Returns delta time in seconds, used for calculating updated data such as position
  * 
  */
@@ -244,7 +238,7 @@ double MediaLayer_SDL::get_delta_time()
     return delta;
 }
 
-/* function: get_input()
+/* public function: get_input()
  * get keyboard input 
  */
 std::vector<Medialayer_Key_Code> MediaLayer_SDL::get_input()
@@ -274,7 +268,7 @@ std::vector<Medialayer_Key_Code> MediaLayer_SDL::get_input()
 // --------------------------------------------------
 // Private
 
-/** function: _add_key_code()
+/** private function: _add_key_code()
  *  add key_code to vector 
  */
 void MediaLayer_SDL::_add_key_code(std::vector<Medialayer_Key_Code>& key_codes, Medialayer_Key_Code key_code)
@@ -290,7 +284,7 @@ void MediaLayer_SDL::_add_key_code(std::vector<Medialayer_Key_Code>& key_codes, 
     key_codes.push_back(key_code);
 }
 
-/** function: _fill_key_codes()
+/** private function: _fill_key_codes()
  * fill a vector with keyboard inputs
  */
 void MediaLayer_SDL::_fill_key_codes(std::vector<Medialayer_Key_Code>& key_codes)
@@ -325,7 +319,7 @@ void MediaLayer_SDL::_fill_key_codes(std::vector<Medialayer_Key_Code>& key_codes
 
 // -------------------------------------------------------------------
 
-/* function: _create_renderer()
+/* private function: _create_renderer()
  * 
  */
 bool MediaLayer_SDL::_create_renderer()
@@ -347,7 +341,7 @@ bool MediaLayer_SDL::_create_renderer()
     return true;
 }
 
-/* function: _render_objects()
+/* private function: _render_objects()
  *  Render all game objects to window surface
  */
 void MediaLayer_SDL::_render_objects()

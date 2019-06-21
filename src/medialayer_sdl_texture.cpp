@@ -35,6 +35,11 @@ MediaLayer_SDL_Texture::~MediaLayer_SDL_Texture()
     free();
 }
 
+/** public function: initialize()
+ * Sets SDL renderer and window 
+ *   @renderer: SDL renderer
+ *   @window: window context
+ */
 bool MediaLayer_SDL_Texture::initialize(SDL_Renderer* renderer, SDL_Window* window)
 {
     _renderer = renderer;
@@ -43,7 +48,7 @@ bool MediaLayer_SDL_Texture::initialize(SDL_Renderer* renderer, SDL_Window* wind
 }
 
 /** function: free()
- * 
+ * Frees resources
  */
 void MediaLayer_SDL_Texture::free()
 {
@@ -57,7 +62,8 @@ void MediaLayer_SDL_Texture::free()
 }
 
 /** function: set_renderer()
- * 
+ * Set SDL renderer for the texture
+ *   @renderer: SDL renderer
  */
 void MediaLayer_SDL_Texture::set_renderer(SDL_Renderer* renderer)
 {
@@ -65,7 +71,12 @@ void MediaLayer_SDL_Texture::set_renderer(SDL_Renderer* renderer)
 }
 
 /** function: render()
- * 
+ * Render texture to screen
+ *   @x, @y: Position for rendering texture
+ *   @angle: Rotation of texture
+ *   @clip: 
+ *   @center:
+ *   @flip: 
  */
 void MediaLayer_SDL_Texture::render(int x, 
                                     int y, 
@@ -105,7 +116,7 @@ void MediaLayer_SDL_Texture::render(int x,
 }
 
 /** function: width()
- * 
+ * Texture width
  */
 int MediaLayer_SDL_Texture::width()
 {
@@ -113,7 +124,7 @@ int MediaLayer_SDL_Texture::width()
 }
 
 /** function: height()
- * 
+ * Texture height
  */
 int MediaLayer_SDL_Texture::height()
 {
@@ -122,6 +133,7 @@ int MediaLayer_SDL_Texture::height()
 
 /** function: set_color()
  * Modulate texture RGB
+ *   @red, @green, @blue: Colors
  */
 void MediaLayer_SDL_Texture::set_color(Uint8 red, Uint8 green, Uint8 blue)
 {

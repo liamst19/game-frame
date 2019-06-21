@@ -65,7 +65,7 @@ private:
     SDL_Window* _window;
 
     // Free Resources
-    void free();
+    void _free();
 
 };
 #endif
