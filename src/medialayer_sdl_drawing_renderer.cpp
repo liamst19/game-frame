@@ -20,6 +20,8 @@
 #include <SDL2/SDL.h>
 #include "../include/SDL2/SDL2_gfxPrimitives.h"
 
+#include "medialayer_sdl_texture_text.h"
+
 /** Constructor
  */
 MediaLayer_SDL_Drawing_Renderer::MediaLayer_SDL_Drawing_Renderer()
@@ -54,6 +56,38 @@ void MediaLayer_SDL_Drawing_Renderer::free()
 {
     _renderer = nullptr;
     _window = nullptr;
+}
+
+/** public function: render_text
+ * Renders text to screen.
+ *   @text: text to be printed
+ *   @font_src: font source file
+ *   @font_size: font size
+ *   @x, @y, position of the text
+ *   @color: font color
+ */
+bool MediaLayer_SDL_Drawing_Renderer::render_text(
+		std::string text,
+		std::string font_src, int font_size,
+		int x, int y,
+		int r, int g, int b, int alpha)
+{
+	// This renders text to screen, but perhaps inefficient, and so 
+	// should be modified to keep a cache of SDL_Texture pointers
+	// and call render() until text content is changed.
+	MediaLayer_SDL_Texture_Text texture;
+	if(texture.initialize(_renderer, _window))
+	{
+		texture.load(text, font_src, font_size, SDL_Color{r, g, b, alpha});
+		texture.render(x, y);
+	}
+	else
+	{
+		// Initialize failed
+		return false;
+	}
+
+	return true;
 }
 
 /** public function: render_point()

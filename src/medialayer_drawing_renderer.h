@@ -4,6 +4,8 @@
 #ifndef MEDIALAYER_DRAWING_RENDERER_H
 #define MEDIALAYER_DRAWING_RENDERER_H
 
+#include <string>
+
 class MediaLayer_Drawing_Renderer
 {
 
@@ -12,6 +14,13 @@ public:
     MediaLayer_Drawing_Renderer(){}
 
     virtual ~MediaLayer_Drawing_Renderer(){}
+
+    // Render Text
+    virtual bool render_text(
+            std::string text,
+            std::string font_src, int font_size,
+            int x, int y,
+            int r, int g, int b, int alpha)=0;
 
     // Render point
     virtual bool render_point(

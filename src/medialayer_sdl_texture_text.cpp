@@ -109,6 +109,23 @@ bool MediaLayer_SDL_Texture_Text::is_dynamic()
 	return _dynamic_text;
 }
 
+/** public function: load() 
+ * 
+ */
+bool MediaLayer_SDL_Texture_Text::load(
+		std::string text,
+		std::string font_source_path, 
+		int font_size, 
+		SDL_Color font_color)
+{
+	set_font(font_source_path, font_size, font_color);
+	load_text(text);
+	load();
+}
+
+/** public function load()
+ * 
+ */
 bool MediaLayer_SDL_Texture_Text::load()
 {
 	// Free texture

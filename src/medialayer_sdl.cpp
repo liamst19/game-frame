@@ -39,9 +39,7 @@ bool MediaLayer_SDL::_test_init()
     std::cout << "Initializing Text1 test" << std::endl;
     if(_text_texture1.initialize(_renderer, _window))
     {
-        _text_texture1.set_font(_font_univers, 80, SDL_Color{255, 255, 255, 255});
-        _text_texture1.load_text("amamamanan");
-        _text_texture1.load();
+        _text_texture1.load("amamamanan", _font_univers, 80, SDL_Color{255, 255, 255, 255});
     }
     else
     {
@@ -52,9 +50,9 @@ bool MediaLayer_SDL::_test_init()
     std::cout << "Initializing Text2 test" << std::endl;
     if(_text_texture2.initialize(_renderer, _window))
     {
-        _text_texture2.set_font(_font_lucon, 16, SDL_Color{255, 255, 255, 255});
-        _text_texture2.load_text("Lorem ipsum dolor sit amet, consectetur adipiscing elit");
-        _text_texture2.load();
+        _text_texture2.load(
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+                    _font_lucon, 16, SDL_Color{255, 255, 255, 255});
     }
     else
     {
@@ -77,8 +75,9 @@ void MediaLayer_SDL::_test_render()
     _drawing_renderer.render_line(50, 50, 450, 367, 255, 255, 255, 255);
     _drawing_renderer.render_line(70, 50, 550, 667, 255, 255, 255, 255, 5);
     _drawing_renderer.render_ellipse(500, 100, 100, 50, 100, 150, 0, 100, true);
+    _drawing_renderer.render_text("test text", _font_lucon, 20, 300, 300, 150, 0, 255, 255);
 
-     _text_texture2.render(50, 100);
+    _text_texture2.render(50, 100);
 }
 
 // --------------------------------------------------

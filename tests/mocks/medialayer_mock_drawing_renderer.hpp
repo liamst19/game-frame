@@ -17,6 +17,16 @@ public:
 
     virtual ~MediaLayer_Mock_Drawing_Renderer(){}
 
+    // Render Text
+    bool render_text(
+            std::string text,
+            std::string font_src, int font_size,
+            int x, int y,
+            int r, int g, int b, int alpha)
+    {
+        return true;
+    }
+
     // Render point
     virtual bool render_point(int x, int y, int r, int g, int b, int alpha)
     {

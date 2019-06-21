@@ -32,6 +32,9 @@ class MediaLayer_SDL_Texture_Text: public MediaLayer_SDL_Texture{
     // Load texture with text
     bool load() override;
 
+    // Load texture with text
+    bool load(std::string text, std::string font_source_path, int font_size, SDL_Color font_color);
+
     // Indicates whether text will update
     bool is_dynamic();
 
