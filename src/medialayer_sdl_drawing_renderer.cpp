@@ -44,10 +44,8 @@ MediaLayer_SDL_Drawing_Renderer::~MediaLayer_SDL_Drawing_Renderer()
  */
 bool MediaLayer_SDL_Drawing_Renderer::initialize(SDL_Renderer* renderer, SDL_Window* window)
 {
-
 	_renderer = renderer;
-	_window = window;	
-
+	_window = window;
 	return true;
 }
 
@@ -57,7 +55,7 @@ bool MediaLayer_SDL_Drawing_Renderer::initialize(SDL_Renderer* renderer, SDL_Win
 void MediaLayer_SDL_Drawing_Renderer::_free()
 {
     _renderer = nullptr;
-    _window = nullptr;
+	_window = nullptr;
 }
 
 /** private function: _add_texture()
@@ -66,7 +64,6 @@ void MediaLayer_SDL_Drawing_Renderer::_free()
 int MediaLayer_SDL_Drawing_Renderer::_add_texture(std::unique_ptr<MediaLayer_SDL_Texture> texture) 
 {
 	_textures.emplace_back(std::move(texture));
-	SDL_Log("_textures size: %i", _textures.size());
 	return _textures.size() - 1;
 }
 
