@@ -33,14 +33,21 @@ public:
     // Destructor
     ~TextDrawing();
 
+    // Update text
+    void update(
+        std::string text,
+        std::string font_src, int fon_size,
+        DrawingElement::Position position, 
+        DrawingElement::Color color);
+
+    // Set text content
+    void update(std::string text);
+
     // Renders text to screen
     bool render() override;
 
     // Text content
     std::string text();
-
-    // Set text content
-    void set_text(std::string text);
 
     // Location of font file
     std::string font_src();
@@ -59,6 +66,10 @@ public:
 
     // Set text position
     void set_position(DrawingElement::Position position);
+    
+    // Index for referring back to cache of textures.
+    //   -- But is this necessary to be public?
+    int texture_index();
 
 private:
 
@@ -66,6 +77,15 @@ private:
     std::string _font_src;
     int _font_size;
     DrawingElement::Position _position;
+
+    // Index for referring back to cache
+    int _texture_index;
+
+    // Initialize texture in renderer
+    void _initialize_texture();
+
+    // Update texture in renderer
+    void _update_texture();
 
 };
 #endif

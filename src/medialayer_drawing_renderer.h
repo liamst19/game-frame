@@ -15,12 +15,24 @@ public:
 
     virtual ~MediaLayer_Drawing_Renderer(){}
 
-    // Render Text
-    virtual bool render_text(
+    // Initialize texture for rendering text, returns index for reference
+    virtual int initialize_text(
             std::string text,
             std::string font_src, int font_size,
             int x, int y,
             int r, int g, int b, int alpha)=0;
+
+    // Update text of an existing texture
+    virtual bool update_text(
+            int texture_index,
+            std::string text,
+            std::string font_src, int font_size,
+            int r, int g, int b, int alpha)=0;
+
+    // Render Text to screen
+    virtual bool render_text(
+            int texture_index,
+            int x, int y)=0;
 
     // Render point
     virtual bool render_point(

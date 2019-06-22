@@ -17,12 +17,30 @@ public:
 
     virtual ~MediaLayer_Mock_Drawing_Renderer(){}
 
-    // Render Text
-    bool render_text(
+    // Initialize texture for rendering text, returns index for reference
+    int initialize_text(
             std::string text,
             std::string font_src, int font_size,
             int x, int y,
             int r, int g, int b, int alpha)
+    {
+        return 0;
+    }
+
+    // Update text of an existing texture
+    bool update_text(
+            int texture_index,
+            std::string text,
+            std::string font_src, int font_size,
+            int r, int g, int b, int alpha)
+    {
+        return true;
+    }
+
+    // Render Text to screen
+    bool render_text(
+            int texture_index,
+            int x, int y)
     {
         return true;
     }

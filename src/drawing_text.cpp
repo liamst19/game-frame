@@ -23,7 +23,9 @@ TextDrawing::TextDrawing(MediaLayer_Drawing_Renderer* renderer,
     _font_src(font_src),
     _font_size(font_size),
     _position(DrawingElement::Position{x, y})
-{}
+{
+    _initialize_texture();
+}
 
 /** Constructor
  *   @text: Text content
@@ -41,12 +43,55 @@ TextDrawing::TextDrawing(MediaLayer_Drawing_Renderer* renderer,
     _font_src(font_src),
     _font_size(font_size),
     _position(position)
-{}
+{
+    _initialize_texture();
+
+}
 
 /** Destructor 
  */
 TextDrawing::~TextDrawing()
 {}
+
+/** private function: _initialize_texture
+ * Initializes texture in renderer
+ */
+void TextDrawing::_initialize_texture()
+{
+    int index = -1;
+    index = _drawing_renderer->initialize_text(
+                _text,
+                _font_src, _font_size,
+                _position.x, _position.y,
+                _color.r, _color.g, _color.b, _color.alpha);
+
+    if(index > 0)
+    {
+        _texture_index = index;
+    }
+    else
+    {
+        // Something went wrong, throw exception?
+    }
+}
+
+/** private function: _update_texture
+ * Updates texture in renderer
+ */
+void TextDrawing::_update_texture()
+{
+    bool result = false;
+    result = _drawing_renderer->update_text(
+            _texture_index,
+            _text,
+            _font_src, _font_size,
+            _color.r, _color.g, _color.b, _color.alpha);
+
+    if(!result)
+    {
+        // Something went wrong, throw exception?
+    }
+}
 
 /** public function: render()
  * Renders text to screen 
@@ -54,10 +99,8 @@ TextDrawing::~TextDrawing()
 bool TextDrawing::render()
 {
     return _drawing_renderer->render_text(
-            _text,
-            _font_src, _font_size,
-            _position.x, _position.y,
-            _color.r, _color.g, _color.b, _color.alpha);
+            _texture_index,
+            _position.x, _position.y);
 }
 
 /** public function: text()
@@ -68,12 +111,14 @@ std::string TextDrawing::text()
     return _text;
 }
 
-/** public function: set_text()
- * Set text content
+/** public function: update()
+ * update text
  */
-void TextDrawing::set_text(std::string text)
+void TextDrawing::update(std::string text)
 {
     _text = text;
+    bool result = false;
+    _update_texture();
 }
 
 /** public function: font_src()
@@ -127,4 +172,13 @@ DrawingElement::Position TextDrawing::position()
 void TextDrawing::set_position(DrawingElement::Position position)
 {
     _position = position;
+}
+
+/** public function: texture_index
+ * Gets index for referring to cache of textures
+ * stored in the renderer
+ */
+int TextDrawing::texture_index()
+{
+    return _texture_index;
 }

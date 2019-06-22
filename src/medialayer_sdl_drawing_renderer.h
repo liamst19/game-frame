@@ -5,8 +5,11 @@
 #ifndef MEDIALAYER_SDL_DRAWING_RENDERER_H
 #define MEDIALAYER_SDL_DRAWING_RENDERER_H
 
+#include <vector>
+#include <memory>
 #include <SDL2/SDL.h>
 #include "medialayer_drawing_renderer.h"
+#include "medialayer_sdl_texture.h"
 
 class MediaLayer_SDL_Drawing_Renderer: public MediaLayer_Drawing_Renderer
 {
@@ -19,12 +22,24 @@ public:
 
     bool initialize(SDL_Renderer* renderer, SDL_Window* window);
 
-    // Render Text
-    bool render_text(
+    // Initialize texture for rendering text, returns index for reference
+    int initialize_text(
             std::string text,
             std::string font_src, int font_size,
             int x, int y,
-            int r, int g, int b, int alpha) override;
+            int r, int g, int b, int alpha);
+
+    // Update text of an existing texture
+    bool update_text(
+            int texture_index,
+            std::string text,
+            std::string font_src, int font_size,
+            int r, int g, int b, int alpha);
+
+    // Render Text to screen
+    bool render_text(
+            int texture_index,
+            int x, int y);
 
     // Render point
     bool render_point(
@@ -64,8 +79,13 @@ private:
     SDL_Renderer* _renderer;
     SDL_Window* _window;
 
+    std::vector<std::unique_ptr<MediaLayer_SDL_Texture>> _textures;
+
     // Free Resources
     void _free();
+
+    // Adds texture to collection, returns index
+    int _add_texture(std::unique_ptr<MediaLayer_SDL_Texture> texture);
 
 };
 #endif

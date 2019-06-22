@@ -17,6 +17,8 @@
  */
 
 #include "medialayer_sdl_drawing_renderer.h"
+#include <vector>
+#include <memory>
 #include <SDL2/SDL.h>
 #include "../include/SDL2/SDL2_gfxPrimitives.h"
 
@@ -58,6 +60,16 @@ void MediaLayer_SDL_Drawing_Renderer::_free()
     _window = nullptr;
 }
 
+/** private function: _add_texture()
+ * Adds SDL Texture to vector, returns index for reference
+ */
+int MediaLayer_SDL_Drawing_Renderer::_add_texture(std::unique_ptr<MediaLayer_SDL_Texture> texture) 
+{
+	_textures.emplace_back(std::move(texture));
+	SDL_Log("_textures size: %i", _textures.size());
+	return _textures.size() - 1;
+}
+
 /** public function: render_text
  * Renders text to screen.
  *   @text: text to be printed
@@ -66,20 +78,25 @@ void MediaLayer_SDL_Drawing_Renderer::_free()
  *   @x, @y, position of the text
  *   @color: font color
  */
-bool MediaLayer_SDL_Drawing_Renderer::render_text(
+int MediaLayer_SDL_Drawing_Renderer::initialize_text(
 		std::string text,
 		std::string font_src, int font_size,
 		int x, int y,
 		int r, int g, int b, int alpha)
 {
+	int index = -1;
+
 	// This renders text to screen, but perhaps inefficient, and so 
 	// should be modified to keep a cache of SDL_Texture pointers
 	// and call render() until text content is changed.
-	MediaLayer_SDL_Texture_Text texture;
-	if(texture.initialize(_renderer, _window))
+	auto texture = std::make_unique<MediaLayer_SDL_Texture_Text>();
+	if(texture->initialize(_renderer, _window))
 	{
-		texture.load(text, font_src, font_size, r, g, b, alpha);
-		texture.render(x, y);
+		texture->load(text, font_src, font_size, r, g, b, alpha);
+		// texture.render(x, y);
+		index = _add_texture(std::move(texture));
+
+		// Add to vector, get index
 	}
 	else
 	{
@@ -87,7 +104,56 @@ bool MediaLayer_SDL_Drawing_Renderer::render_text(
 		return false;
 	}
 
-	return true;
+	return index;
+}
+
+/** public function: render_text
+ * Renders text to screen.
+ * 	 @texture_index: index from collection of textures
+ *   @text: text to be printed
+ *   @font_src: font source file
+ *   @font_size: font size
+ *   @r, @g, @b, @alpha: Color and transparency
+ */
+bool MediaLayer_SDL_Drawing_Renderer::update_text(
+		int texture_index,
+		std::string text,
+		std::string font_src, int font_size,
+		int r, int g, int b, int alpha)
+{
+	if(texture_index > 0 && texture_index <= _textures.size())
+	{
+		return static_cast<MediaLayer_SDL_Texture_Text*>(_textures[texture_index].get())
+					->load(text, 
+						   font_src, font_size, 
+						   r, g, b, alpha);
+	}
+	else
+	{
+		// Index is out of range.
+		return false;
+	}
+}
+
+/** public function: render_text
+ * Renders text to screen.
+ *   @text_index: index from collection of textures
+ *   @x, @y, position of the text
+ */
+bool MediaLayer_SDL_Drawing_Renderer::render_text(
+		int texture_index,
+		int x, int y)
+{
+	if(texture_index > 0 && texture_index <= _textures.size())
+	{
+		_textures[texture_index].get()->render(x, y);
+		return true;
+	}
+	else
+	{
+		// Index is out of range.
+		return false;
+	}
 }
 
 /** public function: render_point()

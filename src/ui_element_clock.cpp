@@ -46,7 +46,7 @@ void ClockUI::update(double delta_time)
     auto m = std::chrono::duration_cast<std::chrono::minutes>(s); 
     s -= std::chrono::duration_cast<std::chrono::seconds>(m);
     std::string text = std::to_string(m.count()) + ":" + std::to_string(s.count()) + ":" + std::to_string(ms.count());
-    _clock_text.set_text(text);
+    _clock_text.update(text);
 }
 
 /** public function reset_clock()

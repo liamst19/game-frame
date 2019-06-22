@@ -19,6 +19,7 @@
 #include "drawing_line.h"
 #include "drawing_ellipse.h"
 #include "drawing_rectangle.h"
+#include "drawing_text.h"
 // #include "drawing_polygon.h"
 
 // #include "medialayer_sdl_texture_drawing_element.h"
@@ -60,6 +61,15 @@ bool MediaLayer_SDL::_test_init()
         return false;
     }
 
+    _text_index = _drawing_renderer.initialize_text(
+                    "Renderer text rendering",
+                    _font_lucon, 26, 
+                    300, 300,
+                    255, 25, 55, 255);
+    std::cout << "  Renderer text index: " << _text_index << std::endl;
+
+    _clock = std::make_unique<ClockUI>(this);
+
     return true;
 }
 
@@ -75,12 +85,17 @@ void MediaLayer_SDL::_test_render()
     _drawing_renderer.render_line(50, 50, 450, 367, 255, 255, 255, 255);
     _drawing_renderer.render_line(70, 50, 550, 667, 255, 255, 255, 255, 5);
     _drawing_renderer.render_ellipse(500, 100, 100, 50, 100, 150, 0, 100, true);
-    _drawing_renderer.render_text("test text", _font_lucon, 20, 300, 300, 150, 0, 255, 255);
 
     _text_texture2.render(50, 100);
 
-    _clock.update(get_delta_time());
-    _clock.render();
+    _drawing_renderer.update_text(_text_index,
+                "update text renderer", 
+                    _font_lucon, 26, 
+                    255, 25, 55, 255);
+    _drawing_renderer.render_text(_text_index, 300, 300);
+
+    _clock->update(get_delta_time());
+    _clock->render();
 }
 
 // --------------------------------------------------
