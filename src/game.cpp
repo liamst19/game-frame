@@ -11,6 +11,8 @@
 #include "randomnumber.h"
 #include "medialayer.h"
 #include "drawing_element.h"
+#include "drawing_text.h"
+#include "drawing_ellipse.h"
 
 /* --------------------------------------------------
 /* Public
@@ -34,12 +36,37 @@ bool Game::initialize()
     bool initialized = true;
 
     // Initialize Media Layer
-    initialized = MediaLayer::MediaLayer_Initialize(_game_title, _media_layer, _window_width, _window_height);
+    initialized = MediaLayer::MediaLayer_Initialize(
+                                  this,
+                                  _game_title,
+                                  _media_layer,
+                                  _window_width,
+                                  _window_height);
 
     // Initialize Game Objects
 
+    // Add Drawing
+    _drawing.add_drawing_element(std::make_unique<EllipseDrawing>(
+                                _media_layer->get_drawing_renderer(),
+                                200, 200,
+                                100, 100,
+                                100, 255, 175, 150,
+                                true));
+                                                                 
+    _drawing.add_drawing_element(std::make_unique<TextDrawing>(
+                                _media_layer->get_drawing_renderer(),
+                                "Game Study",
+                                _font_univers,
+                                40,
+                                _window_width/2,
+                                _window_height/2,
+                                255, 255, 255, 255));
+
     // Initialize UI Objects
     initialized = _ui.initialize();
+
+    // Add Clock UI Element
+    _ui.add_ui_element(std::make_unique<ClockUI>(_media_layer, 2, 2, 12));
 
     return initialized;
 }
@@ -70,6 +97,21 @@ void Game::shutdown()
         MediaLayer::MediaLayer_Shutdown(_media_layer);
         _media_layer = nullptr;
     }
+}
+
+/** public function: render_objects()
+ * Renders game and UI objects.  This should be called during
+ * MediaLayer's rendering sequence, where screen is cleared and then
+ * new image is blitted to screen.
+ * 
+ */
+void Game::render_objects()
+{
+  // Render Game Objects
+  _drawing.render();
+  
+  // Render UI
+  _ui.render();
 }
 
 /** public function: window_width

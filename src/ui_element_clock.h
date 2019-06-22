@@ -13,23 +13,29 @@
 class ClockUI : public UIElement{
 public:
 
-    ClockUI(MediaLayer* media_layer);
+  // Constructor
+  ClockUI(MediaLayer* media_layer,
+          int x, int y,
+          int font_size);
 
-    ~ClockUI();
+  // Destructor
+  ~ClockUI();
 
-    void update(double delta_time) override;
+  // Update clock text
+  void update(double delta_time) override;
 
-    void reset_clock();
-
-    std::chrono::time_point<std::chrono::system_clock> now();
-
-    std::chrono::milliseconds duration();
+  // Reset Clock
+  void reset_clock();
 
 private:
 
-    MediaLayer* _media_layer;
-    std::chrono::time_point<std::chrono::system_clock> _start;
-    TextDrawing _clock_text;
+  MediaLayer* _media_layer;
+  std::chrono::time_point<std::chrono::system_clock> _start;
+  TextDrawing _clock_text;
+
+  std::chrono::time_point<std::chrono::system_clock> _now();
+
+  std::chrono::milliseconds _duration();
 
 };
 #endif

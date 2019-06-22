@@ -15,12 +15,14 @@
 /** Constructor
  * 
  */
-ClockUI::ClockUI(MediaLayer* media_layer):
+ClockUI::ClockUI(MediaLayer* media_layer,
+                 int x, int y,
+                 int font_size):
     _media_layer(media_layer),
     _clock_text(media_layer->get_drawing_renderer(),
                 "clock",
-                "data/lucon.ttf", 16,
-                200, 400,
+                "data/lucon.ttf", font_size,
+                x, y,
                 255, 255, 255, 255)
 {
     _drawing.add_drawing_element(std::unique_ptr<DrawingElement>(&_clock_text));
@@ -57,18 +59,18 @@ void ClockUI::reset_clock()
     _start = std::chrono::system_clock::now();
 }
 
-/** public function: now()
+/** private function: now()
  * 
  */
-std::chrono::time_point<std::chrono::system_clock> ClockUI::now()
+std::chrono::time_point<std::chrono::system_clock> ClockUI::_now()
 {
     return std::chrono::system_clock::now();
 }
 
-/** public function: duration()
+/** private function: duration()
  * 
  */
-std::chrono::milliseconds ClockUI::duration()
+std::chrono::milliseconds ClockUI::_duration()
 {
-    return std::chrono::duration_cast<std::chrono::milliseconds>(now() - _start);
+    return std::chrono::duration_cast<std::chrono::milliseconds>(_now() - _start);
 }

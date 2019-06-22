@@ -34,7 +34,7 @@ MediaLayer_SDL_Drawing_Renderer::MediaLayer_SDL_Drawing_Renderer()
  */
 MediaLayer_SDL_Drawing_Renderer::~MediaLayer_SDL_Drawing_Renderer()
 {
-    _free(); // Free resources, if any
+  _free(); // Free resources, if any
 }
 
 /** public function: initialize()
@@ -44,9 +44,9 @@ MediaLayer_SDL_Drawing_Renderer::~MediaLayer_SDL_Drawing_Renderer()
  */
 bool MediaLayer_SDL_Drawing_Renderer::initialize(SDL_Renderer* renderer, SDL_Window* window)
 {
-	_renderer = renderer;
-	_window = window;
-	return true;
+  _renderer = renderer;
+  _window = window;
+  return true;
 }
 
 /** private function: free()
@@ -54,8 +54,8 @@ bool MediaLayer_SDL_Drawing_Renderer::initialize(SDL_Renderer* renderer, SDL_Win
  */
 void MediaLayer_SDL_Drawing_Renderer::_free()
 {
-    _renderer = nullptr;
-	_window = nullptr;
+  _renderer = nullptr;
+  _window = nullptr;
 }
 
 /** private function: _add_texture()
@@ -63,8 +63,9 @@ void MediaLayer_SDL_Drawing_Renderer::_free()
  */
 int MediaLayer_SDL_Drawing_Renderer::_add_texture(std::unique_ptr<MediaLayer_SDL_Texture> texture) 
 {
-	_textures.emplace_back(std::move(texture));
-	return _textures.size() - 1;
+  _textures.emplace_back(std::move(texture));
+  int texture_index = _textures.size() - 1;
+  return texture_index;
 }
 
 /** public function: render_text
@@ -76,32 +77,32 @@ int MediaLayer_SDL_Drawing_Renderer::_add_texture(std::unique_ptr<MediaLayer_SDL
  *   @color: font color
  */
 int MediaLayer_SDL_Drawing_Renderer::initialize_text(
-		std::string text,
-		std::string font_src, int font_size,
-		int x, int y,
-		int r, int g, int b, int alpha)
+        std::string text,
+        std::string font_src, int font_size,
+        int x, int y,
+        int r, int g, int b, int alpha)
 {
-	int index = -1;
+  int index = -1;
 
-	// This renders text to screen, but perhaps inefficient, and so 
-	// should be modified to keep a cache of SDL_Texture pointers
-	// and call render() until text content is changed.
-	auto texture = std::make_unique<MediaLayer_SDL_Texture_Text>();
-	if(texture->initialize(_renderer, _window))
-	{
-		texture->load(text, font_src, font_size, r, g, b, alpha);
-		// texture.render(x, y);
-		index = _add_texture(std::move(texture));
+  // This renders text to screen, but perhaps inefficient, and so 
+  // should be modified to keep a cache of SDL_Texture pointers
+  // and call render() until text content is changed.
+  auto texture = std::make_unique<MediaLayer_SDL_Texture_Text>();
+  if(texture->initialize(_renderer, _window))
+    {
+      texture->load(text, font_src, font_size, r, g, b, alpha);
+      // texture.render(x, y);
+      index = _add_texture(std::move(texture));
 
-		// Add to vector, get index
-	}
-	else
-	{
-		// Initialize failed
-		return false;
-	}
+      // Add to vector, get index
+    }
+  else
+    {
+      // Initialize failed
+      return false;
+    }
 
-	return index;
+  return index;
 }
 
 /** public function: render_text
@@ -113,23 +114,23 @@ int MediaLayer_SDL_Drawing_Renderer::initialize_text(
  *   @r, @g, @b, @alpha: Color and transparency
  */
 bool MediaLayer_SDL_Drawing_Renderer::update_text(
-		int texture_index,
-		std::string text,
-		std::string font_src, int font_size,
-		int r, int g, int b, int alpha)
+                                                  int texture_index,
+                                                  std::string text,
+                                                  std::string font_src, int font_size,
+                                                  int r, int g, int b, int alpha)
 {
-	if(texture_index > 0 && texture_index <= _textures.size())
-	{
-		return static_cast<MediaLayer_SDL_Texture_Text*>(_textures[texture_index].get())
-					->load(text, 
-						   font_src, font_size, 
-						   r, g, b, alpha);
-	}
-	else
-	{
-		// Index is out of range.
-		return false;
-	}
+  if(texture_index > 0 && texture_index <= _textures.size())
+    {
+      return static_cast<MediaLayer_SDL_Texture_Text*>(_textures[texture_index].get())
+        ->load(text, 
+               font_src, font_size, 
+               r, g, b, alpha);
+    }
+  else
+    {
+      // Index is out of range.
+      return false;
+    }
 }
 
 /** public function: render_text
@@ -138,19 +139,19 @@ bool MediaLayer_SDL_Drawing_Renderer::update_text(
  *   @x, @y, position of the text
  */
 bool MediaLayer_SDL_Drawing_Renderer::render_text(
-		int texture_index,
-		int x, int y)
+                                                  int texture_index,
+                                                  int x, int y)
 {
-	if(texture_index > 0 && texture_index <= _textures.size())
-	{
-		_textures[texture_index].get()->render(x, y);
-		return true;
-	}
-	else
-	{
-		// Index is out of range.
-		return false;
-	}
+  if(texture_index >= 0 && texture_index <= _textures.size())
+    {
+      textures[texture_index].get()->render(x, y);
+      return true;
+    }
+  else
+    {
+      // Index is out of range.
+      return false;
+    }
 }
 
 /** public function: render_point()
@@ -159,10 +160,10 @@ bool MediaLayer_SDL_Drawing_Renderer::render_text(
  *   @r, @g, @b, @alpha: Color and transparency.
  */
 bool MediaLayer_SDL_Drawing_Renderer::render_point(
-		int x, int y, 
-		int r, int g, int b, int alpha)
+                                                   int x, int y, 
+                                                   int r, int g, int b, int alpha)
 {
-    return pixelRGBA(_renderer, x, y, r, g, b, alpha) == 0;
+  return pixelRGBA(_renderer, x, y, r, g, b, alpha) == 0;
 }
 
 /** public function: render_line()
@@ -172,21 +173,21 @@ bool MediaLayer_SDL_Drawing_Renderer::render_point(
  *   @thickness: Line thickness [To be implemented]
  */
 bool MediaLayer_SDL_Drawing_Renderer::render_line(
-		int aX, int aY, 
-		int bX, int bY, 
-		int r, int g, int b, int alpha, 
-		int thickness)
+                                                  int aX, int aY, 
+                                                  int bX, int bY, 
+                                                  int r, int g, int b, int alpha, 
+                                                  int thickness)
 {
-	int result = 0;
-	if(thickness > 1)
-	{
-		result |= thickLineRGBA(_renderer, aX, aY, bX, bY, thickness, r, g, b, alpha);
-	}
-	else
-	{
-		result |= lineRGBA(_renderer, aX, aY, bX, bY, r, g, b, alpha);
-	}
-	return result == 0;
+  int result = 0;
+  if(thickness > 1)
+    {
+      result |= thickLineRGBA(_renderer, aX, aY, bX, bY, thickness, r, g, b, alpha);
+    }
+  else
+    {
+      result |= lineRGBA(_renderer, aX, aY, bX, bY, r, g, b, alpha);
+    }
+  return result == 0;
 }
 
 /** public function: render_rectangle()
@@ -196,23 +197,23 @@ bool MediaLayer_SDL_Drawing_Renderer::render_line(
  *    @fill: Renders solid shape if true, outline if false.
  */
 bool MediaLayer_SDL_Drawing_Renderer::render_rectangle(
-		int x1, int y1, 
-		int x2, int y2, 
-		int r, int g, int b, int alpha, 
-		bool fill)
+                                                       int x1, int y1, 
+                                                       int x2, int y2, 
+                                                       int r, int g, int b, int alpha, 
+                                                       bool fill)
 {
-	int result = 0;
+  int result = 0;
 
-	if(fill)
-	{
-		result = boxRGBA(_renderer, x1, y1, x2, y2, r, g, b, alpha);
-	}
-	else
-	{
-		result = rectangleRGBA(_renderer, x1, y1, x2, y2, r, g, b, alpha);
-	}
+  if(fill)
+    {
+      result = boxRGBA(_renderer, x1, y1, x2, y2, r, g, b, alpha);
+    }
+  else
+    {
+      result = rectangleRGBA(_renderer, x1, y1, x2, y2, r, g, b, alpha);
+    }
 
-	return result == 0;
+  return result == 0;
 }
 
 /** public function: render_circle()
@@ -223,21 +224,21 @@ bool MediaLayer_SDL_Drawing_Renderer::render_rectangle(
  *   @fill: Renders shape in solid color if true, outline if false.
  */
 bool MediaLayer_SDL_Drawing_Renderer::render_circle(
-			int centerX, int centerY, 
-			int radius, 
-			int r, int g, int b, int alpha, 
-			bool fill)
+                                                    int centerX, int centerY, 
+                                                    int radius, 
+                                                    int r, int g, int b, int alpha, 
+                                                    bool fill)
 {
-	int result = 0;
-	if(fill)
-	{
-		result = filledCircleRGBA(_renderer, centerX, centerY, radius, r, g, b, alpha);
-	}
-	else
-	{
-		result = circleRGBA(_renderer, centerX, centerY, radius, r, g, b, alpha);
-	}
-	return result == 0;
+  int result = 0;
+  if(fill)
+    {
+      result = filledCircleRGBA(_renderer, centerX, centerY, radius, r, g, b, alpha);
+    }
+  else
+    {
+      result = circleRGBA(_renderer, centerX, centerY, radius, r, g, b, alpha);
+    }
+  return result == 0;
 }
 
 /** public function: render_ellipse()
@@ -248,19 +249,19 @@ bool MediaLayer_SDL_Drawing_Renderer::render_circle(
  *   @fill: Renders shape in solid color if true, outline if false.
  */
 bool MediaLayer_SDL_Drawing_Renderer::render_ellipse(
-			int x, int y,
-            int radiusX, int radiusY, 
-			int r, int g, int b, int alpha, 
-			bool fill)
+                                                     int x, int y,
+                                                     int radiusX, int radiusY, 
+                                                     int r, int g, int b, int alpha, 
+                                                     bool fill)
 {
-	int result = 0;
-	if(fill)
-	{
-		result = filledEllipseRGBA(_renderer, x, y, radiusX, radiusY, r, g, b, alpha);
-	}
-	else
-	{
-		result = ellipseRGBA(_renderer, x, y, radiusX, radiusY, r, g, b, alpha);
-	}
-	return result == 0;
+  int result = 0;
+  if(fill)
+    {
+      result = filledEllipseRGBA(_renderer, x, y, radiusX, radiusY, r, g, b, alpha);
+    }
+  else
+    {
+      result = ellipseRGBA(_renderer, x, y, radiusX, radiusY, r, g, b, alpha);
+    }
+  return result == 0;
 }
