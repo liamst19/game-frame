@@ -6,6 +6,9 @@ add_executable(game-test ${TEST_SOURCES})
 
 # Linking library from CMakeLists in ~/src
 target_link_libraries(game-test lib-game) 
+target_link_libraries(game-test lib-medialayer)
+target_link_libraries(game-test lib-ui) 
+target_link_libraries(game-test lib-drawing) 
 
 # ----------------------------------------------------------------------
 # Testing

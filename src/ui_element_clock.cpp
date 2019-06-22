@@ -39,7 +39,14 @@ ClockUI::~ClockUI()
  */
 void ClockUI::update(double delta_time)
 {
-    _clock_text.set_text(std::to_string(duration().count()));
+    std::chrono::time_point<std::chrono::system_clock> now = std::chrono::system_clock::now();
+    std::chrono::milliseconds ms = std::chrono::duration_cast<std::chrono::milliseconds>(now - _start); 
+    auto s = std::chrono::duration_cast<std::chrono::seconds>(ms); 
+    ms -= std::chrono::duration_cast<std::chrono::milliseconds>(s);
+    auto m = std::chrono::duration_cast<std::chrono::minutes>(s); 
+    s -= std::chrono::duration_cast<std::chrono::seconds>(m);
+    std::string text = std::to_string(m.count()) + ":" + std::to_string(s.count()) + ":" + std::to_string(ms.count());
+    _clock_text.set_text(text);
 }
 
 /** public function reset_clock()
