@@ -6,6 +6,7 @@
 #define GAMEOBJECT_TEST_H
 
 #include <string>
+#include "medialayer.h"
 #include "gameobject.h"
 #include "drawing.h"
 
