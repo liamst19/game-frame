@@ -84,17 +84,16 @@ int MediaLayer_SDL_Drawing_Renderer::initialize_text(
 {
   int index = -1;
 
-  // This renders text to screen, but perhaps inefficient, and so 
-  // should be modified to keep a cache of SDL_Texture pointers
-  // and call render() until text content is changed.
+  // Create unique-pointer for adding to vector
   auto texture = std::make_unique<MediaLayer_SDL_Texture_Text>();
+
   if(texture->initialize(_renderer, _window))
     {
+      // Initialize texture
       texture->load(text, font_src, font_size, r, g, b, alpha);
-      // texture.render(x, y);
-      index = _add_texture(std::move(texture));
 
       // Add to vector, get index
+      index = _add_texture(std::move(texture));
     }
   else
     {
@@ -144,7 +143,7 @@ bool MediaLayer_SDL_Drawing_Renderer::render_text(
 {
   if(texture_index >= 0 && texture_index <= _textures.size())
     {
-      textures[texture_index].get()->render(x, y);
+      _textures[texture_index].get()->render(x, y);
       return true;
     }
   else
