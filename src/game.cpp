@@ -176,23 +176,30 @@ int Game::rand(int min, int max)
 void Game::_process_input()
 {
     // Get Device Inputs
-    std::vector<Medialayer_Key_Code> key_codes = MediaLayer::MediaLayer_GetInput(_media_layer);
+    std::vector<MediaLayer_Key_Code> key_codes = MediaLayer::MediaLayer_GetInput(_media_layer);
 
     // Iterate through inputs and do something
     for(auto key: key_codes)
     {
         // Check for exit
-        if(key == Medialayer_Key_Code::quit || key == Medialayer_Key_Code::esc)
+        if(key == MediaLayer_Key_Code::quit || key == MediaLayer_Key_Code::esc)
         {
             // Exit game
             _is_running = false;
             return;
-        } else if(key != Medialayer_Key_Code::null)
+        } else if(key != MediaLayer_Key_Code::null)
         {
             // If key is a valid key, do something (e.g., map key to game action)
 
         }
     }
+
+    // Pass events to game objects.
+    for(auto& obj: _game_objects)
+      {
+        obj->process_input(key_codes);
+      }
+
 }
 
 /** private function: _update_game()

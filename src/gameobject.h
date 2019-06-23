@@ -5,6 +5,9 @@
 #ifndef GAMEOBJECT_H
 #define GAMEOBJECT_H
 
+#include <vector>
+#include "medialayer.h"
+
 class Game;
 
 class GameObject
@@ -20,6 +23,10 @@ class GameObject
 
   // Initialize Game Object
   virtual void init()=0;
+  
+  // Process Input
+  //  ** MediaLayer_Key_Codes should be replaced with vector of Action Codes
+  virtual void process_input(std::vector<MediaLayer_Key_Code> input)=0;
   
   // Update Game Object
   virtual void update(double delta_time)=0;

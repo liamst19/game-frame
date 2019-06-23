@@ -8,6 +8,7 @@
 #include <vector>
 
 #include "game.h"
+#include "medialayer.h"
 #include "gameobject.h"
 #include "ui_element.h"
 
@@ -38,6 +39,14 @@ void GameUI::init()
 void GameUI::add_ui_element(std::unique_ptr<UIElement> element)
 {
     _ui_elements.emplace_back(std::move(element));
+}
+
+/** public function: process_input
+ * Process user input
+ *   @input: collection of keyboard input codes
+ */
+void GameUI::process_input(std::vector<MediaLayer_Key_Code> input)
+{
 }
 
 /** public function: update

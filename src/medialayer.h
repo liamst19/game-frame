@@ -15,7 +15,7 @@
 class Game;
 
 // Keyboard inputs and window events
-enum class Medialayer_Key_Code{
+enum class MediaLayer_Key_Code{
   null=0, // default
   quit,
   esc,
@@ -56,7 +56,7 @@ public:
   static void MediaLayer_Shutdown(MediaLayer* layer);
 
   // Wrapper function for retrieving keyboard input
-  static std::vector<Medialayer_Key_Code> MediaLayer_GetInput(MediaLayer* layer);
+  static std::vector<MediaLayer_Key_Code> MediaLayer_GetInput(MediaLayer* layer);
 
   // Wrapper function for rendering screen
   static void MediaLayer_GenerateOutput(MediaLayer* layer);
@@ -85,7 +85,7 @@ public:
   virtual bool create_window() =0;
 
   // Retrieves input from devices
-  virtual std::vector<Medialayer_Key_Code> get_input() =0;
+  virtual std::vector<MediaLayer_Key_Code> get_input() =0;
 
   // Calculates delta time
   virtual double get_delta_time() =0;

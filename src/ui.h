@@ -9,10 +9,8 @@
 #include <memory>
 
 #include "gameobject.h"
-
+#include "medialayer.h"
 #include "ui_element.h"
-
-class Game;
 
 class GameUI: public GameObject{
 public:
@@ -28,6 +26,9 @@ public:
 
     // Add UI element
     void add_ui_element(std::unique_ptr<UIElement> element);
+
+    // Process User Input
+  void process_input(std::vector<MediaLayer_Key_Code> key_codes);
 
     // Update UI elements
     void update(double delta_time) override;

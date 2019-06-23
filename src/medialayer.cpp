@@ -43,7 +43,7 @@ void MediaLayer::MediaLayer_Shutdown(MediaLayer* layer)
 
 /** function: MediaLayer_GetInput()
  */
-std::vector<Medialayer_Key_Code> MediaLayer::MediaLayer_GetInput(MediaLayer* layer)
+std::vector<MediaLayer_Key_Code> MediaLayer::MediaLayer_GetInput(MediaLayer* layer)
 {
   return layer->get_input();
 }

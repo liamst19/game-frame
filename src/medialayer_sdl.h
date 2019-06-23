@@ -50,7 +50,7 @@ public:
   bool create_window() override;
 
   // Retrieves input (keyboard) from media layer
-  std::vector<Medialayer_Key_Code> get_input() override;
+  std::vector<MediaLayer_Key_Code> get_input() override;
 
   // Renders contents onto screen
   void generate_output() override;
@@ -73,10 +73,10 @@ private:
   // Input
 
   // fill keyboard input
-  void _fill_key_codes(std::vector<Medialayer_Key_Code>& key_codes);
+  void _fill_key_codes(std::vector<MediaLayer_Key_Code>& key_codes);
 
   // add key_code to vector
-  void _add_key_code(std::vector<Medialayer_Key_Code>& key_codes, Medialayer_Key_Code key_code);
+  void _add_key_code(std::vector<MediaLayer_Key_Code>& key_codes, MediaLayer_Key_Code key_code);
 
   // ----------------------------------------
   // Output

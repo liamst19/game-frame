@@ -22,6 +22,9 @@ class TestGameObject: public GameObject
   // Initialize Game Object
   void init() override;
   
+  // Process User Input
+  void process_input(std::vector<MediaLayer_Key_Code> key_codes);
+  
   // Update Game Object
   void update(double delta_time) override;
 

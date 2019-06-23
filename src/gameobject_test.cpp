@@ -7,6 +7,7 @@
 #include <iostream>
 
 #include <memory>
+#include <vector>
 
 #include "game.h"
 #include "medialayer.h"
@@ -49,6 +50,14 @@ void TestGameObject::init()
                                 _game->window_height()/2 - 50,
                                 255, 255, 255, 255));
     // -----------------------------------------------------------
+}
+
+/** public function: process_input
+ * Process user input
+ *   @input: collection of keyboard input codes
+ */
+void TestGameObject::process_input(std::vector<MediaLayer_Key_Code> input)
+{
 }
   
 // Update Game Object
