@@ -11,14 +11,16 @@
 #include <string>
 #include <vector>
 
-class MediaLayer_SDL_Texture{
+namespace SDL{
+
+class Texture{
 
 public:
 
-    MediaLayer_SDL_Texture();
+    Texture();
 
     // Deallocates memory
-    ~MediaLayer_SDL_Texture();
+    ~Texture();
 
     bool initialize(SDL_Renderer* renderer, SDL_Window* window);
 
@@ -67,4 +69,5 @@ protected:
 
 };
 
+} // namespace SDL
 #endif

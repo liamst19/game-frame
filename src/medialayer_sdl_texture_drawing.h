@@ -12,14 +12,16 @@
 #include "medialayer_sdl_texture.h"
 #include "drawing_element.h"
 
-class MediaLayer_SDL_Texture_Drawing: public MediaLayer_SDL_Texture{
+namespace SDL{
+
+class Texture_Drawing: public Texture{
 
 public:
 
-    MediaLayer_SDL_Texture_Drawing();
+    Texture_Drawing();
 
     // Deallocates memory
-    ~MediaLayer_SDL_Texture_Drawing();
+    ~Texture_Drawing();
 
     bool initialize(SDL_Renderer* renderer, SDL_Window* window, int width, int height);
 
@@ -40,6 +42,5 @@ private:
 
 };
 
+} // namespace SDL
 #endif
- 
-

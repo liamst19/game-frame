@@ -12,18 +12,20 @@
 #include <SDL2/SDL_image.h>
 #include <string>
 
+namespace SDL{
+
 /** Constructor
  * 
  */
-MediaLayer_SDL_Texture_Image::MediaLayer_SDL_Texture_Image():
-    MediaLayer_SDL_Texture()
+Texture_Image::Texture_Image():
+    Texture()
 {
 }
 
 /** Destructor
  * 
  */
-MediaLayer_SDL_Texture_Image::~MediaLayer_SDL_Texture_Image()
+Texture_Image::~Texture_Image()
 {
     _source_path = "";
 
@@ -33,15 +35,15 @@ MediaLayer_SDL_Texture_Image::~MediaLayer_SDL_Texture_Image()
 /** function: free()
  * 
  */
-void MediaLayer_SDL_Texture_Image::free()
+void Texture_Image::free()
 {
-    MediaLayer_SDL_Texture::free();
+    Texture::free();
 }
 
 /** function: set_source_path()
  * 
  */
-void MediaLayer_SDL_Texture_Image::set_source_path(std::string path)
+void Texture_Image::set_source_path(std::string path)
 { 
     _source_path = path; 
 }
@@ -49,7 +51,7 @@ void MediaLayer_SDL_Texture_Image::set_source_path(std::string path)
 /** function: load()
  * 
  */
-bool MediaLayer_SDL_Texture_Image::load()
+bool Texture_Image::load()
 {
     free();
 
@@ -94,3 +96,4 @@ bool MediaLayer_SDL_Texture_Image::load()
     return _texture != nullptr;
 }
 
+} // namespace SDL

@@ -18,6 +18,8 @@
 
 #include "game.h"
 
+namespace SDL{
+
 class MediaLayer_SDL: public MediaLayer{
 
 public:
@@ -67,7 +69,7 @@ private:
   SDL_Renderer* _renderer;    // SDL Renderer
   int _sdl_flag{0};           // SDL Flags: I don't know what this is - openGL?
 
-  MediaLayer_SDL_Drawing_Renderer _drawing_renderer;
+  Drawing_Renderer _drawing_renderer;
 
   // ----------------------------------------
   // Input
@@ -86,4 +88,5 @@ private:
 
 };
 
+} // SDL
 #endif

@@ -13,11 +13,13 @@
 #include <string>
 #include <iostream>
 
+namespace SDL{
+
 /** Constructor
  *	 @dynamic_text: [placeholder] indicates whether text content will update
  */
-MediaLayer_SDL_Texture_Text::MediaLayer_SDL_Texture_Text(bool dynamic_text):
-    MediaLayer_SDL_Texture(),
+Texture_Text::Texture_Text(bool dynamic_text):
+    Texture(),
     _font_size(0),
 	_dynamic_text(dynamic_text)
 {
@@ -25,7 +27,7 @@ MediaLayer_SDL_Texture_Text::MediaLayer_SDL_Texture_Text(bool dynamic_text):
 
 /** Destructor
  */
-MediaLayer_SDL_Texture_Text::~MediaLayer_SDL_Texture_Text()
+Texture_Text::~Texture_Text()
 {
 	free();
 }
@@ -33,17 +35,17 @@ MediaLayer_SDL_Texture_Text::~MediaLayer_SDL_Texture_Text()
 /** function: free() 
  * Frees resources
  */
-void MediaLayer_SDL_Texture_Text::free()
+void Texture_Text::free()
 {
 	_free_font();
 
-	MediaLayer_SDL_Texture::free();
+	Texture::free();
 }
 
 /** private function: _free_font()
  *  Deallocates font resource
  */
-void MediaLayer_SDL_Texture_Text::_free_font()
+void Texture_Text::_free_font()
 {
 	if(!_font)
 	{
@@ -55,7 +57,7 @@ void MediaLayer_SDL_Texture_Text::_free_font()
 /** private function: _open_font()
  * 	Opens font resource
  */
-bool MediaLayer_SDL_Texture_Text::_open_font()
+bool Texture_Text::_open_font()
 {
 	// Clear any existing font resources
 	_free_font();
@@ -79,7 +81,7 @@ bool MediaLayer_SDL_Texture_Text::_open_font()
  * 	 @source_path: path for the ttf font file
  *   @font_size: font size
  */
-void MediaLayer_SDL_Texture_Text::set_font(
+void Texture_Text::set_font(
 			std::string source_path, 
 			int font_size)
 { 
@@ -93,7 +95,7 @@ void MediaLayer_SDL_Texture_Text::set_font(
  *   @font_size: font size
  * 	 @r, @g, @b, @alpha: font color and transparency
  */
-void MediaLayer_SDL_Texture_Text::set_font(
+void Texture_Text::set_font(
 			std::string source_path, 
 			int size, 
 			int r, int g, int b, int alpha)
@@ -106,7 +108,7 @@ void MediaLayer_SDL_Texture_Text::set_font(
  * Sets font color and transparency
  * 	 @r, @g, @b, @alpha: Color and transparency
  */
-void MediaLayer_SDL_Texture_Text::_set_font_color(
+void Texture_Text::_set_font_color(
 			int r, int g, int b, int alpha)
 { 
 	_color = SDL_Color{
@@ -120,7 +122,7 @@ void MediaLayer_SDL_Texture_Text::_set_font_color(
  * Sets text content to be rendered
  * 	 @text: text content
  */
-void MediaLayer_SDL_Texture_Text::load_text(
+void Texture_Text::load_text(
 			std::string text)
 {
 	_text = text;
@@ -129,7 +131,7 @@ void MediaLayer_SDL_Texture_Text::load_text(
 /** public function: text()
  * Text content to be rendered
  */
-std::string MediaLayer_SDL_Texture_Text::text()
+std::string Texture_Text::text()
 {
 	return _text;
 }
@@ -137,7 +139,7 @@ std::string MediaLayer_SDL_Texture_Text::text()
 /** public function: is_dynamic()
  *  Indicates whether the text is dynamic, i.e., constantly changes over time.
  */
-bool MediaLayer_SDL_Texture_Text::is_dynamic()
+bool Texture_Text::is_dynamic()
 {
 	return _dynamic_text;
 }
@@ -148,7 +150,7 @@ bool MediaLayer_SDL_Texture_Text::is_dynamic()
  *  @font_source_path, @font_size: Font style and size
  *  @r, @g, @b, @alpha: Font color and transparency
  */
-bool MediaLayer_SDL_Texture_Text::load(
+bool Texture_Text::load(
 			std::string text,
 			std::string font_source_path, 
 			int font_size, 
@@ -162,7 +164,7 @@ bool MediaLayer_SDL_Texture_Text::load(
 /** public function load()
  * Creates Texture to be rendered to screen
  */
-bool MediaLayer_SDL_Texture_Text::load()
+bool Texture_Text::load()
 {
 	// Free texture
 	free();
@@ -208,3 +210,5 @@ bool MediaLayer_SDL_Texture_Text::load()
 	//Return success
 	return _texture != nullptr;
 }
+
+} // namespace SDL

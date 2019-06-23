@@ -15,6 +15,8 @@
 #include "medialayer_sdl_drawing_renderer.h"
 #include "game.h"
 
+namespace SDL{
+
 // --------------------------------------------------
 // Public
 
@@ -22,8 +24,7 @@
  *   @window_width, @window_height: Dimensions of window
  *   @window_x, @window_y: Position where the window will open
  */
-MediaLayer_SDL::MediaLayer_SDL(
-                               int window_width,
+MediaLayer_SDL::MediaLayer_SDL(int window_width,
                                int window_height,
                                int window_x,
                                int window_y):
@@ -296,3 +297,5 @@ bool MediaLayer_SDL::_create_renderer()
 
   return true;
 }
+
+} // SDL

@@ -25,7 +25,7 @@ int main(int argc, char* argv[]){
     const std::string game_title = "Game Study";
 
     // If I wanted to switch between different media layers, here would probably be the best.
-    MediaLayer_SDL media_layer;
+    SDL::MediaLayer_SDL media_layer;
 
     // Create Game Object
     Game game{game_title, 

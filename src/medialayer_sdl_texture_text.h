@@ -14,13 +14,15 @@
 
 #include "medialayer_sdl_texture.h"
 
-class MediaLayer_SDL_Texture_Text: public MediaLayer_SDL_Texture{
+namespace SDL{
+
+class Texture_Text: public Texture{
  
  public:
 
-    MediaLayer_SDL_Texture_Text(bool dynamic_text = false);
+    Texture_Text(bool dynamic_text = false);
 
-    ~MediaLayer_SDL_Texture_Text();
+    ~Texture_Text();
 
     // Deallocates memory
     void free();
@@ -75,5 +77,4 @@ private:
 
 #endif
  
-
-
+} // namespace SDL

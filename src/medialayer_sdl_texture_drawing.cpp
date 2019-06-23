@@ -14,25 +14,27 @@
 
 #include "drawing_element.h"
 
+namespace SDL{
+
 /** Constructor
  * 
  */
-MediaLayer_SDL_Texture_Drawing::MediaLayer_SDL_Texture_Drawing():
-    MediaLayer_SDL_Texture()
+Texture_Drawing::Texture_Drawing():
+    Texture()
 {
 }
 
 /** Destructor
  * 
  */
-MediaLayer_SDL_Texture_Drawing::~MediaLayer_SDL_Texture_Drawing()
+Texture_Drawing::~Texture_Drawing()
 {
     free();
 }
 
-bool MediaLayer_SDL_Texture_Drawing::initialize(SDL_Renderer* renderer, SDL_Window* window, int width, int height)
+bool Texture_Drawing::initialize(SDL_Renderer* renderer, SDL_Window* window, int width, int height)
 {
-    MediaLayer_SDL_Texture::initialize(renderer, window);
+    Texture::initialize(renderer, window);
     _width = width;
     _height = height;
     bool ret_val = load();
@@ -42,15 +44,15 @@ bool MediaLayer_SDL_Texture_Drawing::initialize(SDL_Renderer* renderer, SDL_Wind
 /** function: free()
  * 
  */
-void MediaLayer_SDL_Texture_Drawing::free()
+void Texture_Drawing::free()
 {
-    MediaLayer_SDL_Texture::free();
+    Texture::free();
 }
 
 /** function: load()
  * 
  */
-bool MediaLayer_SDL_Texture_Drawing::load()
+bool Texture_Drawing::load()
 {
     free();
 
@@ -67,7 +69,7 @@ bool MediaLayer_SDL_Texture_Drawing::load()
 // /** function: render()
 //  * 
 //  */
-// void MediaLayer_SDL_Texture_Drawing::render(std::vector<Drawing> drawings, int x, int y)
+// void Texture_Drawing::render(std::vector<Drawing> drawings, int x, int y)
 // {
 //     if(_texture == nullptr)
 //     {
@@ -108,13 +110,13 @@ bool MediaLayer_SDL_Texture_Drawing::load()
 
 //    SDL_Rect destrect{x, y, _width / 2, _height / 2}, srcrect{50, 50, _width / 8, _height / 8};
 //    SDL_RenderCopy(_renderer, _texture, &srcrect, &destrect);
-//    // MediaLayer_SDL_Texture::render(x, y);
+//    // Texture::render(x, y);
 //}
 
 // /** function: render_point()
 //  * 
 //  */
-// void MediaLayer_SDL_Texture_Drawing::render_drawing(Drawing drawing)
+// void Texture_Drawing::render_drawing(Drawing drawing)
 // {
 //     // Render all the points in the drawing 
 //     for(DrawingElement::Position point: drawing.drawing())
@@ -126,7 +128,7 @@ bool MediaLayer_SDL_Texture_Drawing::load()
 // /** function: render_point()
 //  * 
 //  */
-// void MediaLayer_SDL_Texture_Drawing::render_point(DrawingElement::Position point)
+// void Texture_Drawing::render_point(DrawingElement::Position point)
 // {
 //         // Set Color
 //         SDL_SetRenderDrawColor(_renderer,
@@ -136,3 +138,5 @@ bool MediaLayer_SDL_Texture_Drawing::load()
 //                                 point.color.alpha);
 //         SDL_RenderDrawPoint(_renderer, point.x, point.y); 
 // }
+
+} // namespace SDL

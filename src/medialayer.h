@@ -43,28 +43,6 @@ public:
   virtual ~MediaLayer(){};
 
   // --------------------------------------------------
-  // Static Wrapper Functions -------------------------
-
-  // Wrapper function for initializing media layer object
-  static bool MediaLayer_Initialize(Game* game,
-                                    std::string title,
-                                    MediaLayer* layer,
-                                    int window_width,
-                                    int window_height);
-
-  // Wrapper function for shutting down media layer object
-  static void MediaLayer_Shutdown(MediaLayer* layer);
-
-  // Wrapper function for retrieving keyboard input
-  static std::vector<MediaLayer_Key_Code> MediaLayer_GetInput(MediaLayer* layer);
-
-  // Wrapper function for rendering screen
-  static void MediaLayer_GenerateOutput(MediaLayer* layer);
-
-  // Wrapper function for getting delta time
-  static double MediaLayer_GetDeltaTime(MediaLayer* layer);
-
-  // --------------------------------------------------
 
   // Initializes media layer
   virtual bool initialize(Game* game) =0;

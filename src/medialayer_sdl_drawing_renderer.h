@@ -11,14 +11,16 @@
 #include "medialayer_drawing_renderer.h"
 #include "medialayer_sdl_texture.h"
 
-class MediaLayer_SDL_Drawing_Renderer: public MediaLayer_Drawing_Renderer
+namespace SDL{
+
+class Drawing_Renderer: public MediaLayer_Drawing_Renderer
 {
 
 public:
 
-    MediaLayer_SDL_Drawing_Renderer();
+    Drawing_Renderer();
 
-    ~MediaLayer_SDL_Drawing_Renderer();
+    ~Drawing_Renderer();
 
     bool initialize(SDL_Renderer* renderer, SDL_Window* window);
 
@@ -79,13 +81,15 @@ private:
     SDL_Renderer* _renderer;
     SDL_Window* _window;
 
-    std::vector<std::unique_ptr<MediaLayer_SDL_Texture>> _textures;
+    std::vector<std::unique_ptr<Texture>> _textures;
 
     // Free Resources
     void _free();
 
     // Adds texture to collection, returns index
-    int _add_texture(std::unique_ptr<MediaLayer_SDL_Texture> texture);
+    int _add_texture(std::unique_ptr<Texture> texture);
 
 };
+
+} // namespace SDL
 #endif

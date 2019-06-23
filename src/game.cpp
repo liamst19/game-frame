@@ -21,12 +21,12 @@
 // Tests -------------------------------------------------------
 void Game::_test_init()
 {
-    // Test: Add GameObject---------------------------------------
-    add_game_object(std::make_unique<TestGameObject>(this));
-    // -----------------------------------------------------------
-    // Test: Add Clock UI Element --------------------------------
-    _ui.add_ui_element(std::make_unique<ClockUI>(_media_layer, 2, 2, 12));
-    // -----------------------------------------------------------
+  // Test: Add GameObject---------------------------------------
+  add_game_object(std::make_unique<TestGameObject>(this));
+  // -----------------------------------------------------------
+  // Test: Add Clock UI Element --------------------------------
+  _ui.add_ui_element(std::make_unique<ClockUI>(_media_layer, 2, 2, 12));
+  // -----------------------------------------------------------
 }
 
 void Game::_test_update(double delta_time)
@@ -38,44 +38,42 @@ void Game::_test_output()
 }
 
 /* --------------------------------------------------
-/* Public
+   /* Public
 
-/** public function: initialize()
- *  Initializes the game, readying game input/output
- */
+   /** public function: initialize()
+   *  Initializes the game, readying game input/output
+   */
 bool Game::initialize()
 {
-    // Check if Media Layer exists
-    if(_media_layer == nullptr)
+  // Check if Media Layer exists
+  if(_media_layer == nullptr)
     {
-        // throw exception: media layer is not initialized
-        return false;
+      // throw exception: media layer is not initialized
+      return false;
     } else if(_window_width <= 0 || _window_height <= 0)
     {
-        // throw exception: invalid window size
-        return false;
+      // throw exception: invalid window size
+      return false;
     }
 
-    bool initialized = true;
+  bool initialized = true;
 
-    // Initialize Media Layer
-    initialized = MediaLayer::MediaLayer_Initialize(
-                                  this,
-                                  _game_title,
-                                  _media_layer,
-                                  _window_width,
-                                  _window_height);
+  // Initialize Media Layer
+  initialized = _media_layer->initialize(this,
+                                         _game_title,
+                                         _window_width,
+                                         _window_height);
 
-    // Initialize Game Objects
+  // Initialize Game Objects
 
-    // Initialize UI Objects
-    add_game_object(std::unique_ptr<GameUI>(&_ui));
+  // Initialize UI Objects
+  add_game_object(std::unique_ptr<GameUI>(&_ui));
 
-    // Test ------------------------------------------------------
-    _test_init();
-    // -----------------------------------------------------------
+  // Test ------------------------------------------------------
+  _test_init();
+  // -----------------------------------------------------------
 
-    return initialized;
+  return initialized;
 }
 
 /** public function: run_loop()
@@ -83,13 +81,13 @@ bool Game::initialize()
  */
 void Game::run_loop()
 {
-    _is_running = true;
+  _is_running = true;
 
-    while(_is_running)
+  while(_is_running)
     {
-        _process_input();
-        _update_game();
-        _generate_output();
+      _process_input();
+      _update_game();
+      _generate_output();
     }
 
 }
@@ -99,10 +97,10 @@ void Game::run_loop()
  */
 void Game::shutdown()
 {
-    if(_media_layer != nullptr)
+  if(_media_layer != nullptr)
     {
-        MediaLayer::MediaLayer_Shutdown(_media_layer);
-        _media_layer = nullptr;
+      _media_layer->shutdown();
+      _media_layer = nullptr;
     }
 }
 
@@ -123,15 +121,15 @@ void Game::add_game_object(std::unique_ptr<GameObject> game_object)
  */
 void Game::render_objects()
 {
-    // Test --------------------------------------------------
-    _test_output();
-    // -------------------------------------------------------
+  // Test --------------------------------------------------
+  _test_output();
+  // -------------------------------------------------------
 
-    // Render Game Objects
-    for(auto& obj: _game_objects)
-      {
-        obj->render();
-      }
+  // Render Game Objects
+  for(auto& obj: _game_objects)
+    {
+      obj->render();
+    }
 }
 
 /** public function: media_layer()
@@ -139,7 +137,7 @@ void Game::render_objects()
  */
 MediaLayer* Game::media_layer()
 {
-    return _media_layer;
+  return _media_layer;
 }
 
 /** public function: window_width
@@ -147,7 +145,7 @@ MediaLayer* Game::media_layer()
  */
 int Game::window_width()
 {
-    return _window_width;
+  return _window_width;
 }
 
 /** public function: window_height
@@ -155,7 +153,7 @@ int Game::window_width()
  */
 int Game::window_height()
 {
-    return _window_height;
+  return _window_height;
 }
 
 /** public function: rand()
@@ -164,41 +162,41 @@ int Game::window_height()
  */
 int Game::rand(int min, int max)
 {
-    return _rand.rand(min, max);
+  return _rand.rand(min, max);
 }
 
 /* --------------------------------------------------
-/* Private
+   /* Private
 
-/** private function: _process_input()
- *  Listens for keyboard inputs and do something with them.
- */
+   /** private function: _process_input()
+   *  Listens for keyboard inputs and do something with them.
+   */
 void Game::_process_input()
 {
-    // Get Device Inputs
-    std::vector<MediaLayer_Key_Code> key_codes = MediaLayer::MediaLayer_GetInput(_media_layer);
+  // Get Device Inputs
+  std::vector<MediaLayer_Key_Code> key_codes = _media_layer->get_input();
 
-    // Iterate through inputs and do something
-    for(auto key: key_codes)
+  // Iterate through inputs and do something
+  for(auto key: key_codes)
     {
-        // Check for exit
-        if(key == MediaLayer_Key_Code::quit || key == MediaLayer_Key_Code::esc)
+      // Check for exit
+      if(key == MediaLayer_Key_Code::quit || key == MediaLayer_Key_Code::esc)
         {
-            // Exit game
-            _is_running = false;
-            return;
+          // Exit game
+          _is_running = false;
+          return;
         } else if(key != MediaLayer_Key_Code::null)
         {
-            // If key is a valid key, do something (e.g., map key to game action)
+          // If key is a valid key, do something (e.g., map key to game action)
 
         }
     }
 
-    // Pass events to game objects.
-    for(auto& obj: _game_objects)
-      {
-        obj->process_input(key_codes);
-      }
+  // Pass events to game objects.
+  for(auto& obj: _game_objects)
+    {
+      obj->process_input(key_codes);
+    }
 
 }
 
@@ -206,24 +204,24 @@ void Game::_process_input()
  */
 void Game::_update_game()
 {
-    // Get delta time
-    double delta_time = MediaLayer::MediaLayer_GetDeltaTime(_media_layer);
+  // Get delta time
+  double delta_time = _media_layer->get_delta_time();
 
-    // Update Game Objects
-    // Render Game Objects
-    for(auto& obj: _game_objects)
-      {
-        obj->update(delta_time);
-      }
+  // Update Game Objects
+  // Render Game Objects
+  for(auto& obj: _game_objects)
+    {
+      obj->update(delta_time);
+    }
 
-    // Test --------------------------------------------------
-    _test_update(delta_time);
-    // -------------------------------------------------------
+  // Test --------------------------------------------------
+  _test_update(delta_time);
+  // -------------------------------------------------------
 }
 
 /** private function: _generate_output()
  */
 void Game::_generate_output()
 {
-    MediaLayer::MediaLayer_GenerateOutput(_media_layer);
+  _media_layer->generate_output();
 }

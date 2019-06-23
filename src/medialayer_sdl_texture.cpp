@@ -14,10 +14,12 @@
 
 #include "medialayer_sdl_texture.h"
 
+namespace SDL{
+
 /** Constructor
  * 
  */
-MediaLayer_SDL_Texture::MediaLayer_SDL_Texture():
+Texture::Texture():
     _renderer{nullptr},
     _window{nullptr},
     _texture{nullptr},
@@ -29,7 +31,7 @@ MediaLayer_SDL_Texture::MediaLayer_SDL_Texture():
 /** Destructor
  * 
  */
-MediaLayer_SDL_Texture::~MediaLayer_SDL_Texture()
+Texture::~Texture()
 {
     // Deallocate
     free();
@@ -40,7 +42,7 @@ MediaLayer_SDL_Texture::~MediaLayer_SDL_Texture()
  *   @renderer: SDL renderer
  *   @window: window context
  */
-bool MediaLayer_SDL_Texture::initialize(SDL_Renderer* renderer, SDL_Window* window)
+bool Texture::initialize(SDL_Renderer* renderer, SDL_Window* window)
 {
     _renderer = renderer;
     _window = window;
@@ -50,7 +52,7 @@ bool MediaLayer_SDL_Texture::initialize(SDL_Renderer* renderer, SDL_Window* wind
 /** function: free()
  * Frees resources
  */
-void MediaLayer_SDL_Texture::free()
+void Texture::free()
 {
     // Free texture
     if(_texture != nullptr){
@@ -65,7 +67,7 @@ void MediaLayer_SDL_Texture::free()
  * Set SDL renderer for the texture
  *   @renderer: SDL renderer
  */
-void MediaLayer_SDL_Texture::set_renderer(SDL_Renderer* renderer)
+void Texture::set_renderer(SDL_Renderer* renderer)
 {
     _renderer = renderer;
 }
@@ -78,7 +80,7 @@ void MediaLayer_SDL_Texture::set_renderer(SDL_Renderer* renderer)
  *   @center:
  *   @flip: 
  */
-void MediaLayer_SDL_Texture::render(int x, 
+void Texture::render(int x, 
                                     int y, 
                                     double angle, 
                                     SDL_Rect* clip, 
@@ -118,7 +120,7 @@ void MediaLayer_SDL_Texture::render(int x,
 /** function: width()
  * Texture width
  */
-int MediaLayer_SDL_Texture::width()
+int Texture::width()
 {
     return _width;
 }
@@ -126,7 +128,7 @@ int MediaLayer_SDL_Texture::width()
 /** function: height()
  * Texture height
  */
-int MediaLayer_SDL_Texture::height()
+int Texture::height()
 {
     return _height;
 }
@@ -135,7 +137,7 @@ int MediaLayer_SDL_Texture::height()
  * Modulate texture RGB
  *   @red, @green, @blue: Colors
  */
-void MediaLayer_SDL_Texture::set_color(Uint8 red, Uint8 green, Uint8 blue)
+void Texture::set_color(Uint8 red, Uint8 green, Uint8 blue)
 {
     SDL_SetTextureColorMod(_texture, red, green, blue);
 }
@@ -143,7 +145,7 @@ void MediaLayer_SDL_Texture::set_color(Uint8 red, Uint8 green, Uint8 blue)
 /** function: set_blending()
  * Set blending function
  */
-void MediaLayer_SDL_Texture::set_blending(SDL_BlendMode blending)
+void Texture::set_blending(SDL_BlendMode blending)
 {
     SDL_SetTextureBlendMode(_texture, blending);
 }
@@ -151,7 +153,9 @@ void MediaLayer_SDL_Texture::set_blending(SDL_BlendMode blending)
 /** function: set_alpha()
  *  Modulate texture alpha 
  */
-void MediaLayer_SDL_Texture::set_alpha(Uint8 alpha)
+void Texture::set_alpha(Uint8 alpha)
 {
     SDL_SetTextureAlphaMod(_texture, alpha);
 }
+
+} // namespace SDL

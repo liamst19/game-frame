@@ -14,14 +14,16 @@
 
 #include "medialayer_sdl_texture.h"
 
-class MediaLayer_SDL_Texture_Image: public MediaLayer_SDL_Texture{
+namespace SDL{
+
+class Texture_Image: public Texture{
 
 public:
 
-    MediaLayer_SDL_Texture_Image();
+    Texture_Image();
 
     // Deallocates memory
-    ~MediaLayer_SDL_Texture_Image();
+    ~Texture_Image();
 
     void free();
 
@@ -34,4 +36,6 @@ private:
 
     std::string _source_path;
 };
+
+} // namespace SDL
 #endif
