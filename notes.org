@@ -1,0 +1,20 @@
+* Game Object 
+** User Interface
+   Perhaps UI can also be a component, alongside others like, in the case of Asteroids, Player and Asteroid objects. It does seem to have common processes:
+
+   - Initialize
+   - Update
+   - Render
+   - Process Input
+** Game Pieces, Game Objects
+   Pieces like Asteroids and Player would be of a common category further down. So perhaps there would be a hierarchy, in a way DrawingElement objects also belong. So, roughly, it would look kind of like,
+
+   GameObject
+    |
+    |- UI
+    |---|- Clock
+    |---|- Points
+    |
+    |- GamePieces
+    |---|- Player
+    |---|- Asteroids

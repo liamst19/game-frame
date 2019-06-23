@@ -14,6 +14,42 @@
 #include "drawing_text.h"
 #include "drawing_ellipse.h"
 
+// -------------------------------------------------------------
+// Tests -------------------------------------------------------
+void Game::_test_init()
+{
+    // Test: Add Drawing -----------------------------------------
+    _drawing.add_drawing_element(std::make_unique<EllipseDrawing>(
+                                _media_layer->get_drawing_renderer(),
+                                200, 200,
+                                100, 100,
+                                255, 255, 255, 255,
+                                false));
+                                                                 
+    _drawing.add_drawing_element(std::make_unique<TextDrawing>(
+                                _media_layer->get_drawing_renderer(),
+                                "Asteroids",
+                                _font_univers,
+                                80,
+                                _window_width/2 - 180,
+                                _window_height/2 - 50,
+                                255, 255, 255, 255));
+    // -----------------------------------------------------------
+    // Test: Add Clock UI Element --------------------------------
+    _ui.add_ui_element(std::make_unique<ClockUI>(_media_layer, 2, 2, 12));
+    // -----------------------------------------------------------
+}
+
+void Game::_test_update(double delta_time)
+{
+}
+
+void Game::_test_output()
+{
+  // Render Game Objects
+  _drawing.render();
+}
+
 /* --------------------------------------------------
 /* Public
 
@@ -45,28 +81,12 @@ bool Game::initialize()
 
     // Initialize Game Objects
 
-    // Add Drawing
-    _drawing.add_drawing_element(std::make_unique<EllipseDrawing>(
-                                _media_layer->get_drawing_renderer(),
-                                200, 200,
-                                100, 100,
-                                100, 255, 175, 150,
-                                true));
-                                                                 
-    _drawing.add_drawing_element(std::make_unique<TextDrawing>(
-                                _media_layer->get_drawing_renderer(),
-                                "Game Study",
-                                _font_univers,
-                                40,
-                                _window_width/2,
-                                _window_height/2,
-                                255, 255, 255, 255));
-
     // Initialize UI Objects
     initialized = _ui.initialize();
 
-    // Add Clock UI Element
-    _ui.add_ui_element(std::make_unique<ClockUI>(_media_layer, 2, 2, 12));
+    // Test ------------------------------------------------------
+    _test_init();
+    // -----------------------------------------------------------
 
     return initialized;
 }
@@ -107,9 +127,12 @@ void Game::shutdown()
  */
 void Game::render_objects()
 {
+  // Test --------------------------------------------------
+  _test_output();
+  // -------------------------------------------------------
+
   // Render Game Objects
-  _drawing.render();
-  
+
   // Render UI
   _ui.render();
 }
@@ -171,7 +194,6 @@ void Game::_process_input()
  */
 void Game::_update_game()
 {
-
     // Get delta time
     double delta_time = MediaLayer::MediaLayer_GetDeltaTime(_media_layer);
 
@@ -179,6 +201,10 @@ void Game::_update_game()
 
     // Update UI
     _ui.update(delta_time);
+
+    // Test --------------------------------------------------
+    _test_update(delta_time);
+    // -------------------------------------------------------
 }
 
 /** private function: _generate_output()

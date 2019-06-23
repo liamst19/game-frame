@@ -63,6 +63,10 @@ private:
   const std::string _font_univers{"data/Univers-Extended.ttf"};
   const std::string _font_lucon{"data/lucon.ttf"};
   Drawing _drawing;
+
+  void _test_init();
+  void _test_update(double delta_time);
+  void _test_output();
   // --------------------------------------
 
   std::string _game_title;
