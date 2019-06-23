@@ -62,6 +62,11 @@ add_library(lib-medialayer-sdl
      medialayer_sdl_texture_text.h       medialayer_sdl_texture_text.cpp 
 )
 
+add_library(lib-gameobject
+     gameobject.h                        gameobject.cpp
+     gameobject_test.h                   gameobject_test.cpp
+)
+
 add_library(lib-ui
      ui.h                                ui.cpp
      ui_element.h                        ui_element.cpp
@@ -90,6 +95,7 @@ add_executable(game WIN32 ${SRC_DIR}/main.cpp)
 target_link_libraries(game lib-game)
 target_link_libraries(game lib-medialayer)
 target_link_libraries(game lib-medialayer-sdl)
+target_link_libraries(game lib-gameobject)
 target_link_libraries(game lib-ui)
 target_link_libraries(game lib-drawing)
 

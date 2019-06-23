@@ -8,11 +8,13 @@
 #include <vector>
 #include <memory>
 
+#include "gameobject.h"
+
 #include "ui_element.h"
 
 class Game;
 
-class GameUI{
+class GameUI: public GameObject{
 public:
 
     // Constructor
@@ -22,20 +24,18 @@ public:
     ~GameUI();
 
     // Initialize UI
-    bool initialize();
+    void init() override;
 
     // Add UI element
     void add_ui_element(std::unique_ptr<UIElement> element);
 
     // Update UI elements
-    void update(double delta_time);
+    void update(double delta_time) override;
 
     // Render UI elements
-    void render();
+    void render() override;
 
 private:
-
-    Game* _game;
 
     // Collection of pointers to all UI elements
     std::vector<std::unique_ptr<UIElement>> _ui_elements;

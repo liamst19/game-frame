@@ -8,13 +8,16 @@
 #include <vector>
 
 #include "game.h"
+#include "gameobject.h"
 #include "ui_element.h"
 
 /** Constructor
  */
 GameUI::GameUI(Game* game):
-    _game(game)
-{}
+  GameObject(game)
+{
+  init();
+}
 
 /** Destructor
  */
@@ -24,9 +27,8 @@ GameUI::~GameUI()
 /** public function: initialize()
  * Initialize GameUI
  */
-bool GameUI::initialize()
+void GameUI::init()
 {
-    return true;
 }
 
 /** public function: add_ui_element()

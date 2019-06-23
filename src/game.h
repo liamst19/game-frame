@@ -9,6 +9,7 @@
 #include <string>
 #include "randomnumber.h"
 #include "medialayer.h"
+#include "gameobject.h"
 #include "ui.h"
 #include "drawing.h"
 
@@ -41,6 +42,9 @@ public:
   // Shuts down game
   void shutdown();
 
+  // Add Game Object to game
+  void add_game_object(std::unique_ptr<GameObject> game_object);
+  
   // Render game objects and UI
   void render_objects(); 
 
@@ -53,16 +57,19 @@ public:
   // Window Height
   int window_height();
 
+  // Get pointer to media layer
+  MediaLayer* media_layer();
+
 private:
 
   MediaLayer* _media_layer;
 
+  std::vector<std::unique_ptr<GameObject>> _game_objects;
   GameUI _ui;
 
   // Testing ------------------------------
   const std::string _font_univers{"data/Univers-Extended.ttf"};
   const std::string _font_lucon{"data/lucon.ttf"};
-  Drawing _drawing;
 
   void _test_init();
   void _test_update(double delta_time);

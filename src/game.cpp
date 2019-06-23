@@ -14,26 +14,15 @@
 #include "drawing_text.h"
 #include "drawing_ellipse.h"
 
+#include "gameobject.h"
+#include "gameobject_test.h"
+
 // -------------------------------------------------------------
 // Tests -------------------------------------------------------
 void Game::_test_init()
 {
-    // Test: Add Drawing -----------------------------------------
-    _drawing.add_drawing_element(std::make_unique<EllipseDrawing>(
-                                _media_layer->get_drawing_renderer(),
-                                200, 200,
-                                100, 100,
-                                255, 255, 255, 255,
-                                false));
-                                                                 
-    _drawing.add_drawing_element(std::make_unique<TextDrawing>(
-                                _media_layer->get_drawing_renderer(),
-                                "Asteroids",
-                                _font_univers,
-                                80,
-                                _window_width/2 - 180,
-                                _window_height/2 - 50,
-                                255, 255, 255, 255));
+    // Test: Add GameObject---------------------------------------
+    add_game_object(std::make_unique<TestGameObject>(this));
     // -----------------------------------------------------------
     // Test: Add Clock UI Element --------------------------------
     _ui.add_ui_element(std::make_unique<ClockUI>(_media_layer, 2, 2, 12));
@@ -46,8 +35,6 @@ void Game::_test_update(double delta_time)
 
 void Game::_test_output()
 {
-  // Render Game Objects
-  _drawing.render();
 }
 
 /* --------------------------------------------------
@@ -82,7 +69,7 @@ bool Game::initialize()
     // Initialize Game Objects
 
     // Initialize UI Objects
-    initialized = _ui.initialize();
+    add_game_object(std::unique_ptr<GameUI>(&_ui));
 
     // Test ------------------------------------------------------
     _test_init();
@@ -119,6 +106,15 @@ void Game::shutdown()
     }
 }
 
+/** public function: add_game_object()
+ * Adds game object to game
+ *   @game_object: Game Object
+ */
+void Game::add_game_object(std::unique_ptr<GameObject> game_object)
+{
+  _game_objects.emplace_back(std::move(game_object));
+}
+
 /** public function: render_objects()
  * Renders game and UI objects.  This should be called during
  * MediaLayer's rendering sequence, where screen is cleared and then
@@ -127,14 +123,23 @@ void Game::shutdown()
  */
 void Game::render_objects()
 {
-  // Test --------------------------------------------------
-  _test_output();
-  // -------------------------------------------------------
+    // Test --------------------------------------------------
+    _test_output();
+    // -------------------------------------------------------
 
-  // Render Game Objects
+    // Render Game Objects
+    for(auto& obj: _game_objects)
+      {
+        obj->render();
+      }
+}
 
-  // Render UI
-  _ui.render();
+/** public function: media_layer()
+ * Get pointer to media layer
+ */
+MediaLayer* Game::media_layer()
+{
+    return _media_layer;
 }
 
 /** public function: window_width
@@ -198,9 +203,11 @@ void Game::_update_game()
     double delta_time = MediaLayer::MediaLayer_GetDeltaTime(_media_layer);
 
     // Update Game Objects
-
-    // Update UI
-    _ui.update(delta_time);
+    // Render Game Objects
+    for(auto& obj: _game_objects)
+      {
+        obj->update(delta_time);
+      }
 
     // Test --------------------------------------------------
     _test_update(delta_time);
