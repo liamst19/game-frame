@@ -26,7 +26,7 @@ void Game::_test_init()
   add_game_object(std::make_unique<TestGameObject>(this));
   // -----------------------------------------------------------
   // Test: Add Clock UI Element --------------------------------
-  _ui.add_ui_element(std::make_unique<ClockUI>(_media_layer, 2, 2, 12));
+  _ui.add_ui_element(std::make_unique<ClockUI>(media_layer(), 2, 2, 12));
   // -----------------------------------------------------------
 }
 
@@ -39,11 +39,32 @@ void Game::_test_output()
 }
 
 /* --------------------------------------------------
-   /* Public
+/* Public
 
-   /** public function: initialize()
-   *  Initializes the game, readying game input/output
-   */
+/** Constructor
+*
+*/
+Game::Game(std::string game_title, 
+           int window_width,
+           int window_height):
+  _media_layer(&_media_layer_sdl),
+  _game_title(game_title),
+  _ui(this),
+  _window_width(window_width),
+  _window_height(window_height)
+{
+}
+
+/** Destructor
+ */
+Game::~Game()
+{
+  shutdown();
+}
+
+/** public function: initialize()
+ *  Initializes the game, readying game input/output
+ */
 bool Game::initialize()
 {
   // Check if Media Layer exists
@@ -60,10 +81,10 @@ bool Game::initialize()
   bool initialized = true;
 
   // Initialize Media Layer
-  initialized = _media_layer->initialize(this,
-                                         _game_title,
-                                         _window_width,
-                                         _window_height);
+  initialized = media_layer()->initialize(this,
+                                          _game_title,
+                                          _window_width,
+                                          _window_height);
 
   // Initialize Game Objects
 
@@ -100,7 +121,7 @@ void Game::shutdown()
 {
   if(_media_layer != nullptr)
     {
-      _media_layer->shutdown();
+      media_layer()->shutdown();
       _media_layer = nullptr;
     }
 }
@@ -175,7 +196,7 @@ int Game::rand(int min, int max)
 void Game::_process_input()
 {
   // Get Device Inputs
-  std::vector<MediaLayer::Key_Code> key_codes = _media_layer->get_input();
+  std::vector<MediaLayer::Key_Code> key_codes = media_layer()->get_input();
 
   // Iterate through inputs and do something
   for(auto key: key_codes)
@@ -206,7 +227,7 @@ void Game::_process_input()
 void Game::_update_game()
 {
   // Get delta time
-  double delta_time = _media_layer->get_delta_time();
+  double delta_time = media_layer()->get_delta_time();
 
   // Update Game Objects
   // Render Game Objects
@@ -224,5 +245,5 @@ void Game::_update_game()
  */
 void Game::_generate_output()
 {
-  _media_layer->generate_output();
+  media_layer()->generate_output();
 }

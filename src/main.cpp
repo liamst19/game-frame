@@ -6,7 +6,6 @@
 
 #include <iostream>
 #include <string>
-#include "medialayer_sdl.h"
 #include "game.h"
 
 void log_event(std::string msg);
@@ -24,12 +23,8 @@ int main(int argc, char* argv[]){
     // Game Title
     const std::string game_title = "Game Study";
 
-    // If I wanted to switch between different media layers, here would probably be the best.
-    MediaLayer::SDL::MediaLayer_SDL media_layer;
-
     // Create Game Object
     Game game{game_title, 
-              &media_layer, 
               win_width, 
               win_height};
 

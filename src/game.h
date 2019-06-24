@@ -9,6 +9,7 @@
 #include <string>
 #include "randomnumber.h"
 #include "medialayer.h"
+#include "medialayer_sdl.h"
 
 #include "gameobject.h"
 #include "ui.h"
@@ -20,19 +21,11 @@ public:
 
   // Constructor
   Game(std::string game_title, 
-       MediaLayer::MediaLayer* media_layer,
        int window_width,
-       int window_height):
-    _game_title(game_title),
-    _media_layer(media_layer),
-    _ui(this),
-    _window_width(window_width),
-    _window_height(window_height)
-  {
-  };
+       int window_height);
 
   // Destructor
-  ~Game(){};
+  ~Game();
 
   // Initializes Game
   bool initialize();
@@ -63,6 +56,7 @@ public:
 
 private:
 
+  MediaLayer::SDL::MediaLayer_SDL _media_layer_sdl;
   MediaLayer::MediaLayer* _media_layer;
 
   std::vector<std::unique_ptr<GameObject>> _game_objects;

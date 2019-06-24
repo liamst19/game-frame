@@ -16,12 +16,12 @@
 #include "medialayer_drawing_renderer.h"
 #include "medialayer_sdl_drawing_renderer.h"
 
-#include "game.h"
+class Game;
 
 namespace MediaLayer{
 namespace SDL{
 
-  class MediaLayer_SDL: public MediaLayer{
+class MediaLayer_SDL: public MediaLayer{
 
 public:
 
