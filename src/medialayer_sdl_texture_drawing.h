@@ -10,8 +10,9 @@
 #include <vector>
 
 #include "medialayer_sdl_texture.h"
-#include "drawing_element.h"
+// #include "drawing_element.h"
 
+namespace MediaLayer{
 namespace SDL{
 
 class Texture_Drawing: public Texture{
@@ -43,4 +44,5 @@ private:
 };
 
 } // namespace SDL
+} // namespace Media
 #endif

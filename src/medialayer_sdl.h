@@ -18,9 +18,10 @@
 
 #include "game.h"
 
+namespace MediaLayer{
 namespace SDL{
 
-class MediaLayer_SDL: public MediaLayer{
+  class MediaLayer_SDL: public MediaLayer{
 
 public:
 
@@ -52,7 +53,7 @@ public:
   bool create_window() override;
 
   // Retrieves input (keyboard) from media layer
-  std::vector<MediaLayer_Key_Code> get_input() override;
+  std::vector<Key_Code> get_input() override;
 
   // Renders contents onto screen
   void generate_output() override;
@@ -61,7 +62,7 @@ public:
   double get_delta_time() override;
 
   // Pointer to drawing renderer object
-  MediaLayer_Drawing_Renderer* get_drawing_renderer() override;
+  Drawing_Renderer* get_drawing_renderer() override;
   
 private:
 
@@ -69,16 +70,16 @@ private:
   SDL_Renderer* _renderer;    // SDL Renderer
   int _sdl_flag{0};           // SDL Flags: I don't know what this is - openGL?
 
-  Drawing_Renderer _drawing_renderer;
+  SDL_Drawing_Renderer _drawing_renderer;
 
   // ----------------------------------------
   // Input
 
   // fill keyboard input
-  void _fill_key_codes(std::vector<MediaLayer_Key_Code>& key_codes);
+  void _fill_key_codes(std::vector<Key_Code>& key_codes);
 
   // add key_code to vector
-  void _add_key_code(std::vector<MediaLayer_Key_Code>& key_codes, MediaLayer_Key_Code key_code);
+  void _add_key_code(std::vector<Key_Code>& key_codes, Key_Code key_code);
 
   // ----------------------------------------
   // Output
@@ -89,4 +90,5 @@ private:
 };
 
 } // SDL
+} // namespace Media
 #endif

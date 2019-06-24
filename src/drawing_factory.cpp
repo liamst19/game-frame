@@ -10,7 +10,7 @@
 /** Constructor
  *  @renderer: Pointer to an renderer object, which handles screen output.
  */
-DrawingFactory::DrawingFactory(MediaLayer_Drawing_Renderer* renderer):
+DrawingFactory::DrawingFactory(MediaLayer::Drawing_Renderer* renderer):
 _drawing_renderer(renderer)
 {
 }

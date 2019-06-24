@@ -14,12 +14,12 @@ class PointDrawing: public DrawingElement
 public:
 
     // Constructor
-    PointDrawing(MediaLayer_Drawing_Renderer* renderer, 
+    PointDrawing(MediaLayer::Drawing_Renderer* renderer, 
         int x, int y, 
         int r, int g, int b, int alpha);
 
     // Constructor
-    PointDrawing(MediaLayer_Drawing_Renderer* renderer, 
+    PointDrawing(MediaLayer::Drawing_Renderer* renderer, 
         DrawingElement::Position coordinates, 
         DrawingElement::Color color);
 

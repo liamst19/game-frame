@@ -6,14 +6,16 @@
 
 #include <string>
 
-class MediaLayer_Drawing_Renderer
+namespace MediaLayer{
+  
+class Drawing_Renderer
 {
 
 public:
 
-    MediaLayer_Drawing_Renderer(){}
+    Drawing_Renderer(){}
 
-    virtual ~MediaLayer_Drawing_Renderer(){}
+    virtual ~Drawing_Renderer(){}
 
     // Initialize texture for rendering text, returns index for reference
     virtual int initialize_text(
@@ -68,4 +70,6 @@ public:
             bool fill = false)=0;
 
 };
+  
+} // namespace Media
 #endif

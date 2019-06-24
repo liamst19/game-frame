@@ -14,8 +14,11 @@
 
 class Game;
 
+namespace MediaLayer{
+  
+
 // Keyboard inputs and window events
-enum class MediaLayer_Key_Code{
+enum class Key_Code{
   null=0, // default
   quit,
   esc,
@@ -63,13 +66,13 @@ public:
   virtual bool create_window() =0;
 
   // Retrieves input from devices
-  virtual std::vector<MediaLayer_Key_Code> get_input() =0;
+  virtual std::vector<Key_Code> get_input() =0;
 
   // Calculates delta time
   virtual double get_delta_time() =0;
 
   // Get pointer to drawing renderer
-  virtual MediaLayer_Drawing_Renderer* get_drawing_renderer() =0;
+  virtual Drawing_Renderer* get_drawing_renderer() =0;
 
   // --------------------------------------------------
 
@@ -93,4 +96,6 @@ protected:
 private:
 
 };
+
+} // namespace Media
 #endif

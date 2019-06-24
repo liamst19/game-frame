@@ -13,6 +13,7 @@
 #include <string>
 #include <iostream>
 
+namespace MediaLayer{
 namespace SDL{
 
 /** Constructor
@@ -212,3 +213,4 @@ bool Texture_Text::load()
 }
 
 } // namespace SDL
+} // namespace Media

@@ -12,6 +12,7 @@
 #include <SDL2/SDL_image.h>
 #include <string>
 
+namespace MediaLayer{
 namespace SDL{
 
 /** Constructor
@@ -97,3 +98,4 @@ bool Texture_Image::load()
 }
 
 } // namespace SDL
+} // namespace Media

@@ -45,7 +45,7 @@ void GameUI::add_ui_element(std::unique_ptr<UIElement> element)
  * Process user input
  *   @input: collection of keyboard input codes
  */
-void GameUI::process_input(std::vector<MediaLayer_Key_Code> input)
+void GameUI::process_input(std::vector<MediaLayer::Key_Code> input)
 {
 }
 

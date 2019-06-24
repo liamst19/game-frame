@@ -19,14 +19,14 @@ class EllipseDrawing: public DrawingElement
 public:
 
     // Constructor
-    EllipseDrawing(MediaLayer_Drawing_Renderer* renderer, 
+    EllipseDrawing(MediaLayer::Drawing_Renderer* renderer, 
                    int x, int y, 
                    int radiusX, int radiusY, 
                    int r, int g, int b, int alpha,
                    bool fill = false);
 
     // Constructor
-    EllipseDrawing(MediaLayer_Drawing_Renderer* renderer, 
+    EllipseDrawing(MediaLayer::Drawing_Renderer* renderer, 
                    DrawingElement::Position a, 
                    int radiusX, int radiusY,
                    DrawingElement::Color color,

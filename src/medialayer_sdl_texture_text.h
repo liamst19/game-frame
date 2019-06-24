@@ -14,6 +14,7 @@
 
 #include "medialayer_sdl_texture.h"
 
+namespace MediaLayer{
 namespace SDL{
 
 class Texture_Text: public Texture{
@@ -75,6 +76,7 @@ private:
     void _set_font_color(int r, int g, int b, int alpha);
 };
 
+} // namespace SDL
+} // namespace Media
 #endif
  
-} // namespace SDL

@@ -14,12 +14,13 @@
 
 #include "medialayer_sdl_texture.h"
 
+namespace MediaLayer{
 namespace SDL{
 
 /** Constructor
  * 
  */
-Texture::Texture():
+  Texture::Texture():
     _renderer{nullptr},
     _window{nullptr},
     _texture{nullptr},
@@ -159,3 +160,5 @@ void Texture::set_alpha(Uint8 alpha)
 }
 
 } // namespace SDL
+
+} // namespace Media

@@ -56,7 +56,7 @@ void TestGameObject::init()
  * Process user input
  *   @input: collection of keyboard input codes
  */
-void TestGameObject::process_input(std::vector<MediaLayer_Key_Code> input)
+void TestGameObject::process_input(std::vector<MediaLayer::Key_Code> input)
 {
 }
   

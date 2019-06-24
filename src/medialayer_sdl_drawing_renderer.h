@@ -11,16 +11,17 @@
 #include "medialayer_drawing_renderer.h"
 #include "medialayer_sdl_texture.h"
 
+namespace MediaLayer{
 namespace SDL{
 
-class Drawing_Renderer: public MediaLayer_Drawing_Renderer
+class SDL_Drawing_Renderer: public Drawing_Renderer
 {
 
 public:
 
-    Drawing_Renderer();
+    SDL_Drawing_Renderer();
 
-    ~Drawing_Renderer();
+    ~SDL_Drawing_Renderer();
 
     bool initialize(SDL_Renderer* renderer, SDL_Window* window);
 
@@ -92,4 +93,5 @@ private:
 };
 
 } // namespace SDL
+} // namespace Media
 #endif

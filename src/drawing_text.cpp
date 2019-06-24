@@ -13,7 +13,7 @@
  *   @x, @y: Text position
  *   @r, @g, @b, @alpha: Text color
  */
-TextDrawing::TextDrawing(MediaLayer_Drawing_Renderer* renderer, 
+TextDrawing::TextDrawing(MediaLayer::Drawing_Renderer* renderer, 
     std::string text,
     std::string font_src, int font_size,
     int x, int y, 
@@ -33,7 +33,7 @@ TextDrawing::TextDrawing(MediaLayer_Drawing_Renderer* renderer,
  *   @position: Text position
  *   @color: Text color
  */
-TextDrawing::TextDrawing(MediaLayer_Drawing_Renderer* renderer, 
+TextDrawing::TextDrawing(MediaLayer::Drawing_Renderer* renderer, 
     std::string text,
     std::string font_src, int font_size,
     DrawingElement::Position position, 

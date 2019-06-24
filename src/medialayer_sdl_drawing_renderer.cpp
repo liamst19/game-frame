@@ -24,17 +24,18 @@
 
 #include "medialayer_sdl_texture_text.h"
 
+namespace MediaLayer{
 namespace SDL{
 
   /** Constructor
    */
-  Drawing_Renderer::Drawing_Renderer()
+  SDL_Drawing_Renderer::SDL_Drawing_Renderer()
   {
   }
 
   /** Destructor
    */
-  Drawing_Renderer::~Drawing_Renderer()
+  SDL_Drawing_Renderer::~SDL_Drawing_Renderer()
   {
     _free(); // Free resources, if any
   }
@@ -44,7 +45,7 @@ namespace SDL{
    *    @renderer: The rendering object used to output images to screen
    * 	  @window: Pointer to application window
    */
-  bool Drawing_Renderer::initialize(SDL_Renderer* renderer, SDL_Window* window)
+  bool SDL_Drawing_Renderer::initialize(SDL_Renderer* renderer, SDL_Window* window)
   {
     _renderer = renderer;
     _window = window;
@@ -54,7 +55,7 @@ namespace SDL{
   /** private function: free()
    *  Frees resources.
    */
-  void Drawing_Renderer::_free()
+  void SDL_Drawing_Renderer::_free()
   {
     _renderer = nullptr;
     _window = nullptr;
@@ -63,7 +64,7 @@ namespace SDL{
   /** private function: _add_texture()
    * Adds SDL Texture to vector, returns index for reference
    */
-  int Drawing_Renderer::_add_texture(std::unique_ptr<Texture> texture) 
+  int SDL_Drawing_Renderer::_add_texture(std::unique_ptr<Texture> texture) 
   {
     _textures.emplace_back(std::move(texture));
     int texture_index = _textures.size() - 1;
@@ -78,7 +79,7 @@ namespace SDL{
    *   @x, @y, position of the text
    *   @color: font color
    */
-  int Drawing_Renderer::initialize_text(
+  int SDL_Drawing_Renderer::initialize_text(
                                         std::string text,
                                         std::string font_src, int font_size,
                                         int x, int y,
@@ -114,7 +115,7 @@ namespace SDL{
    *   @font_size: font size
    *   @r, @g, @b, @alpha: Color and transparency
    */
-  bool Drawing_Renderer::update_text(
+  bool SDL_Drawing_Renderer::update_text(
                                      int texture_index,
                                      std::string text,
                                      std::string font_src, int font_size,
@@ -139,7 +140,7 @@ namespace SDL{
    *   @text_index: index from collection of textures
    *   @x, @y, position of the text
    */
-  bool Drawing_Renderer::render_text(
+  bool SDL_Drawing_Renderer::render_text(
                                      int texture_index,
                                      int x, int y)
   {
@@ -160,7 +161,7 @@ namespace SDL{
    *   @x, @y: Coordinates on the screen to be changed.
    *   @r, @g, @b, @alpha: Color and transparency.
    */
-  bool Drawing_Renderer::render_point(
+  bool SDL_Drawing_Renderer::render_point(
                                       int x, int y, 
                                       int r, int g, int b, int alpha)
   {
@@ -173,7 +174,7 @@ namespace SDL{
    *   @r, @g, @b, @alpha: Color and transparency values
    *   @thickness: Line thickness [To be implemented]
    */
-  bool Drawing_Renderer::render_line(
+  bool SDL_Drawing_Renderer::render_line(
                                      int aX, int aY, 
                                      int bX, int bY, 
                                      int r, int g, int b, int alpha, 
@@ -197,7 +198,7 @@ namespace SDL{
    * 	  @r, @g, @b, @alpha: Color in RGB and transparency
    *    @fill: Renders solid shape if true, outline if false.
    */
-  bool Drawing_Renderer::render_rectangle(
+  bool SDL_Drawing_Renderer::render_rectangle(
                                           int x1, int y1, 
                                           int x2, int y2, 
                                           int r, int g, int b, int alpha, 
@@ -224,7 +225,7 @@ namespace SDL{
    * 	 @r, @g, @b, alpha: Color and transparency
    *   @fill: Renders shape in solid color if true, outline if false.
    */
-  bool Drawing_Renderer::render_circle(
+  bool SDL_Drawing_Renderer::render_circle(
                                        int centerX, int centerY, 
                                        int radius, 
                                        int r, int g, int b, int alpha, 
@@ -249,7 +250,7 @@ namespace SDL{
    * 	 @r, @g, @b, alpha: Color and transparency
    *   @fill: Renders shape in solid color if true, outline if false.
    */
-  bool Drawing_Renderer::render_ellipse(
+  bool SDL_Drawing_Renderer::render_ellipse(
                                         int x, int y,
                                         int radiusX, int radiusY, 
                                         int r, int g, int b, int alpha, 
@@ -268,3 +269,5 @@ namespace SDL{
   }
 
 } // namespace SDL
+
+} // namespace Media

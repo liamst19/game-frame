@@ -6,14 +6,15 @@
 #include <memory>
 
 #include "game.h"
-#include "ui.h"
-#include "ui_element_clock.h"
 #include "randomnumber.h"
 #include "medialayer.h"
+
 #include "drawing_element.h"
 #include "drawing_text.h"
 #include "drawing_ellipse.h"
 
+#include "ui.h"
+#include "ui_element_clock.h"
 #include "gameobject.h"
 #include "gameobject_test.h"
 
@@ -135,7 +136,7 @@ void Game::render_objects()
 /** public function: media_layer()
  * Get pointer to media layer
  */
-MediaLayer* Game::media_layer()
+MediaLayer::MediaLayer* Game::media_layer()
 {
   return _media_layer;
 }
@@ -174,18 +175,18 @@ int Game::rand(int min, int max)
 void Game::_process_input()
 {
   // Get Device Inputs
-  std::vector<MediaLayer_Key_Code> key_codes = _media_layer->get_input();
+  std::vector<MediaLayer::Key_Code> key_codes = _media_layer->get_input();
 
   // Iterate through inputs and do something
   for(auto key: key_codes)
     {
       // Check for exit
-      if(key == MediaLayer_Key_Code::quit || key == MediaLayer_Key_Code::esc)
+      if(key == MediaLayer::Key_Code::quit || key == MediaLayer::Key_Code::esc)
         {
           // Exit game
           _is_running = false;
           return;
-        } else if(key != MediaLayer_Key_Code::null)
+        } else if(key != MediaLayer::Key_Code::null)
         {
           // If key is a valid key, do something (e.g., map key to game action)
 

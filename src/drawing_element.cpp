@@ -12,7 +12,7 @@
 /** Constructor
  *    @renderer: Pointer to object handling screen output.
  */
-DrawingElement::DrawingElement(MediaLayer_Drawing_Renderer* renderer,
+DrawingElement::DrawingElement(MediaLayer::Drawing_Renderer* renderer,
     DrawingElement::Color color):
  _drawing_renderer(renderer),
  _color(color)

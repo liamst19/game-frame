@@ -11,7 +11,7 @@
  *    @aX, @aY, @bX, @bY: Coordinates of the endpoints.
  *    @r, @g, @b, @alpha: Color and alpha transparency values.
  */
-LineDrawing::LineDrawing(MediaLayer_Drawing_Renderer* renderer, 
+LineDrawing::LineDrawing(MediaLayer::Drawing_Renderer* renderer, 
     int aX, int aY, 
     int bX, int bY, 
     int r, int g, int b, int alpha):
@@ -26,7 +26,7 @@ LineDrawing::LineDrawing(MediaLayer_Drawing_Renderer* renderer,
  *    @a, @b: Coordinates of the endpoints.
  *    @r, @g, @b, @alpha: Color and alpha transparency values.
  */
-LineDrawing::LineDrawing(MediaLayer_Drawing_Renderer* renderer, 
+LineDrawing::LineDrawing(MediaLayer::Drawing_Renderer* renderer, 
     DrawingElement::Position a, 
     DrawingElement::Position b, 
     DrawingElement::Color color):

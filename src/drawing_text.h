@@ -17,14 +17,14 @@ class TextDrawing: public DrawingElement
 public:
 
     // Constructor
-    TextDrawing(MediaLayer_Drawing_Renderer* renderer, 
+    TextDrawing(MediaLayer::Drawing_Renderer* renderer, 
         std::string text,
         std::string font_src, int font_size,
         int x, int y, 
         int r, int g, int b, int alpha);
 
     // Constructor
-    TextDrawing(MediaLayer_Drawing_Renderer* renderer, 
+    TextDrawing(MediaLayer::Drawing_Renderer* renderer, 
         std::string text,
         std::string font_src, int fon_size,
         DrawingElement::Position position, 

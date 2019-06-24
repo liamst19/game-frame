@@ -11,6 +11,7 @@
 #include <string>
 #include <vector>
 
+namespace MediaLayer{
 namespace SDL{
 
 class Texture{
@@ -70,4 +71,5 @@ protected:
 };
 
 } // namespace SDL
+} // namespace Media
 #endif

@@ -28,7 +28,7 @@ public:
     };
 
     // Constructor
-    DrawingElement(MediaLayer_Drawing_Renderer* drawing_renderer,
+    DrawingElement(MediaLayer::Drawing_Renderer* drawing_renderer,
         Color color);
 
     // Destructor
@@ -48,7 +48,7 @@ public:
  protected:
 
     // Pointer to object which handles screen output.
-    MediaLayer_Drawing_Renderer* _drawing_renderer;
+    MediaLayer::Drawing_Renderer* _drawing_renderer;
 
     DrawingElement::Color _color;
 

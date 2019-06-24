@@ -14,6 +14,8 @@
 
 #include "medialayer_sdl_texture.h"
 
+
+namespace MediaLayer{
 namespace SDL{
 
 class Texture_Image: public Texture{
@@ -38,4 +40,5 @@ private:
 };
 
 } // namespace SDL
+} // namespace Media
 #endif

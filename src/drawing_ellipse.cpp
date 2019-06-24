@@ -15,7 +15,7 @@
  *    @fill: renders a solid shape if true, line if false
  */
 EllipseDrawing::EllipseDrawing(
-                MediaLayer_Drawing_Renderer* renderer, 
+                MediaLayer::Drawing_Renderer* renderer, 
                 int x, int y, 
                 int radiusX, int radiusY, 
                 int r, int g, int b, int alpha,
@@ -36,7 +36,7 @@ EllipseDrawing::EllipseDrawing(
  *     @fill: renders a solid shape if true, line if false.
  */
 EllipseDrawing::EllipseDrawing(
-                MediaLayer_Drawing_Renderer* renderer, 
+                MediaLayer::Drawing_Renderer* renderer, 
                 DrawingElement::Position center, 
                 int radiusX, int radiusY,
                 DrawingElement::Color color,

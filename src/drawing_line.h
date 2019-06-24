@@ -21,13 +21,13 @@ class LineDrawing: public DrawingElement
 public:
 
     // Constructor
-    LineDrawing(MediaLayer_Drawing_Renderer* renderer, 
+    LineDrawing(MediaLayer::Drawing_Renderer* renderer, 
         int aX, int aY, 
         int bX, int bY, 
         int r, int g, int b, int alpha);
 
     // Constructor
-    LineDrawing(MediaLayer_Drawing_Renderer* renderer, 
+    LineDrawing(MediaLayer::Drawing_Renderer* renderer, 
         DrawingElement::Position a, 
         DrawingElement::Position b, 
         DrawingElement::Color color);

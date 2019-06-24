@@ -12,8 +12,9 @@
 #include <SDL2/SDL.h>
 #include <vector>
 
-#include "drawing_element.h"
+// #include "drawing_element.h"     
 
+namespace MediaLayer{
 namespace SDL{
 
 /** Constructor
@@ -140,3 +141,5 @@ bool Texture_Drawing::load()
 // }
 
 } // namespace SDL
+
+} // namespace Media

@@ -14,12 +14,12 @@ class PolygonDrawing: public DrawingElement
 public:
 
     // Constructor
-    PolygonDrawing(MediaLayer_Drawing_Renderer* renderer, 
+    PolygonDrawing(MediaLayer::Drawing_Renderer* renderer, 
                    int r, int g, int b, int alpha,
                    bool fill = false);
 
     // Constructor
-    PolygonDrawing(MediaLayer_Drawing_Renderer* renderer, 
+    PolygonDrawing(MediaLayer::Drawing_Renderer* renderer, 
                    DrawingElement::Color color,
                    bool fill = false);
 

@@ -14,7 +14,7 @@
  *    @fill: renders a solid shape if true, line if false
  */
 RectangleDrawing::RectangleDrawing(
-    MediaLayer_Drawing_Renderer* renderer, 
+    MediaLayer::Drawing_Renderer* renderer, 
     int aX, int aY, 
     int bX, int bY, 
     int r, int g, int b, int alpha,
@@ -33,7 +33,7 @@ RectangleDrawing::RectangleDrawing(
  *    @fill: renders a solid shape if true, line if false
  */
 RectangleDrawing::RectangleDrawing(
-    MediaLayer_Drawing_Renderer* renderer, 
+    MediaLayer::Drawing_Renderer* renderer, 
     DrawingElement::Position a, 
     DrawingElement::Position b, 
     DrawingElement::Color color,

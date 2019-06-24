@@ -12,7 +12,7 @@
  *    @x, @y: Coordinates of point.
  *    @r, @g, @b, @alpha: Color and alpha transparency values.
  */
-PointDrawing::PointDrawing(MediaLayer_Drawing_Renderer* renderer,
+PointDrawing::PointDrawing(MediaLayer::Drawing_Renderer* renderer,
     int x, int y, 
     int r, int g, int b, int alpha):
   DrawingElement(renderer, DrawingElement::Color{r, g, b, alpha}),                           
@@ -25,7 +25,7 @@ PointDrawing::PointDrawing(MediaLayer_Drawing_Renderer* renderer,
  *    @coordinates: Coordinates of point.
  *    @color: Color and alpha transparency values.
  */
-PointDrawing::PointDrawing(MediaLayer_Drawing_Renderer* renderer,
+PointDrawing::PointDrawing(MediaLayer::Drawing_Renderer* renderer,
     DrawingElement::Position coordinates,
     DrawingElement::Color color):
   DrawingElement(renderer, color),                           

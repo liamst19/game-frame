@@ -7,6 +7,8 @@
 #include "medialayer.h"
 #include "game.h"
 
+namespace MediaLayer{
+  
 /** function: window_width()
  */
 int MediaLayer::window_width()
@@ -20,3 +22,5 @@ int MediaLayer::window_height()
 {
   return _window_height;
 }
+
+} // namespace Media

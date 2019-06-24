@@ -13,7 +13,7 @@
  *    @fill: renders a solid shape if true, line if false
  */
 PolygonDrawing::PolygonDrawing(
-    MediaLayer_Drawing_Renderer* renderer, 
+    MediaLayer::Drawing_Renderer* renderer, 
     int r, int g, int b, int alpha,
     bool fill):
   DrawingElement(renderer, DrawingElement::Color{r, g, b, alpha}),
@@ -27,7 +27,7 @@ PolygonDrawing::PolygonDrawing(
  *    @fill: renders a solid shape if true, line if false
  */
 PolygonDrawing::PolygonDrawing(
-    MediaLayer_Drawing_Renderer* renderer, 
+    MediaLayer::Drawing_Renderer* renderer, 
     DrawingElement::Color color,
     bool fill):
   DrawingElement(renderer, color),

@@ -11,10 +11,11 @@
 #include "SDL_ttf.h"
 #include "SDL_image.h"
 
+#include "game.h"
 #include "medialayer_drawing_renderer.h"
 #include "medialayer_sdl_drawing_renderer.h"
-#include "game.h"
 
+namespace MediaLayer{
 namespace SDL{
 
 // --------------------------------------------------
@@ -170,7 +171,7 @@ void MediaLayer_SDL::generate_output()
 /** public function: get_drawing_renderer()
  *  Gets drawing renderer
  */
-MediaLayer_Drawing_Renderer* MediaLayer_SDL::get_drawing_renderer()
+Drawing_Renderer* MediaLayer_SDL::get_drawing_renderer()
 {
   return &_drawing_renderer;
 }
@@ -198,9 +199,9 @@ double MediaLayer_SDL::get_delta_time()
 /* public function: get_input()
  * get keyboard input 
  */
-std::vector<MediaLayer_Key_Code> MediaLayer_SDL::get_input()
+std::vector<Key_Code> MediaLayer_SDL::get_input()
 {
-  std::vector<MediaLayer_Key_Code> key_codes;
+  std::vector<Key_Code> key_codes;
 
   // Close Window
   SDL_Event event;
@@ -209,7 +210,7 @@ std::vector<MediaLayer_Key_Code> MediaLayer_SDL::get_input()
       switch(event.type)
         {
         case SDL_QUIT:
-          key_codes.push_back(MediaLayer_Key_Code::quit);
+          key_codes.push_back(Key_Code::quit);
           return key_codes;
           break;
         };
@@ -228,7 +229,7 @@ std::vector<MediaLayer_Key_Code> MediaLayer_SDL::get_input()
 /** private function: _add_key_code()
  *  add key_code to vector 
  */
-void MediaLayer_SDL::_add_key_code(std::vector<MediaLayer_Key_Code>& key_codes, MediaLayer_Key_Code key_code)
+void MediaLayer_SDL::_add_key_code(std::vector<Key_Code>& key_codes, Key_Code key_code)
 {
   // Check if key is already in the vector
   for(auto key: key_codes)
@@ -244,33 +245,33 @@ void MediaLayer_SDL::_add_key_code(std::vector<MediaLayer_Key_Code>& key_codes, 
 /** private function: _fill_key_codes()
  * fill a vector with keyboard inputs
  */
-void MediaLayer_SDL::_fill_key_codes(std::vector<MediaLayer_Key_Code>& key_codes)
+void MediaLayer_SDL::_fill_key_codes(std::vector<Key_Code>& key_codes)
 {
   // Get state of keyboard
   const Uint8* state = SDL_GetKeyboardState(nullptr);
   if(state[SDL_SCANCODE_ESCAPE])
     {
-      _add_key_code(key_codes, MediaLayer_Key_Code::esc);
+      _add_key_code(key_codes, Key_Code::esc);
     };
   if(state[SDL_SCANCODE_W])
     {
-      _add_key_code(key_codes, MediaLayer_Key_Code::w);
+      _add_key_code(key_codes, Key_Code::w);
     }
   if(state[SDL_SCANCODE_A])
     {
-      _add_key_code(key_codes, MediaLayer_Key_Code::a);
+      _add_key_code(key_codes, Key_Code::a);
     }
   if(state[SDL_SCANCODE_S])
     {
-      _add_key_code(key_codes, MediaLayer_Key_Code::s);
+      _add_key_code(key_codes, Key_Code::s);
     }
   if(state[SDL_SCANCODE_D])
     {
-      _add_key_code(key_codes, MediaLayer_Key_Code::d);
+      _add_key_code(key_codes, Key_Code::d);
     }
   if(state[SDL_SCANCODE_SEMICOLON])
     {
-      _add_key_code(key_codes, MediaLayer_Key_Code::semicolon);
+      _add_key_code(key_codes, Key_Code::semicolon);
     }
 }
 
@@ -299,3 +300,5 @@ bool MediaLayer_SDL::_create_renderer()
 }
 
 } // SDL
+
+} // namespace Media

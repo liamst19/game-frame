@@ -21,7 +21,7 @@ class DrawingFactory{
 public:
 
     // Constructor
-    DrawingFactory(MediaLayer_Drawing_Renderer* renderer);
+    DrawingFactory(MediaLayer::Drawing_Renderer* renderer);
 
     // Destructor
     ~DrawingFactory();
@@ -61,7 +61,7 @@ public:
 private:
 
     // Handles screen output
-    MediaLayer_Drawing_Renderer* _drawing_renderer;
+    MediaLayer::Drawing_Renderer* _drawing_renderer;
 
 };
 #endif

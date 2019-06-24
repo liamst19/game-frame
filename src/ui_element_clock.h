@@ -14,7 +14,7 @@ class ClockUI : public UIElement{
 public:
 
   // Constructor
-  ClockUI(MediaLayer* media_layer,
+  ClockUI(MediaLayer::MediaLayer* media_layer,
           int x, int y,
           int font_size);
 
@@ -29,7 +29,7 @@ public:
 
 private:
 
-  MediaLayer* _media_layer;
+  MediaLayer::MediaLayer* _media_layer;
   std::chrono::time_point<std::chrono::system_clock> _start;
   TextDrawing _clock_text;
 

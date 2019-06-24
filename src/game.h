@@ -9,6 +9,7 @@
 #include <string>
 #include "randomnumber.h"
 #include "medialayer.h"
+
 #include "gameobject.h"
 #include "ui.h"
 #include "drawing.h"
@@ -19,14 +20,14 @@ public:
 
   // Constructor
   Game(std::string game_title, 
-       MediaLayer* media_layer,
+       MediaLayer::MediaLayer* media_layer,
        int window_width,
        int window_height):
     _game_title(game_title),
     _media_layer(media_layer),
+    _ui(this),
     _window_width(window_width),
-    _window_height(window_height),
-    _ui(this)
+    _window_height(window_height)
   {
   };
 
@@ -58,11 +59,11 @@ public:
   int window_height();
 
   // Get pointer to media layer
-  MediaLayer* media_layer();
+  MediaLayer::MediaLayer* media_layer();
 
 private:
 
-  MediaLayer* _media_layer;
+  MediaLayer::MediaLayer* _media_layer;
 
   std::vector<std::unique_ptr<GameObject>> _game_objects;
   GameUI _ui;

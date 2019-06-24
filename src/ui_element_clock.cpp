@@ -15,7 +15,7 @@
 /** Constructor
  * 
  */
-ClockUI::ClockUI(MediaLayer* media_layer,
+ClockUI::ClockUI(MediaLayer::MediaLayer* media_layer,
                  int x, int y,
                  int font_size):
     _media_layer(media_layer),
