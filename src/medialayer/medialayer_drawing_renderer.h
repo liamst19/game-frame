@@ -84,6 +84,17 @@ namespace MediaLayer{
                 int radiusX, int radiusY, 
                 int r, int g, int b, int alpha)=0;
 
+        // Render polygon
+        virtual bool render_polygon(
+                short* vx, short* vy,
+                int n,
+                int r, int g, int b, int alpha)=0;
+
+        // Render filled polygon
+        virtual bool render_filled_polygon(
+                short* vx, short* vy,
+                int n,
+                int r, int g, int b, int alpha)=0;
     };
   
 } // namespace Media

@@ -6,6 +6,7 @@
 #define UI_ELEMENT_CLOCK_H
 
 #include <chrono>
+#include <string>
 #include "../medialayer/medialayer.h"
 #include "ui_element.h"
 #include "../drawing/drawing_text.h"
@@ -39,6 +40,8 @@ namespace GameObject{
             std::chrono::time_point<std::chrono::system_clock> _now();
 
             std::chrono::milliseconds _duration();
+
+            std::string _format_duration(std::chrono::milliseconds ms);
 
         };
 

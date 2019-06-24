@@ -45,7 +45,8 @@ namespace MediaLayer{
          *   @renderer: The rendering object used to output images to screen
          *   @window: Pointer to application window
          */
-        bool SDL_Drawing_Renderer::initialize(SDL_Renderer* renderer, SDL_Window* window)
+        bool SDL_Drawing_Renderer::initialize(
+                SDL_Renderer* renderer, SDL_Window* window)
         {
             _renderer = renderer;
             _window = window;
@@ -64,7 +65,8 @@ namespace MediaLayer{
         /** private function: _add_texture()
          * Adds SDL Texture to vector, returns index for reference
          */
-        int SDL_Drawing_Renderer::_add_texture(std::unique_ptr<Texture> texture) 
+        int SDL_Drawing_Renderer::_add_texture(
+                std::unique_ptr<Texture> texture) 
         {
             _textures.emplace_back(std::move(texture));
             int texture_index = _textures.size() - 1;
@@ -79,10 +81,11 @@ namespace MediaLayer{
          *   @x, @y, position of the text
          *   @color: font color
          */
-        int SDL_Drawing_Renderer::initialize_text(std::string text,
-                                                  std::string font_src, int font_size,
-                                                  int x, int y,
-                                                  int r, int g, int b, int alpha)
+        int SDL_Drawing_Renderer::initialize_text(
+                std::string text,
+                std::string font_src, int font_size,
+                int x, int y,
+                int r, int g, int b, int alpha)
         {
             int index = -1;
 
@@ -92,7 +95,9 @@ namespace MediaLayer{
             if(texture->initialize(_renderer, _window))
             {
                 // Initialize texture
-                texture->load(text, font_src, font_size, r, g, b, alpha);
+                texture->load(text,
+                              font_src, font_size,
+                              r, g, b, alpha);
 
                 // Add to vector, get index
                 index = _add_texture(std::move(texture));
@@ -114,10 +119,11 @@ namespace MediaLayer{
          *   @font_size: font size
          *   @r, @g, @b, @alpha: Color and transparency
          */
-        bool SDL_Drawing_Renderer::update_text(int texture_index,
-                                               std::string text,
-                                               std::string font_src, int font_size,
-                                               int r, int g, int b, int alpha)
+        bool SDL_Drawing_Renderer::update_text(
+                int texture_index,
+                std::string text,
+                std::string font_src, int font_size,
+                int r, int g, int b, int alpha)
         {
             if(texture_index > 0 && texture_index <= _textures.size())
             {
@@ -138,8 +144,9 @@ namespace MediaLayer{
          *   @text_index: index from collection of textures
          *   @x, @y, position of the text
          */
-        bool SDL_Drawing_Renderer::render_text(int texture_index,
-                                               int x, int y)
+        bool SDL_Drawing_Renderer::render_text(
+                int texture_index,
+                int x, int y)
         {
             if(texture_index >= 0 && texture_index <= _textures.size())
             {
@@ -158,8 +165,9 @@ namespace MediaLayer{
          *   @x, @y: Coordinates on the screen to be changed.
          *   @r, @g, @b, @alpha: Color and transparency.
          */
-        bool SDL_Drawing_Renderer::render_point(int x, int y, 
-                                                int r, int g, int b, int alpha)
+        bool SDL_Drawing_Renderer::render_point(
+                int x, int y, 
+                int r, int g, int b, int alpha)
         {
             return pixelRGBA(_renderer, x, y, r, g, b, alpha) == 0;
         }
@@ -170,19 +178,27 @@ namespace MediaLayer{
          *   @r, @g, @b, @alpha: Color and transparency values
          *   @thickness: Line thickness [To be implemented]
          */
-        bool SDL_Drawing_Renderer::render_line(int aX, int aY, 
-                                               int bX, int bY, 
-                                               int r, int g, int b, int alpha, 
-                                               int thickness)
+        bool SDL_Drawing_Renderer::render_line(
+                int aX, int aY, 
+                int bX, int bY, 
+                int r, int g, int b, int alpha, 
+                int thickness)
         {
             int result = 0;
             if(thickness > 1)
             {
-                result |= thickLineRGBA(_renderer, aX, aY, bX, bY, thickness, r, g, b, alpha);
+                result |= thickLineRGBA(_renderer,
+                                        aX, aY,
+                                        bX, bY,
+                                        thickness,
+                                        r, g, b, alpha);
             }
             else
             {
-                result |= lineRGBA(_renderer, aX, aY, bX, bY, r, g, b, alpha);
+                result |= lineRGBA(_renderer,
+                                   aX, aY,
+                                   bX, bY,
+                                   r, g, b, alpha);
             }
             return result == 0;
         }
@@ -192,11 +208,15 @@ namespace MediaLayer{
          *   @x1, @y1, @x2, @y2: Coordinates of the rectangle to be rendered.
          *   @r, @g, @b, @alpha: Color in RGB and transparency
          */
-        bool SDL_Drawing_Renderer::render_rectangle(int x1, int y1, 
-                                                    int x2, int y2, 
-                                                    int r, int g, int b, int alpha)
+        bool SDL_Drawing_Renderer::render_rectangle(
+                int x1, int y1, 
+                int x2, int y2, 
+                int r, int g, int b, int alpha)
         {
-            return rectangleRGBA(_renderer, x1, y1, x2, y2, r, g, b, alpha);
+            return rectangleRGBA(_renderer,
+                                 x1, y1,
+                                 x2, y2,
+                                 r, g, b, alpha);
         }
 
         /** public function: render_filled_rectangle()
@@ -204,11 +224,15 @@ namespace MediaLayer{
          *   @x1, @y1, @x2, @y2: Coordinates of the rectangle to be rendered.
          *   @r, @g, @b, @alpha: Color in RGB and transparency
          */
-        bool SDL_Drawing_Renderer::render_filled_rectangle(int x1, int y1, 
-                                                           int x2, int y2, 
-                                                           int r, int g, int b, int alpha)
+        bool SDL_Drawing_Renderer::render_filled_rectangle(
+                int x1, int y1, 
+                int x2, int y2, 
+                int r, int g, int b, int alpha)
         {
-            return boxRGBA(_renderer, x1, y1, x2, y2, r, g, b, alpha);
+            return boxRGBA(_renderer,
+                           x1, y1,
+                           x2, y2,
+                           r, g, b, alpha);
         }
 
         /** public function: render_circle()
@@ -217,11 +241,15 @@ namespace MediaLayer{
          *   @radius: Radius of circle
          *   @r, @g, @b, alpha: Color and transparency
          */
-        bool SDL_Drawing_Renderer::render_circle(int centerX, int centerY, 
-                                                 int radius, 
-                                                 int r, int g, int b, int alpha)
+        bool SDL_Drawing_Renderer::render_circle(
+                int centerX, int centerY, 
+                int radius, 
+                int r, int g, int b, int alpha)
         {
-            return circleRGBA(_renderer, centerX, centerY, radius, r, g, b, alpha);
+            return circleRGBA(_renderer,
+                              centerX, centerY,
+                              radius,
+                              r, g, b, alpha);
         }
 
         /** public function: render_filled_ellipse()
@@ -230,11 +258,15 @@ namespace MediaLayer{
          *   @radius: Radius of circle
          *   @r, @g, @b, alpha: Color and transparency
          */
-        bool SDL_Drawing_Renderer::render_filled_circle(int centerX, int centerY,
-                                                        int radius,
-                                                        int r, int g, int b, int alpha)
+        bool SDL_Drawing_Renderer::render_filled_circle(
+                int centerX, int centerY,
+                int radius,
+                int r, int g, int b, int alpha)
         {
-            return filledCircleRGBA(_renderer, centerX, centerY, radius, r, g, b, alpha);
+            return filledCircleRGBA(_renderer,
+                                    centerX, centerY,
+                                    radius,
+                                    r, g, b, alpha);
         }
 
         /** public function: render_ellipse()
@@ -243,11 +275,15 @@ namespace MediaLayer{
          *   @radiusX, radiusY: Horizontal and vertical radii, respectively
          *   @r, @g, @b, alpha: Color and transparency
          */
-        bool SDL_Drawing_Renderer::render_ellipse(int x, int y,
-                                                  int radiusX, int radiusY, 
-                                                  int r, int g, int b, int alpha)
+        bool SDL_Drawing_Renderer::render_ellipse(
+                int x, int y,
+                int radiusX, int radiusY, 
+                int r, int g, int b, int alpha)
         {
-            return ellipseRGBA(_renderer, x, y, radiusX, radiusY, r, g, b, alpha);
+            return ellipseRGBA(_renderer,
+                               x, y,
+                               radiusX, radiusY,
+                               r, g, b, alpha);
         }    
 
         /** public function: render_filled_ellipse()
@@ -256,12 +292,48 @@ namespace MediaLayer{
          *   @radiusX, radiusY: Horizontal and vertical radii, respectively
          *   @r, @g, @b, alpha: Color and transparency
          */
-        bool SDL_Drawing_Renderer::render_filled_ellipse(int x, int y,
-                                                         int radiusX, int radiusY, 
-                                                         int r, int g, int b, int alpha)
+        bool SDL_Drawing_Renderer::render_filled_ellipse(
+                int x, int y,
+                int radiusX, int radiusY, 
+                int r, int g, int b, int alpha)
         {
-            return filledEllipseRGBA(_renderer, x, y, radiusX, radiusY, r, g, b, alpha);
-        }    
+            return filledEllipseRGBA(_renderer,
+                                     x, y,
+                                     radiusX, radiusY,
+                                     r, g, b, alpha);
+        }
+
+        /** public function: render_polygon()
+         * Renders polygon outline
+         *   @vx, @vy: array of integers containing coordinates of vertices
+         *   @n: number of points in the vertex array
+         *   @r, @g, @b, @alpha: Color and transparency
+         */
+        bool SDL_Drawing_Renderer::render_polygon(
+                short* vx, short* vy,
+                int n,
+                int r, int g, int b, int alpha)
+        {
+            return polygonRGBA(_renderer,
+                               vx, vy, n,
+                               r, g, b, alpha);
+        }
+
+        /** public function: render_filled_polygon()
+         * Renders filled polygon
+         *   @vx, @vy: array of integers containing coordinates of vertices
+         *   @n: number of points in the vertex array
+         *   @r, @g, @b, @alpha: Color and transparency
+         */
+        bool SDL_Drawing_Renderer::render_filled_polygon(
+                short* vx, short* vy,
+                int n,
+                int r, int g, int b, int alpha)
+        {
+            return filledPolygonRGBA(_renderer,
+                                     vx, vy, n,
+                                     r, g, b, alpha);
+        }
 
     } // namespace SDL
 

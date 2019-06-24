@@ -1,20 +1,28 @@
-* Game Object 
-** User Interface
-   Perhaps UI can also be a component, alongside others like, in the case of Asteroids, Player and Asteroid objects. It does seem to have common processes:
+#+Title: Notes on Game-Frame projects
 
-   - Initialize
-   - Update
-   - Render
-   - Process Input
-** Game Pieces, Game Objects
-   Pieces like Asteroids and Player would be of a common category further down. So perhaps there would be a hierarchy, in a way DrawingElement objects also belong. So, roughly, it would look kind of like,
+* TTF_RenderText_Blended_Wrapped
+  For long texts, you can set a wraplength parameter.
 
-   GameObject
-    |
-    |- UI
-    |---|- Clock
-    |---|- Points
-    |
-    |- GamePieces
-    |---|- Player
-    |---|- Asteroids
+  TTF_RenderText_Blended_Wrapped(
+        font: PTTF_Font; 
+        text: PAnsiChar; 
+        fg: TSDL_Color; 
+        wrapLength: UInt32): PSDL_Surface
+
+* TODO Render Glyphs to Texture, use it for text rendering
+  TTF_RenderGlyph_Blended 
+  https://www.libsdl.org/projects/SDL_ttf/docs/SDL_ttf_54.html
+
+* TODO Drawing::Image
+* TODO Drawing::Polygon
+* TODO Add components to GameObject
+  - Physics
+  - Drawing
+  - Input
+  - Collision
+* TODO Merge this frame with Asteroid project
+* TODO Add tests
+  I probably should have added them before anything else
+* TODO UI::Framerate Ticker
+* DONE Fix UI::Clock display
+  It should appear like:  00:00:00

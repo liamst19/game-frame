@@ -5,6 +5,7 @@
 #ifndef DRAWING_POLYGON_H
 #define DRAWING_POLYGON_H
 
+#include <vector>
 #include "drawing_element.h"
 #include "../medialayer/medialayer_drawing_renderer.h"
 
@@ -17,13 +18,13 @@ namespace Drawing{
 
         // Constructor
         PolygonDrawing(MediaLayer::Drawing_Renderer* renderer, 
-                       int r, int g, int b, int alpha,
-                       bool fill = false);
+                       int* vx, int* vy, int n,
+                       int r, int g, int b, int alpha);
 
         // Constructor
-        PolygonDrawing(MediaLayer::Drawing_Renderer* renderer, 
-                       DrawingElement::Color color,
-                       bool fill = false);
+        PolygonDrawing(MediaLayer::Drawing_Renderer* renderer,
+                       std::vector<DrawingElement::Position> vertices,
+                       DrawingElement::Color color);
 
         // Destructor
         ~PolygonDrawing();
@@ -31,10 +32,15 @@ namespace Drawing{
         // Renders line to screen
         bool render() override;
 
-    private:
+        // Add vertice to polygon
+        void add_vertice(int x, int y);
 
-        // Renders solid shape if true, outline if false 
-        bool _fill_shape;
+        // Vertices
+        std::vector<DrawingElement::Position> vertices();
+
+    protected:
+
+        std::vector<DrawingElement::Position> _vertices;
 
     };
 

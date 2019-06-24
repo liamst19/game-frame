@@ -94,6 +94,24 @@ namespace MediaLayer{
                 return true; 
             }
 
+        // Render polygon
+        bool render_polygon(
+                short* vx, short* vy,
+                int n,
+                int r, int g, int b, int alpha) override
+            {
+                return true;
+            }
+
+        // Render filled polygon
+        bool render_filled_polygon(
+                short* vx, short* vy,
+                int n,
+                int r, int g, int b, int alpha) override
+            {
+                return true;
+            }
+
     };
 } // namespace MediaLayer
 #endif

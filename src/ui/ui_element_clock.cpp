@@ -7,6 +7,7 @@
 #include <chrono>
 #include <memory>
 #include <string>
+#include <iomanip>
 #include "../medialayer/medialayer.h"
 #include "ui_element.h"
 #include "../drawing/drawing.h"
@@ -15,9 +16,11 @@
 namespace GameObject{
     namespace UI{
 
-/** Constructor
- * 
- */
+        using namespace std::chrono;
+
+        /** Constructor
+         * 
+         */
         ClockUI::ClockUI(MediaLayer::MediaLayer* media_layer,
                          int x, int y,
                          int font_size):
@@ -32,50 +35,64 @@ namespace GameObject{
             reset_clock();
         }
 
-/** Destructor
- * 
- */
+        /** Destructor
+         * 
+         */
         ClockUI::~ClockUI()
         {
         }
 
-/** public function update()
- * 
- */
+        /** public function update()
+         * 
+         */
         void ClockUI::update(double delta_time)
         {
-            std::chrono::time_point<std::chrono::system_clock> now = std::chrono::system_clock::now();
-            std::chrono::milliseconds ms = std::chrono::duration_cast<std::chrono::milliseconds>(now - _start); 
-            auto s = std::chrono::duration_cast<std::chrono::seconds>(ms); 
-            ms -= std::chrono::duration_cast<std::chrono::milliseconds>(s);
-            auto m = std::chrono::duration_cast<std::chrono::minutes>(s); 
-            s -= std::chrono::duration_cast<std::chrono::seconds>(m);
-            std::string text = std::to_string(m.count()) + ":" + std::to_string(s.count()) + ":" + std::to_string(ms.count());
-            _clock_text.update(text);
+            _clock_text.update(_format_duration(_duration()));
         }
 
-/** public function reset_clock()
- * 
- */
+        /** public function reset_clock()
+         * 
+         */
         void ClockUI::reset_clock()
         {
-            _start = std::chrono::system_clock::now();
+            _start = system_clock::now();
         }
 
-/** private function: now()
- * 
- */
-        std::chrono::time_point<std::chrono::system_clock> ClockUI::_now()
+        /** private function: now()
+         * 
+         */
+        time_point<system_clock> ClockUI::_now()
         {
-            return std::chrono::system_clock::now();
+            return system_clock::now();
         }
 
-/** private function: duration()
- * 
- */
-        std::chrono::milliseconds ClockUI::_duration()
+        /** private function: duration()
+         * 
+         */
+        milliseconds ClockUI::_duration()
         {
-            return std::chrono::duration_cast<std::chrono::milliseconds>(_now() - _start);
+            return duration_cast<milliseconds>(_now() - _start);
         }
+
+        /** private function: _format_duration()
+         */
+        std::string ClockUI::_format_duration(milliseconds ms)
+        {
+            std::ostringstream ostr;
+            char fill = ostr.fill();
+            ostr.fill('0');
+           
+            auto sec = duration_cast<seconds>(ms);
+            ms -= sec;
+            auto min = duration_cast<minutes>(ms);
+            ms -= min;
+
+            ostr << std::setw(2) << min.count() << ":"
+                 << std::setw(2) << sec.count() << ":"
+                 << std::setw(2) << ms.count();
+            ostr.fill(fill);
+            return ostr.str();
+        }
+
     } // namespace UI
 } // namespace GameObject

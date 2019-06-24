@@ -93,6 +93,18 @@ namespace MediaLayer{
                     int radiusX, int radiusY, 
                     int r, int g, int b, int alpha) override;
 
+            // Render polygon
+            bool render_polygon(
+                    short* vx, short* vy,
+                    int n,
+                    int r, int g, int b, int alpha) override;
+
+            // Render filled polygon
+            bool render_filled_polygon(
+                    short* vx, short* vy,
+                    int n,
+                    int r, int g, int b, int alpha) override;
+
         private:
 
             SDL_Renderer* _renderer;
