@@ -6,7 +6,7 @@
 #include <vector>
 #include <memory>
 #include "gtest/gtest.h"
-#include "../src/drawing_element.h"
+#include "../src/drawing/drawing_element.h"
 
 namespace{
 

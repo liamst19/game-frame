@@ -48,43 +48,10 @@ add_library(lib-game
      randomnumber.h                      randomnumber.cpp
 )
 
-add_library(lib-medialayer
-     medialayer.h                        medialayer.cpp
-     medialayer_drawing_renderer.h       medialayer_drawing_renderer.cpp 
-)
-
-add_library(lib-medialayer-sdl
-     medialayer_sdl.h                    medialayer_sdl.cpp
-     medialayer_sdl_drawing_renderer.h   medialayer_sdl_drawing_renderer.cpp 
-     medialayer_sdl_texture.h            medialayer_sdl_texture.cpp 
-     medialayer_sdl_texture_drawing.h    medialayer_sdl_texture_drawing.cpp 
-     medialayer_sdl_texture_image.h      medialayer_sdl_texture_image.cpp 
-     medialayer_sdl_texture_text.h       medialayer_sdl_texture_text.cpp 
-)
-
-add_library(lib-gameobject
-     gameobject.h                        gameobject.cpp
-     gameobject_test.h                   gameobject_test.cpp
-)
-
-add_library(lib-ui
-     ui.h                                ui.cpp
-     ui_element.h                        ui_element.cpp
-     ui_element_clock.h                  ui_element_clock.cpp
-)
-
-add_library(lib-drawing
-     drawing.h                           drawing.cpp
-     drawing_factory.h                   drawing_factory.cpp
-     drawing_element.h                   drawing_element.cpp
-     drawing_text.h                      drawing_text.cpp
-     drawing_image.h                     drawing_image.cpp
-     drawing_point.h                     drawing_point.cpp
-     drawing_line.h                      drawing_line.cpp
-     drawing_rectangle.h                 drawing_rectangle.cpp
-     drawing_ellipse.h                   drawing_ellipse.cpp
-     drawing_polygon.h                   drawing_polygon.cpp
-)
+add_subdirectory(${SRC_DIR}/medialayer)
+add_subdirectory(${SRC_DIR}/gameobject)
+add_subdirectory(${SRC_DIR}/ui)
+add_subdirectory(${SRC_DIR}/drawing)
 
 # -----------------------------------------------------
 

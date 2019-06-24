@@ -5,8 +5,8 @@
 #include <vector>
 #include "gtest/gtest.h"
 
-#include "../src/drawing_line.h"
-#include "../src/drawing_element.h"
+#include "../src/drawing/drawing_line.h"
+#include "../src/drawing/drawing_element.h"
 
 #include "mocks/medialayer_mock_drawing_renderer.hpp"
 
@@ -15,7 +15,7 @@ namespace
 
     TEST(Drawing_Line, Constructor_Ints)
     {
-        MediaLayer_Mock_Drawing_Renderer renderer;
+        MediaLayer::Mock_Drawing_Renderer renderer;
         LineDrawing line{&renderer, 0, 1, 2, 3, 4, 5, 6, 7};
         
         ASSERT_EQ(0, line.a().x);
@@ -30,7 +30,7 @@ namespace
     
     TEST(Drawing_Line, Constructor_Structs)
     {
-        MediaLayer_Mock_Drawing_Renderer renderer;
+        MediaLayer::Mock_Drawing_Renderer renderer;
         DrawingElement::Position a{29, 57};
         DrawingElement::Position b{55, 107};
         DrawingElement::Color color{1, 2, 3, 4};
@@ -48,7 +48,7 @@ namespace
 
     TEST(Drawing_Line, Render)
     {
-        MediaLayer_Mock_Drawing_Renderer renderer;
+        MediaLayer::Mock_Drawing_Renderer renderer;
         LineDrawing line(&renderer, 
                          DrawingElement::Position{100, 100}, 
                          DrawingElement::Position{500, 500}, 

@@ -7,16 +7,12 @@
 
 #include "game.h"
 #include "randomnumber.h"
-#include "medialayer.h"
+#include "medialayer/medialayer.h"
 
-#include "drawing_element.h"
-#include "drawing_text.h"
-#include "drawing_ellipse.h"
-
-#include "ui.h"
-#include "ui_element_clock.h"
-#include "gameobject.h"
-#include "gameobject_test.h"
+#include "ui/ui.h"
+#include "ui/ui_element_clock.h"
+#include "gameobject/gameobject.h"
+#include "gameobject/gameobject_test.h"
 
 // -------------------------------------------------------------
 // Tests -------------------------------------------------------

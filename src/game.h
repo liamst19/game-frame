@@ -8,12 +8,12 @@
 #include <vector>
 #include <string>
 #include "randomnumber.h"
-#include "medialayer.h"
-#include "medialayer_sdl.h"
 
-#include "gameobject.h"
-#include "ui.h"
-#include "drawing.h"
+#include "medialayer/medialayer.h"
+#include "medialayer/medialayer_sdl.h"
+
+#include "gameobject/gameobject.h"
+#include "ui/ui.h"
 
 class Game{
 

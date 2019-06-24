@@ -4,14 +4,14 @@
 
 #include <vector>
 #include "gtest/gtest.h"
-#include "../src/drawing_factory.h"
-#include "../src/drawing_element.h"
+#include "../src/drawing/drawing_factory.h"
+#include "../src/drawing/drawing_element.h"
 
-#include "../src/drawing_point.h"
-#include "../src/drawing_line.h"
-// #include "../src/drawing_ellipse.h"
-// #include "../src/drawing_polygon.h"
-// #include "../src/drawing_rectangle.h"
+#include "../src/drawing/drawing_point.h"
+#include "../src/drawing/drawing_line.h"
+// #include "../src/drawing/drawing_ellipse.h"
+// #include "../src/drawing/drawing_polygon.h"
+// #include "../src/drawing/drawing_rectangle.h"
 
 // Mock Object
 #include "mocks/medialayer_mock.hpp"
@@ -21,7 +21,7 @@ namespace
 {
     TEST(DrawingFactory_Test, Constructor)
     {
-        MediaLayer_Mock_Drawing_Renderer renderer; // MediaLayer will contain functions for rendering
+        MediaLayer::Mock_Drawing_Renderer renderer; // MediaLayer will contain functions for rendering
 
         // Create factory
         DrawingFactory factory{&renderer}; 
@@ -33,7 +33,7 @@ namespace
 
     TEST(DrawingFactory_Test, Point)
     {
-        MediaLayer_Mock_Drawing_Renderer renderer; // MediaLayer will contain functions for rendering
+        MediaLayer::Mock_Drawing_Renderer renderer; // MediaLayer will contain functions for rendering
 
         // Create factory
         DrawingFactory factory{&renderer}; 
@@ -47,7 +47,7 @@ namespace
 
     TEST(DrawingFactory_Test, Line)
     {
-        MediaLayer_Mock_Drawing_Renderer renderer; // MediaLayer will contain functions for rendering
+        MediaLayer::Mock_Drawing_Renderer renderer; // MediaLayer will contain functions for rendering
 
         // Create factory
         DrawingFactory factory{&renderer}; 
