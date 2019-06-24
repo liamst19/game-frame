@@ -139,5 +139,6 @@ namespace Util{
 	// //ignore w since we aren't returning a new value for it...
 	// return retVal;
 // }
+
     } // namespace Math
 } // namespace Util
