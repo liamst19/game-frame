@@ -4,7 +4,9 @@
 
 #include <cmath>
 #include "gtest/gtest.h"
-#include "../src/math.h"
+#include "../src/util/math.h"
+
+using namespace Util;
 
 namespace{
 

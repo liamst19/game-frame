@@ -42,12 +42,10 @@ link_directories(${CMAKE_SOURCE_DIR}/lib)
 # add_library(lib-game ${GAME_SOURCES} ${GAME_HEADERS})
 
 add_library(lib-game
-     game.h                              game.cpp
-     math.h                              math.cpp
-     math_vector_2d.h                    math_vector_2d.cpp
-     randomnumber.h                      randomnumber.cpp
+  game.h    game.cpp
 )
 
+add_subdirectory(${SRC_DIR}/util)
 add_subdirectory(${SRC_DIR}/medialayer)
 add_subdirectory(${SRC_DIR}/gameobject)
 add_subdirectory(${SRC_DIR}/ui)
@@ -60,6 +58,7 @@ add_executable(game WIN32 ${SRC_DIR}/main.cpp)
 
 # Link dependencies to executable
 target_link_libraries(game lib-game)
+target_link_libraries(game lib-util)
 target_link_libraries(game lib-medialayer)
 target_link_libraries(game lib-medialayer-sdl)
 target_link_libraries(game lib-gameobject)

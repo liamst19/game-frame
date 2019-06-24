@@ -4,7 +4,9 @@
 
 #include <cmath>
 #include "gtest/gtest.h"
-#include "../src/math_vector_2d.h"
+#include "../src/util/math_vector_2d.h"
+
+using namespace Util::Math;
 
 namespace {
 

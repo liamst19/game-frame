@@ -5,7 +5,8 @@ FILE(GLOB TEST_MOCK_SOURCES ${TEST_DIR}/mock/*.hpp)
 add_executable(game-test ${TEST_SOURCES})
 
 # Linking library from CMakeLists in ~/src
-target_link_libraries(game-test lib-game) 
+target_link_libraries(game-test lib-game)
+target_link_libraries(game-test lib-util)
 target_link_libraries(game-test lib-medialayer)
 target_link_libraries(game-test lib-gameobject)
 target_link_libraries(game-test lib-ui)
