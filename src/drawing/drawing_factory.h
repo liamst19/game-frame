@@ -19,67 +19,71 @@
 #include "drawing_polygon.h"
 #include "drawing_polygon_filled.h"
 
-class DrawingFactory{
+namespace Drawing{
 
-public:
+    class DrawingFactory{
 
-    // Constructor
-    DrawingFactory(MediaLayer::Drawing_Renderer* renderer);
+    public:
 
-    // Destructor
-    ~DrawingFactory();
+        // Constructor
+        DrawingFactory(MediaLayer::Drawing_Renderer* renderer);
 
-    // Create PointDrawing object
-    PointDrawing getPoint(
-            int x, int y, 
-            int r, int g, int b, int alpha);
+        // Destructor
+        ~DrawingFactory();
 
-    // Create Line object
-    LineDrawing getLine(
-            int aX, int aY, 
-            int bX, int bY, 
-            int r, int g, int b, int alpha);
+        // Create PointDrawing object
+        PointDrawing getPoint(
+                int x, int y, 
+                int r, int g, int b, int alpha);
 
-    // Create Rectangle
-    RectangleDrawing getRectangle(
-            int aX, int aY, 
-            int bX, int bY, 
-            int r, int g, int b, int alpha);
+        // Create Line object
+        LineDrawing getLine(
+                int aX, int aY, 
+                int bX, int bY, 
+                int r, int g, int b, int alpha);
 
-    // Create Rectangle
-    FilledRectangleDrawing getFilledRectangle(
-            int aX, int aY, 
-            int bX, int bY, 
-            int r, int g, int b, int alpha);
+        // Create Rectangle
+        RectangleDrawing getRectangle(
+                int aX, int aY, 
+                int bX, int bY, 
+                int r, int g, int b, int alpha);
 
-    // Create Ellipse
-    EllipseDrawing getEllipse(
-            int x, int y, 
-            int radiusX, int radiusY, 
-            int r, int g, int b, int alpha);
+        // Create Rectangle
+        FilledRectangleDrawing getFilledRectangle(
+                int aX, int aY, 
+                int bX, int bY, 
+                int r, int g, int b, int alpha);
+
+        // Create Ellipse
+        EllipseDrawing getEllipse(
+                int x, int y, 
+                int radiusX, int radiusY, 
+                int r, int g, int b, int alpha);
     
-    // Create Ellipse
-    FilledEllipseDrawing getFilledEllipse(
-            int x, int y, 
-            int radiusX, int radiusY, 
-            int r, int g, int b, int alpha);
+        // Create Ellipse
+        FilledEllipseDrawing getFilledEllipse(
+                int x, int y, 
+                int radiusX, int radiusY, 
+                int r, int g, int b, int alpha);
     
-    // Create Circle
-    EllipseDrawing getCircle(
-            int x, int y, 
-            int radius, 
-            int r, int g, int b, int alpha);
+        // Create Circle
+        EllipseDrawing getCircle(
+                int x, int y, 
+                int radius, 
+                int r, int g, int b, int alpha);
 
-    // Create Circle
-    FilledEllipseDrawing getFilledCircle(
-            int x, int y, 
-            int radius, 
-            int r, int g, int b, int alpha);
+        // Create Circle
+        FilledEllipseDrawing getFilledCircle(
+                int x, int y, 
+                int radius, 
+                int r, int g, int b, int alpha);
 
-private:
+    private:
 
-    // Handles screen output
-    MediaLayer::Drawing_Renderer* _drawing_renderer;
+        // Handles screen output
+        MediaLayer::Drawing_Renderer* _drawing_renderer;
 
-};
+    };
+
+} // namespace Drawing
 #endif

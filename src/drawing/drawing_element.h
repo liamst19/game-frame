@@ -9,49 +9,52 @@
 #include <vector>
 #include "../medialayer/medialayer_drawing_renderer.h"
 
-class DrawingElement{
+namespace Drawing{
 
-public:
+    class DrawingElement{
 
-    // Represents Color and Alpha Transparency values.
-    // Numbers should be within 0 to 255.
-    struct Color
-    {
-        int r, g, b; // Red, green, blue
-        int alpha;   // Alpha transparency
-    };
+    public:
 
-    // Represents x and y-coordinates and color of a point.
-    struct Position
-    {
-        int x, y;
-    };
+        // Represents Color and Alpha Transparency values.
+        // Numbers should be within 0 to 255.
+        struct Color
+        {
+            int r, g, b; // Red, green, blue
+            int alpha;   // Alpha transparency
+        };
 
-    // Constructor
-    DrawingElement(MediaLayer::Drawing_Renderer* drawing_renderer,
-        Color color);
+        // Represents x and y-coordinates and color of a point.
+        struct Position
+        {
+            int x, y;
+        };
 
-    // Destructor
-    ~DrawingElement();
+        // Constructor
+        DrawingElement(MediaLayer::Drawing_Renderer* drawing_renderer,
+                       Color color);
 
-    // --------------------------------------------------
-    // Virtual Methods
+        // Destructor
+        ~DrawingElement();
 
-    // Render drawing to screen 
-    virtual bool render()=0;
+        // --------------------------------------------------
+        // Virtual Methods
+
+        // Render drawing to screen 
+        virtual bool render()=0;
  
-    // --------------------------------------------------
+        // --------------------------------------------------
 
-    // Render color of the drawing
-    DrawingElement::Color color();
+        // Render color of the drawing
+        DrawingElement::Color color();
 
- protected:
+    protected:
 
-    // Pointer to object which handles screen output.
-    MediaLayer::Drawing_Renderer* _drawing_renderer;
+        // Pointer to object which handles screen output.
+        MediaLayer::Drawing_Renderer* _drawing_renderer;
 
-    DrawingElement::Color _color;
+        DrawingElement::Color _color;
 
-};
+    };
 
+} // namespace Drawing
 #endif

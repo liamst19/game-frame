@@ -19,10 +19,10 @@
 void Game::_test_init()
 {
   // Test: Add GameObject---------------------------------------
-  add_game_object(std::make_unique<TestGameObject>(this));
+    add_game_object(std::make_unique<GameObject::TestGameObject>(this));
   // -----------------------------------------------------------
   // Test: Add Clock UI Element --------------------------------
-  _ui.add_ui_element(std::make_unique<ClockUI>(media_layer(), 2, 2, 12));
+  _ui.add_ui_element(std::make_unique<GameObject::UI::ClockUI>(media_layer(), 2, 2, 12));
   // -----------------------------------------------------------
 }
 
@@ -85,7 +85,7 @@ bool Game::initialize()
   // Initialize Game Objects
 
   // Initialize UI Objects
-  add_game_object(std::unique_ptr<GameUI>(&_ui));
+  add_game_object(std::unique_ptr<GameObject::UI::UI>(&_ui));
 
   // Test ------------------------------------------------------
   _test_init();
@@ -126,7 +126,7 @@ void Game::shutdown()
  * Adds game object to game
  *   @game_object: Game Object
  */
-void Game::add_game_object(std::unique_ptr<GameObject> game_object)
+void Game::add_game_object(std::unique_ptr<GameObject::GameObject> game_object)
 {
   _game_objects.emplace_back(std::move(game_object));
 }

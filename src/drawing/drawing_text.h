@@ -11,83 +11,87 @@
 #include "drawing_element.h"
 #include "../medialayer/medialayer_drawing_renderer.h"
 
-class TextDrawing: public DrawingElement
-{
+namespace Drawing{
 
-public:
+    class TextDrawing: public DrawingElement
+    {
 
-  // Constructor
-  TextDrawing(MediaLayer::Drawing_Renderer* renderer, 
-              std::string text,
-              std::string font_src, int font_size,
-              int x, int y, 
-              int r, int g, int b, int alpha);
+    public:
 
-  // Constructor
-  TextDrawing(MediaLayer::Drawing_Renderer* renderer, 
-              std::string text,
-              std::string font_src, int fon_size,
-              DrawingElement::Position position, 
-              DrawingElement::Color color);
+        // Constructor
+        TextDrawing(MediaLayer::Drawing_Renderer* renderer, 
+                    std::string text,
+                    std::string font_src, int font_size,
+                    int x, int y, 
+                    int r, int g, int b, int alpha);
 
-  // Destructor
-  ~TextDrawing();
+        // Constructor
+        TextDrawing(MediaLayer::Drawing_Renderer* renderer, 
+                    std::string text,
+                    std::string font_src, int fon_size,
+                    DrawingElement::Position position, 
+                    DrawingElement::Color color);
 
-  // Update text
-  void update(std::string text,
-              std::string font_src, int fon_size,
-              DrawingElement::Position position, 
-              DrawingElement::Color color);
+        // Destructor
+        ~TextDrawing();
 
-  // Set text content
-  void update(std::string text);
+        // Update text
+        void update(std::string text,
+                    std::string font_src, int fon_size,
+                    DrawingElement::Position position, 
+                    DrawingElement::Color color);
 
-  // Renders text to screen
-  bool render() override;
+        // Set text content
+        void update(std::string text);
 
-  // Text content
-  std::string text();
+        // Renders text to screen
+        bool render() override;
 
-  // Location of font file
-  std::string font_src();
+        // Text content
+        std::string text();
 
-  // Set location of font file
-  void set_font(std::string source_path, int size);
+        // Location of font file
+        std::string font_src();
 
-  // Font size
-  int font_size();
+        // Set location of font file
+        void set_font(std::string source_path, int size);
 
-  // Set font size
-  void set_font_size(int size);
+        // Font size
+        int font_size();
 
-  // Text position
-  DrawingElement::Position position();
+        // Set font size
+        void set_font_size(int size);
 
-  // Set text position
-  void set_position(DrawingElement::Position position);
+        // Text position
+        DrawingElement::Position position();
+
+        // Set text position
+        void set_position(DrawingElement::Position position);
     
-  // Index for referring back to cache of textures.
-  //   -- But is this necessary to be public?
-  int texture_index();
+        // Index for referring back to cache of textures.
+        //   -- But is this necessary to be public?
+        int texture_index();
 
-private:
+    private:
 
-  std::string _text;
-  std::string _font_src;
-  int _font_size;
-  DrawingElement::Position _position;
+        std::string _text;
+        std::string _font_src;
+        int _font_size;
+        DrawingElement::Position _position;
 
-  // Index for referring back to cache
-  int _texture_index;
+        // Index for referring back to cache
+        int _texture_index;
 
-  // Initialize Text Object
-  void _initialize();
+        // Initialize Text Object
+        void _initialize();
 
-  // Initialize texture in renderer
-  void _initialize_texture();
+        // Initialize texture in renderer
+        void _initialize_texture();
 
-  // Update texture in renderer
-  void _update_texture();
+        // Update texture in renderer
+        void _update_texture();
 
-};
+    };
+
+} // namespace Drawing
 #endif

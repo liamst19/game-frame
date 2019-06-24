@@ -13,43 +13,47 @@
 #include "drawing_element.h"
 #include "../medialayer/medialayer_drawing_renderer.h"
 
-class EllipseDrawing: public DrawingElement
-{
+namespace Drawing{
 
-public:
+    class EllipseDrawing: public DrawingElement
+    {
 
-    // Constructor
-    EllipseDrawing(MediaLayer::Drawing_Renderer* renderer, 
-                   int x, int y, 
-                   int radiusX, int radiusY, 
-                   int r, int g, int b, int alpha);
+    public:
 
-    // Constructor
-    EllipseDrawing(MediaLayer::Drawing_Renderer* renderer, 
-                   DrawingElement::Position a, 
-                   int radiusX, int radiusY,
-                   DrawingElement::Color color);
+        // Constructor
+        EllipseDrawing(MediaLayer::Drawing_Renderer* renderer, 
+                       int x, int y, 
+                       int radiusX, int radiusY, 
+                       int r, int g, int b, int alpha);
 
-    // Destructor
-    ~EllipseDrawing();
+        // Constructor
+        EllipseDrawing(MediaLayer::Drawing_Renderer* renderer, 
+                       DrawingElement::Position a, 
+                       int radiusX, int radiusY,
+                       DrawingElement::Color color);
 
-    // Renders line to screen
-    bool render() override;
+        // Destructor
+        ~EllipseDrawing();
 
-    // Center of ellipse
-    DrawingElement::Position center();
+        // Renders line to screen
+        bool render() override;
 
-    // Horizontal radius
-    int radius_x();
+        // Center of ellipse
+        DrawingElement::Position center();
 
-    // Vertical radius
-    int radius_y();
+        // Horizontal radius
+        int radius_x();
 
-protected:
+        // Vertical radius
+        int radius_y();
 
-    DrawingElement::Position _center; // _focus_a, _focus_b;
+    protected:
 
-    int _radius_x, _radius_y;
+        DrawingElement::Position _center; // _focus_a, _focus_b;
 
-};
+        int _radius_x, _radius_y;
+
+    };
+
+} // namespace Drawing
 #endif

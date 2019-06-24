@@ -37,7 +37,7 @@ public:
   void shutdown();
 
   // Add Game Object to game
-  void add_game_object(std::unique_ptr<GameObject> game_object);
+  void add_game_object(std::unique_ptr<GameObject::GameObject> game_object);
   
   // Render game objects and UI
   void render_objects(); 
@@ -59,8 +59,8 @@ private:
   MediaLayer::SDL::MediaLayer_SDL _media_layer_sdl;
   MediaLayer::MediaLayer* _media_layer;
 
-  std::vector<std::unique_ptr<GameObject>> _game_objects;
-  GameUI _ui;
+  std::vector<std::unique_ptr<GameObject::GameObject>> _game_objects;
+  GameObject::UI::UI _ui;
 
   // Testing ------------------------------
   const std::string _font_univers{"data/Univers-Extended.ttf"};

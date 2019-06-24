@@ -14,28 +14,32 @@
 #include "drawing_element.h"
 #include "../medialayer/medialayer_drawing_renderer.h"
 
-class FilledEllipseDrawing: public EllipseDrawing
-{
+namespace Drawing{
 
-public:
+    class FilledEllipseDrawing: public EllipseDrawing
+    {
 
-    // Constructor
-    FilledEllipseDrawing(MediaLayer::Drawing_Renderer* renderer, 
-                   int x, int y, 
-                   int radiusX, int radiusY, 
-                   int r, int g, int b, int alpha);
+    public:
 
-    // Constructor
-    FilledEllipseDrawing(MediaLayer::Drawing_Renderer* renderer, 
-                   DrawingElement::Position a, 
-                   int radiusX, int radiusY,
-                   DrawingElement::Color color);
+        // Constructor
+        FilledEllipseDrawing(MediaLayer::Drawing_Renderer* renderer, 
+                             int x, int y, 
+                             int radiusX, int radiusY, 
+                             int r, int g, int b, int alpha);
 
-    // Destructor
-    ~FilledEllipseDrawing();
+        // Constructor
+        FilledEllipseDrawing(MediaLayer::Drawing_Renderer* renderer, 
+                             DrawingElement::Position a, 
+                             int radiusX, int radiusY,
+                             DrawingElement::Color color);
 
-    // Renders line to screen
-    bool render() override;
+        // Destructor
+        ~FilledEllipseDrawing();
 
-};
+        // Renders line to screen
+        bool render() override;
+
+    };
+
+} // namespace Drawing
 #endif

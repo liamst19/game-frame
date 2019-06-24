@@ -10,32 +10,38 @@
 #include "ui_element.h"
 #include "../drawing/drawing_text.h"
 
-class ClockUI : public UIElement{
-public:
+namespace GameObject{
+    namespace UI{
 
-  // Constructor
-  ClockUI(MediaLayer::MediaLayer* media_layer,
-          int x, int y,
-          int font_size);
+        class ClockUI : public UIElement{
+        public:
 
-  // Destructor
-  ~ClockUI();
+            // Constructor
+            ClockUI(MediaLayer::MediaLayer* media_layer,
+                    int x, int y,
+                    int font_size);
 
-  // Update clock text
-  void update(double delta_time) override;
+            // Destructor
+            ~ClockUI();
 
-  // Reset Clock
-  void reset_clock();
+            // Update clock text
+            void update(double delta_time) override;
 
-private:
+            // Reset Clock
+            void reset_clock();
 
-  MediaLayer::MediaLayer* _media_layer;
-  std::chrono::time_point<std::chrono::system_clock> _start;
-  TextDrawing _clock_text;
+        private:
 
-  std::chrono::time_point<std::chrono::system_clock> _now();
+            MediaLayer::MediaLayer* _media_layer;
+            std::chrono::time_point<std::chrono::system_clock> _start;
+            Drawing::TextDrawing _clock_text;
 
-  std::chrono::milliseconds _duration();
+            std::chrono::time_point<std::chrono::system_clock> _now();
 
-};
+            std::chrono::milliseconds _duration();
+
+        };
+
+    } // namespace UI
+} // namespace GameObject
 #endif

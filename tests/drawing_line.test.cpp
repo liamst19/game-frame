@@ -10,6 +10,8 @@
 
 #include "mocks/medialayer_mock_drawing_renderer.hpp"
 
+using namespace Drawing;
+
 namespace
 {
 

@@ -12,62 +12,67 @@
 #include "../gameobject/gameobject.h"
 #include "ui_element.h"
 
+namespace GameObject{
+    namespace UI{
+
 /** Constructor
  */
-GameUI::GameUI(Game* game):
-  GameObject(game)
-{
-  init();
-}
+        UI::UI(Game* game):
+            GameObject(game)
+        {
+            init();
+        }
 
 /** Destructor
  */
-GameUI::~GameUI()
-{}
+        UI::~UI()
+        {}
 
 /** public function: initialize()
- * Initialize GameUI
+ * Initialize UI
  */
-void GameUI::init()
-{
-}
+        void UI::init()
+        {
+        }
 
 /** public function: add_ui_element()
- * Adds GameUI element
- *   @elmeent: GameUI element object
+ * Adds UI element
+ *   @elmeent: UI element object
  */
-void GameUI::add_ui_element(std::unique_ptr<UIElement> element)
-{
-    _ui_elements.emplace_back(std::move(element));
-}
+        void UI::add_ui_element(std::unique_ptr<UIElement> element)
+        {
+            _ui_elements.emplace_back(std::move(element));
+        }
 
 /** public function: process_input
  * Process user input
  *   @input: collection of keyboard input codes
  */
-void GameUI::process_input(std::vector<MediaLayer::Key_Code> input)
-{
-}
+        void UI::process_input(std::vector<MediaLayer::Key_Code> input)
+        {
+        }
 
 /** public function: update
- * Updates GameUI elmeents
+ * Updates UI elmeents
  *   @delta_time: 
  */
-void GameUI::update(double delta_time)
-{
-    for(auto& element: _ui_elements)
-    {
-        element->update(delta_time);
-    }
-}
+        void UI::update(double delta_time)
+        {
+            for(auto& element: _ui_elements)
+            {
+                element->update(delta_time);
+            }
+        }
 
 /** public function:: render()
- * Render GameUI elements
+ * Render UI elements
  */
-void GameUI::render()
-{
-    for(auto& element: _ui_elements)
-    {
-        element->render();
-    }
-}
+        void UI::render()
+        {
+            for(auto& element: _ui_elements)
+            {
+                element->render();
+            }
+        }
+    } // namespace UI
+} // namespace GameObject

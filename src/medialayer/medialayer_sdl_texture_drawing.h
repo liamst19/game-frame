@@ -13,27 +13,29 @@
 // #include "drawing_element.h"
 
 namespace MediaLayer{
-namespace SDL{
+    namespace SDL{
 
-class Texture_Drawing: public Texture{
+        class Texture_Drawing: public Texture{
 
-public:
+        public:
 
-    Texture_Drawing();
+            Texture_Drawing();
 
-    // Deallocates memory
-    ~Texture_Drawing();
+            // Deallocates memory
+            ~Texture_Drawing();
 
-    bool initialize(SDL_Renderer* renderer, SDL_Window* window, int width, int height);
+            bool initialize(SDL_Renderer* renderer,
+                            SDL_Window* window,
+                            int width, int height);
 
-    void free();
+            void free();
 
-    bool load() override;
+            bool load() override;
 
-    // Renders collection of Drawing objects to texture
+//    Renders collection of Drawing objects to texture
 //    void render(std::vector<Drawing> drawings, int x, int y);
 
-private:
+        private:
 
 //    // Render individual drawing to texture
 //    void render_drawing(Drawing drawing);
@@ -41,8 +43,8 @@ private:
 //    // Renders individual point to texture
 //    void render_point(DrawingElement::Position point);
 
-};
+        };
 
-} // namespace SDL
+    } // namespace SDL
 } // namespace Media
 #endif

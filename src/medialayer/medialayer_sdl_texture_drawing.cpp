@@ -15,57 +15,60 @@
 // #include "drawing_element.h"     
 
 namespace MediaLayer{
-namespace SDL{
+    namespace SDL{
 
 /** Constructor
  * 
  */
-Texture_Drawing::Texture_Drawing():
-    Texture()
-{
-}
+        Texture_Drawing::Texture_Drawing():
+            Texture()
+        {
+        }
 
 /** Destructor
  * 
  */
-Texture_Drawing::~Texture_Drawing()
-{
-    free();
-}
+        Texture_Drawing::~Texture_Drawing()
+        {
+            free();
+        }
 
-bool Texture_Drawing::initialize(SDL_Renderer* renderer, SDL_Window* window, int width, int height)
-{
-    Texture::initialize(renderer, window);
-    _width = width;
-    _height = height;
-    bool ret_val = load();
-    return ret_val;
-}
+        bool Texture_Drawing::initialize(
+                SDL_Renderer* renderer,
+                SDL_Window* window,
+                int width, int height)
+        {
+            Texture::initialize(renderer, window);
+            _width = width;
+            _height = height;
+            bool ret_val = load();
+            return ret_val;
+        }
 
 /** function: free()
  * 
  */
-void Texture_Drawing::free()
-{
-    Texture::free();
-}
+        void Texture_Drawing::free()
+        {
+            Texture::free();
+        }
 
 /** function: load()
  * 
  */
-bool Texture_Drawing::load()
-{
-    free();
+        bool Texture_Drawing::load()
+        {
+            free();
 
-    // The final texture
-    _texture = SDL_CreateTexture(_renderer, 
-                                 SDL_GetWindowPixelFormat(_window), 
-                                 SDL_TEXTUREACCESS_STREAMING, 
-                                 _width, 
-                                 _height);
+            // The final texture
+            _texture = SDL_CreateTexture(_renderer, 
+                                         SDL_GetWindowPixelFormat(_window), 
+                                         SDL_TEXTUREACCESS_STREAMING, 
+                                         _width, 
+                                         _height);
 
-    return _texture != nullptr;
-}
+            return _texture != nullptr;
+        }
 
 // /** function: render()
 //  * 
@@ -140,6 +143,5 @@ bool Texture_Drawing::load()
 //         SDL_RenderDrawPoint(_renderer, point.x, point.y); 
 // }
 
-} // namespace SDL
-
+    } // namespace SDL
 } // namespace Media

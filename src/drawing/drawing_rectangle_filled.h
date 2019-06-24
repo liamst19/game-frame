@@ -13,32 +13,36 @@
 #include "drawing_rectangle.h"
 #include "../medialayer/medialayer_drawing_renderer.h"
 
-class FilledRectangleDrawing: public RectangleDrawing
-{
+namespace Drawing{
 
-public:
+    class FilledRectangleDrawing: public RectangleDrawing
+    {
 
-    // Constructor
-    FilledRectangleDrawing(
-        MediaLayer::Drawing_Renderer* renderer, 
-        int aX, int aY, 
-        int bX, int bY, 
-        int r, int g, int b, int alpha);
+    public:
 
-    // Constructor
-    FilledRectangleDrawing(
-        MediaLayer::Drawing_Renderer* renderer, 
-        DrawingElement::Position a, DrawingElement::Position b, 
-        DrawingElement::Color color);
+        // Constructor
+        FilledRectangleDrawing(
+                MediaLayer::Drawing_Renderer* renderer, 
+                int aX, int aY, 
+                int bX, int bY, 
+                int r, int g, int b, int alpha);
 
-    // Destructor
-    ~FilledRectangleDrawing();
+        // Constructor
+        FilledRectangleDrawing(
+                MediaLayer::Drawing_Renderer* renderer, 
+                DrawingElement::Position a, DrawingElement::Position b, 
+                DrawingElement::Color color);
 
-    // Renders rectangle to screen
-    bool render() override;
+        // Destructor
+        ~FilledRectangleDrawing();
 
-private:
+        // Renders rectangle to screen
+        bool render() override;
+
+    private:
 
 
-};
+    };
+
+} // namespace Drawing
 #endif

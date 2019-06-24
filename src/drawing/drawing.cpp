@@ -9,32 +9,36 @@
 
 #include "drawing_element.h"
 
+namespace Drawing{
+    
 /** Constructor
  */
-Drawing::Drawing()
-{}
+    Drawing::Drawing()
+    {}
 
 /** Destructor
  */
-Drawing::~Drawing()
-{}
+    Drawing::~Drawing()
+    {}
 
 /** public function: add_drawing_element()
  * Adds Drawing element
  *   @elmeent: Drawing element object
  */
-void Drawing::add_drawing_element(std::unique_ptr<DrawingElement> element)
-{
-    _drawing_elements.emplace_back(std::move(element));
-}
+    void Drawing::add_drawing_element(std::unique_ptr<DrawingElement> element)
+    {
+        _drawing_elements.emplace_back(std::move(element));
+    }
 
 /** public function:: render()
  * Render Drawing elements
  */
-void Drawing::render()
-{
-    for(auto& element: _drawing_elements)
+    void Drawing::render()
     {
-        element->render();
+        for(auto& element: _drawing_elements)
+        {
+            element->render();
+        }
     }
-}
+
+} // namespace Drawing

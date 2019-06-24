@@ -8,31 +8,35 @@
 #include "drawing_element.h"
 #include "../medialayer/medialayer_drawing_renderer.h"
 
-class PolygonDrawing: public DrawingElement
-{
+namespace Drawing{
 
-public:
+    class PolygonDrawing: public DrawingElement
+    {
 
-    // Constructor
-    PolygonDrawing(MediaLayer::Drawing_Renderer* renderer, 
-                   int r, int g, int b, int alpha,
-                   bool fill = false);
+    public:
 
-    // Constructor
-    PolygonDrawing(MediaLayer::Drawing_Renderer* renderer, 
-                   DrawingElement::Color color,
-                   bool fill = false);
+        // Constructor
+        PolygonDrawing(MediaLayer::Drawing_Renderer* renderer, 
+                       int r, int g, int b, int alpha,
+                       bool fill = false);
 
-    // Destructor
-    ~PolygonDrawing();
+        // Constructor
+        PolygonDrawing(MediaLayer::Drawing_Renderer* renderer, 
+                       DrawingElement::Color color,
+                       bool fill = false);
 
-    // Renders line to screen
-    bool render() override;
+        // Destructor
+        ~PolygonDrawing();
 
-private:
+        // Renders line to screen
+        bool render() override;
 
-    // Renders solid shape if true, outline if false 
-    bool _fill_shape;
+    private:
 
-};
+        // Renders solid shape if true, outline if false 
+        bool _fill_shape;
+
+    };
+
+} // namespace Drawing
 #endif

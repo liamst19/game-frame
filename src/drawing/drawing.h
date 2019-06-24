@@ -9,24 +9,28 @@
 #include <memory>
 #include "drawing_element.h"
 
-class Drawing{
-public:
+namespace Drawing{
+    
+    class Drawing{
+    public:
 
-    // Constructor
-    Drawing();
+        // Constructor
+        Drawing();
 
-    // Destructor
-    ~Drawing();
+        // Destructor
+        ~Drawing();
 
-    // Add drawing element
-    void add_drawing_element(std::unique_ptr<DrawingElement> element);
+        // Add drawing element
+        void add_drawing_element(std::unique_ptr<DrawingElement> element);
 
-    // Render Drawing
-    void render();
+        // Render Drawing
+        void render();
 
-private:
+    private:
 
-    std::vector<std::unique_ptr<DrawingElement>> _drawing_elements;
+        std::vector<std::unique_ptr<DrawingElement>> _drawing_elements;
 
-};
+    };
+    
+} // namespace Drawing
 #endif

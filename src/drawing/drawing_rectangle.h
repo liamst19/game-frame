@@ -13,39 +13,43 @@
 #include "drawing_element.h"
 #include "../medialayer/medialayer_drawing_renderer.h"
 
-class RectangleDrawing: public DrawingElement
-{
+namespace Drawing{
 
-public:
+    class RectangleDrawing: public DrawingElement
+    {
 
-    // Constructor
-    RectangleDrawing(
-        MediaLayer::Drawing_Renderer* renderer, 
-        int aX, int aY, 
-        int bX, int bY, 
-        int r, int g, int b, int alpha);
+    public:
 
-    // Constructor
-    RectangleDrawing(
-        MediaLayer::Drawing_Renderer* renderer, 
-        DrawingElement::Position a, DrawingElement::Position b, 
-        DrawingElement::Color color);
+        // Constructor
+        RectangleDrawing(
+                MediaLayer::Drawing_Renderer* renderer, 
+                int aX, int aY, 
+                int bX, int bY, 
+                int r, int g, int b, int alpha);
 
-    // Destructor
-    ~RectangleDrawing();
+        // Constructor
+        RectangleDrawing(
+                MediaLayer::Drawing_Renderer* renderer, 
+                DrawingElement::Position a, DrawingElement::Position b, 
+                DrawingElement::Color color);
 
-    // Renders rectangle to screen
-    bool render() override;
+        // Destructor
+        ~RectangleDrawing();
 
-    // Vertice
-    DrawingElement::Position a();
+        // Renders rectangle to screen
+        bool render() override;
 
-    // Vertice
-    DrawingElement::Position b();
+        // Vertice
+        DrawingElement::Position a();
 
-protected:
+        // Vertice
+        DrawingElement::Position b();
 
-    DrawingElement::Position _point_a, _point_b;
+    protected:
 
-};
+        DrawingElement::Position _point_a, _point_b;
+
+    };
+
+} // namespace Drawing
 #endif

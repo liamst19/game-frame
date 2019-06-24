@@ -12,64 +12,64 @@
 #include <vector>
 
 namespace MediaLayer{
-namespace SDL{
+    namespace SDL{
 
-class Texture{
+        class Texture{
 
-public:
+        public:
 
-    Texture();
+            Texture();
 
-    // Deallocates memory
-    ~Texture();
+            // Deallocates memory
+            ~Texture();
 
-    bool initialize(SDL_Renderer* renderer, SDL_Window* window);
+            bool initialize(SDL_Renderer* renderer, SDL_Window* window);
 
-    // Deallocates texture
-    void free();
+            // Deallocates texture
+            void free();
 
-    // Set SDL_Renderer
-    void set_renderer(SDL_Renderer* renderer);
+            // Set SDL_Renderer
+            void set_renderer(SDL_Renderer* renderer);
 
-    // Set color modulation
-    void set_color(Uint8 red, Uint8 green, Uint8 blue);
+            // Set color modulation
+            void set_color(Uint8 red, Uint8 green, Uint8 blue);
 
-    // Set blending
-    void set_blending(SDL_BlendMode blending);
+            // Set blending
+            void set_blending(SDL_BlendMode blending);
 
-    // Set alpha modulation
-    void set_alpha(Uint8 alpha);
+            // Set alpha modulation
+            void set_alpha(Uint8 alpha);
 
-    // Renders texture at given point
-    void render(int x, 
-                int y, 
-                double angle = 0.0, 
-                SDL_Rect* clip = nullptr, 
-                SDL_Point* center = nullptr, 
-                SDL_RendererFlip flip = SDL_FLIP_NONE);
+            // Renders texture at given point
+            void render(int x, 
+                        int y, 
+                        double angle = 0.0, 
+                        SDL_Rect* clip = nullptr, 
+                        SDL_Point* center = nullptr, 
+                        SDL_RendererFlip flip = SDL_FLIP_NONE);
     
-    // Gets image width
-    int width();
+            // Gets image width
+            int width();
 
-    // Gets image height
-    int height();
+            // Gets image height
+            int height();
 
-    // Load Texture
-    virtual bool load()=0;
+            // Load Texture
+            virtual bool load()=0;
 
-protected:
+        protected:
 
-    SDL_Window* _window;
-    SDL_Renderer* _renderer;
+            SDL_Window* _window;
+            SDL_Renderer* _renderer;
 
-    // SDL texture
-    SDL_Texture* _texture;
+            // SDL texture
+            SDL_Texture* _texture;
 
-    // Dimensions
-    int _width, _height;
+            // Dimensions
+            int _width, _height;
 
-};
+        };
 
-} // namespace SDL
+    } // namespace SDL
 } // namespace Media
 #endif

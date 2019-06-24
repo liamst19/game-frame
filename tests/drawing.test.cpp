@@ -8,6 +8,8 @@
 #include "gtest/gtest.h"
 #include "../src/drawing/drawing_element.h"
 
+using namespace Drawing;
+
 namespace{
 
 //    TEST(Drawing_Test, Constructor)

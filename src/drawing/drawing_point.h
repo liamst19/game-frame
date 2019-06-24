@@ -1,6 +1,6 @@
 /** drawing_point.h
  *  Class for rendering single pixel to screen.
-  */
+ */
 
 #ifndef DRAWING_POINT_H
 #define DRAWING_POINT_H
@@ -8,39 +8,43 @@
 #include "drawing_element.h"
 #include "../medialayer/medialayer_drawing_renderer.h"
 
-class PointDrawing: public DrawingElement
-{
+namespace Drawing{
 
-public:
+    class PointDrawing: public DrawingElement
+    {
 
-    // Constructor
-    PointDrawing(MediaLayer::Drawing_Renderer* renderer, 
-        int x, int y, 
-        int r, int g, int b, int alpha);
+    public:
 
-    // Constructor
-    PointDrawing(MediaLayer::Drawing_Renderer* renderer, 
-        DrawingElement::Position coordinates, 
-        DrawingElement::Color color);
+        // Constructor
+        PointDrawing(MediaLayer::Drawing_Renderer* renderer, 
+                     int x, int y, 
+                     int r, int g, int b, int alpha);
 
-    // Destructor
-    ~PointDrawing();
+        // Constructor
+        PointDrawing(MediaLayer::Drawing_Renderer* renderer, 
+                     DrawingElement::Position coordinates, 
+                     DrawingElement::Color color);
 
-    // Renders point to screen
-    bool render() override;
+        // Destructor
+        ~PointDrawing();
 
-    // Coordinates of the point
-    DrawingElement::Position coordinates();
+        // Renders point to screen
+        bool render() override;
 
-    // X-coordinate of the point
-    int x();
+        // Coordinates of the point
+        DrawingElement::Position coordinates();
 
-    // Y-coordinate of the point
-    int y();
+        // X-coordinate of the point
+        int x();
 
-private:
+        // Y-coordinate of the point
+        int y();
 
-    DrawingElement::Position _point_coordinates;
+    private:
 
-};
+        DrawingElement::Position _point_coordinates;
+
+    };
+
+} // namespace Drawing
 #endif

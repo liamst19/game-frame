@@ -8,25 +8,30 @@
 #include "../drawing/drawing_element.h"
 #include "../drawing/drawing.h"
 
-class UIElement{
-public:
+namespace GameObject{
+    namespace UI{
 
-    // Constructor
-    UIElement();
+        class UIElement{
+        public:
 
-    // Destructor
-    virtual ~UIElement(){};
+            // Constructor
+            UIElement();
 
-    // Update UI element
-    virtual void update(double delta_time)=0;
+            // Destructor
+            virtual ~UIElement(){};
 
-    // Render UI element to screen
-    void render();
+            // Update UI element
+            virtual void update(double delta_time)=0;
 
-protected:
+            // Render UI element to screen
+            void render();
 
-    DrawingElement::Position _position;
-    Drawing _drawing;
+        protected:
 
-};
+            Drawing::DrawingElement::Position _position;
+            Drawing::Drawing _drawing;
+
+        };
+    } // namespace UI
+} // namespace GameObject
 #endif

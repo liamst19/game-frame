@@ -12,34 +12,39 @@
 #include "../medialayer/medialayer.h"
 #include "ui_element.h"
 
-class GameUI: public GameObject{
-public:
+namespace GameObject{
+    namespace UI{
 
-    // Constructor
-    GameUI(Game* game);
+        class UI: public GameObject{
+        public:
 
-    // Destructor
-    ~GameUI();
+            // Constructor
+            UI(Game* game);
 
-    // Initialize UI
-    void init() override;
+            // Destructor
+            ~UI();
 
-    // Add UI element
-    void add_ui_element(std::unique_ptr<UIElement> element);
+            // Initialize UI
+            void init() override;
 
-    // Process User Input
-  void process_input(std::vector<MediaLayer::Key_Code> key_codes);
+            // Add UI element
+            void add_ui_element(std::unique_ptr<UIElement> element);
 
-    // Update UI elements
-    void update(double delta_time) override;
+            // Process User Input
+            void process_input(std::vector<MediaLayer::Key_Code> key_codes);
 
-    // Render UI elements
-    void render() override;
+            // Update UI elements
+            void update(double delta_time) override;
 
-private:
+            // Render UI elements
+            void render() override;
 
-    // Collection of pointers to all UI elements
-    std::vector<std::unique_ptr<UIElement>> _ui_elements;
+        private:
 
-};
+            // Collection of pointers to all UI elements
+            std::vector<std::unique_ptr<UIElement>> _ui_elements;
+
+        };
+    } // namespace UI
+} // namespace GameObject
 #endif

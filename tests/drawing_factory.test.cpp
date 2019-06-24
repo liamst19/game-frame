@@ -17,6 +17,8 @@
 #include "mocks/medialayer_mock.hpp"
 #include "mocks/medialayer_mock_drawing_renderer.hpp"
 
+using namespace Drawing;
+
 namespace
 {
     TEST(DrawingFactory_Test, Constructor)

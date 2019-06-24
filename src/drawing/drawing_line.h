@@ -15,38 +15,42 @@
 #include "drawing_element.h"
 #include "../medialayer/medialayer_drawing_renderer.h"
 
-class LineDrawing: public DrawingElement
-{
+namespace Drawing{
 
-public:
+    class LineDrawing: public DrawingElement
+    {
 
-    // Constructor
-    LineDrawing(MediaLayer::Drawing_Renderer* renderer, 
-        int aX, int aY, 
-        int bX, int bY, 
-        int r, int g, int b, int alpha);
+    public:
 
-    // Constructor
-    LineDrawing(MediaLayer::Drawing_Renderer* renderer, 
-        DrawingElement::Position a, 
-        DrawingElement::Position b, 
-        DrawingElement::Color color);
+        // Constructor
+        LineDrawing(MediaLayer::Drawing_Renderer* renderer, 
+                    int aX, int aY, 
+                    int bX, int bY, 
+                    int r, int g, int b, int alpha);
 
-    // Destructor
-    ~LineDrawing();
+        // Constructor
+        LineDrawing(MediaLayer::Drawing_Renderer* renderer, 
+                    DrawingElement::Position a, 
+                    DrawingElement::Position b, 
+                    DrawingElement::Color color);
 
-    // Renders line to screen
-    bool render() override;
+        // Destructor
+        ~LineDrawing();
 
-    // End point of line ab
-    DrawingElement::Position a();
+        // Renders line to screen
+        bool render() override;
 
-    // End point of line ab
-    DrawingElement::Position b();
+        // End point of line ab
+        DrawingElement::Position a();
 
-private:
+        // End point of line ab
+        DrawingElement::Position b();
 
-    DrawingElement::Position _point_a, _point_b;
+    private:
 
-};
+        DrawingElement::Position _point_a, _point_b;
+
+    };
+
+} // namespace Drawing
 #endif

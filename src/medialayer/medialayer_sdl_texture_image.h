@@ -16,29 +16,29 @@
 
 
 namespace MediaLayer{
-namespace SDL{
+    namespace SDL{
 
-class Texture_Image: public Texture{
+        class Texture_Image: public Texture{
 
-public:
+        public:
 
-    Texture_Image();
+            Texture_Image();
 
-    // Deallocates memory
-    ~Texture_Image();
+            // Deallocates memory
+            ~Texture_Image();
 
-    void free();
+            void free();
 
-    // Set path of the image or ttf font
-    void set_source_path(std::string path);
+            // Set path of the image or ttf font
+            void set_source_path(std::string path);
 
-    bool load() override;
+            bool load() override;
 
-private:
+        private:
 
-    std::string _source_path;
-};
+            std::string _source_path;
+        };
 
-} // namespace SDL
+    } // namespace SDL
 } // namespace Media
 #endif
