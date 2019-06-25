@@ -57,11 +57,11 @@ namespace GameObject{
         _drawing.add_drawing_element(
                 std::make_unique<Drawing::TextDrawing>(
                         _game->media_layer()->get_drawing_renderer(),
-                        "Asteroids",
+                        "This is a game test.",
                         _font_univers,
-                        80,
-                        _game->window_width()/2 - 180,
-                        _game->window_height()/2 - 50,
+                        60,
+                        20,
+                        _game->window_height()/2 + 50,
                         255, 255, 255, 255));
         // -----------------------------------------------
         // Polygon

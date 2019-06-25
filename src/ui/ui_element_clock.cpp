@@ -82,14 +82,14 @@ namespace GameObject{
             char fill = ostr.fill();
             ostr.fill('0');
            
-            auto sec = duration_cast<seconds>(ms);
-            ms -= sec;
             auto min = duration_cast<minutes>(ms);
             ms -= min;
+            auto sec = duration_cast<seconds>(ms);
+            ms -= sec;
 
             ostr << std::setw(2) << min.count() << ":"
                  << std::setw(2) << sec.count() << ":"
-                 << std::setw(2) << ms.count();
+                 << std::setw(2) << ms.count() / 10;
             ostr.fill(fill);
             return ostr.str();
         }

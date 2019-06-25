@@ -282,7 +282,9 @@ namespace MediaLayer{
  */
         bool MediaLayer_SDL::_create_renderer()
         {
-            // create renderer
+
+            // The flag SDL_RENDERER_PRESENTVSYNC locks fps to
+            // synchronize with monitor's refresh rate.
             _renderer = SDL_CreateRenderer(
                     _window,
                     -1,

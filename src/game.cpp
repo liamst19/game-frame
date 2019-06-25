@@ -11,6 +11,7 @@
 
 #include "ui/ui.h"
 #include "ui/ui_element_clock.h"
+#include "ui/ui_element_framerate.h"
 #include "gameobject/gameobject.h"
 #include "gameobject/gameobject_test.h"
 
@@ -22,7 +23,10 @@ void Game::_test_init()
     add_game_object(std::make_unique<GameObject::TestGameObject>(this));
     // -----------------------------------------------------------
     // Test: Add Clock UI Element --------------------------------
-    _ui.add_ui_element(std::make_unique<GameObject::UI::ClockUI>(media_layer(), 2, 2, 12));
+    _ui.add_ui_element(std::make_unique<GameObject::UI::ClockUI>(media_layer(), 2, _window_height - 14, 12));
+    // -----------------------------------------------------------
+    // Test: Add Framerate UI Element --------------------------------
+    _ui.add_ui_element(std::make_unique<GameObject::UI::FramerateUI>(media_layer(), 2, 2, 12));
     // -----------------------------------------------------------
 }
 
