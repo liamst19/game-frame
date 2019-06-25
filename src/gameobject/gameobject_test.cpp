@@ -13,7 +13,7 @@
 #include "../medialayer/medialayer.h"
 
 #include "../drawing/drawing.h"
-#include "../drawing/drawing_ellipse.h"
+#include "../drawing/drawing_ellipse_filled.h"
 #include "../drawing/drawing_polygon_filled.h"
 #include "../drawing/drawing_text.h"
 #include "../drawing/drawing_image.h"
@@ -47,11 +47,11 @@ namespace GameObject{
         // ------------------------------------------------
         // Ellipse
         _drawing.add_drawing_element(
-                std::make_unique<Drawing::EllipseDrawing>(
+                std::make_unique<Drawing::FilledEllipseDrawing>(
                         _game->media_layer()->get_drawing_renderer(),
                         200, 200,
                         100, 100,
-                        255, 255, 255, 175));
+                        255, 255, 255, 125));
         // -----------------------------------------------
         // Text
         _drawing.add_drawing_element(
