@@ -48,6 +48,7 @@ add_library(lib-game
 add_subdirectory(${SRC_DIR}/util)
 add_subdirectory(${SRC_DIR}/medialayer)
 add_subdirectory(${SRC_DIR}/gameobject)
+add_subdirectory(${SRC_DIR}/component)
 add_subdirectory(${SRC_DIR}/ui)
 add_subdirectory(${SRC_DIR}/drawing)
 
@@ -62,6 +63,7 @@ target_link_libraries(game lib-util)
 target_link_libraries(game lib-medialayer)
 target_link_libraries(game lib-medialayer-sdl)
 target_link_libraries(game lib-gameobject)
+target_link_libraries(game lib-gameobject-component)
 target_link_libraries(game lib-ui)
 target_link_libraries(game lib-drawing)
 

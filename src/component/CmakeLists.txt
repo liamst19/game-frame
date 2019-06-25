@@ -1,0 +1,7 @@
+add_library(lib-gameobject-component
+  component.h                component.cpp
+  component_physics.h        component_physics.cpp
+  component_collision.h      component_collision.cpp
+  component_input.h          component_input.cpp
+  component_drawing.h        component_drawing.cpp
+)
