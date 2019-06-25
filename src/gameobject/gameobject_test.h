@@ -40,6 +40,8 @@ namespace GameObject{
         const std::string _font_univers{"data/Univers-Extended.ttf"};
         const std::string _font_lucon{"data/lucon.ttf"};
 
+        const std:: string _img_file{"data/gameimg.jpg"};
+
     };
 } // namespace GameObject
 #endif // GAMEOBJECT_TEST_H

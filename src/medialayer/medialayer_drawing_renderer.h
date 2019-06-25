@@ -17,7 +17,7 @@ namespace MediaLayer{
 
         virtual ~Drawing_Renderer(){}
 
-        // Initialize texture for rendering text, returns index for reference
+        // Initialize texture for rendering text
         virtual int initialize_text(
                 std::string text,
                 std::string font_src, int font_size,
@@ -33,6 +33,15 @@ namespace MediaLayer{
 
         // Render Text to screen
         virtual bool render_text(
+                int texture_index,
+                int x, int y)=0;
+
+        // Initialize texture for image
+        virtual int initialize_image(
+                std::string source_path)=0;
+
+        // Render Image to screen
+        virtual bool render_image(
                 int texture_index,
                 int x, int y)=0;
 

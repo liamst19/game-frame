@@ -46,6 +46,21 @@ namespace MediaLayer{
                 return true;
             }
 
+        // Initialize texture for rendering image
+        virtual int initialzie_image(
+                std::string source_path)
+            {
+                return true
+                    }
+
+        // Render Image to screen
+        virtual bool render_image(
+                int texture_index,
+                int x, int y)
+            {
+                return true;
+            }
+
         // Render point
         virtual bool render_point(int x, int y, int r, int g, int b, int alpha)
             {

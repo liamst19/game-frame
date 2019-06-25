@@ -23,6 +23,7 @@
 #include "../../include/SDL2/SDL2_gfxPrimitives.h"
 
 #include "medialayer_sdl_texture_text.h"
+#include "medialayer_sdl_texture_image.h"
 
 namespace MediaLayer{
     namespace SDL{
@@ -72,6 +73,30 @@ namespace MediaLayer{
             int texture_index = _textures.size() - 1;
             return texture_index;
         }
+
+        /** private function: _render_texture()
+         * Renders a texture from vector
+         * @texture_index: Reference index for texture
+         * @x, @y: Position to be rendered
+         */
+        bool SDL_Drawing_Renderer::_render_texture(
+                    int texture_index,
+                    int x, int y)
+        {
+            if(texture_index >= 0 && texture_index <= _textures.size())
+            {
+                _textures[texture_index].get()->render(x, y);
+                return true;
+            }
+            else
+            {
+                // Index is out of range.
+                return false;
+            }
+        }
+
+// ------------------------------------------------------------
+// Text
 
         /** public function: render_text
          * Renders text to screen.
@@ -148,17 +173,55 @@ namespace MediaLayer{
                 int texture_index,
                 int x, int y)
         {
-            if(texture_index >= 0 && texture_index <= _textures.size())
+            return _render_texture(texture_index, x, y);
+        }
+
+// ------------------------------------------------------------
+// Image
+        
+        /** public function: initialize_image()
+         * Initialize image texture
+         *  @source_path: Path of the image file
+         *  @x, @y: position
+         */
+        int SDL_Drawing_Renderer::initialize_image(
+                    std::string source_path)
+        {
+            int index = -1;
+
+            // Create unique-pointer for adding to vector
+            auto texture = std::make_unique<Texture_Image>();
+
+            if(texture->initialize(_renderer, _window))
             {
-                _textures[texture_index].get()->render(x, y);
-                return true;
+                // Initialize texture
+                texture->load(source_path);
+
+                // Add to vector, get index
+                index = _add_texture(std::move(texture));
             }
             else
             {
-                // Index is out of range.
+                // Initialize failed
                 return false;
             }
+
+            return index;
         }
+
+        /** public function: render_image()
+         * Renders image to screen
+         *   @texture_index: Index reference for texture
+         *   @x, @y: Render position
+         */
+        bool SDL_Drawing_Renderer::render_image(
+                int texture_index,
+                int x, int y)
+        {
+            return _render_texture(texture_index, x, y);
+        }
+
+// ------------------------------------------------------------
 
         /** public function: render_point()
          * Renders single pixel to screen.

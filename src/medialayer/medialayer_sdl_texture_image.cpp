@@ -49,6 +49,12 @@ namespace MediaLayer{
             _source_path = path; 
         }
 
+        bool Texture_Image::load(std::string path)
+        {
+            set_source_path(path);
+            return load();
+        }
+
 /** function: load()
  * 
  */

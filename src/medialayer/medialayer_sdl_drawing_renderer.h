@@ -25,26 +25,42 @@ namespace MediaLayer{
 
             bool initialize(SDL_Renderer* renderer, SDL_Window* window);
 
-            // Initialize texture for rendering text, returns index
-            // for reference
+
+// ------------------------------------------------------------
+// Text
+            // Initialize texture for rendering text
             int initialize_text(
                     std::string text,
                     std::string font_src, int font_size,
                     int x, int y,
-                    int r, int g, int b, int alpha);
+                    int r, int g, int b, int alpha) override;
 
             // Update text of an existing texture
             bool update_text(
                     int texture_index,
                     std::string text,
                     std::string font_src, int font_size,
-                    int r, int g, int b, int alpha);
+                    int r, int g, int b, int alpha) override;
 
             // Render Text to screen
             bool render_text(
                     int texture_index,
-                    int x, int y);
+                    int x, int y) override;
+            
+// ------------------------------------------------------------
+// Image
 
+            // Initialize texture for image
+            int initialize_image(
+                    std::string source_path) override;
+
+            // Render Image to screen
+            bool render_image(
+                    int texture_index,
+                    int x, int y) override;
+            
+// ------------------------------------------------------------
+            
             // Render point
             bool render_point(
                     int x, int y, 
@@ -117,6 +133,11 @@ namespace MediaLayer{
 
             // Adds texture to collection, returns index
             int _add_texture(std::unique_ptr<Texture> texture);
+
+            // Render Texture
+            bool _render_texture(
+                    int texture_index,
+                    int x, int y);
 
         };
 

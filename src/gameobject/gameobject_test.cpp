@@ -16,6 +16,7 @@
 #include "../drawing/drawing_ellipse.h"
 #include "../drawing/drawing_polygon_filled.h"
 #include "../drawing/drawing_text.h"
+#include "../drawing/drawing_image.h"
 
 namespace GameObject{
     
@@ -35,14 +36,24 @@ namespace GameObject{
     {
         std::cout << "Initializing Test Game Object" << std:: endl;
   
-        // Test: Add Drawing -----------------------------------------
+        // Test: Add Drawing -----------------------------
+
+        // Image
+        _drawing.add_drawing_element(
+                std::make_unique<Drawing::ImageDrawing>(
+                        _game->media_layer()->get_drawing_renderer(),
+                        _img_file,
+                        200, 20));
+        // ------------------------------------------------
+        // Ellipse
         _drawing.add_drawing_element(
                 std::make_unique<Drawing::EllipseDrawing>(
                         _game->media_layer()->get_drawing_renderer(),
                         200, 200,
                         100, 100,
                         255, 255, 255, 175));
-                                                                 
+        // -----------------------------------------------
+        // Text
         _drawing.add_drawing_element(
                 std::make_unique<Drawing::TextDrawing>(
                         _game->media_layer()->get_drawing_renderer(),
@@ -52,7 +63,8 @@ namespace GameObject{
                         _game->window_width()/2 - 180,
                         _game->window_height()/2 - 50,
                         255, 255, 255, 255));
-
+        // -----------------------------------------------
+        // Polygon
         int vx[]={400, 500, 430, 350}, vy[]={50, 150, 330, 450};
         int n = 4;
         _drawing.add_drawing_element(
@@ -60,9 +72,9 @@ namespace GameObject{
                         _game->media_layer()->get_drawing_renderer(),
                         vx, vy,
                         n,
-                        255, 255, 255, 175));
-                                                                 
-        // -----------------------------------------------------------
+                        55, 255, 55, 75));
+        // -----------------------------------------------
+
     }
 
 /** public function: process_input

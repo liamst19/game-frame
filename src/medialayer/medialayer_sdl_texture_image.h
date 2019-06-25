@@ -34,6 +34,8 @@ namespace MediaLayer{
 
             bool load() override;
 
+            bool load(std::string path);
+
         private:
 
             std::string _source_path;
