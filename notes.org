@@ -1,6 +1,7 @@
 #+Title: Notes on Game-Frame projects
 
-* TODO Animation
+* Tasks
+** TODO Animation
   
   Figure out a way to incorporate animation using the =Drawing= classes.
   My rough guess for an =Animation= class is:
@@ -9,23 +10,40 @@
     - =render()= will keep track of time as it renders each =Drawing= frame.
     - Another option is for =Animation= to contain a duration property, which would be divided by the size of =Drawing= vector.
 
-* TODO Drawing class: width, height, center
+** TODO Drawing class: width, height, center
 
   The =Drawing= class should calculate the minimum and maximum positions of all the elements it contains. It should also possess a center position, around which it will be rotated.
 
   The center position could also inform SDL, when =SDL_Texture= is to be used, in determining =SDL_Rect= for the target =SDL_Surface= object, and for rendering texture using the =SDL_CopyEx= method.
 
-* TODO Merge this frame with Asteroid project
-* TODO Add tests
+** TODO Merge this frame with Asteroid project
+** TODO Add tests
   I probably should have added them before anything else
 
-* TODO Render Glyphs to Texture, use it for text rendering
+** TODO Render Glyphs to Texture, use it for text rendering
 
   [[https://www.libsdl.org/projects/SDL_ttf/docs/SDL_ttf_54.html][TTF_RenderGlyph_Blended]] 
-* TODO Experiment: Render Drawing on a SDL_Surface, then do SDL_CreateTextureFromSurface.
+** TODO Experiment: Render Drawing on a SDL_Surface, then do SDL_CreateTextureFromSurface.
 
   This way we won't have to make expensive drawings each iteration and instead impose pre-made textures. The idea is for the =Drawing= object to possess and call the renderer, which would create the =SDL_Surface= and draw all the =DrawingElement= objects in that single surface. Upon completion of the drawing the renderer will call [[https://wiki.libsdl.org/SDL_CreateTextureFromSurface][SDL_CreateTextureFromSurface]].
-* TTF_RenderText_Blended_Wrapped
+
+** DONE Add components to GameObject
+  - Physics
+  - Drawing
+  - Input
+  - Collision
+
+** DONE UI::Framerate Ticker
+** DONE Drawing::Image
+** DONE Drawing::Polygon
+** DONE Fix UI: Clock Display
+  
+  The minutes are not showing up, seconds going beyond 60.
+
+** DONE Fix UI::Clock Display
+  It should appear like:  00:00:00
+* Notes 
+** TTF_RenderText_Blended_Wrapped
   
   For long texts, you can set a wraplength parameter.
 
@@ -34,20 +52,3 @@
         text: PAnsiChar; 
         fg: TSDL_Color; 
         wrapLength: UInt32): PSDL_Surface
-
-* DONE Add components to GameObject
-  - Physics
-  - Drawing
-  - Input
-  - Collision
-
-* DONE UI::Framerate Ticker
-* DONE Drawing::Image
-* DONE Drawing::Polygon
-* DONE Fix UI: Clock Display
-  
-  The minutes are not showing up, seconds going beyond 60.
-
-* DONE Fix UI::Clock Display
-  
-  It should appear like:  00:00:00
