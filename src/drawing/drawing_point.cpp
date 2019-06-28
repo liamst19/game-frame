@@ -17,8 +17,8 @@ namespace Drawing{
     PointDrawing::PointDrawing(MediaLayer::Drawing_Renderer* renderer,
                                int x, int y, 
                                int r, int g, int b, int alpha):
-        DrawingElement(renderer, DrawingElement::Color{r, g, b, alpha}),                           
-        _point_coordinates(DrawingElement::Position{x, y})
+        DrawingElement(renderer, Color{r, g, b, alpha}),                           
+        _point_coordinates(Position{x, y})
     {
     }
 
@@ -28,8 +28,8 @@ namespace Drawing{
  *    @color: Color and alpha transparency values.
  */
     PointDrawing::PointDrawing(MediaLayer::Drawing_Renderer* renderer,
-                               DrawingElement::Position coordinates,
-                               DrawingElement::Color color):
+                               Position coordinates,
+                               Color color):
         DrawingElement(renderer, color),                           
         _point_coordinates(coordinates)
     {
@@ -55,7 +55,7 @@ namespace Drawing{
 /** public function: coordinates()
  *  Coordinates of the pixel
  */
-    DrawingElement::Position PointDrawing::coordinates()
+    Position PointDrawing::coordinates()
     {
         return _point_coordinates;
     }
@@ -74,6 +74,30 @@ namespace Drawing{
     int PointDrawing::y()
     {
         return _point_coordinates.y;
+    }
+
+    /** public function: width()
+     * Width of the element
+     */
+    int  PointDrawing::width()
+    {
+        return 0;
+    }
+
+    /** public function: height()
+     * Height of the element
+     */
+    int  PointDrawing::height()
+    {
+        return 0;
+    }
+
+    /** public function: center()
+     * Position of the center of element
+     */
+    Position PointDrawing::center()
+    {
+        return _point_coordinates;
     }
 
 } // namespace Drawing

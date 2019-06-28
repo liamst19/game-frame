@@ -28,9 +28,9 @@ namespace Drawing{
 
         // Constructor
         EllipseDrawing(MediaLayer::Drawing_Renderer* renderer, 
-                       DrawingElement::Position a, 
+                       Position a, 
                        int radiusX, int radiusY,
-                       DrawingElement::Color color);
+                       Color color);
 
         // Destructor
         ~EllipseDrawing();
@@ -39,7 +39,7 @@ namespace Drawing{
         bool render() override;
 
         // Center of ellipse
-        DrawingElement::Position center();
+        Position center() override;
 
         // Horizontal radius
         int radius_x();
@@ -47,9 +47,15 @@ namespace Drawing{
         // Vertical radius
         int radius_y();
 
+        // Width
+        int width() override;
+
+        // Height
+        int height()override ;
+
     protected:
 
-        DrawingElement::Position _center; // _focus_a, _focus_b;
+        Position _center; // _focus_a, _focus_b;
 
         int _radius_x, _radius_y;
 

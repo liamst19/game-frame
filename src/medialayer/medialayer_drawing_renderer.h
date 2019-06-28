@@ -17,6 +17,12 @@ namespace MediaLayer{
 
         virtual ~Drawing_Renderer(){}
 
+        // Get width of a texture
+        virtual int texture_width(int texture_index)=0;
+
+        // Get height of a texture
+        virtual int texture_height(int texture_index)=0;
+
         // Initialize texture for rendering text
         virtual int initialize_text(
                 std::string text,

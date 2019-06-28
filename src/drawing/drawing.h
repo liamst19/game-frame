@@ -1,4 +1,4 @@
-/** drawig.h
+/** drawing.h
  * 
  */
 
@@ -7,9 +7,26 @@
 
 #include <vector>
 #include <memory>
-#include "drawing_element.h"
+// #include "drawing_element.h"
+
 
 namespace Drawing{
+
+    class DrawingElement;
+
+    // Represents Color and Alpha Transparency values.
+    // Numbers should be within 0 to 255.
+    struct Color
+    {
+        int r, g, b; // Red, green, blue
+        int alpha;   // Alpha transparency
+    };
+
+    // Represents x and y-coordinates and color of a point.
+    struct Position
+    {
+        int x, y;
+    };
     
     class Drawing{
     public:
@@ -25,6 +42,15 @@ namespace Drawing{
 
         // Render Drawing
         void render();
+
+        // Overall width of the drawing
+        int width();
+
+        // Overall height of the drawing
+        int height();
+
+        // Position of the center of drawing
+        Position center();
 
     private:
 

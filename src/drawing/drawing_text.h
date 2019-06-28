@@ -29,8 +29,8 @@ namespace Drawing{
         TextDrawing(MediaLayer::Drawing_Renderer* renderer, 
                     std::string text,
                     std::string font_src, int fon_size,
-                    DrawingElement::Position position, 
-                    DrawingElement::Color color);
+                    Position position, 
+                    Color color);
 
         // Destructor
         ~TextDrawing();
@@ -38,8 +38,8 @@ namespace Drawing{
         // Update text
         void update(std::string text,
                     std::string font_src, int fon_size,
-                    DrawingElement::Position position, 
-                    DrawingElement::Color color);
+                    Position position, 
+                    Color color);
 
         // Set text content
         void update(std::string text);
@@ -63,21 +63,27 @@ namespace Drawing{
         void set_font_size(int size);
 
         // Text position
-        DrawingElement::Position position();
+        Position position();
 
         // Set text position
-        void set_position(DrawingElement::Position position);
+        void set_position(Position position);
     
         // Index for referring back to cache of textures.
         //   -- But is this necessary to be public?
         int texture_index();
+
+        int width() override;
+
+        int height() override;
+
+        Position center() override;
 
     private:
 
         std::string _text;
         std::string _font_src;
         int _font_size;
-        DrawingElement::Position _position;
+        Position _position;
 
         // Index for referring back to cache
         int _texture_index;

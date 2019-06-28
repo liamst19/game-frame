@@ -1,7 +1,6 @@
 
 add_library(lib-drawing
   drawing.h                           drawing.cpp
-  drawing_factory.h                   drawing_factory.cpp
   drawing_element.h                   drawing_element.cpp
   drawing_text.h                      drawing_text.cpp
   drawing_image.h                     drawing_image.cpp

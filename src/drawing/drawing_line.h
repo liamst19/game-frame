@@ -30,9 +30,9 @@ namespace Drawing{
 
         // Constructor
         LineDrawing(MediaLayer::Drawing_Renderer* renderer, 
-                    DrawingElement::Position a, 
-                    DrawingElement::Position b, 
-                    DrawingElement::Color color);
+                    Position a, 
+                    Position b, 
+                    Color color);
 
         // Destructor
         ~LineDrawing();
@@ -41,14 +41,23 @@ namespace Drawing{
         bool render() override;
 
         // End point of line ab
-        DrawingElement::Position a();
+        Position a();
 
         // End point of line ab
-        DrawingElement::Position b();
+        Position b();
+
+        // Width
+        int width() override;
+
+        // Height
+        int height() override;
+
+        // Position of the center of element
+        Position center() override;
 
     private:
 
-        DrawingElement::Position _point_a, _point_b;
+        Position _point_a, _point_b;
 
     };
 

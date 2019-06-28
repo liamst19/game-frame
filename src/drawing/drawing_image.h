@@ -26,7 +26,7 @@ namespace Drawing{
         // Constructor
         ImageDrawing(MediaLayer::Drawing_Renderer* renderer, 
                     std::string source_path,
-                    DrawingElement::Position position);
+                    Position position);
 
         // Destructor
         ~ImageDrawing();
@@ -41,19 +41,26 @@ namespace Drawing{
         void set_image_source(std::string source_path);
 
         // Image position
-        DrawingElement::Position position();
+        Position position();
 
         // Set image position
-        void set_position(DrawingElement::Position position);
+        void set_position(Position position);
     
         // Index for referring back to cache of textures.
         //   -- But is this necessary to be public?
         int texture_index();
 
+        Position center() override;
+
+        int width() override;
+
+        int height() override;
+
     private:
 
         std::string _source_path;
-        DrawingElement::Position _position;
+        Position _position;
+        int _width, _height;
 
         // Index for referring back to cache
         int _texture_index;

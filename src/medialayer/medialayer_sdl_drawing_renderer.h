@@ -25,7 +25,12 @@ namespace MediaLayer{
 
             bool initialize(SDL_Renderer* renderer, SDL_Window* window);
 
+// ------------------------------------------------------------
+            // Get Texture Width
+            int texture_width(int texture_index);
 
+            // Get Texture Height
+            int texture_height(int texture_index);
 // ------------------------------------------------------------
 // Text
             // Initialize texture for rendering text

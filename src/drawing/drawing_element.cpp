@@ -16,7 +16,7 @@ namespace Drawing{
  *    @renderer: Pointer to object handling screen output.
  */
     DrawingElement::DrawingElement(MediaLayer::Drawing_Renderer* renderer,
-                                   DrawingElement::Color color):
+                                   Color color):
         _drawing_renderer(renderer),
         _color(color)
     {
@@ -32,7 +32,7 @@ namespace Drawing{
 /** public function: color()
  *  Color and alpha transparency values of the drawing. 
  */
-    DrawingElement::Color DrawingElement::color()
+    Color DrawingElement::color()
     {
         return _color;
     }

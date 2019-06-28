@@ -29,9 +29,9 @@ namespace Drawing{
 
         // Constructor
         FilledEllipseDrawing(MediaLayer::Drawing_Renderer* renderer, 
-                             DrawingElement::Position a, 
+                             Position a, 
                              int radiusX, int radiusY,
-                             DrawingElement::Color color);
+                             Color color);
 
         // Destructor
         ~FilledEllipseDrawing();

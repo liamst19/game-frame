@@ -31,8 +31,8 @@ namespace Drawing{
      */
     FilledPolygonDrawing::FilledPolygonDrawing(
             MediaLayer::Drawing_Renderer* renderer,
-            std::vector<DrawingElement::Position> vertices,
-            DrawingElement::Color color):
+            std::vector<Position> vertices,
+            Color color):
         PolygonDrawing(renderer, vertices, color)
     {
     }

@@ -23,8 +23,8 @@ namespace Drawing{
 
         // Constructor
         PolygonDrawing(MediaLayer::Drawing_Renderer* renderer,
-                       std::vector<DrawingElement::Position> vertices,
-                       DrawingElement::Color color);
+                       std::vector<Position> vertices,
+                       Color color);
 
         // Destructor
         ~PolygonDrawing();
@@ -36,11 +36,33 @@ namespace Drawing{
         void add_vertice(int x, int y);
 
         // Vertices
-        std::vector<DrawingElement::Position> vertices();
+        std::vector<Position> vertices();
+
+        int width() override;
+
+        int height() override;
+
+        Position center() override;
+
+        void set_center(int x, int y);
+
+        int min_x();
+
+        int max_x();
+
+        int min_y();
+
+        int max_y();
 
     protected:
 
-        std::vector<DrawingElement::Position> _vertices;
+        std::vector<Position> _vertices;
+        Position _center;
+
+        int _min_x, _max_x, _min_y, _max_y;
+        
+
+        void _calculate_min_max();
 
     };
 

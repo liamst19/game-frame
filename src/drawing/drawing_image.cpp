@@ -17,9 +17,9 @@ namespace Drawing{
             MediaLayer::Drawing_Renderer* renderer, 
             std::string source_path,
             int x, int y):
-        DrawingElement(renderer, DrawingElement::Color{0, 0, 0, 0}),
+        DrawingElement(renderer, Color{0, 0, 0, 0}),
         _source_path(source_path),
-        _position(DrawingElement::Position{x, y})
+        _position(Position{x, y})
     {
         _initialize();
     }
@@ -31,8 +31,8 @@ namespace Drawing{
     ImageDrawing::ImageDrawing(
             MediaLayer::Drawing_Renderer* renderer, 
             std::string source_path,
-            DrawingElement::Position position):
-        DrawingElement(renderer, DrawingElement::Color{0, 0, 0, 0}),
+            Position position):
+        DrawingElement(renderer, Color{0, 0, 0, 0}),
         _source_path(source_path),
         _position(position)
     {
@@ -57,15 +57,10 @@ namespace Drawing{
  */
     void ImageDrawing::_initialize_texture()
     {
-        int index = -1;
-        index = _drawing_renderer
+        _texture_index = _drawing_renderer
             ->initialize_image(_source_path);
 
-        if(index > 0)
-        {
-            _texture_index = index;
-        }
-        else
+        if(_texture_index < 0)
         {
             // Something went wrong, throw exception?
         }
@@ -102,7 +97,7 @@ namespace Drawing{
 /** public function: position
  * Image position
  */
-    DrawingElement::Position ImageDrawing::position()
+    Position ImageDrawing::position()
     {
         return _position;
     }
@@ -112,7 +107,7 @@ namespace Drawing{
  *   @position: Image position
  */
     void ImageDrawing::set_position(
-            DrawingElement::Position position)
+            Position position)
     {
         _position = position;
     }
@@ -124,6 +119,30 @@ namespace Drawing{
     int ImageDrawing::texture_index()
     {
         return _texture_index;
+    }
+
+    /** public function: width()
+     * Returns width
+     */
+    int ImageDrawing::width()
+    {
+        return _drawing_renderer->texture_width(_texture_index);
+    }
+    
+    /** public function: height()
+     * Returns height
+     */
+    int ImageDrawing::height()
+    {
+        return _drawing_renderer->texture_height(_texture_index);
+    }
+
+    /** public function: center()
+     * Returns position of center 
+     */
+    Position ImageDrawing::center()
+    {
+        return Position{_position.x + (width()/2), _position.y + (height()/2)};
     }
 
 } // namespace Drawing

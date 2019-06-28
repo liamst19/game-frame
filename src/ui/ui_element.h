@@ -28,7 +28,7 @@ namespace GameObject{
 
         protected:
 
-            Drawing::DrawingElement::Position _position;
+            Drawing::Position _position;
             Drawing::Drawing _drawing;
 
         };

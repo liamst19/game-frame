@@ -20,8 +20,8 @@ namespace Drawing{
             int x, int y, 
             int radiusX, int radiusY, 
             int r, int g, int b, int alpha):
-        DrawingElement(renderer, DrawingElement::Color{r, g, b, alpha}),
-        _center(DrawingElement::Position{x, y}),
+        DrawingElement(renderer, Color{r, g, b, alpha}),
+        _center(Position{x, y}),
         _radius_x(radiusX), 
         _radius_y(radiusY){
     }
@@ -34,9 +34,9 @@ namespace Drawing{
  */
     EllipseDrawing::EllipseDrawing(
             MediaLayer::Drawing_Renderer* renderer, 
-            DrawingElement::Position center, 
+            Position center, 
             int radiusX, int radiusY,
-            DrawingElement::Color color):
+            Color color):
         DrawingElement(renderer, color),
         _center(center),
         _radius_x(radiusX), 
@@ -63,7 +63,7 @@ namespace Drawing{
 /** public function: center
  *  Returns the coordinates of the center of the ellipse.
  */
-    DrawingElement::Position EllipseDrawing::center()
+    Position EllipseDrawing::center()
     {
         return _center;
     }
@@ -82,6 +82,22 @@ namespace Drawing{
     int EllipseDrawing::radius_y()
     {
         return _radius_y;
+    }
+    
+/** public function: width()
+ *  Returns the width of the element
+ */
+    int EllipseDrawing::width()
+    {
+        return _radius_x * 2;
+    }
+
+/** public function: height()
+ *  Returns the height of the element
+ */
+    int EllipseDrawing::height()
+    {
+        return _radius_y * 2;
     }
 
 } // namespace Drawing

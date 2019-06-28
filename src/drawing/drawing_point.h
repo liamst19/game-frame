@@ -22,8 +22,8 @@ namespace Drawing{
 
         // Constructor
         PointDrawing(MediaLayer::Drawing_Renderer* renderer, 
-                     DrawingElement::Position coordinates, 
-                     DrawingElement::Color color);
+                     Position coordinates, 
+                     Color color);
 
         // Destructor
         ~PointDrawing();
@@ -32,7 +32,7 @@ namespace Drawing{
         bool render() override;
 
         // Coordinates of the point
-        DrawingElement::Position coordinates();
+        Position coordinates();
 
         // X-coordinate of the point
         int x();
@@ -40,9 +40,15 @@ namespace Drawing{
         // Y-coordinate of the point
         int y();
 
+        int width() override;
+
+        int height() override;
+
+        Position center() override;
+
     private:
 
-        DrawingElement::Position _point_coordinates;
+        Position _point_coordinates;
 
     };
 

@@ -20,9 +20,9 @@ namespace Drawing{
             int aX, int aY, 
             int bX, int bY, 
             int r, int g, int b, int alpha):
-        DrawingElement(renderer, DrawingElement::Color{r, g, b, alpha}),
-        _point_a(DrawingElement::Position{aX, aY}),
-        _point_b(DrawingElement::Position{bX, bY})
+        DrawingElement(renderer, Color{r, g, b, alpha}),
+        _point_a(Position{aX, aY}),
+        _point_b(Position{bX, bY})
     {
     }
 
@@ -33,9 +33,9 @@ namespace Drawing{
  */
     RectangleDrawing::RectangleDrawing(
             MediaLayer::Drawing_Renderer* renderer, 
-            DrawingElement::Position a, 
-            DrawingElement::Position b, 
-            DrawingElement::Color color):
+            Position a, 
+            Position b, 
+            Color color):
         DrawingElement(renderer, color),
         _point_a(a),
         _point_b(b)
@@ -63,7 +63,7 @@ namespace Drawing{
 /** public function: a()
  *  Coordinates of a vertice of the rectangle
  */
-    DrawingElement::Position RectangleDrawing::a()
+    Position RectangleDrawing::a()
     {
         return _point_a;
     }
@@ -71,9 +71,33 @@ namespace Drawing{
 /** public function: b()
  *  Coordinates of a vertice of the rectangle
  */
-    DrawingElement::Position RectangleDrawing::b()
+    Position RectangleDrawing::b()
     {
         return _point_b;
+    }
+
+    /** public function: width()
+     * Width of the element
+     */
+    int RectangleDrawing::width()
+    {
+        return (_point_b.x > _point_a.x) ? (_point_b.x - _point_a.x) : (_point_a.x - _point_b.x);
+    }
+
+    /** public function: height()
+     * Height of the element
+     */
+    int RectangleDrawing::height()
+    {
+        return (_point_b.y > _point_a.y) ? (_point_b.y - _point_a.y) : (_point_a.y - _point_b.y);
+    }
+
+    /** public function: center()
+     * Position of the center of element
+     */
+    Position RectangleDrawing::center()
+    {
+        return Position{(_point_a.x + _point_b.x) / 2, (_point_a.y + _point_b.y) / 2};
     }
 
 } // namespace Drawing

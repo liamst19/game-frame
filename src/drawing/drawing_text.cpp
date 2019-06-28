@@ -20,11 +20,11 @@ namespace Drawing{
                              std::string font_src, int font_size,
                              int x, int y, 
                              int r, int g, int b, int alpha):
-        DrawingElement(renderer, DrawingElement::Color{r, g, b, alpha}),
+        DrawingElement(renderer, Color{r, g, b, alpha}),
         _text(text),
         _font_src(font_src),
         _font_size(font_size),
-        _position(DrawingElement::Position{x, y})
+        _position(Position{x, y})
     {
         _initialize();
     }
@@ -38,8 +38,8 @@ namespace Drawing{
     TextDrawing::TextDrawing(MediaLayer::Drawing_Renderer* renderer, 
                              std::string text,
                              std::string font_src, int font_size,
-                             DrawingElement::Position position, 
-                             DrawingElement::Color color):
+                             Position position, 
+                             Color color):
         DrawingElement(renderer, color),
         _text(text),
         _font_src(font_src),
@@ -169,7 +169,7 @@ namespace Drawing{
 /** public function: position
  * Text position
  */
-    DrawingElement::Position TextDrawing::position()
+    Position TextDrawing::position()
     {
         return _position;
     }
@@ -178,7 +178,7 @@ namespace Drawing{
  * Sets text position
  *   @position: Text position
  */
-    void TextDrawing::set_position(DrawingElement::Position position)
+    void TextDrawing::set_position(Position position)
     {
         _position = position;
     }
@@ -190,6 +190,30 @@ namespace Drawing{
     int TextDrawing::texture_index()
     {
         return _texture_index;
+    }
+
+    /** public function: width()
+     * Returns width
+     */
+    int TextDrawing::width()
+    {
+        return _drawing_renderer->texture_width(_texture_index);
+    }
+    
+    /** public function: height()
+     * Returns height
+     */
+    int TextDrawing::height()
+    {
+        return _drawing_renderer->texture_height(_texture_index);
+    }
+
+    /** public function: center()
+     * Returns position of the center of text
+     */
+    Position TextDrawing::center()
+    {
+        return Position{_position.x + (width()/2), _position.y + (height()/2)};
     }
 
 } // namespace Drawing

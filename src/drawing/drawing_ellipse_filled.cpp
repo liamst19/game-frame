@@ -31,9 +31,9 @@ namespace Drawing{
  */
     FilledEllipseDrawing::FilledEllipseDrawing(
             MediaLayer::Drawing_Renderer* renderer, 
-            DrawingElement::Position center, 
+            Position center, 
             int radiusX, int radiusY,
-            DrawingElement::Color color):
+            Color color):
         EllipseDrawing(renderer, center, radiusX, radiusY, color)
     {
     }

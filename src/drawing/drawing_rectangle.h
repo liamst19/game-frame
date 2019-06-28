@@ -30,8 +30,8 @@ namespace Drawing{
         // Constructor
         RectangleDrawing(
                 MediaLayer::Drawing_Renderer* renderer, 
-                DrawingElement::Position a, DrawingElement::Position b, 
-                DrawingElement::Color color);
+                Position a, Position b, 
+                Color color);
 
         // Destructor
         ~RectangleDrawing();
@@ -40,14 +40,20 @@ namespace Drawing{
         bool render() override;
 
         // Vertice
-        DrawingElement::Position a();
+        Position a();
 
         // Vertice
-        DrawingElement::Position b();
+        Position b();
+
+        int width() override;
+
+        int height() override;
+
+        Position center() override;
 
     protected:
 
-        DrawingElement::Position _point_a, _point_b;
+        Position _point_a, _point_b;
 
     };
 

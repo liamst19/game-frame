@@ -95,6 +95,24 @@ namespace MediaLayer{
             }
         }
 
+        /** public function: texture_width()
+         * Get texture width
+         *   @texture_index: index of the texture
+         */
+        int SDL_Drawing_Renderer::texture_width(int texture_index)
+        {
+            return _textures[texture_index].get()->width();
+        }
+
+        /** public function: texture_height()
+         * Get texture width
+         *   @texture_index: index of the texture
+         */
+        int SDL_Drawing_Renderer::texture_height(int texture_index)
+        {
+            return _textures[texture_index].get()->height();
+        }
+
 // ------------------------------------------------------------
 // Text
 

@@ -41,4 +41,35 @@ namespace Drawing{
         }
     }
 
+    /** public function: width()
+     * Calculates overall width of the drawing
+     */
+    int Drawing::width()
+    {
+        int width = 0;
+
+        return width;
+    }
+
+    /** public function: height()
+     * Calculates overall height of the drawing
+     */
+    int Drawing::height()
+    {
+        int height = 0;
+
+        return height;
+    }
+
+    /** public function: center()
+     * Position of the center of drawing
+     */
+    Position Drawing::center()
+    {
+        Position center;
+
+        return center;
+    }
+
+
 } // namespace Drawing

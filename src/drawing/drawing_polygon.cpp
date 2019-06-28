@@ -19,13 +19,16 @@ namespace Drawing{
             MediaLayer::Drawing_Renderer* renderer, 
             int* vx, int* vy, int n,
             int r, int g, int b, int alpha):
-        DrawingElement(renderer, DrawingElement::Color{r, g, b, alpha})
+        DrawingElement(renderer, Color{r, g, b, alpha})
     {
         // Populate vector of vertices
         for(int i = 0; i < n; i++)
         {
-            add_vertice(vx[i], vy[i]);
+            _vertices.push_back(Position{vx[i], vy[i]});
         }
+        
+        // Determine min and max coordinates
+        _calculate_min_max();
      }
 
     /** Constructor
@@ -35,11 +38,12 @@ namespace Drawing{
      */
     PolygonDrawing::PolygonDrawing(
             MediaLayer::Drawing_Renderer* renderer,
-            std::vector<DrawingElement::Position> vertices,
-            DrawingElement::Color color):
+            std::vector<Position> vertices,
+            Color color):
         DrawingElement(renderer, color),
         _vertices(vertices)
     {
+        _calculate_min_max();
     }
 
     /** Destructor
@@ -75,15 +79,115 @@ namespace Drawing{
     void PolygonDrawing::add_vertice(
             int x, int y)
     {
-        _vertices.push_back(DrawingElement::Position{x, y});
+        _vertices.push_back(Position{x, y});
+        _calculate_min_max();
     }
 
     /** public function: vertices()
      * Vertices
      */
-    std::vector<DrawingElement::Position> PolygonDrawing::vertices()
+    std::vector<Position> PolygonDrawing::vertices()
     {
         return _vertices;
+    }
+
+    /** public function: width()
+     * Width of the element
+     */
+    int PolygonDrawing::width()
+    {
+        return _max_x - _min_x;
+    }
+
+    /** public function: height()
+     * Height of the element
+     */
+    int PolygonDrawing::height()
+    {
+        return _max_y - _min_y;
+    }
+
+    /** public function: set_center()
+     * Specify the center of the polygon
+     */
+    void PolygonDrawing::set_center(int x, int y)
+    {
+        _center = Position{x, y};
+    }
+    
+    /** public function: center()
+     * Position of the center of element.
+     */
+    Position PolygonDrawing::center()
+    {
+        // Since it's not necessarily a regular polygon, it may be better to specify the center.
+        return _center;
+    }
+
+    /** private function: min_x()
+     * Get the minimum x-coordinate of vertices
+     */
+    int PolygonDrawing::min_x()
+    {
+        return _min_x;
+    }
+    
+    /** private function: max_x()
+     * Get the maximum x-coordinate of vertices
+     */
+    int PolygonDrawing::max_x()
+    {
+        return _max_x;
+    }
+
+    /** private function: min_y()
+     * Get the minimum x-coordinate of vertices
+     */
+    int PolygonDrawing::min_y()
+    {
+        return _min_y;
+    }
+    
+    /** private function: max_y()
+     * Get the maximum x-coordinate of vertices
+     */
+    int PolygonDrawing::max_y()
+    {
+        return _max_y;
+    }
+
+    /** private function: _calculate_min_max()
+     */
+    void PolygonDrawing::_calculate_min_max()
+    {
+        int i = 0;
+        int min_x{_vertices[i].x}, max_x{_vertices[i].x};
+        int min_y{_vertices[i].y}, max_y{_vertices[i].y};
+        Position vertex;
+        for(; i < _vertices.size(); ++i)
+        {
+            vertex = _vertices[i];
+            if(vertex.x < min_x)
+            {
+                min_x = vertex.x;
+            }
+            if(vertex.x > max_x)
+            {
+                max_x = vertex.x;
+            }
+            if(vertex.y < min_y)
+            {
+                min_y = vertex.y;
+            }
+            if(vertex.y > max_y)
+            {
+                max_y = vertex.y;
+            }
+        }
+        _min_x = min_x;
+        _max_x = max_x;
+        _min_y = min_y;
+        _max_y = max_y;        
     }
 
 } // namespace Drawing

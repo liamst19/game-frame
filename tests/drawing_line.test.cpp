@@ -6,7 +6,7 @@
 #include "gtest/gtest.h"
 
 #include "../src/drawing/drawing_line.h"
-#include "../src/drawing/drawing_element.h"
+#include "../src/drawing/drawing.h"
 
 #include "mocks/medialayer_mock_drawing_renderer.hpp"
 
@@ -14,10 +14,10 @@ using namespace Drawing;
 
 namespace
 {
+    MediaLayer::Mock_Drawing_Renderer renderer;
 
     TEST(Drawing_Line, Constructor_Ints)
     {
-        MediaLayer::Mock_Drawing_Renderer renderer;
         LineDrawing line{&renderer, 0, 1, 2, 3, 4, 5, 6, 7};
         
         ASSERT_EQ(0, line.a().x);
@@ -32,10 +32,9 @@ namespace
     
     TEST(Drawing_Line, Constructor_Structs)
     {
-        MediaLayer::Mock_Drawing_Renderer renderer;
-        DrawingElement::Position a{29, 57};
-        DrawingElement::Position b{55, 107};
-        DrawingElement::Color color{1, 2, 3, 4};
+        Drawing::Position a{29, 57};
+        Drawing::Position b{55, 107};
+        Drawing::Color color{1, 2, 3, 4};
         LineDrawing line{&renderer, a, b, color};
 
         ASSERT_EQ(29, line.a().x);
@@ -50,11 +49,10 @@ namespace
 
     TEST(Drawing_Line, Render)
     {
-        MediaLayer::Mock_Drawing_Renderer renderer;
         LineDrawing line(&renderer, 
-                         DrawingElement::Position{100, 100}, 
-                         DrawingElement::Position{500, 500}, 
-                         DrawingElement::Color{256, 256, 256, 0});
+                         Drawing::Position{100, 100}, 
+                         Drawing::Position{500, 500}, 
+                         Drawing::Color{256, 256, 256, 0});
         ASSERT_TRUE(line.render());   
     }
 

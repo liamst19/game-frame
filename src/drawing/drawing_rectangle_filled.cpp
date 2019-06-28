@@ -29,9 +29,9 @@ namespace Drawing{
  */
     FilledRectangleDrawing::FilledRectangleDrawing(
             MediaLayer::Drawing_Renderer* renderer, 
-            DrawingElement::Position a, 
-            DrawingElement::Position b, 
-            DrawingElement::Color color):
+            Position a, 
+            Position b, 
+            Color color):
         RectangleDrawing(renderer, a, b, color)
     {
     }
