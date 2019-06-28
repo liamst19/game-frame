@@ -38,7 +38,7 @@ namespace Drawing{
         ~LineDrawing();
 
         // Renders line to screen
-        bool render() override;
+        bool render(int x = 0, int y = 0, double rotation = 0) override;
 
         // End point of line ab
         Position a();
@@ -54,6 +54,10 @@ namespace Drawing{
 
         // Position of the center of element
         Position center() override;
+        
+        Position min() override;
+
+        Position max() override;
 
     private:
 

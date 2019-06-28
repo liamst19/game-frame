@@ -37,7 +37,7 @@ namespace Drawing{
         ~FilledRectangleDrawing();
 
         // Renders rectangle to screen
-        bool render() override;
+        bool render(int x = 0, int y = 0, double rotation = 0) override;
 
     private:
 

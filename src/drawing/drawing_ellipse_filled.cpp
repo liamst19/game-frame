@@ -47,7 +47,7 @@ namespace Drawing{
 /** public function: render()
  *  Renders ellipse to screen.
  */
-    bool FilledEllipseDrawing::render()
+    bool FilledEllipseDrawing::render(int x, int y, double rotation)
     {
         return _drawing_renderer->render_filled_ellipse(
                 _center.x, _center.y,

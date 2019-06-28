@@ -38,10 +38,11 @@ namespace Drawing{
         ~Drawing();
 
         // Add drawing element
-        void add_drawing_element(std::unique_ptr<DrawingElement> element);
+        void add_drawing_element(
+                std::unique_ptr<DrawingElement> element);
 
         // Render Drawing
-        void render();
+        void render(int x = 0, int y = 0, double rotation = 0);
 
         // Overall width of the drawing
         int width();
@@ -49,12 +50,27 @@ namespace Drawing{
         // Overall height of the drawing
         int height();
 
+        // Position of the upper left corner
+        Position min();
+
+        // Position of the Lower Right Corner
+        Position max();
+
         // Position of the center of drawing
         Position center();
 
+        void set_position(Position position);
+
+        void move(int x, int y);
+
     private:
 
+        Position _position;
+        Position _min, _max;
+
         std::vector<std::unique_ptr<DrawingElement>> _drawing_elements;
+
+        void _find_min_max();
 
     };
     

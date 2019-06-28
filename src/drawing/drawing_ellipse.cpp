@@ -52,7 +52,7 @@ namespace Drawing{
 /** public function: render()
  *  Renders ellipse to screen.
  */
-    bool EllipseDrawing::render()
+    bool EllipseDrawing::render(int x, int y, double rotation)
     {
         return _drawing_renderer->render_ellipse(
                 _center.x, _center.y,
@@ -98,6 +98,22 @@ namespace Drawing{
     int EllipseDrawing::height()
     {
         return _radius_y * 2;
+    }
+
+    /** public function: min()
+     * Position of the upper left corner
+     */
+    Position EllipseDrawing::min()
+    {
+        return Position{_center.x - _radius_x, _center.y - _radius_y};
+    }
+
+    /** public function: max()
+     * Position of the lower right corner
+     */
+    Position EllipseDrawing::max()
+    {
+        return Position{_center.x + _radius_x, _center.y + _radius_y};
     }
 
 } // namespace Drawing

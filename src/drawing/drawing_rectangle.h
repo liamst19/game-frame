@@ -37,7 +37,7 @@ namespace Drawing{
         ~RectangleDrawing();
 
         // Renders rectangle to screen
-        bool render() override;
+        bool render(int x = 0, int y = 0, double rotation = 0) override;
 
         // Vertice
         Position a();
@@ -50,6 +50,10 @@ namespace Drawing{
         int height() override;
 
         Position center() override;
+        
+        Position min() override;
+
+        Position max() override;
 
     protected:
 

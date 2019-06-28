@@ -48,7 +48,7 @@ namespace Drawing{
 /** Public function: render()
  *  Renders line to screen.
  */
-    bool LineDrawing::render()
+    bool LineDrawing::render(int x, int y, double rotation)
     {
         // Render line
         return _drawing_renderer->render_line(
@@ -105,6 +105,30 @@ namespace Drawing{
     Position LineDrawing::center()
     {
         return Position{(_point_a.x + _point_b.x) / 2, (_point_a.y + _point_b.y) / 2};
+    }
+    
+    /** public function: min()
+     * Position of the upper left corner
+     */
+    Position LineDrawing::min()
+    {
+        int x, y;
+        x = _point_a.x < _point_b.x ? _point_a.x : _point_b.x; 
+        y = _point_a.y < _point_b.y ? _point_a.y : _point_b.y; 
+
+        return Position{x, y};
+    }
+
+    /** public function: max()
+     * Position of the lower right corner
+     */
+    Position LineDrawing::max()
+    {
+        int x, y;
+        x = _point_b.x > _point_a.x ? _point_b.x : _point_a.x; 
+        y = _point_b.y > _point_a.y ? _point_b.y : _point_a.y; 
+
+        return Position{x, y};
     }
     
 } // namespace Drawing

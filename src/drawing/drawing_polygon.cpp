@@ -55,7 +55,7 @@ namespace Drawing{
     /** Public function: render()
      * Renders polygon to screen
      */
-    bool PolygonDrawing::render()
+    bool PolygonDrawing::render(int x, int y, double rotation)
     {
         int n = _vertices.size();
         short vx[n], vy[n];
@@ -154,6 +154,22 @@ namespace Drawing{
     int PolygonDrawing::max_y()
     {
         return _max_y;
+    }
+    
+    /** public function: min()
+     * Position of the upper left corner
+     */
+    Position PolygonDrawing::min()
+    {
+        return Position{_min_x, _min_y};
+    }
+
+    /** public function: max()
+     * Position of the lower right corner
+     */
+    Position PolygonDrawing::max()
+    {
+        return Position{_max_x, _max_y};
     }
 
     /** private function: _calculate_min_max()

@@ -45,7 +45,7 @@ namespace Drawing{
         void update(std::string text);
 
         // Renders text to screen
-        bool render() override;
+        bool render(int x = 0, int y = 0, double rotation = 0) override;
 
         // Text content
         std::string text();
@@ -77,6 +77,10 @@ namespace Drawing{
         int height() override;
 
         Position center() override;
+        
+        Position min() override;
+
+        Position max() override;
 
     private:
 

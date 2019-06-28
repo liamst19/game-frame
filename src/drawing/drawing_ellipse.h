@@ -36,7 +36,7 @@ namespace Drawing{
         ~EllipseDrawing();
 
         // Renders line to screen
-        bool render() override;
+        bool render(int x = 0, int y = 0, double rotation = 0) override;
 
         // Center of ellipse
         Position center() override;
@@ -52,6 +52,11 @@ namespace Drawing{
 
         // Height
         int height()override ;
+
+        Position min() override;
+
+        Position max() override;
+
 
     protected:
 

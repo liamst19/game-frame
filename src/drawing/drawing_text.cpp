@@ -105,7 +105,7 @@ namespace Drawing{
 /** public function: render()
  * Renders text to screen 
  */
-    bool TextDrawing::render()
+    bool TextDrawing::render(int x, int y, double rotation)
     {
         return _drawing_renderer
             ->render_text(_texture_index,
@@ -214,6 +214,22 @@ namespace Drawing{
     Position TextDrawing::center()
     {
         return Position{_position.x + (width()/2), _position.y + (height()/2)};
+    }
+    
+    /** public function: min()
+     * Position of the upper left corner
+     */
+    Position TextDrawing::min()
+    {
+        return _position;
+    }
+
+    /** public function: max()
+     * Position of the lower right corner
+     */
+    Position TextDrawing::max()
+    {
+        return Position{_position.x + width(), _position.y + height()};
     }
 
 } // namespace Drawing

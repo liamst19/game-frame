@@ -56,4 +56,19 @@ namespace
         ASSERT_TRUE(line.render());   
     }
 
+    TEST(Drawing_Line, MinMaxCenter)
+    {
+        LineDrawing line(&renderer, 
+                         Drawing::Position{100, 100}, 
+                         Drawing::Position{500, 500}, 
+                         Drawing::Color{256, 256, 256, 0});
+
+        ASSERT_EQ(line.min().x, 100);
+        ASSERT_EQ(line.min().y, 100);
+        ASSERT_EQ(line.max().x, 500);
+        ASSERT_EQ(line.max().y, 500);
+        ASSERT_EQ(line.center().x, 300);
+        ASSERT_EQ(line.center().y, 300);
+    }
+
 }

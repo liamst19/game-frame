@@ -76,5 +76,25 @@ namespace {
 
         EXPECT_TRUE(poly.render());
     }
+    
+    TEST(Drawing_Polygon_Test, MinMaxCenter)
+    {
+        std::vector<Position> vertices;
+        vertices.push_back(Position{10, 5});
+        vertices.push_back(Position{25, 125});
+        vertices.push_back(Position{15, 100});
+
+        Color color{1, 2, 3, 4};
+        
+        PolygonDrawing poly{&renderer, vertices, color};
+        poly.set_center(55, 65);
+
+        ASSERT_EQ(10, poly.min().x);
+        ASSERT_EQ(5, poly.min().y);
+        ASSERT_EQ(25, poly.max().x);
+        ASSERT_EQ(125, poly.max().y);
+        ASSERT_EQ(55, poly.center().x);
+        ASSERT_EQ(65, poly.center().y);
+    };
 
 }

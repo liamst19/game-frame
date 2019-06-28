@@ -1,6 +1,11 @@
 #+Title: Notes on Game-Frame projects
 
 * Tasks
+** TODO Render Drawing with position and rotation
+
+- Rotation should occur along the center of the Drawing object, not the elements.
+- Angle should be in degrees, so incrementing would only require integers.
+
 ** TODO Animation
   
   Figure out a way to incorporate animation using the =Drawing= classes.
@@ -9,12 +14,6 @@
     - It would contain a collection of =Drawing= objects, each representing a frame, paired with the timing at which the object will be rendererd.
     - =render()= will keep track of time as it renders each =Drawing= frame.
     - Another option is for =Animation= to contain a duration property, which would be divided by the size of =Drawing= vector.
-
-** TODO Drawing class: width, height, center
-
-  The =Drawing= class should calculate the minimum and maximum positions of all the elements it contains. It should also possess a center position, around which it will be rotated.
-
-  The center position could also inform SDL, when =SDL_Texture= is to be used, in determining =SDL_Rect= for the target =SDL_Surface= object, and for rendering texture using the =SDL_CopyEx= method.
 
 ** TODO Merge this frame with Asteroid project
 ** TODO Add tests
@@ -26,6 +25,12 @@
 ** TODO Experiment: Render Drawing on a SDL_Surface, then do SDL_CreateTextureFromSurface.
 
   This way we won't have to make expensive drawings each iteration and instead impose pre-made textures. The idea is for the =Drawing= object to possess and call the renderer, which would create the =SDL_Surface= and draw all the =DrawingElement= objects in that single surface. Upon completion of the drawing the renderer will call [[https://wiki.libsdl.org/SDL_CreateTextureFromSurface][SDL_CreateTextureFromSurface]].
+
+** DONE Drawing class: width, height, center
+
+  The =Drawing= class should calculate the minimum and maximum positions of all the elements it contains. It should also possess a center position, around which it will be rotated.
+
+  The center position could also inform SDL, when =SDL_Texture= is to be used, in determining =SDL_Rect= for the target =SDL_Surface= object, and for rendering texture using the =SDL_CopyEx= method.
 
 ** DONE Add components to GameObject
   - Physics

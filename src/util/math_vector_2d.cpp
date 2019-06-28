@@ -65,64 +65,95 @@ namespace Util{
 // ----------------------------------------
 // Vector functions
 
-// Length squared
+        // Length squared
         float Vector2d::lengthSq()
         {
             return (x*x + y*y);
         }
 
-// Length
+        // Length
         float Vector2d::length()
         {
             return Math::Sqrt(lengthSq());
         }
 
-// Normalizes, convert to unit vector
+        // Normalizes, convert to unit vector
         void Vector2d::normalize(){
             float len = length();
             x /= len;
             y /= len;
         }
 
+        // Rotate vector along a given axis
+        Vector2d Vector2d::rotate(
+                const Vector2d& axis,
+                const float angle_radians)
+        {
+            float x2 = x - axis.x;
+            float y2 = y - axis.y;
+            float s = Sin(angle_radians);
+            float c = Cos(angle_radians);
+            
+            return Vector2d{(x2 * c) - (y2 * s) + axis.x,
+                            (x2 * s) + (y2 * c) + axis.y};
+        }
+
 // ----------------------------------------
 // Static functions
 
-// Normalizes a vector
+        // Normalizes a vector
         Vector2d Vector2d::Normalize(const Vector2d& vector){
             Vector2d tempVec = vector;
             tempVec.normalize();
             return tempVec;
         }
 
-// Dot product of vectors: determines the angle between
+        // Dot product of vectors: determines the angle between
         float Vector2d::Dot(const Vector2d& a, const Vector2d& b)
         {
             return (a.x * b.x + a.y * b.y);
         }
 
-// Lerp from A to B by f
+        // Lerp from A to B by f
         Vector2d Vector2d::Lerp(const Vector2d& a, const Vector2d& b, float f)
         {
             return Vector2d(a + (f * (b - a)));
         }
 
-// Reflect V about (normalized) N
+        // Reflect V about (normalized) N
         Vector2d Vector2d::Reflect(const Vector2d& v, const Vector2d& n)
         {
             return v - 2.0f * Vector2d::Dot(v, n) * n;
         }
 
-// Get forward vector from rotation angle
-        Vector2d Vector2d::GetForward(float angle)
+        // Get forward vector from rotation angle
+        Vector2d Vector2d::GetForward(float angle_radians)
         {
             // negative y-value because of screen
-            return Vector2d(Math::Cos(angle), -Math::Sin(angle));
+            return Vector2d(Math::Cos(angle_radians),
+                            -Math::Sin(angle_radians));
         }
 
-// Get angle of a vector using arctangent
+        // Get angle of a vector using arctangent, in radians
         float Vector2d::GetAngle(const Vector2d& vec)
         {
             return Math::Atan2(vec.y, vec.x);
+        }
+
+        // Rotate a vector along an axis
+        Vector2d Vector2d::Rotate(
+                const Vector2d& vector,
+                const Vector2d& axis,
+                float angle_radians)
+        {
+            Vector2d temp = vector - axis;
+
+            float c = Cos(angle_radians);
+            float s = Sin(angle_radians);
+            
+            return Vector2d{
+                (temp.x * c) - (temp.y * s) + axis.x,
+                (temp.x * s) + (temp.y * c) + axis.y};
         }
 
 // const Vector2d Vector2d::Zero(0.0f, 0.0f);

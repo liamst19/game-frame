@@ -45,7 +45,7 @@ namespace Drawing{
 /** Public function: render()
  *  Renders rectangle to screen
  */
-    bool FilledRectangleDrawing::render()
+    bool FilledRectangleDrawing::render(int x, int y, double rotation)
     {
         // Render rectangle
         return _drawing_renderer->render_filled_rectangle(

@@ -43,7 +43,7 @@ namespace MediaLayer{
             // Renders texture at given point
             void render(int x, 
                         int y, 
-                        double angle = 0.0, 
+                        double angle_degrees = 0.0, 
                         SDL_Rect* clip = nullptr, 
                         SDL_Point* center = nullptr, 
                         SDL_RendererFlip flip = SDL_FLIP_NONE);

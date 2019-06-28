@@ -5,6 +5,7 @@
 #include <cmath>
 #include "gtest/gtest.h"
 #include "../src/util/math_vector_2d.h"
+#include "../src/util/math.h"
 
 using namespace Util::Math;
 
@@ -139,4 +140,27 @@ namespace {
        EXPECT_FLOAT_EQ(lp.x, 60);
        EXPECT_FLOAT_EQ(lp.y, 57);
     }
+
+    // Rotate
+    TEST(Vector2dTest, Rotate_1){
+        Vector2d vec{5.0, 10.0};
+        Vector2d axis{0.0, 0.0};
+        float angle = 1.57079632679;
+        Vector2d rotated = Vector2d::Rotate(vec, axis, angle);
+
+        EXPECT_FLOAT_EQ(rotated.x, -10.0);
+        EXPECT_FLOAT_EQ(rotated.y, 5.0);
+    }
+
+    // Rotate
+    TEST(Vector2dTest, Rotate_2){
+        Vector2d vec{5.0, 10.0};
+        Vector2d axis{1.0, 2.0};
+        float angle = 1.57079632679;
+        Vector2d rotated = vec.rotate(axis, angle);
+
+        EXPECT_FLOAT_EQ(rotated.x, -7.0);
+        EXPECT_FLOAT_EQ(rotated.y, 6.0);
+    }
+    
 }

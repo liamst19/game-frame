@@ -27,7 +27,7 @@ namespace Drawing{
         // Virtual Methods
 
         // Render drawing to screen 
-        virtual bool     render()=0;
+        virtual bool render(int x = 0, int y = 0, double rotation = 0)=0;
 
         // Get the width of the element
         virtual int width()=0;
@@ -37,6 +37,12 @@ namespace Drawing{
 
         // Get the position of the center of the element
         virtual Position center()=0;
+
+        // Position of the upper left corner
+        virtual Position min()=0;
+
+        // Position of the lower right corner
+        virtual Position max()=0;
  
         // --------------------------------------------------
 

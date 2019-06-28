@@ -46,7 +46,7 @@ namespace Drawing{
     /** Public function: render()
      * Renders polygon to screen
      */
-    bool FilledPolygonDrawing::render()
+    bool FilledPolygonDrawing::render(int x, int y, double rotation)
     {
         int n = _vertices.size();
         short vx[n], vy[n];

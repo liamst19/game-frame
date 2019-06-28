@@ -76,14 +76,14 @@ namespace MediaLayer{
 /** function: render()
  * Render texture to screen
  *   @x, @y: Position for rendering texture
- *   @angle: Rotation of texture
+ *   @angle: Rotation of texture, in degrees
  *   @clip: 
  *   @center:
  *   @flip: 
  */
         void Texture::render(int x, 
                              int y, 
-                             double angle, 
+                             double angle_degrees, 
                              SDL_Rect* clip, 
                              SDL_Point* center, 
                              SDL_RendererFlip flip)
@@ -110,7 +110,7 @@ namespace MediaLayer{
                                       _texture, 
                                       clip, 
                                       &render_quad, 
-                                      angle, 
+                                      angle_degrees, 
                                       center, 
                                       flip);
             if(result != 0){

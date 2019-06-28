@@ -44,7 +44,7 @@ namespace Drawing{
 /** public function: render()
  *  Outputs pixel to screen.
  */
-    bool PointDrawing::render()
+    bool PointDrawing::render(int x, int y, double rotation)
     {
         // Call method for rendering point
         return _drawing_renderer->render_point(
@@ -96,6 +96,22 @@ namespace Drawing{
      * Position of the center of element
      */
     Position PointDrawing::center()
+    {
+        return _point_coordinates;
+    }
+    
+    /** public function: min()
+     * Position of the upper left corner
+     */
+    Position PointDrawing::min()
+    {
+        return _point_coordinates;
+    }
+
+    /** public function: max()
+     * Position of the lower right corner
+     */
+    Position PointDrawing::max()
     {
         return _point_coordinates;
     }

@@ -30,7 +30,7 @@ namespace Drawing{
         ~PolygonDrawing();
 
         // Renders line to screen
-        bool render() override;
+        bool render(int x = 0, int y = 0, double rotation = 0) override;
 
         // Add vertice to polygon
         void add_vertice(int x, int y);
@@ -44,6 +44,10 @@ namespace Drawing{
 
         Position center() override;
 
+        Position min() override;
+
+        Position max() override;
+
         void set_center(int x, int y);
 
         int min_x();
@@ -53,6 +57,8 @@ namespace Drawing{
         int min_y();
 
         int max_y();
+
+        
 
     protected:
 

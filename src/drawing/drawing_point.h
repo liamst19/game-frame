@@ -29,7 +29,7 @@ namespace Drawing{
         ~PointDrawing();
 
         // Renders point to screen
-        bool render() override;
+        bool render(int x = 0, int y = 0, double rotation = 0) override;
 
         // Coordinates of the point
         Position coordinates();
@@ -45,6 +45,10 @@ namespace Drawing{
         int height() override;
 
         Position center() override;
+        
+        Position min() override;
+
+        Position max() override;
 
     private:
 

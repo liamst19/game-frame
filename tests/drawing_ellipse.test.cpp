@@ -43,7 +43,11 @@ namespace {
                                0, 0, 0, 0};
 
         EXPECT_EQ(ellipse.width(), 50);
-        EXPECT_EQ(ellipse.height(), 200);        
+        EXPECT_EQ(ellipse.height(), 200);
+        EXPECT_EQ(ellipse.min().x, -15);
+        EXPECT_EQ(ellipse.min().y, -90);
+        EXPECT_EQ(ellipse.max().x, 35);
+        EXPECT_EQ(ellipse.max().y, 110);
     }
 
 }

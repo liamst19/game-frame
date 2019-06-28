@@ -69,7 +69,7 @@ namespace Drawing{
 /** public function: render()
  * Renders image to screen 
  */
-    bool ImageDrawing::render()
+    bool ImageDrawing::render(int x, int y, double rotation)
     {
         return _drawing_renderer
             ->render_image(_texture_index,
@@ -144,5 +144,22 @@ namespace Drawing{
     {
         return Position{_position.x + (width()/2), _position.y + (height()/2)};
     }
+    
+    /** public function: min()
+     * Position of the upper left corner
+     */
+    Position ImageDrawing::min()
+    {
+        return _position;
+    }
+
+    /** public function: max()
+     * Position of the lower right corner
+     */
+    Position ImageDrawing::max()
+    {
+        return Position{_position.x + width(), _position.y + height()};
+    }
+
 
 } // namespace Drawing

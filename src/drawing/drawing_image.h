@@ -32,7 +32,7 @@ namespace Drawing{
         ~ImageDrawing();
 
         // Renders text to screen
-        bool render() override;
+        bool render(int x = 0, int y = 0, double rotation = 0) override;
 
         // Location of font file
         std::string image_source_path();
@@ -55,6 +55,10 @@ namespace Drawing{
         int width() override;
 
         int height() override;
+        
+        Position min() override;
+
+        Position max() override;
 
     private:
 
